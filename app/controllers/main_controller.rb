@@ -45,9 +45,24 @@ class MainController < UIViewController
 
     if currentPeriod
       @periodNameLabel.text = currentPeriod.name
-      @timeRemaining = "#{Time.at(currentPeriod.endTime - Time.now.strip_date).utc.min + 1} minutes"
-      # @timeRemaining = Time.at(currentPeriod.endTime - Time.now.strip_date).utc.strftime("%M:%S")
-      @timeRemainingLabel.text = @timeRemaining
+      hours = Time.at(currentPeriod.endTime - Time.now.strip_date).utc.hour
+      mins = Time.at(currentPeriod.endTime - Time.now.strip_date).utc.min + 1
+
+      if mins == 1
+        minsString = "#{mins} minute"
+      else
+        minsString = "#{mins} minutes"
+      end
+
+      if hours == 1
+        timeRemaining = "#{hours} hour #{minsString}"
+      elsif hours > 1
+        timeRemaining = "#{hours} hours #{minsString}"
+      else
+        timeRemaining = minsString
+      end
+      
+      @timeRemainingLabel.text = timeRemaining
     end
 
     @clockImageView.image = Clock.draw(@clockImageView.bounds)
