@@ -13,7 +13,14 @@ class Period < CDQManagedObject
     day = now.strftime('%A').downcase.to_sym  # this won't work for other languages
     time = now.strip_date
 
-    Period.where(day).eq(true).where(:startTime).gt(time).sort_by(:startTime).first
+    # this won't work for the day after next - fix but beware of NO events or only 1 block of events (just iterate 1 week)
+    nextP = Period.where(day).eq(true).where(:startTime).gt(time).sort_by(:startTime).first
+    if nextP.nil?
+      tomorrow = (Time.now + 24*3600).strftime('%A').downcase.to_sym  # this won't work for other languages
+      nextP = Period.where(tomorrow).eq(true).sort_by(:startTime).first
+    end
+
+    nextP
   end
 
   def self.allToday

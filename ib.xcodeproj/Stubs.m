@@ -21,21 +21,6 @@
 @implementation SetTimeController
 @end
 
-@implementation Category
-@end
-
-@implementation Clock
-@end
-
-@implementation Day
-@end
-
-@implementation Period
-@end
-
-@implementation Time
-@end
-
 @implementation PeriodDayCell
 @end
 

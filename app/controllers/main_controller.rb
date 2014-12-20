@@ -45,8 +45,8 @@ class MainController < UIViewController
 
     if currentPeriod
       @periodNameLabel.text = currentPeriod.name
-      hours = Time.at(currentPeriod.endTime - Time.now.strip_date).utc.hour
-      mins = Time.at(currentPeriod.endTime - Time.now.strip_date).utc.min + 1
+      hours = Time.at(currentPeriod.endTime - Time.now.strip_seconds).utc.hour
+      mins = Time.at(currentPeriod.endTime - Time.now.strip_seconds).utc.min
 
       if mins == 1
         minsString = "#{mins} minute"
@@ -61,7 +61,26 @@ class MainController < UIViewController
       else
         timeRemaining = minsString
       end
-      
+
+      @timeRemainingLabel.text = timeRemaining
+    elsif nextPeriod  # this covers same and next day
+      hours = Time.at(nextPeriod.startTime - Time.now.strip_seconds).utc.hour
+      mins = Time.at(nextPeriod.startTime - Time.now.strip_seconds).utc.min
+
+      if mins == 1
+        minsString = "#{mins} minute"
+      else
+        minsString = "#{mins} minutes"
+      end
+
+      if hours == 1
+        timeRemaining = "#{hours} hour #{minsString}"
+      elsif hours > 1
+        timeRemaining = "#{hours} hours #{minsString}"
+      else
+        timeRemaining = minsString
+      end
+
       @timeRemainingLabel.text = timeRemaining
     end
 

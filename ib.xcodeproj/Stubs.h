@@ -4,7 +4,6 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
-#import <CoreData/CoreData.h>
 
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
 @end
@@ -70,23 +69,6 @@
 
 -(IBAction) viewDidLoad;
 -(IBAction) done;
-
-@end
-
-@interface Category: NSObject
-@end
-
-@interface Clock: NSObject
-@end
-
-@interface Day: NSObject
-@end
-
-@interface Period: CDQManagedObject
-@end
-
-@interface Time: NSObject
--(IBAction) strip_date;
 
 @end
 
