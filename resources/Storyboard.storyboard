@@ -128,7 +128,7 @@
         <!--Day Overview-->
         <scene sceneID="XnM-W1-Yny">
             <objects>
-                <tableViewController id="T4k-5j-BeM" customClass="EditController" sceneMemberID="viewController">
+                <tableViewController id="T4k-5j-BeM" customClass="OverviewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="yO4-jc-LpW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

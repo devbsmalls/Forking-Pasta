@@ -33,18 +33,6 @@
 
 @end
 
-@interface EditController: UITableViewController
-
-@property IBOutlet UISegmentedControl * dayControl;
-
--(IBAction) viewDidLoad;
--(IBAction) viewWillAppear:(id) animated;
--(IBAction) viewWillDisappear:(id) animated;
--(IBAction) dismiss;
--(IBAction) dayChanged;
-
-@end
-
 @interface MainController: UIViewController
 
 @property IBOutlet UIView * watchView;
@@ -57,6 +45,18 @@
 -(IBAction) viewDidAppear:(id) animated;
 -(IBAction) viewWillDisappear:(id) animated;
 -(IBAction) redraw;
+
+@end
+
+@interface OverviewController: UITableViewController
+
+@property IBOutlet UISegmentedControl * dayControl;
+
+-(IBAction) viewDidLoad;
+-(IBAction) viewWillAppear:(id) animated;
+-(IBAction) viewWillDisappear:(id) animated;
+-(IBAction) dismiss;
+-(IBAction) dayChanged;
 
 @end
 

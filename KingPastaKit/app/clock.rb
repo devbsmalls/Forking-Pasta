@@ -46,7 +46,7 @@ class Clock
 
     # draw blank if currentPeriod = nil
     # draw current period in center
-    currentPeriod = Period.currentPeriod
+    currentPeriod = Period.current
 
     if ! currentPeriod.nil?
       CGContextSetFillColorWithColor(context, Category.getCGColorForName(currentPeriod.category))

@@ -13,8 +13,13 @@ Motion::Project::App.setup do |app|
   app.name = 'Forking Pasta'
   app.icons = ['Icon.png', 'Icon@2x.png']
   app.version = '0.1.2'
-  app.identifier = 'uk.pixlwave.ForkingPasta'
+  app.identifier = 'uk.pixlwave.ForkingPasta'  
+  app.entitlements['com.apple.security.application-groups'] = ['group.uk.pixlwave.ForkingPasta']
+
   app.target('KingPastaKit', :framework)
+
+  # development only
+  app.provisioning_profile = '/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_development.mobileprovision'
 
   app.manifest_assets << { :kind => 'software-package', :url => 'https://dl.dropboxusercontent.com/u/6437015/forking_pasta.ipa' }
 end

@@ -150,7 +150,7 @@ class DetailController < UITableViewController
       cell = tableView.dequeueReusableCellWithIdentifier("PeriodDayCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodDayCell")
       
-      day = Time.day_symbols[indexPath.row]
+      day = Day::SYMBOLS[indexPath.row]
       if indexPath.row == dayIndex
         @period.send("#{day}=", true)
         @dayIndex = nil

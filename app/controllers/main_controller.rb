@@ -37,8 +37,8 @@ class MainController < UIViewController
   end
 
   def redraw
-    currentPeriod = Period.currentPeriod
-    nextPeriod = Period.nextPeriod
+    currentPeriod = Period.current
+    nextPeriod = Period.next
 
     @periodNameLabel.text = "Free time"
     @timeRemainingLabel.text = "n/a"

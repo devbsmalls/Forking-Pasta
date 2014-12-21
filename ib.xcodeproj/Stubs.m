@@ -9,10 +9,10 @@
 @implementation DetailController
 @end
 
-@implementation EditController
+@implementation MainController
 @end
 
-@implementation MainController
+@implementation OverviewController
 @end
 
 @implementation SelectCategoryController

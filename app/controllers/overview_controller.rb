@@ -1,4 +1,4 @@
-class EditController < UITableViewController
+class OverviewController < UITableViewController
   extend IB
 
   outlet :dayControl, UISegmentedControl
@@ -6,7 +6,7 @@ class EditController < UITableViewController
   def viewDidLoad
     super
 
-    @days = Time.day_symbols
+    @days = Day::SYMBOLS
     @periods = Period.allOn(@days[@dayControl.selectedSegmentIndex])
   end
 
