@@ -1,5 +1,5 @@
 PATH
-  remote: cdq
+  remote: .
   specs:
     cdq (0.1.11)
       motion-yaml
@@ -8,15 +8,16 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
-    activesupport (3.2.21)
+    activesupport (3.2.19)
       i18n (~> 0.6, >= 0.6.4)
       multi_json (~> 1.0)
     builder (3.2.2)
     i18n (0.6.11)
-    motion-yaml (1.4)
+    motion-stump (0.3.2)
+    motion-yaml (1.2.1)
     multi_json (1.10.1)
     plist (3.1.0)
-    rake (10.4.2)
+    rake (10.3.2)
     ruby-xcdm (0.0.8)
       activesupport (~> 3.2)
       builder (~> 3.2)
@@ -27,4 +28,5 @@ PLATFORMS
 
 DEPENDENCIES
   cdq!
+  motion-stump
   rake
