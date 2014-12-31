@@ -47,7 +47,7 @@ class DetailController < UITableViewController
   def validate
     valid = true
     valid = false if @period.name.nil? || @period.name.empty?
-    valid = false if @period.category.nil? || @period.category.empty?
+    valid = false if @period.category.nil?  # or not == existing category
     if @period.startTime.nil? || @period.endTime.nil?
       valid = false
     else
@@ -131,7 +131,7 @@ class DetailController < UITableViewController
     when 1
       cell = tableView.dequeueReusableCellWithIdentifier("PeriodCategoryCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodCategoryCell")
-      cell.detailTextLabel.text = @period.category unless @period.category.nil? || @period.category.empty?
+      cell.detailTextLabel.text = @period.category.name unless @period.category.nil?
       cell
     when 2
       case indexPath.row

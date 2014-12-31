@@ -2,7 +2,6 @@
 <model name="" userDefinedModelVersionIdentifier="0001 initial" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
   <entity name="Period" syncable="YES" representedClassName="Period">
     <attribute optional="NO" syncable="YES" attributeType="String" name="name"/>
-    <attribute optional="NO" syncable="YES" attributeType="String" name="category"/>
     <attribute optional="NO" syncable="YES" attributeType="Date" name="startTime"/>
     <attribute optional="NO" syncable="YES" attributeType="Date" name="endTime"/>
     <attribute optional="YES" syncable="YES" attributeType="Boolean" name="monday"/>
@@ -12,5 +11,12 @@
     <attribute optional="YES" syncable="YES" attributeType="Boolean" name="friday"/>
     <attribute optional="YES" syncable="YES" attributeType="Boolean" name="saturday"/>
     <attribute optional="YES" syncable="YES" attributeType="Boolean" name="sunday"/>
+    <relationship optional="YES" deletionRule="Nullify" syncable="YES" name="category" inverseEntity="Category" destinationEntity="Category" inverseName="periods" maxCount="1"/>
+  </entity>
+  <entity name="Category" syncable="YES" representedClassName="Category">
+    <attribute optional="NO" syncable="YES" attributeType="String" name="name"/>
+    <attribute optional="NO" syncable="YES" attributeType="Integer 16" name="index" defaultValueString="0"/>
+    <attribute optional="NO" syncable="YES" attributeType="Transformable" name="color"/>
+    <relationship optional="YES" deletionRule="Nullify" syncable="YES" name="periods" inverseEntity="Period" destinationEntity="Period" inverseName="category" toMany="YES"/>
   </entity>
 </model>

@@ -1,24 +1,24 @@
 class SelectCategoryController < UITableViewController
 
   attr_accessor :period
-
+  
   def tableView(tableView, numberOfRowsInSection: section)
-    Category.symbols.count
+    Category.count
   end
 
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
     cell = tableView.dequeueReusableCellWithIdentifier("SelectCategoryCell")
     cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "SelectCategoryCell")
-    cell.textLabel.text = Category.symbols[indexPath.row]
+    category = Category.where(:index).eq(indexPath.row).first
+    cell.textLabel.text = category.name
     if @period.category
-      cell.accessoryType = UITableViewCellAccessoryCheckmark if Category.symbols[indexPath.row] == @period.category.to_sym
+      cell.accessoryType = UITableViewCellAccessoryCheckmark if category == @period.category
     end
     cell
   end
 
   def tableView(tableView, didSelectRowAtIndexPath: indexPath)
-    category = Category.symbols[indexPath.row]
-    @period.category = category
+    @period.category = Category.where(:index).eq(indexPath.row).first
     
     self.navigationController.popViewControllerAnimated(true)
   end

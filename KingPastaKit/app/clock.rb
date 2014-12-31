@@ -31,7 +31,7 @@ class Clock
       periods.each do |period|
         startAngle = 2 * Math::PI / dayLength * (period.startTime - dayStart)
         endAngle = 2 * Math::PI / dayLength * (period.endTime - dayStart)
-        color = Category.getCGColorForName(period.category)
+        color = period.category.cgColor
         drawSegment(context, outerRect, startAngle, endAngle, color)
       end
 
@@ -49,7 +49,7 @@ class Clock
     currentPeriod = Period.current
 
     if ! currentPeriod.nil?
-      CGContextSetFillColorWithColor(context, Category.getCGColorForName(currentPeriod.category))
+      CGContextSetFillColorWithColor(context, currentPeriod.category.cgColor)
       CGContextFillEllipseInRect(context, innerRect)
 
       # shade progress through current period
