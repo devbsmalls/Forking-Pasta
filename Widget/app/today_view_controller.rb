@@ -25,8 +25,8 @@ class TodayViewController < UIViewController
     self.view.addSubview(@timeRemainingLabel)
 
     widgetViews = {"clockImage" => @clockImageView, "periodLabel" => @periodNameLabel, "timeLabel" => @timeRemainingLabel}
-    self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-[clockImage(120)]-20-[periodLabel]-8@500-|", options: 0, metrics: nil, views: widgetViews))
-    self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-[clockImage]-20-[timeLabel]-8@500-|", options: 0, metrics: nil, views: widgetViews))
+    self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-[clockImage(120)]-20-[periodLabel]-|", options: 0, metrics: nil, views: widgetViews))
+    self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-[clockImage]-20-[timeLabel]-|", options: 0, metrics: nil, views: widgetViews))
     self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[clockImage(120)]|", options: 0, metrics: nil, views: widgetViews))
     self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[periodLabel]-[timeLabel(==periodLabel)]-|", options: 0, metrics: nil, views: widgetViews))
 
