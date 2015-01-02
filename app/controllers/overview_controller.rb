@@ -60,8 +60,9 @@ class OverviewController < UITableViewController
 
     period = @periods[indexPath.row]
 
-    cell.textLabel.text = period.name
-    cell.detailTextLabel.text = "#{period.startTime.utc.strftime("%H:%M")} - #{period.endTime.utc.strftime("%H:%M")}"
+    cell.categoryColorMark.backgroundColor = period.category.color
+    cell.periodNameLabel.text = period.name
+    cell.timeRangeLabel.text = "#{period.startTime.utc.strftime("%H:%M")} - #{period.endTime.utc.strftime("%H:%M")}"
     
     cell
   end

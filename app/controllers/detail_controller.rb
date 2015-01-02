@@ -131,7 +131,8 @@ class DetailController < UITableViewController
     when 1
       cell = tableView.dequeueReusableCellWithIdentifier("PeriodCategoryCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodCategoryCell")
-      cell.detailTextLabel.text = @period.category.name unless @period.category.nil?
+      cell.nameLabel.text = @period.category.name unless @period.category.nil?
+      cell.colorMark.color = @period.category.color unless @period.category.nil?
       cell
     when 2
       case indexPath.row

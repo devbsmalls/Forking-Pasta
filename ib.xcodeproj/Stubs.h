@@ -6,6 +6,8 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
+-(IBAction) setupDefaultCategories;
+
 @end
 
 @interface DetailController: UITableViewController
@@ -72,6 +74,27 @@
 
 @end
 
+@interface CategoryColorMark: UIView
+-(IBAction) layoutSubviews;
+-(IBAction) color;
+
+@end
+
+@interface CategoryCell: UITableViewCell
+
+@property IBOutlet UILabel * nameLabel;
+@property IBOutlet CategoryColorMark * colorMark;
+
+@end
+
+@interface PeriodCell: UITableViewCell
+
+@property IBOutlet UIView * categoryColorMark;
+@property IBOutlet UILabel * periodNameLabel;
+@property IBOutlet UILabel * timeRangeLabel;
+
+@end
+
 @interface PeriodDayCell: UITableViewCell
 
 @property IBOutlet UILabel * dayLabel;
@@ -82,6 +105,13 @@
 @interface PeriodNameCell: UITableViewCell
 
 @property IBOutlet UITextField * nameTextField;
+
+@end
+
+@interface SelectCategoryCell: UITableViewCell
+
+@property IBOutlet UILabel * nameLabel;
+@property IBOutlet CategoryColorMark * colorView;
 
 @end
 

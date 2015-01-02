@@ -21,9 +21,21 @@
 @implementation SetTimeController
 @end
 
+@implementation CategoryColorMark
+@end
+
+@implementation CategoryCell
+@end
+
+@implementation PeriodCell
+@end
+
 @implementation PeriodDayCell
 @end
 
 @implementation PeriodNameCell
+@end
+
+@implementation SelectCategoryCell
 @end
 

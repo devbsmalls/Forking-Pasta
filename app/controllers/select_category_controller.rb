@@ -1,7 +1,7 @@
 class SelectCategoryController < UITableViewController
 
   attr_accessor :period
-  
+
   def tableView(tableView, numberOfRowsInSection: section)
     Category.count
   end
@@ -10,7 +10,8 @@ class SelectCategoryController < UITableViewController
     cell = tableView.dequeueReusableCellWithIdentifier("SelectCategoryCell")
     cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "SelectCategoryCell")
     category = Category.where(:index).eq(indexPath.row).first
-    cell.textLabel.text = category.name
+    cell.nameLabel.text = category.name
+    cell.colorView.color = category.color
     if @period.category
       cell.accessoryType = UITableViewCellAccessoryCheckmark if category == @period.category
     end
