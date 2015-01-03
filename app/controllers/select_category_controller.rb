@@ -9,12 +9,9 @@ class SelectCategoryController < UITableViewController
     end
   end
 
-  def prepareForSegue(segue, sender: sender)
-    if segue.identifier == "EditCategorySegue"
-      segue.destinationViewController.category = period.category
-    end
-
-    @needsReload = true
+  def toggleEditing(sender)
+    self.tableView.isEditing ? sender.setTitle("Edit", forState: UIControlStateNormal) : sender.setTitle("Done", forState: UIControlStateNormal)
+    self.tableView.setEditing(!self.tableView.isEditing, animated: true)
   end
 
   #### table view delegate methods ####
@@ -36,9 +33,25 @@ class SelectCategoryController < UITableViewController
   end
 
   def tableView(tableView, didSelectRowAtIndexPath: indexPath)
-    @period.category = Category.where(:index).eq(indexPath.row).first
-    
-    self.navigationController.popViewControllerAnimated(true)
+    if self.tableView.isEditing
+      editController = storyboard.instantiateViewControllerWithIdentifier("EditCategoryController")
+      editController.category = Category.where(:index).eq(indexPath.row).first
+      @needsReload = true
+
+      self.navigationController.pushViewController(editController, animated: true)
+    else
+      @period.category = Category.where(:index).eq(indexPath.row).first
+      
+      self.navigationController.popViewControllerAnimated(true)
+    end
+  end
+
+  def tableView(tableView, editingStyleForRowAtIndexPath: indexPath)
+    UITableViewCellEditingStyleNone
+  end
+
+  def tableView(tableView, shouldIndentWhileEditingRowAtIndexPath: indexPath)
+    false
   end
 
 end

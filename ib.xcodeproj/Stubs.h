@@ -68,6 +68,7 @@
 
 @interface SelectCategoryController: UITableViewController
 -(IBAction) viewWillAppear:(id) animated;
+-(IBAction) toggleEditing:(id) sender;
 
 @end
 
@@ -81,6 +82,8 @@
 @end
 
 @interface CategoryColorMark: UIView
+-(IBAction) initWithFrame:(id) frame;
+-(IBAction) initWithCoder:(id) aDecoder;
 -(IBAction) color;
 -(IBAction) drawRect:(id) rect;
 
@@ -107,6 +110,7 @@
 @end
 
 @interface PeriodColorMark: UIView
+-(IBAction) color;
 -(IBAction) drawRect:(id) rect;
 
 @end

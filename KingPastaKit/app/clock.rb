@@ -17,7 +17,7 @@ class Clock
 
     # this needs a 'free time' category colour that the user can't use
     # blank canvas
-    CGContextSetFillColorWithColor(context, UIColor.darkGrayColor.CGColor)
+    CGContextSetFillColorWithColor(context, Category::FREE_COLOR.CGColor)
     CGContextFillEllipseInRect(context, outerRect)
     
     periods = Period.allToday
