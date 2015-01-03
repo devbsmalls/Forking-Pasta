@@ -13,15 +13,6 @@
 @interface DetailController: UITableViewController
 
 @property IBOutlet UIBarButtonItem * saveButton;
-@property IBOutlet UITextField * nameTextField;
-@property IBOutlet UIDatePicker * startTimePicker;
-@property IBOutlet UISwitch * mondaySwitch;
-@property IBOutlet UISwitch * tuesdaySwitch;
-@property IBOutlet UISwitch * wednesdaySwitch;
-@property IBOutlet UISwitch * thursdaySwitch;
-@property IBOutlet UISwitch * fridaySwitch;
-@property IBOutlet UISwitch * saturdaySwitch;
-@property IBOutlet UISwitch * sundaySwitch;
 
 -(IBAction) viewDidLoad;
 -(IBAction) viewWillAppear:(id) animated;
@@ -30,6 +21,19 @@
 -(IBAction) cancel;
 -(IBAction) nameDidChange:(id) sender;
 -(IBAction) daysDidChange:(id) sender;
+-(IBAction) textFieldShouldReturn:(id) textField;
+-(IBAction) numberOfSectionsInTableView:(id) tableView;
+
+@end
+
+@interface EditCategoryController: UITableViewController
+
+@property IBOutlet UIBarButtonItem * saveButton;
+
+-(IBAction) viewDidLoad;
+-(IBAction) save;
+-(IBAction) cancel;
+-(IBAction) nameDidChange:(id) sender;
 -(IBAction) textFieldShouldReturn:(id) textField;
 -(IBAction) numberOfSectionsInTableView:(id) tableView;
 
@@ -63,6 +67,8 @@
 @end
 
 @interface SelectCategoryController: UITableViewController
+-(IBAction) viewWillAppear:(id) animated;
+
 @end
 
 @interface SetTimeController: UIViewController
@@ -75,21 +81,39 @@
 @end
 
 @interface CategoryColorMark: UIView
--(IBAction) layoutSubviews;
 -(IBAction) color;
+-(IBAction) drawRect:(id) rect;
 
 @end
 
-@interface CategoryCell: UITableViewCell
+@interface CategoryColorCell: UITableViewCell
+
+@property IBOutlet UILabel * colorNameLabel;
+@property IBOutlet CategoryColorMark * colorMark;
+
+@end
+
+@interface CategoryNameCell: UITableViewCell
+
+@property IBOutlet UITextField * nameTextField;
+
+@end
+
+@interface PeriodCategoryCell: UITableViewCell
 
 @property IBOutlet UILabel * nameLabel;
 @property IBOutlet CategoryColorMark * colorMark;
 
 @end
 
+@interface PeriodColorMark: UIView
+-(IBAction) drawRect:(id) rect;
+
+@end
+
 @interface PeriodCell: UITableViewCell
 
-@property IBOutlet UIView * categoryColorMark;
+@property IBOutlet PeriodColorMark * categoryColorMark;
 @property IBOutlet UILabel * periodNameLabel;
 @property IBOutlet UILabel * timeRangeLabel;
 
@@ -111,7 +135,7 @@
 @interface SelectCategoryCell: UITableViewCell
 
 @property IBOutlet UILabel * nameLabel;
-@property IBOutlet CategoryColorMark * colorView;
+@property IBOutlet CategoryColorMark * colorMark;
 
 @end
 

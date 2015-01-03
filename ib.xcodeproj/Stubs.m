@@ -9,6 +9,9 @@
 @implementation DetailController
 @end
 
+@implementation EditCategoryController
+@end
+
 @implementation MainController
 @end
 
@@ -24,7 +27,16 @@
 @implementation CategoryColorMark
 @end
 
-@implementation CategoryCell
+@implementation CategoryColorCell
+@end
+
+@implementation CategoryNameCell
+@end
+
+@implementation PeriodCategoryCell
+@end
+
+@implementation PeriodColorMark
 @end
 
 @implementation PeriodCell

@@ -1,7 +1,7 @@
 class PeriodCell < UITableViewCell
   extend IB
 
-  outlet :categoryColorMark, UIView
+  outlet :categoryColorMark, PeriodColorMark
   outlet :periodNameLabel, UILabel
   outlet :timeRangeLabel, UILabel
 end

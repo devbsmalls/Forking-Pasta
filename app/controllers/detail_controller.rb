@@ -4,16 +4,7 @@ class DetailController < UITableViewController
   attr_accessor :period, :dayIndex
 
   outlet :saveButton, UIBarButtonItem
-  outlet :nameTextField, UITextField
-  outlet :startTimePicker, UIDatePicker
-  outlet :mondaySwitch, UISwitch
-  outlet :tuesdaySwitch, UISwitch
-  outlet :wednesdaySwitch, UISwitch
-  outlet :thursdaySwitch, UISwitch
-  outlet :fridaySwitch, UISwitch
-  outlet :saturdaySwitch, UISwitch
-  outlet :sundaySwitch, UISwitch
-
+  
   def viewDidLoad
     super
 

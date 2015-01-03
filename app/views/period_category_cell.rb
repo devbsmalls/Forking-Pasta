@@ -1,4 +1,4 @@
-class CategoryCell < UITableViewCell
+class PeriodCategoryCell < UITableViewCell
   extend IB
 
   outlet :nameLabel, UILabel
