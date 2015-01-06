@@ -8,9 +8,26 @@ class AppDelegate
     @window.rootViewController = @storyboard.instantiateInitialViewController
     @window.makeKeyAndVisible
 
-    setupDefaultCategories
+    setupDays                 # only do this once
+    setupDefaultCategories    # only do this once
 
     true
+
+  end
+
+  def setupDays
+    if Day.count != 7
+      Day.all.each do |d|
+        d.destroy
+      end
+
+      NSDateFormatter.new.weekdaySymbols.each_with_index do |day, index|
+        schedule = Schedule.new(name: day)  # temporarily make 1 schedule per day
+        Day.new(name: day, dayOfWeek: index, schedule: schedule)
+      end
+
+      cdq.save
+    end
 
   end
 

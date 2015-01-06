@@ -20,9 +20,9 @@ class Clock
     CGContextSetFillColorWithColor(context, Category::FREE_COLOR.CGColor)
     CGContextFillEllipseInRect(context, outerRect)
     
-    periods = Period.allToday
+    periods = Period.all_today
 
-    if periods.count > 0
+    if periods && periods.count > 0
       dayStart = periods.first.startTime
       dayEnd = periods[periods.count - 1].endTime     # why can't I use .last?!?!
       dayLength = dayEnd - dayStart

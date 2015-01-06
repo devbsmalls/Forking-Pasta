@@ -3,43 +3,28 @@ class Period < CDQManagedObject
   def self.current
     time = Time.now.strip_date
 
-    Period.where(Day.today).eq(true).where(:startTime).le(time).where(:endTime).gt(time).first
+    Period.all_today.where(:startTime).le(time).where(:endTime).gt(time).first if Period.all_today
   end
 
   def self.next
     time = Time.now.strip_date
 
     # this won't work for the day after next - fix but beware of NO events or only 1 block of events (just iterate 1 week)
-    next_period = Period.where(Day.today).eq(true).where(:startTime).gt(time).sort_by(:startTime).first
+    next_period = Period.all_today.where(:startTime).gt(time).sort_by(:startTime).first if Period.all_today
     if next_period.nil?
-      next_period = Period.where(Day.tomorrow).eq(true).sort_by(:startTime).first
+      schedule = Day.tomorrow.schedule
+      next_period = schedule.all_periods.first if schedule
     end
 
     next_period
   end
 
-  def self.allToday
-    Period.where(Day.today).eq(true).sort_by(:startTime)
+  def self.all_today
+    Schedule.today.all_periods if Schedule.today
   end
 
-  def self.allOn(day)
-    Period.where(day.downcase.to_sym).eq(true).sort_by(:startTime)
+  def self.all_on_wday(wday)
+    Schedule.on_wday(wday).all_periods if Schedule.on_wday(wday)
   end
-
-
-  #### predicate methods ####
-
-  def self.define_predicate_methods
-    methods = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
-
-    methods.each do |method|
-      define_method("#{method}?") do
-        value = self.send(method)
-        value.nil? ? false : value.boolValue
-      end
-    end
-  end
-
-  define_predicate_methods
 
 end

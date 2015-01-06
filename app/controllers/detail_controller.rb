@@ -44,7 +44,7 @@ class DetailController < UITableViewController
     else
       valid = false if @period.endTime <= @period.startTime
     end
-    valid = false if ! (@period.monday? || @period.tuesday? || @period.wednesday? || @period.thursday? || @period.friday? || @period.saturday? || @period.sunday?)
+    valid = false if @period.schedule.nil?
     
     @saveButton.enabled = valid
   end
@@ -67,22 +67,8 @@ class DetailController < UITableViewController
   end
 
   def daysDidChange(sender)
-    case sender.tag
-    when 0
-      @period.monday = sender.isOn
-    when 1
-      @period.tuesday = sender.isOn
-    when 2
-      @period.wednesday = sender.isOn
-    when 3
-      @period.thursday = sender.isOn
-    when 4
-      @period.friday = sender.isOn
-    when 5
-      @period.saturday = sender.isOn
-    when 6
-      @period.sunday = sender.isOn
-    end
+    @period.schedule = Schedule.on_wday(sender.tag)
+    self.tableView.reloadData   # temporary hack to work around schedule->day mapping
 
     validate
   end
@@ -142,15 +128,21 @@ class DetailController < UITableViewController
       cell = tableView.dequeueReusableCellWithIdentifier("PeriodDayCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodDayCell")
       
-      day = Day::SYMBOLS[indexPath.row]
-      if indexPath.row == dayIndex
-        @period.send("#{day}=", true)
+      day = Day.wday(indexPath.row)
+
+      cell.dayLabel.text = day.name
+      cell.daySwitch.tag = indexPath.row
+      cell.daySwitch.on = false
+      
+      if @dayIndex
+        @period.schedule = Schedule.on_wday(@dayIndex)
         @dayIndex = nil
       end
 
-      cell.dayLabel.text = day.capitalize
-      cell.daySwitch.tag = indexPath.row
-      cell.daySwitch.on = @period.send(day).boolValue if @period.send(day)
+      # temporary hack for 1 schedule per day
+      @period.schedule.days.each do |d|
+        cell.daySwitch.on = true if d.dayOfWeek == indexPath.row
+      end
       cell
     end
   end

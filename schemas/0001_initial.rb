@@ -1,20 +1,27 @@
 
 schema "0001 initial" do
 
+  entity "Schedule" do
+    string :name, optional: false
+
+    has_many :days
+    has_many :periods
+  end
+
+  entity "Day" do
+    string :name, optional: false
+    integer16 :dayOfWeek, optional: false
+    
+    belongs_to :schedule
+  end
+
   entity "Period" do
     string :name, optional: false
 
     datetime :startTime, optional: false
     datetime :endTime, optional: false
 
-    boolean :monday
-    boolean :tuesday
-    boolean :wednesday
-    boolean :thursday
-    boolean :friday
-    boolean :saturday
-    boolean :sunday
-
+    belongs_to :schedule
     belongs_to :category
   end
 

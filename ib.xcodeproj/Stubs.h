@@ -6,6 +6,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
+-(IBAction) setupDays;
 -(IBAction) setupDefaultCategories;
 
 @end
@@ -47,7 +48,6 @@
 @property IBOutlet UILabel * timeRemainingLabel;
 
 -(IBAction) viewDidLoad;
--(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewDidAppear:(id) animated;
 -(IBAction) viewWillDisappear:(id) animated;
 -(IBAction) redraw;
