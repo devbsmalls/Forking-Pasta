@@ -11,6 +11,12 @@
 
 @end
 
+@interface CategoryController: UITableViewController
+-(IBAction) done;
+-(IBAction) viewWillAppear:(id) animated;
+
+@end
+
 @interface DetailController: UITableViewController
 
 @property IBOutlet UIBarButtonItem * saveButton;
@@ -48,6 +54,7 @@
 @property IBOutlet UILabel * timeRemainingLabel;
 
 -(IBAction) viewDidLoad;
+-(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewDidAppear:(id) animated;
 -(IBAction) viewWillDisappear:(id) animated;
 -(IBAction) redraw;
@@ -67,9 +74,6 @@
 @end
 
 @interface SelectCategoryController: UITableViewController
--(IBAction) viewWillAppear:(id) animated;
--(IBAction) toggleEditing:(id) sender;
-
 @end
 
 @interface SetTimeController: UIViewController

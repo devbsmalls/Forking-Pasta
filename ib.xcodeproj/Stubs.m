@@ -6,6 +6,9 @@
 @implementation AppDelegate
 @end
 
+@implementation CategoryController
+@end
+
 @implementation DetailController
 @end
 
