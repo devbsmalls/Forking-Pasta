@@ -31,6 +31,7 @@ class ScheduleDetailController < UITableViewController
   end
 
   def save
+    self.view.endEditing(true)    # this might need to be called on back too (somehow!)
     self.navigationController.popViewControllerAnimated(true)
   end
 

@@ -12,12 +12,14 @@ class EditCategoryController < UITableViewController
   end
 
   def save
+    self.view.endEditing(true)
     cdq.save
 
     self.navigationController.popViewControllerAnimated(true)
   end
 
   def cancel
+    self.view.endEditing(true)
     cdq.contexts.current.rollback   # would be great to just cdq.rollback
 
     self.navigationController.popViewControllerAnimated(true)
