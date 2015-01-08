@@ -4,11 +4,11 @@ class Day < CDQManagedObject
   BEDTIME = Time.at(22*60*60 + 0*60 + 0).utc
 
   def self.symbols
-    @@daySymbols ||= NSDateFormatter.new.weekdaySymbols.rotate(NSCalendar.currentCalendar.firstWeekday)
+    @@daySymbols ||= NSDateFormatter.new.weekdaySymbols.rotate(NSCalendar.currentCalendar.firstWeekday - 1)
   end
 
   def self.shortSymbols
-    @@shortDaySymbols ||= NSDateFormatter.new.shortWeekdaySymbols.rotate(NSCalendar.currentCalendar.firstWeekday)
+    @@shortDaySymbols ||= NSDateFormatter.new.shortWeekdaySymbols.rotate(NSCalendar.currentCalendar.firstWeekday - 1)
   end
 
   def self.today
