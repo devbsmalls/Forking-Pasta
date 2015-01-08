@@ -32,10 +32,10 @@ class AppDelegate
 
   def setupDefaultCategories
     if Category.count < 1
-      Category.new(name: "Home", index: 0, color: Category::COLORS[0])
-      Category.new(name: "Work", index: 1, color: Category::COLORS[1])
-      Category.new(name: "Break", index: 2, color: Category::COLORS[2])
-      Category.new(name: "Misc", index: 3, color: Category::COLORS[3])
+      Category.new(name: "Home", index: 0, color: Category::COLORS[0][:value])
+      Category.new(name: "Work", index: 1, color: Category::COLORS[1][:value])
+      Category.new(name: "Break", index: 2, color: Category::COLORS[2][:value])
+      Category.new(name: "Misc", index: 3, color: Category::COLORS[3][:value])
       cdq.save
     end
   end
