@@ -56,9 +56,8 @@ class EditCategoryController < UITableViewController
     when 0
       cell = tableView.dequeueReusableCellWithIdentifier("CategoryNameCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "CategoryNameCell")
-      @nameTextField = cell.nameTextField
-      @nameTextField.delegate = self
-      @nameTextField.text = @category.name
+      cell.nameTextField.delegate = self
+      cell.nameTextField.text = @category.name
       cell
     when 1
       cell = tableView.dequeueReusableCellWithIdentifier("CategoryColorCell")

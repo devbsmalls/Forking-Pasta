@@ -100,9 +100,8 @@ class PeriodDetailController < UITableViewController
     when 0
       cell = tableView.dequeueReusableCellWithIdentifier("PeriodNameCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodNameCell")
-      @nameTextField = cell.nameTextField
-      @nameTextField.delegate = self
-      @nameTextField.text = @period.name
+      cell.nameTextField.delegate = self
+      cell.nameTextField.text = @period.name
       cell
     when 1
       cell = tableView.dequeueReusableCellWithIdentifier("PeriodCategoryCell")

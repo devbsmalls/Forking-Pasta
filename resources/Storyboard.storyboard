@@ -280,7 +280,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="3yK-Io-cIq">
                                             <rect key="frame" x="15" y="14" width="570" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             <connections>
                                                 <action selector="nameDidChange:" destination="T4k-5j-BeM" eventType="editingDidEnd" id="LVn-C1-8TU"/>
                                                 <action selector="nameDidChange:" destination="J7d-fX-yok" eventType="editingDidEnd" id="XnC-Rw-LGc"/>
@@ -482,7 +482,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Jjd-2p-nUr">
                                             <rect key="frame" x="15" y="12" width="570" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             <connections>
                                                 <action selector="nameDidChange:" destination="J7d-fX-yok" eventType="editingDidEnd" id="xsm-0d-44j"/>
                                             </connections>
@@ -698,7 +698,7 @@
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JR1-Lx-aly">
                                             <rect key="frame" x="15" y="12" width="570" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <textInputTraits key="textInputTraits"/>
+                                            <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                                             <connections>
                                                 <action selector="nameDidChange:" destination="zb4-aO-30f" eventType="editingDidEnd" id="Ahf-hJ-8ps"/>
                                             </connections>

@@ -84,9 +84,8 @@ class ScheduleDetailController < UITableViewController
     when 0
       cell = tableView.dequeueReusableCellWithIdentifier("ScheduleNameCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleNameCell")
-      @nameTextField = cell.nameTextField
-      @nameTextField.delegate = self
-      @nameTextField.text = @schedule.name
+      cell.nameTextField.delegate = self
+      cell.nameTextField.text = @schedule.name
       
       cell
     when 1
