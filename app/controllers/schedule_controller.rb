@@ -47,9 +47,8 @@ class ScheduleController < UITableViewController
     cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleCell")
     schedule = @schedules[indexPath.row]
     days = ""
-    shortDays = NSDateFormatter.new.shortWeekdaySymbols
     schedule.days.sort_by(:dayOfWeek).each do |day|
-      days << shortDays[day.dayOfWeek] + " "
+      days << Day.shortSymbols[day.dayOfWeek] + " "
     end
 
     cell.textLabel.text = schedule.name

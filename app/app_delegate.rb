@@ -21,7 +21,7 @@ class AppDelegate
         d.destroy
       end
 
-      NSDateFormatter.new.weekdaySymbols.each_with_index do |day, index|
+      Day.symbols.each_with_index do |day, index|
         Day.new(name: day, dayOfWeek: index)
       end
 
