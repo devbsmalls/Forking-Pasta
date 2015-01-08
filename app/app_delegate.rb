@@ -22,8 +22,7 @@ class AppDelegate
       end
 
       NSDateFormatter.new.weekdaySymbols.each_with_index do |day, index|
-        schedule = Schedule.new(name: day)  # temporarily make 1 schedule per day
-        Day.new(name: day, dayOfWeek: index, schedule: schedule)
+        Day.new(name: day, dayOfWeek: index)
       end
 
       cdq.save
@@ -33,9 +32,10 @@ class AppDelegate
 
   def setupDefaultCategories
     if Category.count < 1
-      Category.new(name: "Home", index: 0, color: UIColor.colorWithRed(0.557, green:0.910, blue:1.000, alpha:1.0))
-      Category.new(name: "Work", index: 1, color: UIColor.colorWithRed(0.757, green:1.000, blue:0.557, alpha:1.0))
-      Category.new(name: "Misc", index: 2, color: UIColor.colorWithRed(1.000, green:0.859, blue:0.557, alpha:1.0))
+      Category.new(name: "Home", index: 0, color: Category::COLORS[0])
+      Category.new(name: "Work", index: 1, color: Category::COLORS[1])
+      Category.new(name: "Break", index: 2, color: Category::COLORS[2])
+      Category.new(name: "Misc", index: 3, color: Category::COLORS[3])
       cdq.save
     end
   end

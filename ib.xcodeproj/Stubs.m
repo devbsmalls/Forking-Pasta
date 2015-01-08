@@ -9,16 +9,22 @@
 @implementation CategoryController
 @end
 
-@implementation DetailController
-@end
-
 @implementation EditCategoryController
 @end
 
 @implementation MainController
 @end
 
-@implementation OverviewController
+@implementation PeriodDetailController
+@end
+
+@implementation ScheduleController
+@end
+
+@implementation ScheduleDaysController
+@end
+
+@implementation ScheduleDetailController
 @end
 
 @implementation SelectCategoryController

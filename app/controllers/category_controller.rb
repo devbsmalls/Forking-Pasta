@@ -10,7 +10,7 @@ class CategoryController < UITableViewController
   end
 
   def done
-    self.presentingViewController.dismissModalViewControllerAnimated(true)
+    self.navigationController.presentingViewController.dismissModalViewControllerAnimated(true)
   end
 
   def viewWillAppear(animated)

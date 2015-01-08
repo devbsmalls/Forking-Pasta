@@ -17,22 +17,6 @@
 
 @end
 
-@interface DetailController: UITableViewController
-
-@property IBOutlet UIBarButtonItem * saveButton;
-
--(IBAction) viewDidLoad;
--(IBAction) viewWillAppear:(id) animated;
--(IBAction) validate;
--(IBAction) save;
--(IBAction) cancel;
--(IBAction) nameDidChange:(id) sender;
--(IBAction) daysDidChange:(id) sender;
--(IBAction) textFieldShouldReturn:(id) textField;
--(IBAction) numberOfSectionsInTableView:(id) tableView;
-
-@end
-
 @interface EditCategoryController: UITableViewController
 
 @property IBOutlet UIBarButtonItem * saveButton;
@@ -61,15 +45,44 @@
 
 @end
 
-@interface OverviewController: UITableViewController
+@interface PeriodDetailController: UITableViewController
 
-@property IBOutlet UISegmentedControl * dayControl;
+@property IBOutlet UIBarButtonItem * saveButton;
 
 -(IBAction) viewDidLoad;
 -(IBAction) viewWillAppear:(id) animated;
+-(IBAction) viewDidAppear:(id) animated;
+-(IBAction) validate;
+-(IBAction) save;
+-(IBAction) cancel;
+-(IBAction) nameDidChange:(id) sender;
+-(IBAction) textFieldShouldReturn:(id) textField;
+-(IBAction) numberOfSectionsInTableView:(id) tableView;
+
+@end
+
+@interface ScheduleController: UITableViewController
+-(IBAction) viewDidLoad;
+-(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewWillDisappear:(id) animated;
--(IBAction) dismiss;
--(IBAction) dayChanged;
+-(IBAction) done;
+
+@end
+
+@interface ScheduleDaysController: UITableViewController
+-(IBAction) save;
+-(IBAction) cancel;
+
+@end
+
+@interface ScheduleDetailController: UITableViewController
+-(IBAction) viewDidLoad;
+-(IBAction) viewWillAppear:(id) animated;
+-(IBAction) viewWillDisappear:(id) animated;
+-(IBAction) save;
+-(IBAction) nameDidChange:(id) sender;
+-(IBAction) textFieldShouldReturn:(id) textField;
+-(IBAction) numberOfSectionsInTableView:(id) tableView;
 
 @end
 

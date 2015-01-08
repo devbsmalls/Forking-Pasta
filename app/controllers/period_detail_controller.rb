@@ -1,7 +1,7 @@
-class DetailController < UITableViewController
+class PeriodDetailController < UITableViewController
   extend IB
 
-  attr_accessor :period, :dayIndex
+  attr_accessor :schedule, :period
 
   outlet :saveButton, UIBarButtonItem
   
@@ -13,12 +13,21 @@ class DetailController < UITableViewController
   end
 
   def viewWillAppear(animated)
+    super
+
     if @needsReload
       self.tableView.reloadData
       @needsReload = false
     end
 
     validate
+  end
+
+  def viewDidAppear(animated)
+    if @schedule
+      @period.schedule = @schedule
+      @schedule = nil
+    end
   end
 
   def prepareForSegue(segue, sender: sender)
@@ -44,7 +53,6 @@ class DetailController < UITableViewController
     else
       valid = false if @period.endTime <= @period.startTime
     end
-    valid = false if @period.schedule.nil?
     
     @saveButton.enabled = valid
   end
@@ -66,13 +74,6 @@ class DetailController < UITableViewController
     validate
   end
 
-  def daysDidChange(sender)
-    @period.schedule = Schedule.on_wday(sender.tag)
-    self.tableView.reloadData   # temporary hack to work around schedule->day mapping
-
-    validate
-  end
-
   #### text field delegate methods ####
   def textFieldShouldReturn(textField)
     textField.resignFirstResponder
@@ -82,7 +83,7 @@ class DetailController < UITableViewController
   #### table view delegate methods ####
 
   def numberOfSectionsInTableView(tableView)
-    4
+    3
   end
 
   def tableView(tableView, numberOfRowsInSection: section)
@@ -91,8 +92,6 @@ class DetailController < UITableViewController
       1
     when 2
       2
-    when 3
-      7
     end
   end
 
@@ -124,26 +123,6 @@ class DetailController < UITableViewController
         cell.detailTextLabel.text = @period.endTime.utc.strftime("%H:%M") if @period.endTime
         cell
       end
-    when 3
-      cell = tableView.dequeueReusableCellWithIdentifier("PeriodDayCell")
-      cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodDayCell")
-      
-      day = Day.wday(indexPath.row)
-
-      cell.dayLabel.text = day.name
-      cell.daySwitch.tag = indexPath.row
-      cell.daySwitch.on = false
-      
-      if @dayIndex
-        @period.schedule = Schedule.on_wday(@dayIndex)
-        @dayIndex = nil
-      end
-
-      # temporary hack for 1 schedule per day
-      @period.schedule.days.each do |d|
-        cell.daySwitch.on = true if d.dayOfWeek == indexPath.row
-      end
-      cell
     end
   end
 
