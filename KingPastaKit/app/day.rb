@@ -12,11 +12,11 @@ class Day < CDQManagedObject
   end
 
   def self.today
-    Day.where(:dayOfWeek).eq(Time.now.wday).first
+    Day.where(:dayOfWeek).eq(Time.now.day_of_week).first
   end
 
   def self.tomorrow
-    Day.where(:dayOfWeek).eq((Time.now + 86400).wday).first
+    Day.where(:dayOfWeek).eq((Time.now + 86400).day_of_week).first
   end
 
   def self.wday(wday)
