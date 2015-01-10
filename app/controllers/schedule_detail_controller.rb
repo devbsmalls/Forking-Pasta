@@ -92,11 +92,7 @@ class ScheduleDetailController < UITableViewController
     when 1
       cell = tableView.dequeueReusableCellWithIdentifier("ScheduleDaysCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleDaysCell")
-      days = ""
-      schedule.days.sort_by(:dayOfWeek).each do |day|
-        days << Day.shortSymbols[day.dayOfWeek] + " "
-      end
-      cell.detailTextLabel.text = days
+      cell.detailTextLabel.text = schedule.days_string
       
       cell
     when 2

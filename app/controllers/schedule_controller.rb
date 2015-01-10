@@ -46,13 +46,9 @@ class ScheduleController < UITableViewController
     cell = tableView.dequeueReusableCellWithIdentifier("ScheduleCell")
     cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleCell")
     schedule = @schedules[indexPath.row]
-    days = ""
-    schedule.days.sort_by(:dayOfWeek).each do |day|
-      days << Day.shortSymbols[day.dayOfWeek] + " "
-    end
 
     cell.textLabel.text = schedule.name
-    cell.detailTextLabel.text = days
+    cell.detailTextLabel.text = schedule.days_string
 
     cell
   end
