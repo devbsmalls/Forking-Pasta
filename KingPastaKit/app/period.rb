@@ -10,7 +10,7 @@ class Period < CDQManagedObject
     time = Time.now.strip_date
 
     # this won't work for the day after next - fix but beware of NO events or only 1 block of events (just iterate 1 week)
-    next_period = Period.all_today.where(:startTime).gt(time).sort_by(:startTime).first if Period.all_today
+    next_period = Period.all_today.where(:startTime).gt(time).first if Period.all_today
     if next_period.nil?
       schedule = Day.tomorrow.schedule
       next_period = schedule.all_periods.first if schedule
