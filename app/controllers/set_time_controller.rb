@@ -16,7 +16,7 @@ class SetTimeController < UIViewController
     @timePicker.minimumDate = Time.at(23*3600 + 59*60 + 59).utc
     
     if @isStart
-      @timePicker.date = @period.startTime || Day::WAKEUP
+      @timePicker.date = @period.startTime || @period.schedule.ends || Day::WAKEUP
     else
       self.navigationItem.title = "End Time"
       @timePicker.date = @period.endTime || @period.startTime || Day::WAKEUP

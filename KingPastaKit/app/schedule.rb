@@ -21,11 +21,11 @@ class Schedule < CDQManagedObject
   end
 
   def starts
-    self.all_periods.first.startTime
+    self.all_periods.array.first.startTime  # this won't work if there are any unsaved objects that don't have a start time defined
   end
 
   def ends
-    self.all_periods[self.periods.count - 1].endTime  # why can't I use .last?!?! (because you're not getting an array here)
+    self.all_periods.array.last.endTime  # can't use .last without .array - Also, array helps reliable objects while editing
   end
 
   def length
