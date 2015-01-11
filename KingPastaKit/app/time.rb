@@ -8,6 +8,25 @@ class Time
     Time.at(self.hour*60*60 + self.min*60).utc
   end
 
+  def length
+    hours = self.hour
+    mins = self.min
+
+    if mins == 1
+      minsString = "#{mins} minute"
+    else
+      minsString = "#{mins} minutes"
+    end
+
+    if hours == 1
+      timeRemaining = "#{hours} hour #{minsString}"
+    elsif hours > 1
+      timeRemaining = "#{hours} hours #{minsString}"
+    else
+      timeRemaining = minsString
+    end 
+  end
+
   def day_of_week
     # returns day of the week from 0 to 6 respecting user's first weekday
     # TODO: tidy up?

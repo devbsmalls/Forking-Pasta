@@ -27,4 +27,12 @@ class Period < CDQManagedObject
     Schedule.on_wday(wday).all_periods if Schedule.on_wday(wday)
   end
 
+  def time_remaining
+    Time.at(self.endTime - Time.now.strip_seconds).utc
+  end
+
+  def time_until_start
+    Time.at(self.startTime - Time.now.strip_seconds).utc
+  end
+
 end
