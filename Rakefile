@@ -12,7 +12,7 @@ Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'Forking Pasta'
   app.icons = ['Icon.png', 'Icon@2x.png']
-  app.version = '0.3.2'
+  app.version = '0.3.3'
   app.identifier = 'uk.pixlwave.ForkingPasta'  
   app.entitlements['com.apple.security.application-groups'] = ['group.uk.pixlwave.ForkingPasta']
   # /private/var/mobile/Containers/Shared/AppGroup/697E2EAA-A35A-4BFA-939B-B1CF6C84C5D2/Forking Pasta.sqlite
