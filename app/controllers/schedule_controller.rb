@@ -19,6 +19,8 @@ class ScheduleController < UITableViewController
   end
 
   def viewWillDisappear(animated)
+    super
+    
     self.navigationController.setToolbarHidden(true, animated)
   end
 
