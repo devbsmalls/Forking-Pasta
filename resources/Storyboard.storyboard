@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cdM-By-5JB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cdM-By-5JB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -28,10 +28,10 @@
         <scene sceneID="YzI-DL-vGe">
             <objects>
                 <tableViewController id="7xU-7d-jJB" customClass="ScheduleController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="8rX-K0-DEV">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="8rX-K0-DEV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ScheduleCell" textLabel="m9z-2r-ltz" detailTextLabel="wzk-xf-vQ8" style="IBUITableViewCellStyleValue1" id="2bJ-3k-Rrt">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -64,7 +64,7 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="aQY-r0-gmH"/>
-                        <barButtonItem title="Add" id="zLt-7D-fPJ">
+                        <barButtonItem systemItem="add" id="zLt-7D-fPJ">
                             <connections>
                                 <segue destination="T4k-5j-BeM" kind="show" identifier="AddScheduleSegue" id="DF1-K1-bSA"/>
                             </connections>
@@ -72,7 +72,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="BJZ-LR-ffL"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Schedules" id="QQb-m0-Ih2">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="aef-ii-XZa">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="aef-ii-XZa">
                             <connections>
                                 <action selector="done" destination="7xU-7d-jJB" id="TBZ-UZ-72g"/>
                             </connections>
@@ -217,7 +217,7 @@
             </objects>
             <point key="canvasLocation" x="469" y="336"/>
         </scene>
-        <!--Schedule Days Controller-->
+        <!--Days-->
         <scene sceneID="Ydx-dx-RMy">
             <objects>
                 <tableViewController id="Cea-9N-gBt" customClass="ScheduleDaysController" sceneMemberID="viewController">
@@ -246,13 +246,13 @@
                             <outlet property="delegate" destination="Cea-9N-gBt" id="ikd-Ts-zds"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="Hvq-nf-9xC">
+                    <navigationItem key="navigationItem" title="Days" id="Hvq-nf-9xC">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="sSN-WD-C2h">
                             <connections>
                                 <action selector="cancel" destination="Cea-9N-gBt" id="ZOl-mZ-4OE"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="akA-x1-PMC">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="akA-x1-PMC">
                             <connections>
                                 <action selector="save" destination="Cea-9N-gBt" id="VIV-OW-TA4"/>
                             </connections>
@@ -377,7 +377,7 @@
                     </tableView>
                     <toolbarItems>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="2Pl-AE-RjR"/>
-                        <barButtonItem title="Add" id="zar-eW-usT">
+                        <barButtonItem systemItem="add" id="zar-eW-usT">
                             <connections>
                                 <segue destination="J7d-fX-yok" kind="show" identifier="AddPeriodSegue" id="lOc-47-uTa"/>
                             </connections>
@@ -385,7 +385,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="rjv-bA-73H"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Schedule Overview" id="2Ai-4J-FwJ">
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="zWO-f0-8Ni">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="zWO-f0-8Ni">
                             <connections>
                                 <action selector="save" destination="T4k-5j-BeM" id="4J4-Ms-ff6"/>
                             </connections>
@@ -454,7 +454,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Categories" id="9QG-0J-kmS">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="EwV-K5-hkW">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="EwV-K5-hkW">
                             <connections>
                                 <action selector="done" destination="1GK-kb-COi" id="eML-zQ-FuJ"/>
                             </connections>
@@ -606,7 +606,7 @@
                                 <action selector="cancel" destination="J7d-fX-yok" id="Txl-1Z-JzS"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Save" id="0Qh-Fe-PBf">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="0Qh-Fe-PBf">
                             <connections>
                                 <action selector="save" destination="J7d-fX-yok" id="R2k-sc-H4Z"/>
                             </connections>
@@ -788,7 +788,7 @@
                                 <action selector="cancel" destination="zb4-aO-30f" id="3uJ-XC-hHn"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Save" id="fwP-qg-CNu">
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="fwP-qg-CNu">
                             <connections>
                                 <action selector="save" destination="zb4-aO-30f" id="9Mg-SZ-BGY"/>
                             </connections>
@@ -830,7 +830,7 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Start Time" id="ZoJ-ZW-eCp">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="q4Y-JC-3Ot">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="q4Y-JC-3Ot">
                             <connections>
                                 <action selector="done" destination="6Bh-1W-JWr" id="QjM-VV-gXK"/>
                             </connections>
