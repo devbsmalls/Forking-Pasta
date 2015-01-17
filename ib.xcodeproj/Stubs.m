@@ -33,6 +33,9 @@
 @implementation SetTimeController
 @end
 
+@implementation WakeBedTimeController
+@end
+
 @implementation CategoryColorMark
 @end
 

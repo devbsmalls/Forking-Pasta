@@ -66,6 +66,7 @@
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewWillDisappear:(id) animated;
 -(IBAction) done;
+-(IBAction) numberOfSectionsInTableView:(id) tableView;
 
 @end
 
@@ -90,6 +91,15 @@
 @end
 
 @interface SetTimeController: UIViewController
+
+@property IBOutlet UIDatePicker * timePicker;
+
+-(IBAction) viewDidLoad;
+-(IBAction) done;
+
+@end
+
+@interface WakeBedTimeController: UIViewController
 
 @property IBOutlet UIDatePicker * timePicker;
 

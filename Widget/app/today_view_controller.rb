@@ -67,8 +67,13 @@ class TodayViewController < UIViewController
     if currentPeriod
       @periodNameLabel.text = currentPeriod.name
       @timeRemainingLabel.text = currentPeriod.time_remaining.length
-    elsif nextPeriod  # this covers same and next day
+    elsif nextPeriod
       @timeRemainingLabel.text = nextPeriod.time_until_start.length
+    elsif Day.awake?
+      @timeRemainingLabel.text = Day.time_until_bed.length
+    else
+      @periodNameLabel.text = "Night Time"
+      @timeRemainingLabel.text = Day.time_until_wake.length
     end
   end
 

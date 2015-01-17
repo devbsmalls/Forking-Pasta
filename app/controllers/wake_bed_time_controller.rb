@@ -1,7 +1,7 @@
-class SetTimeController < UIViewController
+class WakeBedTimeController < UIViewController
   extend IB
 
-  attr_accessor :period, :isStart
+  attr_accessor :isWake
 
   outlet :timePicker, UIDatePicker
 
@@ -15,21 +15,21 @@ class SetTimeController < UIViewController
     @timePicker.maximumDate = Time.at(0).utc
     @timePicker.minimumDate = Time.at(23*3600 + 59*60 + 59).utc
     
-    if @isStart
-      @timePicker.date = @period.startTime || @period.schedule.ends || Day.wake_time
+    if @isWake
+      @timePicker.date = Day.wake_time || Time.at(9*60*60 + 0*60 + 0).utc
     else
-      self.navigationItem.title = "End Time"
-      @timePicker.date = @period.endTime || @period.startTime || Day.bed_time
+      self.navigationItem.title = "Bed Time"
+      @timePicker.date = Day.bed_time || Time.at(22*60*60 + 30*60 + 0).utc
     end
 
   end
 
   def done
 
-    if @isStart
-      @period.startTime = @timePicker.date.utc.strip_date
+    if @isWake
+      Day.wake_time = @timePicker.date.utc.strip_date
     else
-      @period.endTime = @timePicker.date.utc.strip_date
+      Day.bed_time = @timePicker.date.utc.strip_date
     end
 
     self.navigationController.popViewControllerAnimated(true)
