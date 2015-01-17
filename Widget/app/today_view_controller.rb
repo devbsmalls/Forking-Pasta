@@ -1,36 +1,14 @@
 class TodayViewController < UIViewController
+  extend IB
+
+  outlet :clockImageView, UIImageView
+  outlet :periodNameLabel, UILabel
+  outlet :timeRemainingLabel, UILabel
 
   def viewDidLoad
     super
 
-    @clockImageView = UIImageView.alloc.init
-    @clockImageView.image = UIImage.imageNamed("clock_test")
-    @clockImageView.translatesAutoresizingMaskIntoConstraints = false
-    self.view.addSubview(@clockImageView)
-
-    @periodNameLabel = UILabel.alloc.init
-    @periodNameLabel.text = "Forking Pasta!"
-    @periodNameLabel.font = UIFont.systemFontOfSize(20.0)
-    @periodNameLabel.textColor = UIColor.whiteColor
-    @periodNameLabel.textAlignment = NSTextAlignmentLeft
-    @periodNameLabel.translatesAutoresizingMaskIntoConstraints = false
-    self.view.addSubview(@periodNameLabel)
-
-    @timeRemainingLabel = UILabel.alloc.init
-    @timeRemainingLabel.text = "FkP"
-    @timeRemainingLabel.textColor = UIColor.whiteColor
-    @timeRemainingLabel.textAlignment = NSTextAlignmentLeft
-    @timeRemainingLabel.numberOfLines = 2
-    @timeRemainingLabel.translatesAutoresizingMaskIntoConstraints = false
-    self.view.addSubview(@timeRemainingLabel)
-
-    widgetViews = {"clockImage" => @clockImageView, "periodLabel" => @periodNameLabel, "timeLabel" => @timeRemainingLabel}
-    self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-[clockImage(120)]-20-[periodLabel]-|", options: 0, metrics: nil, views: widgetViews))
-    self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("|-[clockImage]-20-[timeLabel]-|", options: 0, metrics: nil, views: widgetViews))
-    self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|[clockImage(120)]|", options: 0, metrics: nil, views: widgetViews))
-    self.view.addConstraints(NSLayoutConstraint.constraintsWithVisualFormat("V:|-[periodLabel]-[timeLabel(==periodLabel)]-|", options: 0, metrics: nil, views: widgetViews))
-
-    self.preferredContentSize = CGSizeMake(320, 120)
+    # self.preferredContentSize = CGSizeMake(UIScreen.mainScreen.bounds.size.width, 120)
   end
 
   def didReceiveMemoryWarning
@@ -61,15 +39,14 @@ class TodayViewController < UIViewController
     currentPeriod = Period.current
     nextPeriod = Period.next
 
-    @periodNameLabel.text = "Free time"
-    @timeRemainingLabel.text = "n/a"
-
     if currentPeriod
       @periodNameLabel.text = currentPeriod.name
       @timeRemainingLabel.text = currentPeriod.time_remaining.length
     elsif nextPeriod
+      @periodNameLabel.text = "Free time"
       @timeRemainingLabel.text = nextPeriod.time_until_start.length
     elsif Day.awake?
+      @periodNameLabel.text = "Free time"
       @timeRemainingLabel.text = Day.time_until_bed.length
     else
       @periodNameLabel.text = "Night Time"
