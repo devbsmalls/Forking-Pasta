@@ -27,3 +27,11 @@ Motion::Project::App.setup do |app|
 end
 
 task :"build:simulator" => :"schema:build"
+
+namespace :schema do
+  desc "Copy xcdatamodeld file to Widget"
+  task :build do
+    App.info "Copying", "resources/Forking Pasta.xcdatamodeld"
+    FileUtils.copy_entry "resources/Forking Pasta.xcdatamodeld", "Widget/resources/Forking Pasta.xcdatamodeld"
+  end
+end

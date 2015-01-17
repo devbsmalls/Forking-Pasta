@@ -10,7 +10,8 @@ end
 
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
-  app.name = 'Forking Pasta'
+  app.name = 'Widget'
+  app.info_plist['CFBundleDisplayName'] = 'Forking Pasta'
   app.frameworks << "NotificationCenter"
   app.info_plist['NSExtension'] = {
     'NSExtensionPrincipalClass' => 'TodayViewController',
@@ -20,5 +21,3 @@ Motion::Project::App.setup do |app|
 
   app.target('../KingPastaKit', :framework)
 end
-
-task :"build:simulator" => :"schema:build"
