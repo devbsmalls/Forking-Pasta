@@ -32,7 +32,7 @@ class Day < CDQManagedObject
   end
 
   def self.time_until_wake
-    time = Time.now.strip_date
+    time = Time.now.strip_seconds
 
     if time < wake_time
       Time.at(wake_time - time).utc
@@ -50,7 +50,7 @@ class Day < CDQManagedObject
   end
 
   def self.time_until_bed
-    Time.at(bed_time - Time.now.strip_date).utc
+    Time.at(bed_time - Time.now.strip_seconds).utc
   end
 
   def self.awake?
