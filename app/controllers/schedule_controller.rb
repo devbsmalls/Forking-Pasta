@@ -88,6 +88,15 @@ class ScheduleController < UITableViewController
     end
   end
 
+  def tableView(tableView, canEditRowAtIndexPath: indexPath)
+    case indexPath.section
+    when 0
+      false
+    else
+      true
+    end 
+  end
+
   def tableView(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
     if indexPath.section == 1
       @schedules[indexPath.row].destroy
