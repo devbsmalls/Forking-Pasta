@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-$:.unshift("/Library/RubyMotion3.1/lib")
+$:.unshift("/Library/RubyMotion/lib")
 require 'motion/project/template/ios-extension'
 
 begin
@@ -20,4 +20,7 @@ Motion::Project::App.setup do |app|
   app.entitlements['com.apple.security.application-groups'] = ['group.uk.pixlwave.ForkingPasta']
 
   app.target('../KingPastaKit', :framework)
+
+  # development only
+  app.provisioning_profile = '/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_Widget_development.mobileprovision'
 end
