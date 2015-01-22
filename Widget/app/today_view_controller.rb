@@ -8,12 +8,8 @@ class TodayViewController < UIViewController
   def viewDidLoad
     super
 
-    # self.preferredContentSize = CGSizeMake(UIScreen.mainScreen.bounds.size.width, 120)
-  end
-
-  def didReceiveMemoryWarning
-    super
-    # Dispose of any resources that can be recreated.
+    @periodNameLabel.text = "Loading..."
+    @timeRemainingLabel.text = "Loading..."
   end
 
   def viewDidAppear(animated)
@@ -29,6 +25,11 @@ class TodayViewController < UIViewController
       @tick.invalidate
       @tick = nil
     end
+  end
+
+  def didReceiveMemoryWarning
+    super
+    # Dispose of any resources that can be recreated.
   end
 
   def refresh
