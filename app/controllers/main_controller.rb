@@ -40,18 +40,17 @@ class MainController < UIViewController
     currentPeriod = Period.current
     nextPeriod = Period.next
 
-    @periodNameLabel.text = "Free time"
-    @timeRemainingLabel.text = "n/a"
-
     if currentPeriod
       @periodNameLabel.text = currentPeriod.name
       @timeRemainingLabel.text = currentPeriod.time_remaining.length
     elsif nextPeriod
+      @periodNameLabel.text = "Free time"
       @timeRemainingLabel.text = nextPeriod.time_until_start.length
     elsif Day.awake?
+      @periodNameLabel.text = "Schedule finished"
       @timeRemainingLabel.text = Day.time_until_bed.length
     else
-      @periodNameLabel.text = "Night Time"
+      @periodNameLabel.text = "Night time"
       @timeRemainingLabel.text = Day.time_until_wake.length
     end
 

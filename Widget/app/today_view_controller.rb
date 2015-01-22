@@ -46,10 +46,10 @@ class TodayViewController < UIViewController
       @periodNameLabel.text = "Free time"
       @timeRemainingLabel.text = nextPeriod.time_until_start.length
     elsif Day.awake?
-      @periodNameLabel.text = "Free time"
+      @periodNameLabel.text = "Schedule finished"
       @timeRemainingLabel.text = Day.time_until_bed.length
     else
-      @periodNameLabel.text = "Night Time"
+      @periodNameLabel.text = "Night time"
       @timeRemainingLabel.text = Day.time_until_wake.length
     end
   end

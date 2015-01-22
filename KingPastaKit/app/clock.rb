@@ -38,8 +38,12 @@ class Clock
       # shade progress through the day
       dayTimePassed = Time.now.strip_date.utc - dayStart
       dayProgress = dayTimePassed / dayLength
-      if (dayProgress > 0) && (dayProgress < 1)
-        shadeOuter(context, outerRect, 2 * Math::PI * dayProgress)
+      if dayProgress > 0
+        if dayProgress < 1
+          shadeOuter(context, outerRect, 2 * Math::PI * dayProgress)
+        else
+          shadeWholeOuter(context, outerRect)
+        end
       end
 
     end
@@ -106,6 +110,11 @@ class Clock
     CGContextSetRGBFillColor(context, 0, 0, 0, 0.6)
     CGContextAddPath(context, path)
     CGContextFillPath(context)
+  end
+
+  def self.shadeWholeOuter(context, rect)
+    CGContextSetRGBFillColor(context, 0, 0, 0, 0.6)
+    CGContextFillEllipseInRect(context, rect)
   end
 
   def self.shadeInner(context, rect, angle)
