@@ -9,6 +9,7 @@ class Category < CDQManagedObject
   ]
 
   FREE_COLOR = UIColor.darkGrayColor
+  NIGHT_COLOR = UIColor.colorWithRed(0.0, green:0.1, blue:0.3, alpha:1.0)
 
   def cgColor
     color.CGColor

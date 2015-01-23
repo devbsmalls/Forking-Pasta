@@ -4,7 +4,7 @@ class Clock
   INNER_PADDING = 10
   LINE_WIDTH = 2
 
-  def self.draw(rect)
+  def self.day(rect)
     # squareRect = compensate for rectangles
     outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
     innerRect = CGRectInset(outerRect, INNER_PADDING, INNER_PADDING)
@@ -62,8 +62,45 @@ class Clock
       currentPeriodProgress = currentPeriodTimePassed / currentPeriodLength
       shadeInner(context, innerRect, 2 * Math::PI * currentPeriodProgress)
     else
-      CGContextSetFillColorWithColor(context, UIColor.darkGrayColor.CGColor)
+      CGContextSetFillColorWithColor(context, Category::FREE_COLOR.CGColor)
       CGContextFillEllipseInRect(context, innerRect)
+    end
+
+    # outline both circles
+    CGContextStrokeEllipseInRect(context, outerRect)
+    CGContextStrokeEllipseInRect(context, innerRect)
+
+    image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+
+    image
+  end
+
+  def self.night(rect)
+    # squareRect = compensate for rectangles
+    outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
+    innerRect = CGRectInset(outerRect, INNER_PADDING, INNER_PADDING)
+
+    UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.mainScreen.scale)
+    context = UIGraphicsGetCurrentContext()
+
+    CGContextSetGrayStrokeColor(context, 0, 1)
+    CGContextSetLineWidth(context, LINE_WIDTH)
+
+    CGContextSetFillColorWithColor(context, Category::NIGHT_COLOR.CGColor)
+    CGContextFillEllipseInRect(context, outerRect)
+    
+    CGContextSetFillColorWithColor(context, Category::NIGHT_COLOR.CGColor)
+    CGContextFillEllipseInRect(context, innerRect)
+    
+    currentPeriod = Period.current
+
+    if ! currentPeriod.nil?
+      # TODO: shade progress through night
+      currentPeriodLength = currentPeriod.endTime - currentPeriod.startTime
+      currentPeriodTimePassed = Time.now.strip_date.utc - currentPeriod.startTime
+      currentPeriodProgress = currentPeriodTimePassed / currentPeriodLength
+      shadeInner(context, innerRect, 2 * Math::PI * currentPeriodProgress)
     end
 
     # outline both circles

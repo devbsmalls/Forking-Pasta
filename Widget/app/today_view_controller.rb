@@ -9,7 +9,7 @@ class TodayViewController < UIViewController
     super
 
     @periodNameLabel.text = "Loading..."
-    @timeRemainingLabel.text = "Loading..."
+    @timeRemainingLabel.text = ""
   end
 
   def viewDidAppear(animated)
@@ -33,8 +33,6 @@ class TodayViewController < UIViewController
   end
 
   def refresh
-    @clockImageView.image = Clock.draw(@clockImageView.bounds)
-
     # needs safety methods that don't crash _AT ALL_ if Period.current doesn't exist, etc etc etc
     # wants to go into KingPastaKit Period.current.remaining
     currentPeriod = Period.current
@@ -42,15 +40,19 @@ class TodayViewController < UIViewController
 
     if currentPeriod
       @periodNameLabel.text = currentPeriod.name
+      @clockImageView.image = Clock.day(@clockImageView.bounds)
       @timeRemainingLabel.text = currentPeriod.time_remaining.length
     elsif nextPeriod
       @periodNameLabel.text = "Free time"
+      @clockImageView.image = Clock.day(@clockImageView.bounds)
       @timeRemainingLabel.text = nextPeriod.time_until_start.length
     elsif Day.awake?
       @periodNameLabel.text = "Schedule finished"
+      @clockImageView.image = Clock.day(@clockImageView.bounds)
       @timeRemainingLabel.text = Day.time_until_bed.length
     else
       @periodNameLabel.text = "Night time"
+      @clockImageView.image = Clock.night(@clockImageView.bounds)
       @timeRemainingLabel.text = Day.time_until_wake.length
     end
   end

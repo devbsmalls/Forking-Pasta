@@ -41,20 +41,22 @@ class MainController < UIViewController
     nextPeriod = Period.next
 
     if currentPeriod
+      @clockImageView.image = Clock.day(@clockImageView.bounds)
       @periodNameLabel.text = currentPeriod.name
       @timeRemainingLabel.text = currentPeriod.time_remaining.length
     elsif nextPeriod
+      @clockImageView.image = Clock.day(@clockImageView.bounds)
       @periodNameLabel.text = "Free time"
       @timeRemainingLabel.text = nextPeriod.time_until_start.length
     elsif Day.awake?
+      @clockImageView.image = Clock.day(@clockImageView.bounds)
       @periodNameLabel.text = "Schedule finished"
       @timeRemainingLabel.text = Day.time_until_bed.length
     else
+      @clockImageView.image = Clock.night(@clockImageView.bounds)
       @periodNameLabel.text = "Night time"
       @timeRemainingLabel.text = Day.time_until_wake.length
     end
-
-    @clockImageView.image = Clock.draw(@clockImageView.bounds)
   end
 
 end
