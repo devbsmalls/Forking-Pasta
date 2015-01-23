@@ -6,6 +6,7 @@
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -180,6 +181,17 @@
                                     <segue destination="Jq0-CC-2sd" kind="presentation" id="u4a-tU-I6z"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUg-9K-qbd">
+                                <rect key="frame" x="205" y="547" width="81" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Schedules">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="YJg-ZR-CaO" kind="presentation" id="WhP-PF-Qgg"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzP-aQ-EF4">
                                 <rect key="frame" x="200" y="175" width="200" height="250"/>
                                 <subviews>
@@ -224,33 +236,56 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUg-9K-qbd">
-                                <rect key="frame" x="205" y="547" width="81" height="33"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Schedules">
-                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="YJg-ZR-CaO" kind="presentation" id="WhP-PF-Qgg"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="qoM-7a-ZKJ" firstAttribute="baseline" secondItem="TUg-9K-qbd" secondAttribute="baseline" id="0bu-jH-eal"/>
                             <constraint firstAttribute="centerY" secondItem="fzP-aQ-EF4" secondAttribute="centerY" id="4Gs-77-0Iw"/>
+                            <constraint firstAttribute="centerX" secondItem="bcl-pi-Joh" secondAttribute="centerX" multiplier="2/3" id="CdC-tR-bqA"/>
+                            <constraint firstAttribute="centerX" secondItem="qoM-7a-ZKJ" secondAttribute="centerX" multiplier="2/3" constant="-55" id="DPt-mB-UbP">
+                                <variation key="heightClass=compact" constant="-40"/>
+                            </constraint>
+                            <constraint firstAttribute="centerX" secondItem="TUg-9K-qbd" secondAttribute="centerX" multiplier="2/3" constant="54.5" id="EjE-pn-8oi">
+                                <variation key="heightClass=compact" constant="40"/>
+                            </constraint>
                             <constraint firstAttribute="bottom" secondItem="TUg-9K-qbd" secondAttribute="bottom" constant="20" symbolic="YES" id="Hz0-AM-OGb"/>
                             <constraint firstAttribute="centerX" secondItem="TUg-9K-qbd" secondAttribute="centerX" constant="55" id="Kq4-kJ-0Kh"/>
-                            <constraint firstItem="TUg-9K-qbd" firstAttribute="centerX" secondItem="bcl-pi-Joh" secondAttribute="centerX" id="jc4-cT-b8H"/>
+                            <constraint firstItem="fzP-aQ-EF4" firstAttribute="centerX" secondItem="qW5-X5-1VD" secondAttribute="centerX" multiplier="0.6" id="ULR-Yc-aZs"/>
                             <constraint firstAttribute="centerX" secondItem="fzP-aQ-EF4" secondAttribute="centerX" id="kQ8-4G-NSZ"/>
                             <constraint firstAttribute="centerX" secondItem="qoM-7a-ZKJ" secondAttribute="centerX" constant="-55" id="n3Q-Lj-h44"/>
                             <constraint firstItem="bcl-pi-Joh" firstAttribute="top" secondItem="4iK-t7-adV" secondAttribute="bottom" constant="45" id="nq8-He-WX5"/>
                             <constraint firstItem="bcl-pi-Joh" firstAttribute="centerX" secondItem="qW5-X5-1VD" secondAttribute="centerX" id="sTf-XZ-T7M"/>
+                            <constraint firstAttribute="centerY" secondItem="TUg-9K-qbd" secondAttribute="centerY" constant="-101.5" id="xSR-Tc-QnC">
+                                <variation key="heightClass=compact" constant="-60"/>
+                            </constraint>
+                            <constraint firstAttribute="centerY" secondItem="bcl-pi-Joh" secondAttribute="centerY" constant="78.5" id="xt7-ih-dpk">
+                                <variation key="heightClass=compact" constant="60"/>
+                            </constraint>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="jc4-cT-b8H"/>
+                                <exclude reference="ULR-Yc-aZs"/>
+                                <exclude reference="CdC-tR-bqA"/>
+                                <exclude reference="xt7-ih-dpk"/>
+                                <exclude reference="EjE-pn-8oi"/>
+                                <exclude reference="xSR-Tc-QnC"/>
+                                <exclude reference="DPt-mB-UbP"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=compact">
+                            <mask key="constraints">
+                                <include reference="ULR-Yc-aZs"/>
+                                <exclude reference="kQ8-4G-NSZ"/>
+                                <include reference="CdC-tR-bqA"/>
+                                <exclude reference="nq8-He-WX5"/>
+                                <exclude reference="sTf-XZ-T7M"/>
+                                <include reference="xt7-ih-dpk"/>
+                                <include reference="EjE-pn-8oi"/>
+                                <exclude reference="Hz0-AM-OGb"/>
+                                <exclude reference="Kq4-kJ-0Kh"/>
+                                <include reference="xSR-Tc-QnC"/>
+                                <include reference="DPt-mB-UbP"/>
+                                <exclude reference="n3Q-Lj-h44"/>
                             </mask>
                         </variation>
                     </view>
@@ -732,7 +767,7 @@
         <!--Edit Category-->
         <scene sceneID="xBK-3R-7nN">
             <objects>
-                <tableViewController storyboardIdentifier="EditCategoryController" id="zb4-aO-30f" customClass="EditCategoryController" sceneMemberID="viewController">
+                <tableViewController id="zb4-aO-30f" customClass="EditCategoryController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RUd-ee-ybi">
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
