@@ -36,8 +36,30 @@ class Schedule < CDQManagedObject
     Day.today.schedule if Day.today
   end
 
+  def self.tomorrow
+    Day.tomorrow.schedule if Day.tomorrow
+  end
+
   def self.on_wday(wday)
     Day.wday(wday).schedule if Day.wday(wday)
+  end
+
+  def time_until_wake
+    time = Time.now.strip_seconds
+
+    if time < wakeTime
+      Time.at(wakeTime - time).utc
+    else
+      Time.at((Schedule.tomorrow.wakeTime + 86400) - time).utc
+    end
+  end
+
+  def time_until_bed
+    Time.at(bedTime - Time.now.strip_seconds).utc
+  end
+
+  def awake?
+    Time.now.strip_date < bedTime
   end
 
 end

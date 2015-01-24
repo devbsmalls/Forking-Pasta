@@ -16,10 +16,10 @@ class SetTimeController < UIViewController
     @timePicker.minimumDate = Time.at(23*3600 + 59*60 + 59).utc
     
     if @isStart
-      @timePicker.date = @period.startTime || @period.schedule.ends || Day.wake_time
+      @timePicker.date = @period.startTime || @period.schedule.ends || @period.schedule.wakeTime
     else
       self.navigationItem.title = "End Time"
-      @timePicker.date = @period.endTime || @period.startTime || Day.bed_time
+      @timePicker.date = @period.endTime || @period.startTime || @period.schedule.bedTime
     end
 
   end

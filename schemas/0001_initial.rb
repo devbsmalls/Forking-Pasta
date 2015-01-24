@@ -3,6 +3,8 @@ schema "0001 initial" do
 
   entity "Schedule" do
     string :name, optional: false
+    datetime :wakeTime, default: Time.at(8*60*60 + 0*60 + 0).utc, optional: false
+    datetime :bedTime, default: Time.at(22*60*60 + 30*60 + 0).utc, optional: false
 
     has_many :days
     has_many :periods

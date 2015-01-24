@@ -2,6 +2,8 @@
 <model name="" userDefinedModelVersionIdentifier="0001 initial" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
   <entity name="Schedule" syncable="YES" representedClassName="Schedule">
     <attribute optional="NO" syncable="YES" attributeType="String" name="name"/>
+    <attribute optional="NO" syncable="YES" attributeType="Date" name="wakeTime" defaultValueString="1970-01-01 08:00:00 UTC"/>
+    <attribute optional="NO" syncable="YES" attributeType="Date" name="bedTime" defaultValueString="1970-01-01 22:30:00 UTC"/>
     <relationship optional="YES" deletionRule="Nullify" syncable="YES" name="days" inverseEntity="Day" destinationEntity="Day" inverseName="schedule" toMany="YES"/>
     <relationship optional="YES" deletionRule="Nullify" syncable="YES" name="periods" inverseEntity="Period" destinationEntity="Period" inverseName="schedule" toMany="YES"/>
   </entity>

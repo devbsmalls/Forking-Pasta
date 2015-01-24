@@ -26,10 +26,6 @@ class ScheduleController < UITableViewController
 
   def prepareForSegue(segue, sender: sender)
     case segue.identifier
-    when "WakeTimeSegue"
-      segue.destinationViewController.isWake = true
-    when "BedTimeSegue"
-      segue.destinationViewController.isWake = false
     when "EditScheduleSegue"
       indexPath = self.tableView.indexPathForSelectedRow
       segue.destinationViewController.schedule = @schedules[indexPath.row]
@@ -44,66 +40,36 @@ class ScheduleController < UITableViewController
 
   #### table view delegate methods ####
 
-  def numberOfSectionsInTableView(tableView)
-    2
-  end
-
   def tableView(tableView, numberOfRowsInSection: section)
-    case section
-    when 0
-      2
-    when 1
-      Schedule.count
-    end
+    Schedule.count
   end
 
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
-    case indexPath.section
-    when 0
-      case indexPath.row
-      when 0
-        cell = tableView.dequeueReusableCellWithIdentifier("WakeTimeCell")
-        cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "WakeTimeCell")
+    cell = tableView.dequeueReusableCellWithIdentifier("ScheduleCell")
+    cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleCell")
+    schedule = @schedules[indexPath.row]
 
-        cell.detailTextLabel.text = Day.wake_time.utc.strftime("%H:%M")
+    cell.textLabel.text = schedule.name
+    cell.detailTextLabel.text = schedule.days_string
 
-        cell
-      when 1
-        cell = tableView.dequeueReusableCellWithIdentifier("BedTimeCell")
-        cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "BedTimeCell")
-
-        cell.detailTextLabel.text = Day.bed_time.utc.strftime("%H:%M")
-
-        cell
-      end
-    when 1
-      cell = tableView.dequeueReusableCellWithIdentifier("ScheduleCell")
-      cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleCell")
-      schedule = @schedules[indexPath.row]
-
-      cell.textLabel.text = schedule.name
-      cell.detailTextLabel.text = schedule.days_string
-
-      cell
-    end
+    cell
   end
 
-  def tableView(tableView, canEditRowAtIndexPath: indexPath)
-    case indexPath.section
-    when 0
-      false
-    else
-      true
-    end 
-  end
+  # TODO: Apply to other table view controllers
+  # def tableView(tableView, canEditRowAtIndexPath: indexPath)
+  #   case indexPath.section
+  #   when 0
+  #     false
+  #   else
+  #     true
+  #   end 
+  # end
 
   def tableView(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
-    if indexPath.section == 1
-      @schedules[indexPath.row].destroy
-      cdq.save
-      
-      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimationFade) if editingStyle == UITableViewCellEditingStyleDelete
-    end
+    @schedules[indexPath.row].destroy
+    cdq.save
+    
+    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimationFade) if editingStyle == UITableViewCellEditingStyleDelete
   end
 
 end

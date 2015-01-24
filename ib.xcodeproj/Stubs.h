@@ -66,7 +66,6 @@
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewWillDisappear:(id) animated;
 -(IBAction) done;
--(IBAction) numberOfSectionsInTableView:(id) tableView;
 
 @end
 

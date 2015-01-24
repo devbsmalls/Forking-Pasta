@@ -34,54 +34,6 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WakeTimeCell" textLabel="1V3-jc-P6m" detailTextLabel="VxW-rT-ki6" style="IBUITableViewCellStyleValue1" id="hc3-5X-fsq">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hc3-5X-fsq" id="3Ul-Dx-a0u">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Wake-up Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1V3-jc-P6m">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="VxW-rT-ki6">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="czd-NY-nSx" kind="show" identifier="WakeTimeSegue" id="X5O-8R-zPY"/>
-                                </connections>
-                            </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BedTimeCell" textLabel="hjF-q7-vPo" detailTextLabel="leP-0Z-ZAm" style="IBUITableViewCellStyleValue1" id="FWU-eg-fRj">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FWU-eg-fRj" id="irA-cd-Sgt">
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Bed Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="hjF-q7-vPo">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="leP-0Z-ZAm">
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                    </subviews>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <segue destination="czd-NY-nSx" kind="show" identifier="BedTimeSegue" id="Rcb-VS-WGC"/>
-                                </connections>
-                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ScheduleCell" textLabel="m9z-2r-ltz" detailTextLabel="wzk-xf-vQ8" style="IBUITableViewCellStyleValue1" id="2bJ-3k-Rrt">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="2bJ-3k-Rrt" id="Y5A-dk-P1c">
@@ -264,9 +216,9 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="ULR-Yc-aZs"/>
                                 <exclude reference="CdC-tR-bqA"/>
                                 <exclude reference="xt7-ih-dpk"/>
+                                <exclude reference="ULR-Yc-aZs"/>
                                 <exclude reference="EjE-pn-8oi"/>
                                 <exclude reference="xSR-Tc-QnC"/>
                                 <exclude reference="DPt-mB-UbP"/>
@@ -274,12 +226,12 @@
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
-                                <include reference="ULR-Yc-aZs"/>
-                                <exclude reference="kQ8-4G-NSZ"/>
                                 <include reference="CdC-tR-bqA"/>
                                 <exclude reference="nq8-He-WX5"/>
                                 <exclude reference="sTf-XZ-T7M"/>
                                 <include reference="xt7-ih-dpk"/>
+                                <include reference="ULR-Yc-aZs"/>
+                                <exclude reference="kQ8-4G-NSZ"/>
                                 <include reference="EjE-pn-8oi"/>
                                 <exclude reference="Hz0-AM-OGb"/>
                                 <exclude reference="Kq4-kJ-0Kh"/>
@@ -378,6 +330,54 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="nameTextField" destination="3yK-Io-cIq" id="CsF-L9-slR"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="WakeTimeCell" textLabel="ikE-vQ-5CT" detailTextLabel="99V-sG-gKe" style="IBUITableViewCellStyleValue1" id="e2p-uO-UlV">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e2p-uO-UlV" id="gwb-JH-DYx">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Wake-up Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ikE-vQ-5CT">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="99V-sG-gKe">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="czd-NY-nSx" kind="show" identifier="WakeTimeSegue" id="8tZ-PO-MJ2"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="BedTimeCell" textLabel="QOm-IR-KQi" detailTextLabel="E4h-RG-EtU" style="IBUITableViewCellStyleValue1" id="4Fp-yL-gFw">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4Fp-yL-gFw" id="hjd-WI-qZ0">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Bed Time" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="QOm-IR-KQi">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="0:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="E4h-RG-EtU">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.5568627451" green="0.5568627451" blue="0.57647058819999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="czd-NY-nSx" kind="show" identifier="BedTimeSegue" id="AzK-s3-ym0"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ScheduleDaysCell" textLabel="3xt-XI-7c5" detailTextLabel="YM4-qg-tvO" style="IBUITableViewCellStyleValue1" id="514-wc-wpk">
@@ -973,9 +973,9 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sHC-CN-eXz"/>
-        <segue reference="X5O-8R-zPY"/>
         <segue reference="lOc-47-uTa"/>
+        <segue reference="sHC-CN-eXz"/>
+        <segue reference="AzK-s3-ym0"/>
         <segue reference="ID2-a3-jau"/>
     </inferredMetricsTieBreakers>
 </document>

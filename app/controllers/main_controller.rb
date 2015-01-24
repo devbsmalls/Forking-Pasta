@@ -39,6 +39,7 @@ class MainController < UIViewController
   def redraw
     currentPeriod = Period.current
     nextPeriod = Period.next
+    schedule = Schedule.today
 
     if currentPeriod
       @clockImageView.image = Clock.day(@clockImageView.bounds)
@@ -48,14 +49,20 @@ class MainController < UIViewController
       @clockImageView.image = Clock.day(@clockImageView.bounds)
       @periodNameLabel.text = "Free time"
       @timeRemainingLabel.text = nextPeriod.time_until_start.length
-    elsif Day.awake?
-      @clockImageView.image = Clock.day(@clockImageView.bounds)
-      @periodNameLabel.text = "Schedule finished"
-      @timeRemainingLabel.text = Day.time_until_bed.length
+    elsif schedule
+      if schedule.awake?
+        @clockImageView.image = Clock.day(@clockImageView.bounds)
+        @periodNameLabel.text = "Schedule finished"
+        @timeRemainingLabel.text = schedule.time_until_bed.length
+      else
+        @clockImageView.image = Clock.night(@clockImageView.bounds)
+        @periodNameLabel.text = "Night time"
+        @timeRemainingLabel.text = schedule.time_until_wake.length if schedule
+      end
     else
-      @clockImageView.image = Clock.night(@clockImageView.bounds)
-      @periodNameLabel.text = "Night time"
-      @timeRemainingLabel.text = Day.time_until_wake.length
+      @clockImageView.image = Clock.day(@clockImageView.bounds)
+      @periodNameLabel.text = "Nothing Scheduled"
+      @timeRemainingLabel.text = ""
     end
   end
 
