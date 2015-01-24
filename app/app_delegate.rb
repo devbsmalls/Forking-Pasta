@@ -8,36 +8,28 @@ class AppDelegate
     @window.rootViewController = @storyboard.instantiateInitialViewController
     @window.makeKeyAndVisible
 
-    setupDays                 # only do this once
-    setupDefaultCategories    # only do this once
+    initialSetup if Day.count != 7   # only do this once
 
     true
 
   end
 
-  def setupDays
-    if Day.count != 7
-      Day.all.each do |d|
-        d.destroy
-      end
-
-      Day.symbols.each_with_index do |day, index|
-        Day.new(name: day, dayOfWeek: index)
-      end
-
-      cdq.save
+  def initialSetup
+    Day.all.each do |d|
+      d.destroy   # necessary until a run once check is implemented
     end
 
-  end
-
-  def setupDefaultCategories
-    if Category.count < 1
-      Category.new(name: "Home", index: 0, color: Category::COLORS[0][:value])
-      Category.new(name: "Work", index: 1, color: Category::COLORS[1][:value])
-      Category.new(name: "Break", index: 2, color: Category::COLORS[2][:value])
-      Category.new(name: "Misc", index: 3, color: Category::COLORS[3][:value])
-      cdq.save
+    Day.symbols.each_with_index do |day, index|
+      Day.new(name: day, dayOfWeek: index)
     end
+
+    Category.new(name: "Home", index: 0, color: Category::COLORS[0][:value])
+    Category.new(name: "Work", index: 1, color: Category::COLORS[1][:value])
+    Category.new(name: "Break", index: 2, color: Category::COLORS[2][:value])
+    Category.new(name: "Hobby", index: 3, color: Category::COLORS[3][:value])
+    Category.new(name: "Misc", index: 4, color: Category::COLORS[4][:value])
+
+    cdq.save
   end
 
 end
