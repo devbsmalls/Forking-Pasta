@@ -55,16 +55,6 @@ class ScheduleController < UITableViewController
     cell
   end
 
-  # TODO: Apply to other table view controllers
-  # def tableView(tableView, canEditRowAtIndexPath: indexPath)
-  #   case indexPath.section
-  #   when 0
-  #     false
-  #   else
-  #     true
-  #   end 
-  # end
-
   def tableView(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
     @schedules[indexPath.row].destroy
     cdq.save

@@ -136,11 +136,17 @@ class ScheduleDetailController < UITableViewController
     end
   end
 
+  def tableView(tableView, canEditRowAtIndexPath: indexPath)
+    indexPath.section == 3 ? true : false
+  end
+
   def tableView(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
-    @periods[indexPath.row].destroy
-    cdq.save
-    
-    tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimationFade) if editingStyle == UITableViewCellEditingStyleDelete
+    if indexPath.section == 3
+      @periods[indexPath.row].destroy
+      cdq.save
+      
+      tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimationFade) if editingStyle == UITableViewCellEditingStyleDelete
+    end
   end
 
 end
