@@ -3,22 +3,19 @@ class AppDelegate
   
   def application(application, didFinishLaunchingWithOptions:launchOptions)
 
+    @groupDefaults = NSUserDefaults.alloc.initWithSuiteName("group.uk.pixlwave.ForkingPasta")
+    initialSetup unless @groupDefaults.boolForKey("InitialSetupComplete")
+
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @storyboard = UIStoryboard.storyboardWithName("Storyboard", bundle: nil)
     @window.rootViewController = @storyboard.instantiateInitialViewController
     @window.makeKeyAndVisible
-
-    initialSetup if Day.count != 7   # only do this once
 
     true
 
   end
 
   def initialSetup
-    Day.all.each do |d|
-      d.destroy   # necessary until a run once check is implemented
-    end
-
     Day.symbols.each_with_index do |day, index|
       Day.new(name: day, dayOfWeek: index)
     end
@@ -30,6 +27,8 @@ class AppDelegate
     Category.new(name: "Misc", index: 4, color: Category::COLORS[4][:value])
 
     cdq.save
+
+    @groupDefaults.setBool(true, forKey: "InitialSetupComplete")
   end
 
 end
