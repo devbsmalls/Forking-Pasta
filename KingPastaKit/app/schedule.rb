@@ -20,6 +20,10 @@ class Schedule < CDQManagedObject
     end
   end
 
+  def started?
+    Time.now.strip_date > all_periods.array.first.startTime
+  end
+
   def starts
     self.all_periods.array.first.startTime  # this won't work if there are any unsaved objects that don't have a start time defined
   end
@@ -59,7 +63,7 @@ class Schedule < CDQManagedObject
   end
 
   def awake?
-    Time.now.strip_date < bedTime
+    Time.now.strip_date > wakeTime && Time.now.strip_date < bedTime
   end
 
 end
