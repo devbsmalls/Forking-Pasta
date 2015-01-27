@@ -148,7 +148,7 @@
                                 <rect key="frame" x="200" y="175" width="200" height="250"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="20g-xp-59m">
-                                        <rect key="frame" x="10" y="35" width="180" height="180"/>
+                                        <rect key="frame" x="16" y="41" width="168" height="168"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="20g-xp-59m" secondAttribute="height" multiplier="1:1" id="wnJ-pA-ms5"/>
                                         </constraints>
@@ -173,13 +173,13 @@
                                     <constraint firstAttribute="width" secondItem="fzP-aQ-EF4" secondAttribute="height" multiplier="1:1.25" id="RG8-xl-E6D"/>
                                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="20g-xp-59m" secondAttribute="bottom" constant="10" id="Us7-Tv-F74"/>
                                     <constraint firstAttribute="bottom" secondItem="d0v-y2-4z0" secondAttribute="bottom" constant="8" id="WNl-pe-DL1"/>
-                                    <constraint firstItem="20g-xp-59m" firstAttribute="leading" secondItem="fzP-aQ-EF4" secondAttribute="leading" constant="10" id="e4w-kd-1HB"/>
+                                    <constraint firstItem="20g-xp-59m" firstAttribute="leading" secondItem="fzP-aQ-EF4" secondAttribute="leading" constant="16" id="e4w-kd-1HB"/>
                                     <constraint firstAttribute="centerX" secondItem="M1H-pe-M7A" secondAttribute="centerX" id="egL-cf-xvq"/>
                                     <constraint firstAttribute="width" constant="200" id="iFJ-cA-jxG"/>
                                     <constraint firstItem="M1H-pe-M7A" firstAttribute="top" secondItem="fzP-aQ-EF4" secondAttribute="top" constant="8" id="nd7-xr-Y8D"/>
                                     <constraint firstItem="20g-xp-59m" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fzP-aQ-EF4" secondAttribute="top" constant="10" id="oqM-zz-02S"/>
                                     <constraint firstAttribute="centerY" secondItem="20g-xp-59m" secondAttribute="centerY" id="qO0-aC-2qu"/>
-                                    <constraint firstAttribute="trailing" secondItem="20g-xp-59m" secondAttribute="trailing" constant="10" id="uAx-2R-F7c"/>
+                                    <constraint firstAttribute="trailing" secondItem="20g-xp-59m" secondAttribute="trailing" constant="16" id="uAx-2R-F7c"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">

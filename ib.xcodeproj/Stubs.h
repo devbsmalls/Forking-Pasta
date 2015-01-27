@@ -6,8 +6,7 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
--(IBAction) setupDays;
--(IBAction) setupDefaultCategories;
+-(IBAction) initialSetup;
 
 @end
 

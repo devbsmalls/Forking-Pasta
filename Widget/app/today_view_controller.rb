@@ -72,7 +72,7 @@ class TodayViewController < UIViewController
   end
 
   def widgetPerformUpdateWithCompletionHandler(completionHandler)
-    refresh
+    # refresh - this call apparently causes the layout to "jump" (maybe at this point size is wrong)
 
     completionHandler.call(NCUpdateResultNewData)
   end

@@ -1,6 +1,6 @@
 class Clock
 
-  OUTER_PADDING = 10
+  OUTER_PADDING = 5
   INNER_PADDING = 10
   LINE_WIDTH = 2
 
