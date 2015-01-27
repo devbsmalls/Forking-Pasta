@@ -34,7 +34,6 @@ class TodayViewController < UIViewController
 
   def refresh
     # needs safety methods that don't crash _AT ALL_ if Period.current doesn't exist, etc etc etc
-    # wants to go into KingPastaKit Period.current.remaining
     currentPeriod = Period.current
     nextPeriod = Period.next
     schedule = Schedule.today

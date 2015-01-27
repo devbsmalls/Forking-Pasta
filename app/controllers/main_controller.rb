@@ -17,7 +17,7 @@ class MainController < UIViewController
   def viewWillAppear(animated)
     super
 
-    @tick = NSTimer.scheduledTimerWithTimeInterval(1, target:self, selector:"redraw", userInfo:nil, repeats:true) if @tick.nil?
+    @tick = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "redraw", userInfo: nil, repeats: true) if @tick.nil?
     @tick.fireDate = Time.now.round + 1   # ensures the timer fires on the second
   end
 

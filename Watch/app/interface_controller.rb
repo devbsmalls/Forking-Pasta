@@ -8,33 +8,25 @@ class InterfaceController < WKInterfaceController
   def initWithContext(context)
     super
 
-    # Initialize variables here.
-    # Configure interface objects here.
-    NSLog("%@ initWithContext", self)
     @clockRect = CGRectMake(0, 0, 100, 100)
-    refresh
 
     return self
   end
 
   def willActivate
-    # This method is called when watch view controller is about to be visible to user
     @tick = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "refresh", userInfo: nil, repeats: true) if @tick.nil?
-    NSLog("%@ will activate", self)
+    refresh
   end
 
   def didDeactivate
-    # This method is called when watch view controller is no longer visible
     unless @tick.nil?
       @tick.invalidate
       @tick = nil
     end
-    NSLog("%@ did deactivate", self)
   end
 
   def refresh
     # needs safety methods that don't crash _AT ALL_ if Period.current doesn't exist, etc etc etc
-    # wants to go into KingPastaKit Period.current.remaining
     currentPeriod = Period.current
     nextPeriod = Period.next
     schedule = Schedule.today
