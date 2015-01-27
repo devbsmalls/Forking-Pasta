@@ -20,6 +20,11 @@ Motion::Project::App.setup do |app|
   app.target('KingPastaKit', :framework)
   app.target('Widget', :extension)
 
+  app.target('Watch', :extension)
+  app.xcode_dir = '/Applications/Xcode-Beta.app/Contents/Developer'
+  app.sdk_version = '8.2'
+  app.deployment_target = '8.2'
+
   # development only
   app.provisioning_profile = '/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_development.mobileprovision'
 
@@ -33,5 +38,6 @@ namespace :schema do
   task :build do
     App.info "Copying", "resources/Forking Pasta.xcdatamodeld"
     FileUtils.copy_entry "resources/Forking Pasta.xcdatamodeld", "Widget/resources/Forking Pasta.xcdatamodeld"
+    FileUtils.copy_entry "resources/Forking Pasta.xcdatamodeld", "Watch/resources/Forking Pasta.xcdatamodeld"
   end
 end
