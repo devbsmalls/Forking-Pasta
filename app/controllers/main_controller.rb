@@ -37,41 +37,10 @@ class MainController < UIViewController
   end
 
   def redraw
-    currentPeriod = Period.current
-    nextPeriod = Period.next
-    schedule = Schedule.today
-
-    if schedule
-      if currentPeriod
-        @clockImageView.image = Clock.day(@clockImageView.bounds)
-        @periodNameLabel.text = currentPeriod.name
-        @timeRemainingLabel.text = currentPeriod.time_remaining.length
-      elsif !schedule.started? && !schedule.awake?
-        @clockImageView.image = Clock.night(@clockImageView.bounds)
-        @periodNameLabel.text = "Night time"
-        @timeRemainingLabel.text = schedule.time_until_wake.length
-      elsif !schedule.started? && nextPeriod
-        @clockImageView.image = Clock.day(@clockImageView.bounds)
-        @periodNameLabel.text = "Good morning!"
-        @timeRemainingLabel.text = nextPeriod.time_until_start.length
-      elsif nextPeriod
-        @clockImageView.image = Clock.day(@clockImageView.bounds)
-        @periodNameLabel.text = "Free time"
-        @timeRemainingLabel.text = nextPeriod.time_until_start.length
-      elsif schedule.awake?
-        @clockImageView.image = Clock.day(@clockImageView.bounds)
-        @periodNameLabel.text = "Schedule finished"
-        @timeRemainingLabel.text = schedule.time_until_bed.length
-      else
-        @clockImageView.image = Clock.night(@clockImageView.bounds)
-        @periodNameLabel.text = "Night time"
-        @timeRemainingLabel.text = schedule.time_until_wake.length
-      end
-    else
-      @clockImageView.image = Clock.day(@clockImageView.bounds)
-      @periodNameLabel.text = "Nothing Scheduled"
-      @timeRemainingLabel.text = ""
-    end
+    status = Status.update(@clockImageView.bounds)
+    @clockImageView.image = status[:clock]
+    @periodNameLabel.text = status[:periodName]
+    @timeRemainingLabel.text = status[:timeRemaining]
   end
 
 end

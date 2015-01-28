@@ -3,13 +3,14 @@ class Clock
   OUTER_PADDING = 5
   INNER_PADDING = 10
   LINE_WIDTH = 2
+  SCREEN_SCALE = UIScreen.mainScreen.scale # || WKInterfaceDevice.currentDevice.screenScale
 
   def self.day(rect)
     # squareRect = compensate for rectangles
     outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
     innerRect = CGRectInset(outerRect, INNER_PADDING, INNER_PADDING)
 
-    UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.mainScreen.scale)
+    UIGraphicsBeginImageContextWithOptions(rect.size, false, SCREEN_SCALE)
     context = UIGraphicsGetCurrentContext()
 
     CGContextSetGrayStrokeColor(context, 0, 1)

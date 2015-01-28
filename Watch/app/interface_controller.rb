@@ -30,42 +30,10 @@ class InterfaceController < WKInterfaceController
   end
 
   def refresh
-    # needs safety methods that don't crash _AT ALL_ if Period.current doesn't exist, etc etc etc
-    currentPeriod = Period.current
-    nextPeriod = Period.next
-    schedule = Schedule.today
-
-    if schedule
-      if currentPeriod
-        @clockImage.image = Clock.day(@clockRect)
-        @periodNameLabel.text = currentPeriod.name
-        @timeRemainingLabel.text = currentPeriod.time_remaining.length
-      elsif !schedule.started? && !schedule.awake?
-        @clockImage.image = Clock.night(@clockRect)
-        @periodNameLabel.text = "Night time"
-        @timeRemainingLabel.text = schedule.time_until_wake.length
-      elsif !schedule.started? && nextPeriod
-        @clockImage.image = Clock.day(@clockRect)
-        @periodNameLabel.text = "Good morning!"
-        @timeRemainingLabel.text = nextPeriod.time_until_start.length
-      elsif nextPeriod
-        @clockImage.image = Clock.day(@clockRect)
-        @periodNameLabel.text = "Free time"
-        @timeRemainingLabel.text = nextPeriod.time_until_start.length
-      elsif schedule.awake?
-        @clockImage.image = Clock.day(@clockRect)
-        @periodNameLabel.text = "Schedule finished"
-        @timeRemainingLabel.text = schedule.time_until_bed.length
-      else
-        @clockImage.image = Clock.night(@clockRect)
-        @periodNameLabel.text = "Night time"
-        @timeRemainingLabel.text = schedule.time_until_wake.length
-      end
-    else
-      @clockImage.image = Clock.day(@clockRect)
-      @periodNameLabel.text = "Nothing Scheduled"
-      @timeRemainingLabel.text = ""
-    end
+    status = Status.update(@clockRect)
+    @clockImage.image = status[:clock]
+    @periodNameLabel.text = status[:periodName]
+    @timeRemainingLabel.text = status[:timeRemaining]
   end
 
 end
