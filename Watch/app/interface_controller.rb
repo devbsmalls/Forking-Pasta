@@ -8,7 +8,11 @@ class InterfaceController < WKInterfaceController
   def initWithContext(context)
     super
 
-    @clockRect = CGRectMake(0, 0, 100, 100)
+    if WKInterfaceDevice.currentDevice.screenBounds.size.width < 156 
+      @clockRect = CGRectMake(0, 0, 100, 100)
+    else
+      @clockRect = CGRectMake(0, 0, 120, 120)
+    end
 
     return self
   end
