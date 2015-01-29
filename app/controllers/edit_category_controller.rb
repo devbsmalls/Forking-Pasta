@@ -30,6 +30,10 @@ class EditCategoryController < UITableViewController
     # validate
   end
 
+  def hideKeyboard
+    self.view.endEditing(true)
+  end
+
 
   #### text field delegate methods ####
 

@@ -24,6 +24,7 @@
 -(IBAction) save;
 -(IBAction) cancel;
 -(IBAction) nameDidChange:(id) sender;
+-(IBAction) hideKeyboard;
 -(IBAction) textFieldShouldReturn:(id) textField;
 -(IBAction) numberOfSectionsInTableView:(id) tableView;
 
@@ -55,6 +56,7 @@
 -(IBAction) save;
 -(IBAction) cancel;
 -(IBAction) nameDidChange:(id) sender;
+-(IBAction) hideKeyboard;
 -(IBAction) textFieldShouldReturn:(id) textField;
 -(IBAction) numberOfSectionsInTableView:(id) tableView;
 
@@ -80,6 +82,7 @@
 -(IBAction) viewWillDisappear:(id) animated;
 -(IBAction) save;
 -(IBAction) nameDidChange:(id) sender;
+-(IBAction) hideKeyboard;
 -(IBAction) textFieldShouldReturn:(id) textField;
 -(IBAction) numberOfSectionsInTableView:(id) tableView;
 

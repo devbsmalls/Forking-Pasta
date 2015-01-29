@@ -60,6 +60,10 @@ class ScheduleDetailController < UITableViewController
     cdq.save    # could this save unwanted things?
   end
 
+  def hideKeyboard
+    self.view.endEditing(true)
+  end
+
 
   #### text field delegate methods ####
   def textFieldShouldReturn(textField)

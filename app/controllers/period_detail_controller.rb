@@ -76,6 +76,13 @@ class PeriodDetailController < UITableViewController
     validate
   end
 
+  def hideKeyboard
+    # scrollview keyboard: “Dismiss on drag”.
+    # gesture recognizer cancelsTouchesInView = false
+    self.view.endEditing(true)
+  end
+
+
   #### text field delegate methods ####
   def textFieldShouldReturn(textField)
     textField.resignFirstResponder

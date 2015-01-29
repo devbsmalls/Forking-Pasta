@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6724" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cdM-By-5JB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cdM-By-5JB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6711"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -302,10 +302,11 @@
         <scene sceneID="XnM-W1-Yny">
             <objects>
                 <tableViewController id="T4k-5j-BeM" customClass="ScheduleDetailController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="10" sectionFooterHeight="10" id="yO4-jc-LpW">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="10" sectionFooterHeight="10" id="yO4-jc-LpW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ScheduleNameCell" id="M3I-4p-8cd" customClass="PeriodNameCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -456,6 +457,7 @@
                         <connections>
                             <outlet property="dataSource" destination="T4k-5j-BeM" id="J7P-Wh-4GL"/>
                             <outlet property="delegate" destination="T4k-5j-BeM" id="jzy-Vj-4Mv"/>
+                            <outletCollection property="gestureRecognizers" destination="uXk-q6-KDL" appends="YES" id="qeE-f4-MpT"/>
                         </connections>
                     </tableView>
                     <toolbarItems>
@@ -477,6 +479,11 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sy5-a8-du5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="uXk-q6-KDL" userLabel="Tap Hide Keyboard">
+                    <connections>
+                        <action selector="hideKeyboard" destination="T4k-5j-BeM" id="Wq3-AO-ZES"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2561" y="336"/>
         </scene>
@@ -552,10 +559,11 @@
         <scene sceneID="JKg-uq-t8b">
             <objects>
                 <tableViewController id="J7d-fX-yok" customClass="PeriodDetailController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RWq-JM-pqQ">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RWq-JM-pqQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PeriodNameCell" id="qc0-vN-tkn" customClass="PeriodNameCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -681,6 +689,7 @@
                         <connections>
                             <outlet property="dataSource" destination="J7d-fX-yok" id="yey-Fk-x4w"/>
                             <outlet property="delegate" destination="J7d-fX-yok" id="DSs-Xk-gXE"/>
+                            <outletCollection property="gestureRecognizers" destination="YrH-DG-xH1" appends="YES" id="gFT-oK-WWa"/>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Add Period" id="eis-3v-zPN">
@@ -700,6 +709,11 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yu1-jX-Drh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="YrH-DG-xH1" userLabel="Tap Hide Keyboard">
+                    <connections>
+                        <action selector="hideKeyboard" destination="J7d-fX-yok" id="nyg-Uh-vNp"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3258" y="336"/>
         </scene>
@@ -768,10 +782,11 @@
         <scene sceneID="xBK-3R-7nN">
             <objects>
                 <tableViewController id="zb4-aO-30f" customClass="EditCategoryController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RUd-ee-ybi">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RUd-ee-ybi">
                         <rect key="frame" x="0.0" y="64" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
+                        <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryNameCell" id="Lij-CZ-wpu" customClass="CategoryNameCell">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -860,6 +875,7 @@
                         <connections>
                             <outlet property="dataSource" destination="zb4-aO-30f" id="GXL-h7-dnS"/>
                             <outlet property="delegate" destination="zb4-aO-30f" id="dlx-Kh-Qok"/>
+                            <outletCollection property="gestureRecognizers" destination="Y6y-9u-f6N" appends="YES" id="oMX-K0-KgD"/>
                         </connections>
                     </tableView>
                     <toolbarItems>
@@ -882,6 +898,11 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RTP-OP-gdr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer cancelsTouchesInView="NO" id="Y6y-9u-f6N" userLabel="Tap Hide Keyboard">
+                    <connections>
+                        <action selector="hideKeyboard" destination="zb4-aO-30f" id="JbO-xr-DUI"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="2561" y="1056"/>
         </scene>
