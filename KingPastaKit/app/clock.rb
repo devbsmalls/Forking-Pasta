@@ -3,7 +3,12 @@ class Clock
   OUTER_PADDING = 5
   INNER_PADDING = 10
   LINE_WIDTH = 2
-  SCREEN_SCALE = UIScreen.mainScreen.scale # || WKInterfaceDevice.currentDevice.screenScale
+
+  if NSBundle.mainBundle.bundleIdentifier.end_with?("watchkitextension")
+    SCREEN_SCALE = WKInterfaceDevice.currentDevice.screenScale
+  else
+    SCREEN_SCALE = UIScreen.mainScreen.scale
+  end
 
   def self.day(rect)
     # squareRect = compensate for rectangles
