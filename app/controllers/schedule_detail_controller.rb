@@ -23,6 +23,11 @@ class ScheduleDetailController < UITableViewController
       self.tableView.reloadData
       @needsReload = false
     end
+
+    if @showIndexPath
+      self.tableView.scrollToRowAtIndexPath(@showIndexPath, atScrollPosition: UITableViewScrollPositionMiddle, animated: false)
+      @showIndexPath = nil
+    end
   end
 
   def viewWillDisappear(animated)
@@ -50,9 +55,15 @@ class ScheduleDetailController < UITableViewController
       segue.destinationViewController.period = @periods[indexPath.row]
     when "AddPeriodSegue"
       segue.destinationViewController.schedule = @schedule
+      segue.destinationViewController.new_period = true
     end
     
     @needsReload = true
+  end
+
+  ib_action :showPeriodFromSegue, UIStoryboardSegue
+  def showPeriodFromSegue(segue)
+    @showIndexPath = NSIndexPath.indexPathForRow(@periods.array.index(segue.sourceViewController.period), inSection: 3) if segue.sourceViewController.new_period
   end
 
   def nameDidChange(sender)

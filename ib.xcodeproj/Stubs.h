@@ -81,6 +81,7 @@
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewWillDisappear:(id) animated;
 -(IBAction) save;
+-(IBAction) showPeriodFromSegue:(UIStoryboardSegue*) sender;
 -(IBAction) nameDidChange:(id) sender;
 -(IBAction) hideKeyboard;
 -(IBAction) textFieldShouldReturn:(id) textField;

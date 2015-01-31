@@ -700,7 +700,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="0Qh-Fe-PBf">
                             <connections>
-                                <action selector="save" destination="J7d-fX-yok" id="R2k-sc-H4Z"/>
+                                <segue destination="2L2-OA-MHh" kind="unwind" identifier="SaveUnwind" unwindAction="showPeriodFromSegue:" id="VjS-tO-0eJ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -709,6 +709,7 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yu1-jX-Drh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="2L2-OA-MHh" userLabel="Exit" sceneMemberID="exit"/>
                 <tapGestureRecognizer cancelsTouchesInView="NO" id="YrH-DG-xH1" userLabel="Tap Hide Keyboard">
                     <connections>
                         <action selector="hideKeyboard" destination="J7d-fX-yok" id="nyg-Uh-vNp"/>
