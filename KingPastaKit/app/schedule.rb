@@ -21,6 +21,7 @@ class Schedule < CDQManagedObject
   end
 
   def started?
+    return false if all_periods.count < 1
     Time.now.strip_date > all_periods.array.first.startTime
   end
 
@@ -53,8 +54,10 @@ class Schedule < CDQManagedObject
 
     if time < wakeTime
       Time.at(wakeTime - time).utc
-    else
+    elsif Schedule.tomorrow
       Time.at((Schedule.tomorrow.wakeTime + 86400) - time).utc
+    else
+      Time.at((wakeTime + 86400) - time).utc
     end
   end
 
