@@ -9,15 +9,11 @@ class Status
     nextPeriod = Period.next
     schedule = Schedule.today
 
-    if schedule
+    if schedule && schedule.periods.count > 0
       if currentPeriod
         result[:clock] = Clock.day(clockRect)
         result[:periodName] = currentPeriod.name
         result[:timeRemaining] = currentPeriod.time_remaining.length
-      elsif schedule.periods.count < 1
-        result[:clock] = Clock.day(clockRect)
-        result[:periodName] = "Nothing Scheduled"
-        result[:timeRemaining] = ""
       elsif !schedule.started? && !schedule.awake?
         result[:clock] = Clock.night(clockRect)
         result[:periodName] = "Night time"
