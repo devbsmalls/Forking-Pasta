@@ -296,7 +296,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nhI-F1-7R3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3258" y="-349"/>
+            <point key="canvasLocation" x="3280" y="-1053"/>
         </scene>
         <!--Schedule Overview-->
         <scene sceneID="XnM-W1-Yny">
@@ -777,7 +777,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h7Z-ep-8aT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3963" y="-373"/>
+            <point key="canvasLocation" x="3973" y="-373"/>
         </scene>
         <!--Edit Category-->
         <scene sceneID="xBK-3R-7nN">
@@ -948,7 +948,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dBd-7N-E1M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3963" y="336"/>
+            <point key="canvasLocation" x="3973" y="336"/>
         </scene>
         <!--Wake-up Time-->
         <scene sceneID="rRD-Cg-cND">
@@ -991,7 +991,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mRy-hE-oKz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2561" y="-349"/>
+            <point key="canvasLocation" x="3280" y="-373"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
