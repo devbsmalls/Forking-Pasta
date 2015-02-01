@@ -34,4 +34,9 @@ class Time
     (self.wday + (7 - @@firstWeekday)) % 7
   end
 
+  def self.today
+    now = Time.now
+    Time.new(now.year, now.month, now.day)
+  end
+
 end
