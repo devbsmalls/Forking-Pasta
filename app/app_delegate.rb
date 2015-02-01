@@ -3,13 +3,14 @@ class AppDelegate
   
   def application(application, didFinishLaunchingWithOptions:launchOptions)
 
-    @groupDefaults = NSUserDefaults.alloc.initWithSuiteName("group.uk.pixlwave.ForkingPasta")
-    initialSetup unless @groupDefaults.boolForKey("InitialSetupComplete")
+    initialSetup unless FkP.initialSetupComplete?
 
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @storyboard = UIStoryboard.storyboardWithName("Storyboard", bundle: nil)
     @window.rootViewController = @storyboard.instantiateInitialViewController
     @window.makeKeyAndVisible
+
+    cdq.setup
 
     true
 
@@ -26,9 +27,9 @@ class AppDelegate
     Category.new(name: "Hobby", index: 3, color: Category::COLORS[3][:value])
     Category.new(name: "Misc", index: 4, color: Category::COLORS[4][:value])
 
-    cdq.save
+    FkP.new(initialSetupComplete: true)
 
-    @groupDefaults.setBool(true, forKey: "InitialSetupComplete")
+    cdq.save
   end
 
 end

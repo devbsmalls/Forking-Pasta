@@ -49,24 +49,4 @@ class Schedule < CDQManagedObject
     Day.wday(wday).schedule if Day.wday(wday)
   end
 
-  def time_until_wake
-    time = Time.now.strip_seconds
-
-    if time < wakeTime
-      Time.at(wakeTime - time).utc
-    elsif Schedule.tomorrow
-      Time.at((Schedule.tomorrow.wakeTime + 86400) - time).utc
-    else
-      Time.at((wakeTime + 86400) - time).utc
-    end
-  end
-
-  def time_until_bed
-    Time.at(bedTime - Time.now.strip_seconds).utc
-  end
-
-  def awake?
-    Time.now.strip_date > wakeTime && Time.now.strip_date < bedTime
-  end
-
 end

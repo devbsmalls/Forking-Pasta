@@ -1,7 +1,7 @@
 class WakeBedTimeController < UIViewController
   extend IB
 
-  attr_accessor :schedule, :isWake
+  attr_accessor :isWake
 
   outlet :timePicker, UIDatePicker
 
@@ -16,10 +16,10 @@ class WakeBedTimeController < UIViewController
     @timePicker.minimumDate = Time.at(23*3600 + 59*60 + 59).utc
     
     if @isWake
-      @timePicker.date = @schedule.wakeTime || Time.at(9*60*60 + 0*60 + 0).utc
+      @timePicker.date = FkP.wake_time || Time.at(9*60*60 + 0*60 + 0).utc
     else
       self.navigationItem.title = "Bed Time"
-      @timePicker.date = @schedule.bedTime || Time.at(22*60*60 + 30*60 + 0).utc
+      @timePicker.date = FkP.bed_time || Time.at(22*60*60 + 30*60 + 0).utc
     end
 
   end
@@ -27,9 +27,9 @@ class WakeBedTimeController < UIViewController
   def done
 
     if @isWake
-      @schedule.wakeTime = @timePicker.date.utc.strip_date
+      FkP.wake_time = @timePicker.date.utc.strip_date
     else
-      @schedule.bedTime = @timePicker.date.utc.strip_date
+      FkP.bed_time = @timePicker.date.utc.strip_date
     end
     cdq.save
 

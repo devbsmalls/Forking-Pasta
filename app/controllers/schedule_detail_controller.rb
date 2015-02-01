@@ -42,12 +42,6 @@ class ScheduleDetailController < UITableViewController
 
   def prepareForSegue(segue, sender: sender)
     case segue.identifier
-    when "WakeTimeSegue"
-      segue.destinationViewController.isWake = true
-      segue.destinationViewController.schedule = @schedule
-    when "BedTimeSegue"
-      segue.destinationViewController.isWake = false
-      segue.destinationViewController.schedule = @schedule
     when "SelectDaysSegue"
       segue.destinationViewController.schedule = @schedule
     when "EditPeriodSegue"
@@ -63,7 +57,7 @@ class ScheduleDetailController < UITableViewController
 
   ib_action :showPeriodFromSegue, UIStoryboardSegue
   def showPeriodFromSegue(segue)
-    @showIndexPath = NSIndexPath.indexPathForRow(@periods.array.index(segue.sourceViewController.period), inSection: 3) if segue.sourceViewController.new_period
+    @showIndexPath = NSIndexPath.indexPathForRow(@periods.array.index(segue.sourceViewController.period), inSection: 2) if segue.sourceViewController.new_period
   end
 
   def nameDidChange(sender)
@@ -85,7 +79,7 @@ class ScheduleDetailController < UITableViewController
   #### table view delegate methods ####
 
   def numberOfSectionsInTableView(tableView)
-    4
+    3
   end
 
   def tableView(tableView, numberOfRowsInSection: section)
@@ -93,8 +87,6 @@ class ScheduleDetailController < UITableViewController
     when 0..1
       1
     when 2
-      2
-    when 3
       if @periods
         @periods.count
       else
@@ -119,23 +111,6 @@ class ScheduleDetailController < UITableViewController
       
       cell
     when 2
-      case indexPath.row
-      when 0
-        cell = tableView.dequeueReusableCellWithIdentifier("WakeTimeCell")
-        cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "WakeTimeCell")
-
-        cell.detailTextLabel.text = @schedule.wakeTime.utc.strftime("%H:%M")
-
-        cell
-      when 1
-        cell = tableView.dequeueReusableCellWithIdentifier("BedTimeCell")
-        cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "BedTimeCell")
-
-        cell.detailTextLabel.text = @schedule.bedTime.utc.strftime("%H:%M")
-
-        cell
-      end
-    when 3
       cell = tableView.dequeueReusableCellWithIdentifier("PeriodCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodCell")
 
@@ -152,11 +127,11 @@ class ScheduleDetailController < UITableViewController
   end
 
   def tableView(tableView, canEditRowAtIndexPath: indexPath)
-    indexPath.section == 3 ? true : false
+    indexPath.section == 2 ? true : false
   end
 
   def tableView(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
-    if indexPath.section == 3
+    if indexPath.section == 2
       @periods[indexPath.row].destroy
       cdq.save
       

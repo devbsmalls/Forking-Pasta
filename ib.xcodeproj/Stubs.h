@@ -53,7 +53,6 @@
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewDidAppear:(id) animated;
 -(IBAction) validate;
--(IBAction) save;
 -(IBAction) cancel;
 -(IBAction) nameDidChange:(id) sender;
 -(IBAction) hideKeyboard;
