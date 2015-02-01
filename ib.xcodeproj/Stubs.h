@@ -66,6 +66,7 @@
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewWillDisappear:(id) animated;
 -(IBAction) done;
+-(IBAction) numberOfSectionsInTableView:(id) tableView;
 
 @end
 
@@ -82,6 +83,7 @@
 -(IBAction) save;
 -(IBAction) showPeriodFromSegue:(UIStoryboardSegue*) sender;
 -(IBAction) nameDidChange:(id) sender;
+-(IBAction) notificationsSwitchDidChange:(id) sender;
 -(IBAction) hideKeyboard;
 -(IBAction) textFieldShouldReturn:(id) textField;
 -(IBAction) numberOfSectionsInTableView:(id) tableView;
@@ -161,6 +163,12 @@
 @interface PeriodNameCell: UITableViewCell
 
 @property IBOutlet UITextField * nameTextField;
+
+@end
+
+@interface ScheduleNotificationsCell: UITableViewCell
+
+@property IBOutlet UISwitch * notificationsSwitch;
 
 @end
 

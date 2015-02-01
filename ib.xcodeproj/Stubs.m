@@ -60,6 +60,9 @@
 @implementation PeriodNameCell
 @end
 
+@implementation ScheduleNotificationsCell
+@end
+
 @implementation SelectCategoryCell
 @end
 

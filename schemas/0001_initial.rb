@@ -3,6 +3,7 @@ schema "0001 initial" do
 
   entity "Schedule" do
     string :name, optional: false
+    boolean :showsNotifications, default: false, optional: false
 
     has_many :days
     has_many :periods

@@ -405,6 +405,36 @@
                                     <segue destination="Cea-9N-gBt" kind="show" identifier="SelectDaysSegue" id="NkC-UT-IsV"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleNotificationsCell" id="8pU-pO-mhx" customClass="ScheduleNotificationsCell">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8pU-pO-mhx" id="eLY-jF-XC2">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jd2-le-KV2">
+                                            <rect key="frame" x="15" y="14" width="91" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="109-1L-Jnj">
+                                            <rect key="frame" x="536" y="8" width="51" height="31"/>
+                                            <connections>
+                                                <action selector="notificationsSwitchDidChange:" destination="T4k-5j-BeM" eventType="valueChanged" id="min-hN-jkh"/>
+                                            </connections>
+                                        </switch>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="109-1L-Jnj" firstAttribute="trailing" secondItem="eLY-jF-XC2" secondAttribute="trailing" constant="-15" id="1XM-9u-Dfr"/>
+                                        <constraint firstAttribute="centerY" secondItem="109-1L-Jnj" secondAttribute="centerY" id="J0f-7L-P0T"/>
+                                        <constraint firstAttribute="centerY" secondItem="Jd2-le-KV2" secondAttribute="centerY" id="NLq-rw-7Wg"/>
+                                        <constraint firstItem="Jd2-le-KV2" firstAttribute="leading" secondItem="eLY-jF-XC2" secondAttribute="leading" constant="15" id="fIl-za-eHQ"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="notificationsSwitch" destination="109-1L-Jnj" id="1Xr-4m-K63"/>
+                                </connections>
+                            </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PeriodCell" rowHeight="48" id="Pse-hx-c8M" customClass="PeriodCell">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pse-hx-c8M" id="dXE-WM-urv">

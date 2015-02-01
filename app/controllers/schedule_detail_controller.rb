@@ -57,12 +57,16 @@ class ScheduleDetailController < UITableViewController
 
   ib_action :showPeriodFromSegue, UIStoryboardSegue
   def showPeriodFromSegue(segue)
-    @showIndexPath = NSIndexPath.indexPathForRow(@periods.array.index(segue.sourceViewController.period), inSection: 2) if segue.sourceViewController.new_period
+    @showIndexPath = NSIndexPath.indexPathForRow(@periods.array.index(segue.sourceViewController.period), inSection: 3) if segue.sourceViewController.new_period
   end
 
   def nameDidChange(sender)
     @schedule.name = sender.text
     cdq.save    # could this save unwanted things?
+  end
+
+  def notificationsSwitchDidChange(sender)
+    @schedule.showsNotifications = sender.isOn
   end
 
   def hideKeyboard
@@ -79,14 +83,14 @@ class ScheduleDetailController < UITableViewController
   #### table view delegate methods ####
 
   def numberOfSectionsInTableView(tableView)
-    3
+    4
   end
 
   def tableView(tableView, numberOfRowsInSection: section)
     case section
-    when 0..1
+    when 0..2
       1
-    when 2
+    when 3
       if @periods
         @periods.count
       else
@@ -111,6 +115,12 @@ class ScheduleDetailController < UITableViewController
       
       cell
     when 2
+      cell = tableView.dequeueReusableCellWithIdentifier("ScheduleNotificationsCell")
+      cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleNotificationsCell")
+      cell.notificationsSwitch.on = schedule.showsNotifications.boolValue
+      
+      cell
+    when 3
       cell = tableView.dequeueReusableCellWithIdentifier("PeriodCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodCell")
 
@@ -127,11 +137,11 @@ class ScheduleDetailController < UITableViewController
   end
 
   def tableView(tableView, canEditRowAtIndexPath: indexPath)
-    indexPath.section == 2 ? true : false
+    indexPath.section == 3 ? true : false
   end
 
   def tableView(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
-    if indexPath.section == 2
+    if indexPath.section == 3
       @periods[indexPath.row].destroy
       cdq.save
       
