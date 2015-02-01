@@ -6,9 +6,15 @@
 #import <CoreGraphics/CoreGraphics.h>
 
 @interface GlanceController: WKInterfaceController
+
+@property IBOutlet WKInterfaceLabel * periodNameLabel;
+@property IBOutlet WKInterfaceImage * clockImage;
+@property IBOutlet WKInterfaceLabel * timeRemainingLabel;
+
 -(IBAction) initWithContext:(id) context;
 -(IBAction) willActivate;
 -(IBAction) didDeactivate;
+-(IBAction) refresh;
 
 @end
 
@@ -21,6 +27,7 @@
 -(IBAction) initWithContext:(id) context;
 -(IBAction) willActivate;
 -(IBAction) didDeactivate;
+-(IBAction) refresh;
 
 @end
 
