@@ -37,6 +37,14 @@ class Schedule < CDQManagedObject
     ends - starts
   end
 
+  def shows_notifications?
+    self.showsNotifications.boolValue
+  end
+
+  def shows_notifications=(bool)
+    self.showsNotifications = bool
+  end
+
   def self.today
     Day.today.schedule if Day.today
   end

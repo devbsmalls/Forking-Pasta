@@ -39,7 +39,7 @@ class ScheduleController < UITableViewController
   end
 
   def done
-    FkP.scheduleNotifications
+    FkP.schedule_notifications
     self.navigationController.presentingViewController.dismissModalViewControllerAnimated(true)
   end
 

@@ -26,6 +26,7 @@
   </entity>
   <entity name="FkP" syncable="YES" representedClassName="FkP">
     <attribute optional="NO" syncable="YES" attributeType="Boolean" name="initialSetupComplete" defaultValueString="NO"/>
+    <attribute optional="NO" syncable="YES" attributeType="Boolean" name="registeredNotifications" defaultValueString="NO"/>
     <attribute optional="NO" syncable="YES" attributeType="Date" name="wakeTime" defaultValueString="1970-01-01 08:00:00 UTC"/>
     <attribute optional="NO" syncable="YES" attributeType="Date" name="bedTime" defaultValueString="1970-01-01 22:30:00 UTC"/>
   </entity>

@@ -5,7 +5,11 @@ class FkP < CDQManagedObject
   end
 
   def self.initialSetupComplete?
-    FkP.first.initialSetupComplete unless FkP.first.nil?
+    FkP.first.initialSetupComplete.boolValue unless FkP.first.nil?
+  end
+
+  def self.registered_notifications?
+    FkP.first.registeredNotifications.boolValue unless FkP.first.nil?
   end
 
   def self.wake_time
@@ -42,18 +46,23 @@ class FkP < CDQManagedObject
     Time.now.strip_date > wake_time && Time.now.strip_date < bed_time
   end
 
-  def self.scheduleNotifications
+  def self.register_notifications
+    unless registered_notifications?
+      notificationSettings = UIUserNotificationSettings.settingsForTypes(UIUserNotificationTypeAlert | UIUserNotificationTypeSound, categories: nil)
+      UIApplication.sharedApplication.registerUserNotificationSettings(notificationSettings)
+    end
+  end
+
+  def self.schedule_notifications
     UIApplication.sharedApplication.cancelAllLocalNotifications
-    notificationSettings = UIUserNotificationSettings.settingsForTypes(UIUserNotificationTypeAlert | UIUserNotificationTypeSound, categories: nil)
-    UIApplication.sharedApplication.registerUserNotificationSettings(notificationSettings)
 
     today = Time.today
 
     Day.each do |day|
       if schedule = day.schedule
-        if schedule.showsNotifications.boolValue
-          dayOffset = (7 + (day.dayOfWeek) - today.wday) % 7
-          debugString = (today + (dayOffset * 86400)).strftime('%D %A: ')
+        if schedule.shows_notifications?
+          dayOffset = (7 + (day.dayOfWeek - today.wday)) % 7
+          debugString = (today + (dayOffset * 86400)).strftime('%D %A: ') #### debug ####
 
           schedule.periods.each do |period|
             notification = UILocalNotification.new
@@ -72,8 +81,6 @@ class FkP < CDQManagedObject
         end
       end
     end
-
-    true     # reduce terminal noise
   end
 
 end

@@ -66,7 +66,8 @@ class ScheduleDetailController < UITableViewController
   end
 
   def notificationsSwitchDidChange(sender)
-    @schedule.showsNotifications = sender.isOn
+    @schedule.shows_notifications = sender.isOn
+    FkP.register_notifications if sender.isOn
   end
 
   def hideKeyboard
@@ -117,7 +118,7 @@ class ScheduleDetailController < UITableViewController
     when 2
       cell = tableView.dequeueReusableCellWithIdentifier("ScheduleNotificationsCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleNotificationsCell")
-      cell.notificationsSwitch.on = schedule.showsNotifications.boolValue
+      cell.notificationsSwitch.on = schedule.shows_notifications?
       
       cell
     when 3
