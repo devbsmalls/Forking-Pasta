@@ -42,4 +42,38 @@ class FkP < CDQManagedObject
     Time.now.strip_date > wake_time && Time.now.strip_date < bed_time
   end
 
+  def self.scheduleNotifications
+    UIApplication.sharedApplication.cancelAllLocalNotifications
+    notificationSettings = UIUserNotificationSettings.settingsForTypes(UIUserNotificationTypeAlert | UIUserNotificationTypeSound, categories: nil)
+    UIApplication.sharedApplication.registerUserNotificationSettings(notificationSettings)
+
+    today = Time.today
+
+    Day.each do |day|
+      if schedule = day.schedule
+        if schedule.showsNotifications.boolValue
+          dayOffset = (7 + (day.dayOfWeek) - today.wday) % 7
+          debugString = (today + (dayOffset * 86400)).strftime('%D %A: ')
+
+          schedule.periods.each do |period|
+            notification = UILocalNotification.new
+            notification.fireDate = today + (dayOffset * 86400) + period.startTime.to_i
+            # notification.timeZone = ensure correct
+            notification.repeatInterval = NSWeekdayCalendarUnit
+            notification.alertBody = "#{period.name} has now started"
+            notification.soundName = "bell.caf"
+
+            UIApplication.sharedApplication.scheduleLocalNotification(notification)
+
+            #### debug ####
+            debugString << "#{period.name} #{notification.fireDate.strftime('%H:%M')} #{notification.timeZone}, "
+          end
+          NSLog debugString
+        end
+      end
+    end
+
+    true     # reduce terminal noise
+  end
+
 end
