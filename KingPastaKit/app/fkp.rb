@@ -68,7 +68,7 @@ class FkP < CDQManagedObject
             notification = UILocalNotification.new
             notification.fireDate = today + (dayOffset * 86400) + period.startTime.to_i
             # notification.timeZone = ensure correct
-            notification.repeatInterval = NSWeekdayCalendarUnit
+            notification.repeatInterval = NSWeekCalendarUnit
             notification.alertBody = "#{period.name} has now started"
             notification.soundName = "bell.caf"
 
