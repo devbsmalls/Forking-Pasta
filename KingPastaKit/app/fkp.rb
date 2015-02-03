@@ -61,7 +61,7 @@ class FkP < CDQManagedObject
     Day.each do |day|
       if schedule = day.schedule
         if schedule.shows_notifications?
-          dayOffset = (7 + (day.dayOfWeek - today.wday)) % 7
+          dayOffset = (7 + (day.dayOfWeek - today.day_of_week)) % 7
           debugString = (today + (dayOffset * 86400)).strftime('%D %A: ') #### debug ####
 
           schedule.periods.each do |period|
