@@ -54,7 +54,7 @@ class FkP < CDQManagedObject
   end
 
   def self.schedule_notifications
-    Dispatch::Queue.main.async do
+    cdq_background do
       UIApplication.sharedApplication.cancelAllLocalNotifications
 
       today = Time.today
@@ -78,6 +78,30 @@ class FkP < CDQManagedObject
         end
       end
     end
+  end
+
+  def self.log_notifications
+    UIApplication.sharedApplication.scheduledLocalNotifications.each do |notification|
+      NSLog "#{notification.fireDate.strftime('%e/%-m %a %k:%M')}  #{notification.alertBody.sub(' has now started', '')}"
+    end
+
+    true  # stops repl noise
+  end
+
+  def self.cdq_background(&block)
+    # From CDQ Wiki documentation:
+    # Create a new private queue context with the main context
+    # as its parent, then pop it back off the stack.
+    cdq.contexts.new(NSPrivateQueueConcurrencyType) do
+      context = cdq.contexts.current
+
+      # any work on a private context must be passed to performBlock
+      context.performBlock(-> {
+        cdq.contexts.push(context) do
+          block.call
+        end
+      })
+    end 
   end
 
 end
