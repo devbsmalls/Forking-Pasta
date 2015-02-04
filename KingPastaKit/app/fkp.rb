@@ -54,30 +54,32 @@ class FkP < CDQManagedObject
   end
 
   def self.schedule_notifications
-    UIApplication.sharedApplication.cancelAllLocalNotifications
+    Dispatch::Queue.main.async do
+      UIApplication.sharedApplication.cancelAllLocalNotifications
 
-    today = Time.today
+      today = Time.today
 
-    Day.each do |day|
-      if schedule = day.schedule
-        if schedule.shows_notifications?
-          dayOffset = (7 + (day.dayOfWeek - today.day_of_week)) % 7
-          debugString = (today + (dayOffset * 86400)).strftime('%D %A: ') #### debug ####
+      Day.each do |day|
+        if schedule = day.schedule
+          if schedule.shows_notifications?
+            dayOffset = (7 + (day.dayOfWeek - today.day_of_week)) % 7
+            debugString = (today + (dayOffset * 86400)).strftime('%D %A: ') #### debug ####
 
-          schedule.periods.each do |period|
-            notification = UILocalNotification.new
-            notification.fireDate = today + (dayOffset * 86400) + period.startTime.to_i
-            # notification.timeZone = ensure correct
-            notification.repeatInterval = NSWeekCalendarUnit
-            notification.alertBody = "#{period.name} has now started"
-            notification.soundName = "bell.caf"
+            schedule.periods.each do |period|
+              notification = UILocalNotification.new
+              notification.fireDate = today + (dayOffset * 86400) + period.startTime.to_i
+              # notification.timeZone = ensure correct
+              notification.repeatInterval = NSWeekCalendarUnit
+              notification.alertBody = "#{period.name} has now started"
+              notification.soundName = "bell.caf"
 
-            UIApplication.sharedApplication.scheduleLocalNotification(notification)
+              UIApplication.sharedApplication.scheduleLocalNotification(notification)
 
-            #### debug ####
-            debugString << "#{period.name} #{notification.fireDate.strftime('%H:%M')} #{notification.timeZone}, "
+              #### debug ####
+              debugString << "#{period.name} #{notification.fireDate.strftime('%H:%M')} #{notification.timeZone}, "
+            end
+            NSLog debugString
           end
-          NSLog debugString
         end
       end
     end
