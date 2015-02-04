@@ -63,7 +63,6 @@ class FkP < CDQManagedObject
         if schedule = day.schedule
           if schedule.shows_notifications?
             dayOffset = (7 + (day.dayOfWeek - today.day_of_week)) % 7
-            debugString = (today + (dayOffset * 86400)).strftime('%D %A: ') #### debug ####
 
             schedule.periods.each do |period|
               notification = UILocalNotification.new
@@ -74,11 +73,7 @@ class FkP < CDQManagedObject
               notification.soundName = "bell.caf"
 
               UIApplication.sharedApplication.scheduleLocalNotification(notification)
-
-              #### debug ####
-              debugString << "#{period.name} #{notification.fireDate.strftime('%H:%M')} #{notification.timeZone}, "
             end
-            NSLog debugString
           end
         end
       end
