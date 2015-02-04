@@ -3,14 +3,14 @@ class AppDelegate
   
   def application(application, didFinishLaunchingWithOptions:launchOptions)
 
+    cdq.setup
+
     initialSetup unless FkP.initialSetupComplete?
 
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @storyboard = UIStoryboard.storyboardWithName("Storyboard", bundle: nil)
     @window.rootViewController = @storyboard.instantiateInitialViewController
     @window.makeKeyAndVisible
-
-    cdq.setup
 
     true
 
