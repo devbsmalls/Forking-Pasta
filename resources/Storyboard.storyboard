@@ -950,17 +950,29 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rVc-eR-OxB">
-                                <rect key="frame" x="0.0" y="124" width="600" height="162"/>
+                                <rect key="frame" x="0.0" y="125" width="600" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="-978278399.38992405">
                                     <!--1970-01-01 08:00:00 +0000-->
                                 </date>
                             </datePicker>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="gq5-FB-Xdf">
+                                <rect key="frame" x="227" y="89" width="147" height="29"/>
+                                <segments>
+                                    <segment title="1 minute"/>
+                                    <segment title="5 minutes"/>
+                                </segments>
+                                <connections>
+                                    <action selector="timeIntervalDidChange" destination="6Bh-1W-JWr" eventType="valueChanged" id="X9x-Xj-CtA"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="gq5-FB-Xdf" firstAttribute="top" secondItem="Wij-6t-5Ip" secondAttribute="bottom" constant="25" id="5ru-tp-d72"/>
+                            <constraint firstAttribute="centerX" secondItem="gq5-FB-Xdf" secondAttribute="centerX" constant="-0.5" id="71d-k8-Nuz"/>
                             <constraint firstItem="rVc-eR-OxB" firstAttribute="leading" secondItem="Dg0-Vc-gql" secondAttribute="leading" id="TmY-5s-3Z0"/>
                             <constraint firstAttribute="trailing" secondItem="rVc-eR-OxB" secondAttribute="trailing" id="d2d-Po-1SH"/>
-                            <constraint firstItem="rVc-eR-OxB" firstAttribute="top" secondItem="Wij-6t-5Ip" secondAttribute="bottom" constant="60" id="nTF-v5-BN2"/>
+                            <constraint firstItem="rVc-eR-OxB" firstAttribute="top" secondItem="gq5-FB-Xdf" secondAttribute="bottom" constant="8" symbolic="YES" id="g0n-0L-VSw"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -973,6 +985,7 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="timeIntervalControl" destination="gq5-FB-Xdf" id="bfI-HN-NPA"/>
                         <outlet property="timePicker" destination="rVc-eR-OxB" id="oOK-2n-4uW"/>
                     </connections>
                 </viewController>

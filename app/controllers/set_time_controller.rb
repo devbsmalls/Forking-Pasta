@@ -3,6 +3,7 @@ class SetTimeController < UIViewController
 
   attr_accessor :period, :isStart
 
+  outlet :timeIntervalControl, UISegmentedControl
   outlet :timePicker, UIDatePicker
 
   def viewDidLoad
@@ -22,6 +23,11 @@ class SetTimeController < UIViewController
       @timePicker.date = @period.endTime || @period.startTime || FkP.bed_time
     end
 
+    if @timePicker.date.min % 5 != 0
+      @timePicker.minuteInterval = 1
+      @timeIntervalControl.selectedSegmentIndex = 0
+    end
+
   end
 
   def done
@@ -33,6 +39,15 @@ class SetTimeController < UIViewController
     end
 
     self.navigationController.popViewControllerAnimated(true)
+  end
+
+  def timeIntervalDidChange
+    if @timeIntervalControl.selectedSegmentIndex == 0
+      @timePicker.minuteInterval = 1
+    else
+      @timePicker.minuteInterval = 5
+      @timePicker.date -= (@timePicker.date.min % 5) * 60
+    end
   end
 
 end

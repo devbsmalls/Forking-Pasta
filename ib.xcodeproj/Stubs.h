@@ -95,10 +95,12 @@
 
 @interface SetTimeController: UIViewController
 
+@property IBOutlet UISegmentedControl * timeIntervalControl;
 @property IBOutlet UIDatePicker * timePicker;
 
 -(IBAction) viewDidLoad;
 -(IBAction) done;
+-(IBAction) timeIntervalDidChange;
 
 @end
 
