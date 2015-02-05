@@ -33,7 +33,7 @@ class TodayViewController < UIViewController
   end
 
   def refresh
-    status = Status.update(@clockImageView.bounds)
+    status = FkP.status(@clockImageView.bounds)
     @clockImageView.image = status[:clock]
     @periodNameLabel.text = status[:periodName]
     @timeRemainingLabel.text = status[:timeRemaining]

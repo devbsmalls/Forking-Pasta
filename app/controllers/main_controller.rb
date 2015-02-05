@@ -37,7 +37,7 @@ class MainController < UIViewController
   end
 
   def redraw
-    status = Status.update(@clockImageView.bounds)
+    status = FkP.status(@clockImageView.bounds)
     @clockImageView.image = status[:clock]
     @periodNameLabel.text = status[:periodName]
     @timeRemainingLabel.text = status[:timeRemaining]

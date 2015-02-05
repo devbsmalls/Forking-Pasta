@@ -30,7 +30,7 @@ class GlanceController < WKInterfaceController
   end
 
   def refresh
-    status = Status.update(@clockRect)
+    status = FkP.status(@clockRect)
     @clockImage.image = status[:clock]
     @periodNameLabel.text = status[:periodName]
     @timeRemainingLabel.text = status[:timeRemaining]
