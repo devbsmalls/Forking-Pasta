@@ -405,7 +405,7 @@
                                     <segue destination="Cea-9N-gBt" kind="show" identifier="SelectDaysSegue" id="NkC-UT-IsV"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ScheduleNotificationsCell" id="8pU-pO-mhx" customClass="ScheduleNotificationsCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ScheduleNotificationsCell" id="8pU-pO-mhx" customClass="ScheduleNotificationsCell">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8pU-pO-mhx" id="eLY-jF-XC2">
