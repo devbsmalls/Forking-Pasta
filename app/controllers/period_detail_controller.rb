@@ -56,6 +56,7 @@ class PeriodDetailController < UITableViewController
       valid = false
     else
       valid = false if @period.endTime <= @period.startTime
+      valid = false if @period.has_overlap?
     end
     
     @saveButton.enabled = valid
