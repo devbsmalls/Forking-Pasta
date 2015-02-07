@@ -46,7 +46,8 @@ class TodayViewController < UIViewController
   end
 
   def widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets)
-    UIEdgeInsetsMake(15, defaultMarginInsets.left, 15, defaultMarginInsets.right)
+    # defaults: left: 47, top: 0, right: 0, bottom: 39
+    UIEdgeInsetsMake(10, defaultMarginInsets.left, 10, 10)
   end
 
 end
