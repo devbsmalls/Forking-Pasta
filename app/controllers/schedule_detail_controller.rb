@@ -18,6 +18,7 @@ class ScheduleDetailController < UITableViewController
     super
     
     self.navigationController.setToolbarHidden(false, animated)
+    updateHintImageView
 
     if @needsReload
       self.tableView.reloadData
@@ -35,11 +36,6 @@ class ScheduleDetailController < UITableViewController
     self.navigationController.setToolbarHidden(true, animated)
   end
 
-  def save
-    self.view.endEditing(true)    # this might need to be called on back too (somehow!)
-    self.navigationController.popViewControllerAnimated(true)
-  end
-
   def prepareForSegue(segue, sender: sender)
     case segue.identifier
     when "SelectDaysSegue"
@@ -53,6 +49,21 @@ class ScheduleDetailController < UITableViewController
     end
     
     @needsReload = true
+  end
+
+  def save
+    self.view.endEditing(true)    # this might need to be called on back too (somehow!)
+    self.navigationController.popViewControllerAnimated(true)
+  end
+
+  def updateHintImageView
+    if @periods.count < 1
+      addScheduleImageView = UIImageView.alloc.initWithImage(UIImage.imageNamed("periods_hint"))
+      addScheduleImageView.contentMode = UIViewContentModeBottom
+      self.tableView.backgroundView = addScheduleImageView
+    else
+      self.tableView.backgroundView = nil
+    end
   end
 
   ib_action :showPeriodFromSegue, UIStoryboardSegue
@@ -147,6 +158,7 @@ class ScheduleDetailController < UITableViewController
       cdq.save
       
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimationFade) if editingStyle == UITableViewCellEditingStyleDelete
+      updateHintImageView
     end
   end
 

@@ -11,6 +11,7 @@ class ScheduleController < UITableViewController
     super
 
     self.navigationController.setToolbarHidden(false, animated)
+    updateHintImageView
 
     if @needsReload
       self.tableView.reloadData
@@ -41,6 +42,16 @@ class ScheduleController < UITableViewController
   def done
     FkP.schedule_notifications
     self.navigationController.presentingViewController.dismissModalViewControllerAnimated(true)
+  end
+
+  def updateHintImageView
+    if @schedules.count < 1
+      addScheduleImageView = UIImageView.alloc.initWithImage(UIImage.imageNamed("schedules_hint"))
+      addScheduleImageView.contentMode = UIViewContentModeBottom
+      self.tableView.backgroundView = addScheduleImageView
+    else
+      self.tableView.backgroundView = nil
+    end
   end
 
   #### table view delegate methods ####
@@ -99,6 +110,7 @@ class ScheduleController < UITableViewController
       cdq.save
       
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimationFade) if editingStyle == UITableViewCellEditingStyleDelete
+      updateHintImageView
     end
   end
 
