@@ -58,9 +58,9 @@ class ScheduleDetailController < UITableViewController
 
   def updateHintImageView
     if @periods.count < 1
-      addScheduleImageView = UIImageView.alloc.initWithImage(UIImage.imageNamed("periods_hint"))
-      addScheduleImageView.contentMode = UIViewContentModeBottom
-      self.tableView.backgroundView = addScheduleImageView
+      hintImageView = UIImageView.alloc.initWithImage(UIImage.imageNamed("periods_hint"))
+      hintImageView.contentMode = UIViewContentModeBottom
+      self.tableView.backgroundView = hintImageView
     else
       self.tableView.backgroundView = nil
     end
