@@ -40,14 +40,14 @@ class TodayViewController < UIViewController
   end
 
   def widgetPerformUpdateWithCompletionHandler(completionHandler)
-    # refresh - this call apparently causes the layout to "jump" (maybe at this point size is wrong)
+    refresh
 
     completionHandler.call(NCUpdateResultNewData)
   end
 
   def widgetMarginInsetsForProposedMarginInsets(defaultMarginInsets)
-    # defaults: left: 47, top: 0, right: 0, bottom: 39
-    UIEdgeInsetsMake(10, defaultMarginInsets.left, 10, 10)
+    # defaults: top: 0, left: 47, bottom: 39, right: 0)
+    UIEdgeInsetsMake(10, defaultMarginInsets.left, 10, 0)
   end
 
 end
