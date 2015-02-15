@@ -87,7 +87,7 @@ class Clock
     outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
     innerRect = CGRectInset(outerRect, INNER_PADDING, INNER_PADDING)
 
-    UIGraphicsBeginImageContextWithOptions(rect.size, false, UIScreen.mainScreen.scale)
+    UIGraphicsBeginImageContextWithOptions(rect.size, false, SCREEN_SCALE)
     context = UIGraphicsGetCurrentContext()
 
     CGContextSetGrayStrokeColor(context, 0, 1)
@@ -95,9 +95,13 @@ class Clock
 
     CGContextSetFillColorWithColor(context, Category::NIGHT_COLOR.CGColor)
     CGContextFillEllipseInRect(context, outerRect)
-    
-    CGContextSetFillColorWithColor(context, Category::NIGHT_COLOR.CGColor)
-    CGContextFillEllipseInRect(context, innerRect)
+
+    # save state, clip to ellipse, draw texture, restore state
+    CGContextSaveGState(context)
+    CGContextAddEllipseInRect(context, innerRect)
+    CGContextClip(context)
+    UIImage.imageNamed("night", inBundle: NSBundle.bundleWithIdentifier('uk.pixlwave.KingPastaKit'), compatibleWithTraitCollection: nil).drawInRect(innerRect)
+    CGContextRestoreGState(context)
     
     currentPeriod = Period.current
 
