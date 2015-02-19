@@ -42,21 +42,25 @@ class FkP < CDQManagedObject
 
     result
   end
+  
+  def self.defaults
+    @@defaults ||= FkP.first
+  end
 
   def self.initialSetupComplete?
-    FkP.first.initialSetupComplete.boolValue unless FkP.first.nil?
+    defaults.initialSetupComplete.boolValue unless defaults.nil?
   end
 
   def self.registered_notifications?
-    FkP.first.registeredNotifications.boolValue unless FkP.first.nil?
+    defaults.registeredNotifications.boolValue unless defaults.nil?
   end
 
   def self.wake_time
-    FkP.first.wakeTime
+    defaults.wakeTime
   end
 
   def self.wake_time=(time)
-    FkP.first.wakeTime = time
+    defaults.wakeTime = time
   end
 
   def self.time_until_wake
@@ -70,11 +74,11 @@ class FkP < CDQManagedObject
   end
 
   def self.bed_time
-    FkP.first.bedTime
+    defaults.bedTime
   end
 
   def self.bed_time=(time)
-    FkP.first.bedTime = time
+    defaults.bedTime = time
   end
 
   def self.time_until_bed
