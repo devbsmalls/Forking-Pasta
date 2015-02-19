@@ -10,7 +10,7 @@ class Clock
     SCREEN_SCALE = UIScreen.mainScreen.scale
   end
 
-  def self.day(rect)
+  def self.day(rect, periods, currentPeriod)
     # squareRect = compensate for rectangles
     outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
     innerRect = CGRectInset(outerRect, INNER_PADDING, INNER_PADDING)
@@ -21,12 +21,11 @@ class Clock
     CGContextSetGrayStrokeColor(context, 0, 1)
     CGContextSetLineWidth(context, LINE_WIDTH)
 
-    # this needs a 'free time' category colour that the user can't use
     # blank canvas
     CGContextSetFillColorWithColor(context, Category::FREE_COLOR.CGColor)
     CGContextFillEllipseInRect(context, outerRect)
     
-    periods = Period.all_today
+    # periods = Period.all_today
 
     if periods && periods.count > 0
       dayStart = periods.first.startTime
@@ -56,7 +55,7 @@ class Clock
 
     # draw blank if currentPeriod = nil
     # draw current period in center
-    currentPeriod = Period.current
+    # currentPeriod = Period.current
 
     if ! currentPeriod.nil?
       CGContextSetFillColorWithColor(context, currentPeriod.category.cgColor)
@@ -81,6 +80,30 @@ class Clock
 
     image
   end
+
+  def self.blank(rect)
+      # squareRect = compensate for rectangles
+      outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
+      innerRect = CGRectInset(outerRect, INNER_PADDING, INNER_PADDING)
+
+      UIGraphicsBeginImageContextWithOptions(rect.size, false, SCREEN_SCALE)
+      context = UIGraphicsGetCurrentContext()
+
+      CGContextSetGrayStrokeColor(context, 0, 1)
+      CGContextSetLineWidth(context, LINE_WIDTH)
+
+      CGContextSetFillColorWithColor(context, Category::FREE_COLOR.CGColor)
+      CGContextFillEllipseInRect(context, outerRect)
+
+      # outline both circles
+      CGContextStrokeEllipseInRect(context, outerRect)
+      CGContextStrokeEllipseInRect(context, innerRect)
+
+      image = UIGraphicsGetImageFromCurrentImageContext()
+      UIGraphicsEndImageContext()
+
+      image
+    end
 
   def self.night(rect)
     # squareRect = compensate for rectangles

@@ -10,7 +10,7 @@ class FkP < CDQManagedObject
 
     if schedule && schedule.periods.count > 0
       if currentPeriod
-        result[:clock] = Clock.day(clockRect)
+        result[:clock] = Clock.day(clockRect, schedule.all_periods.array, currentPeriod)
         result[:periodName] = currentPeriod.name
         result[:timeRemaining] = currentPeriod.time_remaining.length
       elsif !schedule.started? && !FkP.awake?
@@ -18,15 +18,15 @@ class FkP < CDQManagedObject
         result[:periodName] = "Night time"
         result[:timeRemaining] = FkP.time_until_wake.length
       elsif !schedule.started? && nextPeriod
-        result[:clock] = Clock.day(clockRect)
+        result[:clock] = Clock.day(clockRect, schedule.all_periods.array, currentPeriod)
         result[:periodName] = "Good morning!"
         result[:timeRemaining] = nextPeriod.time_until_start.length
       elsif nextPeriod
-        result[:clock] = Clock.day(clockRect)
+        result[:clock] = Clock.day(clockRect, schedule.all_periods.array, currentPeriod)
         result[:periodName] = "Free time"
         result[:timeRemaining] = nextPeriod.time_until_start.length
       elsif FkP.awake?
-        result[:clock] = Clock.day(clockRect)
+        result[:clock] = Clock.day(clockRect, schedule.all_periods.array, currentPeriod)
         result[:periodName] = "Schedule finished"
         result[:timeRemaining] = FkP.time_until_bed.length
       else
@@ -35,14 +35,14 @@ class FkP < CDQManagedObject
         result[:timeRemaining] = FkP.time_until_wake.length
       end
     else
-      result[:clock] = Clock.day(clockRect)
+      result[:clock] = Clock.blank(clockRect)
       result[:periodName] = "Nothing Scheduled"
       result[:timeRemaining] = ""
     end
 
     result
   end
-  
+
   def self.defaults
     @@defaults ||= FkP.first
   end
