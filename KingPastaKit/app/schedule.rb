@@ -46,15 +46,15 @@ class Schedule < CDQManagedObject
   end
 
   def self.today
-    Day.today.schedule if Day.today
+    if day_today = Day.today then day_today.schedule end
   end
 
   def self.tomorrow
-    Day.tomorrow.schedule if Day.tomorrow
+    if day_tomorrow = Day.tomorrow then day_tomorrow.schedule end
   end
 
   def self.on_wday(wday)
-    Day.wday(wday).schedule if Day.wday(wday)
+    if day_wday = Day.wday(wday) then day_wday.schedule end
   end
 
 end

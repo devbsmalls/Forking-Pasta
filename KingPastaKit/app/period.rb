@@ -3,21 +3,21 @@ class Period < CDQManagedObject
   def self.current
     time = Time.now.strip_date
 
-    Period.all_today.where(:startTime).le(time).where(:endTime).gt(time).first if Period.all_today
+    if periods_today = Period.all_today then periods_today.where(:startTime).le(time).where(:endTime).gt(time).first end
   end
 
   def self.next
     time = Time.now.strip_date
 
-    Period.all_today.where(:startTime).gt(time).first if Period.all_today
+    if periods_today = Period.all_today then periods_today.where(:startTime).gt(time).first end
   end
 
   def self.all_today
-    Schedule.today.all_periods if Schedule.today
+    if schedule_today = Schedule.today then schedule_today.all_periods end
   end
 
   def self.all_on_wday(wday)
-    Schedule.on_wday(wday).all_periods if Schedule.on_wday(wday)
+    if schedule_wday = Schedule.on_wday(wday) then schedule_wday.all_periods end
   end
 
   def time_remaining
