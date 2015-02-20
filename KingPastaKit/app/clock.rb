@@ -1,8 +1,8 @@
 class Clock
 
   OUTER_PADDING = 5
-  INNER_PADDING = 10
-  LINE_WIDTH = 2
+  # INNER_PADDING = 10
+  # LINE_WIDTH = 2
 
   if NSBundle.mainBundle.bundleIdentifier.end_with?("watchkitextension")
     SCREEN_SCALE = WKInterfaceDevice.currentDevice.screenScale
@@ -10,22 +10,26 @@ class Clock
     SCREEN_SCALE = UIScreen.mainScreen.scale
   end
 
+  def self.morning (rect, periods)
+    day(rect, periods, nil)
+  end
+
   def self.day(rect, periods, currentPeriod)
     # squareRect = compensate for rectangles
     outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
-    innerRect = CGRectInset(outerRect, INNER_PADDING, INNER_PADDING)
+    innerPadding = outerRect.size.width / 16
+    innerRect = CGRectInset(outerRect, innerPadding, innerPadding)
 
     UIGraphicsBeginImageContextWithOptions(rect.size, false, SCREEN_SCALE)
     context = UIGraphicsGetCurrentContext()
 
+    lineWidth = outerRect.size.width / 79
     CGContextSetGrayStrokeColor(context, 0, 1)
-    CGContextSetLineWidth(context, LINE_WIDTH)
+    CGContextSetLineWidth(context, lineWidth)
 
     # blank canvas
     CGContextSetFillColorWithColor(context, Category::FREE_COLOR.CGColor)
     CGContextFillEllipseInRect(context, outerRect)
-    
-    # periods = Period.all_today
 
     if periods && periods.count > 0
       dayStart = periods.first.startTime
@@ -53,10 +57,8 @@ class Clock
 
     end
 
-    # draw blank if currentPeriod = nil
+    # draw blank if currentPeriod = nil (this will occur during free time)
     # draw current period in center
-    # currentPeriod = Period.current
-
     if ! currentPeriod.nil?
       CGContextSetFillColorWithColor(context, currentPeriod.category.cgColor)
       CGContextFillEllipseInRect(context, innerRect)
@@ -81,40 +83,22 @@ class Clock
     image
   end
 
-  def self.blank(rect)
-      # squareRect = compensate for rectangles
-      outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
-      innerRect = CGRectInset(outerRect, INNER_PADDING, INNER_PADDING)
-
-      UIGraphicsBeginImageContextWithOptions(rect.size, false, SCREEN_SCALE)
-      context = UIGraphicsGetCurrentContext()
-
-      CGContextSetGrayStrokeColor(context, 0, 1)
-      CGContextSetLineWidth(context, LINE_WIDTH)
-
-      CGContextSetFillColorWithColor(context, Category::FREE_COLOR.CGColor)
-      CGContextFillEllipseInRect(context, outerRect)
-
-      # outline both circles
-      CGContextStrokeEllipseInRect(context, outerRect)
-      CGContextStrokeEllipseInRect(context, innerRect)
-
-      image = UIGraphicsGetImageFromCurrentImageContext()
-      UIGraphicsEndImageContext()
-
-      image
-    end
+  def self.evening(rect, periods)
+    day(rect, periods, nil)
+  end
 
   def self.night(rect)
     # squareRect = compensate for rectangles
     outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
-    innerRect = CGRectInset(outerRect, INNER_PADDING, INNER_PADDING)
+    innerPadding = outerRect.size.width / 10
+    innerRect = CGRectInset(outerRect, innerPadding, innerPadding)
 
     UIGraphicsBeginImageContextWithOptions(rect.size, false, SCREEN_SCALE)
     context = UIGraphicsGetCurrentContext()
 
+    lineWidth = outerRect.size.width / 25
     CGContextSetGrayStrokeColor(context, 0, 1)
-    CGContextSetLineWidth(context, LINE_WIDTH)
+    CGContextSetLineWidth(context, lineWidth)
 
     CGContextSetFillColorWithColor(context, Category::NIGHT_COLOR.CGColor)
     CGContextFillEllipseInRect(context, outerRect)
@@ -135,6 +119,33 @@ class Clock
       currentPeriodProgress = currentPeriodTimePassed / currentPeriodLength
       shadeInner(context, innerRect, 2 * Math::PI * currentPeriodProgress)
     end
+
+    # outline both circles
+    CGContextStrokeEllipseInRect(context, outerRect)
+    CGContextStrokeEllipseInRect(context, innerRect)
+
+    image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+
+    image
+  end
+
+  def self.blank(rect)
+    # squareRect = compensate for rectangles
+    outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
+    innerPadding = outerRect.size.width / 10
+    innerRect = CGRectInset(outerRect, innerPadding, innerPadding)
+
+    UIGraphicsBeginImageContextWithOptions(rect.size, false, SCREEN_SCALE)
+    context = UIGraphicsGetCurrentContext()
+
+    lineWidth = outerRect.size.width / 25
+    CGContextSetGrayStrokeColor(context, 0, 1)
+    CGContextSetLineWidth(context, lineWidth)
+
+    # blank canvas
+    CGContextSetFillColorWithColor(context, Category::FREE_COLOR.CGColor)
+    CGContextFillEllipseInRect(context, outerRect)
 
     # outline both circles
     CGContextStrokeEllipseInRect(context, outerRect)

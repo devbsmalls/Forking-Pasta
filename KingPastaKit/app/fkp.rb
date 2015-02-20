@@ -18,7 +18,7 @@ class FkP < CDQManagedObject
         result[:periodName] = "Night time"
         result[:timeRemaining] = FkP.time_until_wake.length
       elsif !schedule.started? && nextPeriod
-        result[:clock] = Clock.day(clockRect, schedule.all_periods.array, currentPeriod)
+        result[:clock] = Clock.morning(clockRect, schedule.all_periods.array)
         result[:periodName] = "Good morning!"
         result[:timeRemaining] = nextPeriod.time_until_start.length
       elsif nextPeriod
@@ -26,7 +26,7 @@ class FkP < CDQManagedObject
         result[:periodName] = "Free time"
         result[:timeRemaining] = nextPeriod.time_until_start.length
       elsif FkP.awake?
-        result[:clock] = Clock.day(clockRect, schedule.all_periods.array, currentPeriod)
+        result[:clock] = Clock.evening(clockRect, schedule.all_periods.array)
         result[:periodName] = "Schedule finished"
         result[:timeRemaining] = FkP.time_until_bed.length
       else
