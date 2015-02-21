@@ -31,6 +31,10 @@ class ScheduleDetailController < UITableViewController
     end
   end
 
+  def willRotateToInterfaceOrientation(toInterfaceOrientation, duration: duration)
+    updateHintImageView
+  end
+
   def viewWillDisappear(animated)
     super
     self.navigationController.setToolbarHidden(true, animated)
@@ -57,7 +61,7 @@ class ScheduleDetailController < UITableViewController
   end
 
   def updateHintImageView
-    if @periods.count < 1
+    if @periods.count < 1 && (UIDevice.currentDevice.orientation == UIDeviceOrientationPortrait || UIScreen.mainScreen.bounds.size.height == 736 || UIScreen.mainScreen.bounds.size.height == 414)
       hintImageView = UIImageView.alloc.initWithImage(UIImage.imageNamed("periods_hint"))
       hintImageView.contentMode = UIViewContentModeBottom
       self.tableView.backgroundView = hintImageView
