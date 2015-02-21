@@ -10,20 +10,67 @@ class Clock
     SCREEN_SCALE = UIScreen.mainScreen.scale
   end
 
-  def self.morning (rect, periods)
-    day(rect, periods, nil)
-  end
-
-  def self.day(rect, periods, currentPeriod)
+  def self.dimensions(rect)
     # squareRect = compensate for rectangles
     outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
+    lineWidth = outerRect.size.width / 79
+    
     innerPadding = outerRect.size.width / 16
     innerRect = CGRectInset(outerRect, innerPadding, innerPadding)
+    
+    return outerRect, innerRect, lineWidth
+  end
+
+  def self.morning (rect, periods)
+    outerRect, innerRect, lineWidth = dimensions(rect)
 
     UIGraphicsBeginImageContextWithOptions(rect.size, false, SCREEN_SCALE)
     context = UIGraphicsGetCurrentContext()
 
-    lineWidth = outerRect.size.width / 79
+    CGContextSetGrayStrokeColor(context, 0, 1)
+    CGContextSetLineWidth(context, lineWidth)
+
+    # blank canvas
+    CGContextSetFillColorWithColor(context, Category::FREE_COLOR.CGColor)
+    CGContextFillEllipseInRect(context, outerRect)
+
+    if periods && periods.count > 0
+      dayStart = periods.first.startTime
+      dayEnd = periods[periods.count - 1].endTime     # why can't I use .last?!?!
+      dayLength = dayEnd - dayStart
+
+      # draw each period
+      periods.each do |period|
+        startAngle = 2 * Math::PI / dayLength * (period.startTime - dayStart)
+        endAngle = 2 * Math::PI / dayLength * (period.endTime - dayStart)
+        color = period.category.cgColor
+        drawSegment(context, outerRect, startAngle, endAngle, color)
+      end
+    end
+
+    # save state, clip to ellipse, draw texture, restore state
+    CGContextSaveGState(context)
+    CGContextAddEllipseInRect(context, innerRect)
+    CGContextClip(context)
+    UIImage.imageNamed("morning", inBundle: NSBundle.bundleWithIdentifier('uk.pixlwave.KingPastaKit'), compatibleWithTraitCollection: nil).drawInRect(innerRect)
+    CGContextRestoreGState(context)
+
+    # outline both circles
+    CGContextStrokeEllipseInRect(context, outerRect)
+    CGContextStrokeEllipseInRect(context, innerRect)
+
+    image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+
+    image
+  end
+
+  def self.day(rect, periods, currentPeriod)
+    outerRect, innerRect, lineWidth = dimensions(rect)
+
+    UIGraphicsBeginImageContextWithOptions(rect.size, false, SCREEN_SCALE)
+    context = UIGraphicsGetCurrentContext()
+
     CGContextSetGrayStrokeColor(context, 0, 1)
     CGContextSetLineWidth(context, lineWidth)
 
@@ -84,19 +131,59 @@ class Clock
   end
 
   def self.evening(rect, periods)
-    day(rect, periods, nil)
-  end
-
-  def self.night(rect)
-    # squareRect = compensate for rectangles
-    outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
-    innerPadding = outerRect.size.width / 10
-    innerRect = CGRectInset(outerRect, innerPadding, innerPadding)
+    outerRect, innerRect, lineWidth = dimensions(rect)
 
     UIGraphicsBeginImageContextWithOptions(rect.size, false, SCREEN_SCALE)
     context = UIGraphicsGetCurrentContext()
 
-    lineWidth = outerRect.size.width / 25
+    CGContextSetGrayStrokeColor(context, 0, 1)
+    CGContextSetLineWidth(context, lineWidth)
+
+    # blank canvas
+    CGContextSetFillColorWithColor(context, Category::FREE_COLOR.CGColor)
+    CGContextFillEllipseInRect(context, outerRect)
+
+    if periods && periods.count > 0
+      dayStart = periods.first.startTime
+      dayEnd = periods[periods.count - 1].endTime     # why can't I use .last?!?!
+      dayLength = dayEnd - dayStart
+
+      # draw each period
+      periods.each do |period|
+        startAngle = 2 * Math::PI / dayLength * (period.startTime - dayStart)
+        endAngle = 2 * Math::PI / dayLength * (period.endTime - dayStart)
+        color = period.category.cgColor
+        drawSegment(context, outerRect, startAngle, endAngle, color)
+      end
+
+      # shade all periods in the day
+      shadeWholeOuter(context, outerRect)
+
+    end
+
+    # save state, clip to ellipse, draw texture, restore state
+    CGContextSaveGState(context)
+    CGContextAddEllipseInRect(context, innerRect)
+    CGContextClip(context)
+    UIImage.imageNamed("evening", inBundle: NSBundle.bundleWithIdentifier('uk.pixlwave.KingPastaKit'), compatibleWithTraitCollection: nil).drawInRect(innerRect)
+    CGContextRestoreGState(context)
+
+    # outline both circles
+    CGContextStrokeEllipseInRect(context, outerRect)
+    CGContextStrokeEllipseInRect(context, innerRect)
+
+    image = UIGraphicsGetImageFromCurrentImageContext()
+    UIGraphicsEndImageContext()
+
+    image
+  end
+
+  def self.night(rect)
+    outerRect, innerRect, lineWidth = dimensions(rect)
+
+    UIGraphicsBeginImageContextWithOptions(rect.size, false, SCREEN_SCALE)
+    context = UIGraphicsGetCurrentContext()
+
     CGContextSetGrayStrokeColor(context, 0, 1)
     CGContextSetLineWidth(context, lineWidth)
 
@@ -110,15 +197,7 @@ class Clock
     UIImage.imageNamed("night", inBundle: NSBundle.bundleWithIdentifier('uk.pixlwave.KingPastaKit'), compatibleWithTraitCollection: nil).drawInRect(innerRect)
     CGContextRestoreGState(context)
     
-    currentPeriod = Period.current
-
-    if ! currentPeriod.nil?
-      # TODO: shade progress through night
-      currentPeriodLength = currentPeriod.endTime - currentPeriod.startTime
-      currentPeriodTimePassed = Time.now.strip_date.utc - currentPeriod.startTime
-      currentPeriodProgress = currentPeriodTimePassed / currentPeriodLength
-      shadeInner(context, innerRect, 2 * Math::PI * currentPeriodProgress)
-    end
+    # TODO: shade progress through night
 
     # outline both circles
     CGContextStrokeEllipseInRect(context, outerRect)
@@ -131,15 +210,11 @@ class Clock
   end
 
   def self.blank(rect)
-    # squareRect = compensate for rectangles
-    outerRect = CGRectInset(rect, OUTER_PADDING, (rect.size.height - rect.size.width) / 2 + OUTER_PADDING)
-    innerPadding = outerRect.size.width / 10
-    innerRect = CGRectInset(outerRect, innerPadding, innerPadding)
+    outerRect, innerRect, lineWidth = dimensions(rect)
 
     UIGraphicsBeginImageContextWithOptions(rect.size, false, SCREEN_SCALE)
     context = UIGraphicsGetCurrentContext()
 
-    lineWidth = outerRect.size.width / 25
     CGContextSetGrayStrokeColor(context, 0, 1)
     CGContextSetLineWidth(context, lineWidth)
 
