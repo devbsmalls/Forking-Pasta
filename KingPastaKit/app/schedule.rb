@@ -38,7 +38,7 @@ class Schedule < CDQManagedObject
   end
 
   def shows_notifications?
-    self.showsNotifications.boolValue
+    self.showsNotifications.boolValue unless self.showsNotifications.nil?
   end
 
   def shows_notifications=(bool)
