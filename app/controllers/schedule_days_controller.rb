@@ -4,13 +4,13 @@ class ScheduleDaysController < UITableViewController
   attr_accessor :schedule
 
   def save
-    cdq.save
+    cdq.save unless @schedule.name.nil?   # don't save if the schedule hasn't been named yet
 
     self.navigationController.popViewControllerAnimated(true)
   end
 
   def cancel
-    cdq.contexts.current.rollback   # would be great to just cdq.rollback
+    cdq.contexts.current.rollback
 
     self.navigationController.popViewControllerAnimated(true)
   end
