@@ -6,12 +6,8 @@ class ScheduleDetailController < UITableViewController
   def viewDidLoad
     super
 
-    if @schedule.nil?
-      @schedule = Schedule.new
-      @periods = @schedule.all_periods
-    else
-      @periods = @schedule.all_periods
-    end
+    @schedule = Schedule.new if @schedule.nil?
+    @periods = @schedule.all_periods
   end
 
   def viewWillAppear(animated)
@@ -122,18 +118,19 @@ class ScheduleDetailController < UITableViewController
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleNameCell")
       cell.nameTextField.delegate = self
       cell.nameTextField.text = @schedule.name
+      cell.nameTextField.becomeFirstResponder if @schedule.name.nil?
       
       cell
     when 1
       cell = tableView.dequeueReusableCellWithIdentifier("ScheduleDaysCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleDaysCell")
-      cell.detailTextLabel.text = schedule.days_string
+      cell.detailTextLabel.text = @schedule.days_string
       
       cell
     when 2
       cell = tableView.dequeueReusableCellWithIdentifier("ScheduleNotificationsCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleNotificationsCell")
-      cell.notificationsSwitch.on = schedule.shows_notifications?
+      cell.notificationsSwitch.on = @schedule.shows_notifications?
       
       cell
     when 3
