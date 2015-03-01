@@ -6,6 +6,7 @@ class ScheduleDetailController < UITableViewController
   def viewDidLoad
     super
 
+    @editing = true unless @schedule.nil?
     @schedule = Schedule.new if @schedule.nil?
     @periods = @schedule.all_periods
   end
@@ -85,6 +86,24 @@ class ScheduleDetailController < UITableViewController
     self.view.endEditing(true)
   end
 
+  def showDeleteConfirmation
+    self.view.endEditing(true)  # ensure any changes are merged into schedule before deleting
+
+    confirmSheet = UIAlertController.alertControllerWithTitle("Delete #{@schedule.name}?", message: "Do you really want to delete this schedule?", preferredStyle: UIAlertControllerStyleActionSheet)
+    confirmSheet.addAction(UIAlertAction.actionWithTitle("Delete", style: UIAlertActionStyleDestructive, handler: lambda { |action|
+      deleteSchedule
+    }))
+    confirmSheet.addAction(UIAlertAction.actionWithTitle("Cancel", style: UIAlertActionStyleCancel, handler: nil))
+    self.presentViewController(confirmSheet, animated: true, completion: nil)
+  end
+
+  def deleteSchedule
+    @schedule.destroy
+    cdq.save
+
+    self.navigationController.popViewControllerAnimated(true)
+  end
+
 
   #### text field delegate methods ####
   def textFieldShouldReturn(textField)
@@ -95,7 +114,7 @@ class ScheduleDetailController < UITableViewController
   #### table view delegate methods ####
 
   def numberOfSectionsInTableView(tableView)
-    4
+    @editing ? 5 : 4
   end
 
   def tableView(tableView, numberOfRowsInSection: section)
@@ -108,6 +127,8 @@ class ScheduleDetailController < UITableViewController
       else
        0
       end
+    when 4
+      1
     end
   end
 
@@ -146,6 +167,17 @@ class ScheduleDetailController < UITableViewController
       end
       
       cell
+    when 4
+      cell = tableView.dequeueReusableCellWithIdentifier("DeleteScheduleCell")
+      cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault , reuseIdentifier: "DeleteScheduleCell")
+      cell
+    end
+  end
+
+  def tableView(tableView, didSelectRowAtIndexPath: indexPath)
+    if indexPath.section == 4
+      showDeleteConfirmation
+      tableView.deselectRowAtIndexPath(indexPath, animated: true)
     end
   end
 

@@ -483,6 +483,25 @@
                                     <segue destination="J7d-fX-yok" kind="show" identifier="EditPeriodSegue" id="uJU-Nh-3ku"/>
                                 </connections>
                             </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeleteScheduleCell" id="EC9-aI-CFF">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EC9-aI-CFF" id="G0j-AC-5A1">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Schedule" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VdW-bu-rsz">
+                                            <rect key="frame" x="241" y="14" width="119" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="VdW-bu-rsz" secondAttribute="centerX" constant="-0.5" id="kch-px-BNY"/>
+                                        <constraint firstAttribute="centerY" secondItem="VdW-bu-rsz" secondAttribute="centerY" constant="-0.5" id="qUl-X0-FVL"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
                         </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="T4k-5j-BeM" id="J7P-Wh-4GL"/>
@@ -714,6 +733,25 @@
                                 <connections>
                                     <segue destination="6Bh-1W-JWr" kind="show" identifier="SetEndTimeSegue" id="ID2-a3-jau"/>
                                 </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="DeletePeriodCell" id="hDb-wH-0d2">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hDb-wH-0d2" id="x6D-LB-R3x">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2X-Qg-koL">
+                                            <rect key="frame" x="251" y="12" width="99" height="20"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="v2X-Qg-koL" secondAttribute="centerX" constant="-0.5" id="Ppa-Xj-bNb"/>
+                                        <constraint firstAttribute="centerY" secondItem="v2X-Qg-koL" secondAttribute="centerY" constant="-0.5" id="nfb-jg-Twb"/>
+                                    </constraints>
+                                </tableViewCellContentView>
                             </tableViewCell>
                         </prototypes>
                         <connections>

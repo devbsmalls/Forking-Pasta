@@ -56,6 +56,8 @@
 -(IBAction) cancel;
 -(IBAction) nameDidChange:(id) sender;
 -(IBAction) hideKeyboard;
+-(IBAction) showDeleteConfirmation;
+-(IBAction) deletePeriod;
 -(IBAction) textFieldShouldReturn:(id) textField;
 -(IBAction) numberOfSectionsInTableView:(id) tableView;
 
@@ -66,6 +68,7 @@
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewWillDisappear:(id) animated;
 -(IBAction) done;
+-(IBAction) updateHintImageView;
 -(IBAction) numberOfSectionsInTableView:(id) tableView;
 
 @end
@@ -81,6 +84,7 @@
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewWillDisappear:(id) animated;
 -(IBAction) save;
+-(IBAction) updateHintImageView;
 -(IBAction) showPeriodFromSegue:(UIStoryboardSegue*) sender;
 -(IBAction) nameDidChange:(id) sender;
 -(IBAction) notificationsSwitchDidChange:(id) sender;

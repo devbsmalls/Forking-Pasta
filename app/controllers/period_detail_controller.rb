@@ -8,7 +8,11 @@ class PeriodDetailController < UITableViewController
   def viewDidLoad
     super
 
-    self.navigationItem.title = "Edit Period" unless @period.nil?
+    unless @period.nil?
+      @editing = true
+      self.navigationItem.title = "Edit Period"
+    end
+
     @period ||= Period.new
   end
 
@@ -80,6 +84,24 @@ class PeriodDetailController < UITableViewController
     self.view.endEditing(true)
   end
 
+  def showDeleteConfirmation
+    self.view.endEditing(true)  # ensure any changes are merged into period before deleting
+
+    confirmSheet = UIAlertController.alertControllerWithTitle("Delete #{@period.name}?", message: "Do you really want to delete this period?", preferredStyle: UIAlertControllerStyleActionSheet)
+    confirmSheet.addAction(UIAlertAction.actionWithTitle("Delete", style: UIAlertActionStyleDestructive, handler: lambda { |action|
+      deletePeriod
+    }))
+    confirmSheet.addAction(UIAlertAction.actionWithTitle("Cancel", style: UIAlertActionStyleCancel, handler: nil))
+    self.presentViewController(confirmSheet, animated: true, completion: nil)
+  end
+
+  def deletePeriod
+    @period.destroy
+    cdq.save
+
+    self.navigationController.popViewControllerAnimated(true)
+  end
+
 
   #### text field delegate methods ####
   def textFieldShouldReturn(textField)
@@ -90,7 +112,7 @@ class PeriodDetailController < UITableViewController
   #### table view delegate methods ####
 
   def numberOfSectionsInTableView(tableView)
-    3
+    @editing ? 4 : 3
   end
 
   def tableView(tableView, numberOfRowsInSection: section)
@@ -99,6 +121,8 @@ class PeriodDetailController < UITableViewController
       1
     when 2
       2
+    when 3
+      1
     end
   end
 
@@ -129,6 +153,17 @@ class PeriodDetailController < UITableViewController
         cell.detailTextLabel.text = @period.endTime.utc.strftime("%H:%M") if @period.endTime
         cell
       end
+    when 3
+      cell = tableView.dequeueReusableCellWithIdentifier("DeletePeriodCell")
+      cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault , reuseIdentifier: "DeletePeriodCell")
+      cell
+    end
+  end
+
+  def tableView(tableView, didSelectRowAtIndexPath: indexPath)
+    if indexPath.section == 3
+      showDeleteConfirmation
+      tableView.deselectRowAtIndexPath(indexPath, animated: true)
     end
   end
 
