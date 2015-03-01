@@ -25,16 +25,16 @@ class Schedule < CDQManagedObject
     Time.now.strip_date > all_periods.array.first.startTime
   end
 
-  def starts
+  def start_time
     self.all_periods.array.first.startTime  # this won't work if there are any unsaved objects that don't have a start time defined
   end
 
-  def ends
+  def end_time
     self.all_periods.array.last.endTime  # can't use .last without .array - Also, array helps reliable objects while editing
   end
 
   def length
-    ends - starts
+    end_time - start_time
   end
 
   def shows_notifications?
