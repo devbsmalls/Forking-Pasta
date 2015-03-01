@@ -31,8 +31,9 @@ class Period < CDQManagedObject
   def has_overlap?
     start_during = self.schedule.periods.where(:startTime).ge(startTime).where(:startTime).lt(endTime).reject { |p| p == self}
     end_during = self.schedule.periods.where(:endTime).gt(startTime).where(:endTime).le(endTime).reject { |p| p == self}
+    before_to_after = self.schedule.periods.where(:startTime).le(self.startTime).where(:endTime).ge(self.endTime).reject { |p| p == self}
     
-    (start_during.count + end_during.count) > 0
+    (start_during.count + end_during.count + before_to_after.count) > 0
   end
 
 end
