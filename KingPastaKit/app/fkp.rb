@@ -118,14 +118,16 @@ class FkP < CDQManagedObject
               UIApplication.sharedApplication.scheduleLocalNotification(notification)
             end
 
-            notification = UILocalNotification.new
-            notification.fireDate = today + (dayOffset * 86400) + schedule.end_time.to_i
-            # notification.timeZone = ensure correct
-            notification.repeatInterval = NSWeekCalendarUnit
-            notification.alertBody = "#{schedule.name} has now finished"
-            notification.soundName = "bell.caf"
+            unless schedule.end_time.nil?
+              notification = UILocalNotification.new
+              notification.fireDate = today + (dayOffset * 86400) + schedule.end_time.to_i
+              # notification.timeZone = ensure correct
+              notification.repeatInterval = NSWeekCalendarUnit
+              notification.alertBody = "#{schedule.name} has now finished"
+              notification.soundName = "bell.caf"
 
-            UIApplication.sharedApplication.scheduleLocalNotification(notification)
+              UIApplication.sharedApplication.scheduleLocalNotification(notification)
+            end
           end
         end
       end
