@@ -5,6 +5,8 @@ class SetTimeController < UIViewController
 
   outlet :timeIntervalControl, UISegmentedControl
   outlet :timePicker, UIDatePicker
+  outlet :scheduleStartButton, UIButton
+  outlet :scheduleEndButton, UIButton
 
   def viewDidLoad
     super
@@ -23,10 +25,9 @@ class SetTimeController < UIViewController
       @timePicker.date = @period.endTime || @period.startTime || FkP.bed_time
     end
 
-    if @timePicker.date.min % 5 != 0
-      @timePicker.minuteInterval = 1
-      @timeIntervalControl.selectedSegmentIndex = 0
-    end
+    refreshTimeInterval
+    @scheduleStartButton.enabled = false if @period.schedule.start_time.nil?
+    @scheduleEndButton.enabled = false if @period.schedule.end_time.nil?
 
   end
 
@@ -41,6 +42,16 @@ class SetTimeController < UIViewController
     self.navigationController.popViewControllerAnimated(true)
   end
 
+  def refreshTimeInterval
+    if @timePicker.date.min % 5 != 0
+      @timePicker.minuteInterval = 1
+      @timeIntervalControl.selectedSegmentIndex = 0
+    else
+      @timePicker.minuteInterval = 5
+      @timeIntervalControl.selectedSegmentIndex = 1
+    end
+  end
+
   def timeIntervalDidChange
     if @timeIntervalControl.selectedSegmentIndex == 0
       @timePicker.minuteInterval = 1
@@ -48,6 +59,23 @@ class SetTimeController < UIViewController
       @timePicker.minuteInterval = 5
       @timePicker.date -= (@timePicker.date.min % 5) * 60
     end
+  end
+
+  def jumpToTime(sender)
+    case sender.tag
+    when 0
+      @timePicker.date = FkP.wake_time
+    when 1
+      @timePicker.date = @period.schedule.start_time
+    when 2
+      @timePicker.date = Time.at(12*3600).utc
+    when 3
+      @timePicker.date = @period.schedule.end_time
+    when 4
+      @timePicker.date = FkP.bed_time
+    end
+
+    refreshTimeInterval
   end
 
 end

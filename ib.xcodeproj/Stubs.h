@@ -89,6 +89,8 @@
 -(IBAction) nameDidChange:(id) sender;
 -(IBAction) notificationsSwitchDidChange:(id) sender;
 -(IBAction) hideKeyboard;
+-(IBAction) showDeleteConfirmation;
+-(IBAction) deleteSchedule;
 -(IBAction) textFieldShouldReturn:(id) textField;
 -(IBAction) numberOfSectionsInTableView:(id) tableView;
 
@@ -101,10 +103,14 @@
 
 @property IBOutlet UISegmentedControl * timeIntervalControl;
 @property IBOutlet UIDatePicker * timePicker;
+@property IBOutlet UIButton * scheduleStartButton;
+@property IBOutlet UIButton * scheduleEndButton;
 
 -(IBAction) viewDidLoad;
 -(IBAction) done;
+-(IBAction) refreshTimeInterval;
 -(IBAction) timeIntervalDidChange;
+-(IBAction) jumpToTime:(id) sender;
 
 @end
 
