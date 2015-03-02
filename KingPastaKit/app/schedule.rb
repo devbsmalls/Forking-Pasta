@@ -26,11 +26,25 @@ class Schedule < CDQManagedObject
   end
 
   def start_time
-    self.all_periods.array.first.startTime  # this won't work if there are any unsaved objects that don't have a start time defined
+    case self.periods.count
+    when 0
+      nil
+    when 1
+      self.periods.first.startTime
+    else
+      self.all_periods.array.reject { |p| p.startTime == nil }.first.startTime  # rejects unsaved objects which don't have a start time
+    end
   end
 
   def end_time
-    self.all_periods.array.last.endTime  # can't use .last without .array - Also, array helps reliable objects while editing
+    case self.periods.count
+    when 0
+      nil
+    when 1
+      self.periods.first.endTime
+    else
+      self.all_periods.array.reject { |p| p.startTime == nil }.last.endTime  # array helps reliable objects while editing and allows for .last
+    end
   end
 
   def length
