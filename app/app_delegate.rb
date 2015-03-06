@@ -32,4 +32,25 @@ class AppDelegate
     cdq.save
   end
 
+  def application(application, didReceiveLocalNotification: notification)
+    playChime if application.applicationState == UIApplicationStateActive
+  end
+
+  def playChime
+    if @notification_sound_id.nil?
+      soundURL = NSURL.fileURLWithPath(NSBundle.mainBundle.pathForResource("chime", ofType: "caf"))
+      @notification_sound_id = Pointer.new(:uint)
+      AudioServicesCreateSystemSoundID(soundURL, @notification_sound_id)
+    end
+
+    AudioServicesPlaySystemSound(@notification_sound_id[0])
+  end
+
+  def applicationWillTerminate(application)
+    unless @notification_sound_id.nil?
+      AudioServicesDisposeSystemSoundID(@notification_sound_id[0]);
+      @notification_sound_id = nil
+    end
+  end
+
 end

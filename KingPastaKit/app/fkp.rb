@@ -113,7 +113,7 @@ class FkP < CDQManagedObject
               # notification.timeZone = ensure correct
               notification.repeatInterval = NSWeekCalendarUnit
               notification.alertBody = "#{period.name} has now started"
-              notification.soundName = "bell.caf"
+              notification.soundName = "chime.caf"
 
               UIApplication.sharedApplication.scheduleLocalNotification(notification)
             end
@@ -124,7 +124,7 @@ class FkP < CDQManagedObject
               # notification.timeZone = ensure correct
               notification.repeatInterval = NSWeekCalendarUnit
               notification.alertBody = "#{schedule.name} has now finished"
-              notification.soundName = "bell.caf"
+              notification.soundName = "chime.caf"
 
               UIApplication.sharedApplication.scheduleLocalNotification(notification)
             end
