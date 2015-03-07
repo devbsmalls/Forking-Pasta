@@ -4,9 +4,12 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import <CoreGraphics/CoreGraphics.h>
+#import <AudioToolbox/AudioToolbox.h>
 
 @interface AppDelegate: UIResponder <UIApplicationDelegate>
 -(IBAction) initialSetup;
+-(IBAction) playChime;
+-(IBAction) applicationWillTerminate:(id) application;
 
 @end
 
