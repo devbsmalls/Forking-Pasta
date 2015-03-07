@@ -6,9 +6,6 @@
 @implementation AppDelegate
 @end
 
-@implementation PreferencesController
-@end
-
 @implementation EditCategoryController
 @end
 
@@ -16,6 +13,9 @@
 @end
 
 @implementation PeriodDetailController
+@end
+
+@implementation PreferencesController
 @end
 
 @implementation ScheduleController
@@ -64,5 +64,8 @@
 @end
 
 @implementation SelectCategoryCell
+@end
+
+@implementation TimePickerIntervalCell
 @end
 

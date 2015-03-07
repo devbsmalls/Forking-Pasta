@@ -27,6 +27,7 @@ class WakeBedTimeController < UIViewController
       @imageView.image = UIImage.imageNamed("evening", inBundle: NSBundle.bundleWithIdentifier('uk.pixlwave.KingPastaKit'), compatibleWithTraitCollection: nil)
     end
 
+    refreshTimeInterval
   end
 
   def done
@@ -39,6 +40,14 @@ class WakeBedTimeController < UIViewController
     cdq.save
 
     self.navigationController.popViewControllerAnimated(true)
+  end
+
+  def refreshTimeInterval
+    if @timePicker.date.min % 5 != 0 || FkP.fiveMinuteIntervals? == false
+      @timePicker.minuteInterval = 1
+    else
+      @timePicker.minuteInterval = 5
+    end
   end
 
 end

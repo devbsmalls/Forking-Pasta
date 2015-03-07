@@ -55,6 +55,14 @@ class FkP < CDQManagedObject
     defaults.registeredNotifications.boolValue unless defaults.nil?
   end
 
+  def self.fiveMinuteIntervals?
+    defaults.fiveMinuteIntervals.boolValue unless defaults.nil?
+  end
+
+  def self.fiveMinuteIntervals=(value)
+    defaults.fiveMinuteIntervals = value
+  end
+
   def self.wake_time
     defaults.wakeTime
   end

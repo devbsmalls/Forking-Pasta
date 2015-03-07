@@ -13,12 +13,6 @@
 
 @end
 
-@interface PreferencesController: UITableViewController
--(IBAction) done;
--(IBAction) viewWillAppear:(id) animated;
-
-@end
-
 @interface EditCategoryController: UITableViewController
 
 @property IBOutlet UIBarButtonItem * saveButton;
@@ -66,6 +60,14 @@
 
 @end
 
+@interface PreferencesController: UITableViewController
+-(IBAction) done;
+-(IBAction) viewWillAppear:(id) animated;
+-(IBAction) timeIntervalDidChange:(id) sender;
+-(IBAction) numberOfSectionsInTableView:(id) tableView;
+
+@end
+
 @interface ScheduleController: UITableViewController
 -(IBAction) viewDidLoad;
 -(IBAction) viewWillAppear:(id) animated;
@@ -104,7 +106,7 @@
 
 @interface SetTimeController: UIViewController
 
-@property IBOutlet UISegmentedControl * timeIntervalControl;
+@property IBOutlet UILabel * infoLabel;
 @property IBOutlet UIDatePicker * timePicker;
 @property IBOutlet UIButton * scheduleStartButton;
 @property IBOutlet UIButton * scheduleEndButton;
@@ -112,7 +114,6 @@
 -(IBAction) viewDidLoad;
 -(IBAction) done;
 -(IBAction) refreshTimeInterval;
--(IBAction) timeIntervalDidChange;
 -(IBAction) jumpToTime:(id) sender;
 
 @end
@@ -193,6 +194,12 @@
 
 @property IBOutlet UILabel * nameLabel;
 @property IBOutlet CategoryColorMark * colorMark;
+
+@end
+
+@interface TimePickerIntervalCell: UITableViewCell
+
+@property IBOutlet UISegmentedControl * timeIntervalControl;
 
 @end
 

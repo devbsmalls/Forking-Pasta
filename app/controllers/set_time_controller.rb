@@ -3,7 +3,7 @@ class SetTimeController < UIViewController
 
   attr_accessor :period, :isStart
 
-  outlet :timeIntervalControl, UISegmentedControl
+  outlet :infoLabel, UILabel
   outlet :timePicker, UIDatePicker
   outlet :scheduleStartButton, UIButton
   outlet :scheduleEndButton, UIButton
@@ -22,6 +22,7 @@ class SetTimeController < UIViewController
       @timePicker.date = @period.startTime || @period.schedule.end_time || FkP.wake_time
     else
       self.navigationItem.title = "End Time"
+      @infoLabel.text = "Set the end time for this period"
       @timePicker.date = @period.endTime || @period.startTime || FkP.bed_time
     end
 
@@ -43,21 +44,10 @@ class SetTimeController < UIViewController
   end
 
   def refreshTimeInterval
-    if @timePicker.date.min % 5 != 0
-      @timePicker.minuteInterval = 1
-      @timeIntervalControl.selectedSegmentIndex = 0
-    else
-      @timePicker.minuteInterval = 5
-      @timeIntervalControl.selectedSegmentIndex = 1
-    end
-  end
-
-  def timeIntervalDidChange
-    if @timeIntervalControl.selectedSegmentIndex == 0
+    if @timePicker.date.min % 5 != 0 || FkP.fiveMinuteIntervals? == false
       @timePicker.minuteInterval = 1
     else
       @timePicker.minuteInterval = 5
-      @timePicker.date -= (@timePicker.date.min % 5) * 60
     end
   end
 
