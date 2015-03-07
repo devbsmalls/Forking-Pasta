@@ -25,6 +25,7 @@ class PreferencesController < UITableViewController
     cdq.save
   end
 
+
   #### table view delegate methods ####
 
   def numberOfSectionsInTableView(tableView)
