@@ -13,7 +13,8 @@ Motion::Project::App.setup do |app|
   app.name = 'Forking Pasta'
   app.icons = ['Icon.png', 'Icon@2x.png', 'Icon@3x.png']
   app.version = '0.5.5'
-  app.identifier = 'uk.pixlwave.ForkingPasta'  
+  app.identifier = 'uk.pixlwave.ForkingPasta'
+  app.frameworks << 'AudioToolbox'
   app.entitlements['com.apple.security.application-groups'] = ['group.uk.pixlwave.ForkingPasta']
   # /private/var/mobile/Containers/Shared/AppGroup/697E2EAA-A35A-4BFA-939B-B1CF6C84C5D2/Forking Pasta.sqlite
 
