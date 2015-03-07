@@ -171,9 +171,9 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoM-7a-ZKJ">
-                                <rect key="frame" x="313" y="547" width="84" height="33"/>
+                                <rect key="frame" x="309" y="547" width="92" height="33"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <state key="normal" title="Categories">
+                                <state key="normal" title="Preferences">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -536,10 +536,10 @@
             </objects>
             <point key="canvasLocation" x="2561" y="336"/>
         </scene>
-        <!--Categories-->
+        <!--Preferences-->
         <scene sceneID="ddV-7x-K9j">
             <objects>
-                <tableViewController id="1GK-kb-COi" customClass="CategoryController" sceneMemberID="viewController">
+                <tableViewController id="1GK-kb-COi" customClass="PreferencesController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="nGc-sA-KF9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -592,7 +592,7 @@
                             <outlet property="delegate" destination="1GK-kb-COi" id="5Y1-Lk-haK"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Categories" id="9QG-0J-kmS">
+                    <navigationItem key="navigationItem" title="Preferences" id="9QG-0J-kmS">
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="EwV-K5-hkW">
                             <connections>
                                 <action selector="done" destination="1GK-kb-COi" id="eML-zQ-FuJ"/>

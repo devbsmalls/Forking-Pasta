@@ -6,7 +6,7 @@
 @implementation AppDelegate
 @end
 
-@implementation CategoryController
+@implementation PreferencesController
 @end
 
 @implementation EditCategoryController

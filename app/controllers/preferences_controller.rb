@@ -1,4 +1,4 @@
-class CategoryController < UITableViewController
+class PreferencesController < UITableViewController
 
   def prepareForSegue(segue, sender: sender)
     selectedIndexPath = self.tableView.indexPathForSelectedRow

@@ -13,7 +13,7 @@
 
 @end
 
-@interface CategoryController: UITableViewController
+@interface PreferencesController: UITableViewController
 -(IBAction) done;
 -(IBAction) viewWillAppear:(id) animated;
 
