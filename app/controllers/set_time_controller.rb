@@ -33,7 +33,6 @@ class SetTimeController < UIViewController
   end
 
   def done
-
     if @isStart
       @period.startTime = @timePicker.date.utc.strip_date
     else
