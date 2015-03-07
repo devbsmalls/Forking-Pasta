@@ -119,7 +119,9 @@
 
 @interface WakeBedTimeController: UIViewController
 
+@property IBOutlet UILabel * infoLabel;
 @property IBOutlet UIDatePicker * timePicker;
+@property IBOutlet UIImageView * imageView;
 
 -(IBAction) viewDidLoad;
 -(IBAction) done;

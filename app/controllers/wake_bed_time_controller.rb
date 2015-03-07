@@ -3,7 +3,9 @@ class WakeBedTimeController < UIViewController
 
   attr_accessor :isWake
 
+  outlet :infoLabel, UILabel
   outlet :timePicker, UIDatePicker
+  outlet :imageView, UIImageView
 
   def viewDidLoad
     super
@@ -17,9 +19,12 @@ class WakeBedTimeController < UIViewController
     
     if @isWake
       @timePicker.date = FkP.wake_time || Time.at(9*60*60 + 0*60 + 0).utc
+      @imageView.image = UIImage.imageNamed("morning", inBundle: NSBundle.bundleWithIdentifier('uk.pixlwave.KingPastaKit'), compatibleWithTraitCollection: nil)
     else
       self.navigationItem.title = "Bed Time"
+      @infoLabel.text = "What time do you usually go to bed?"
       @timePicker.date = FkP.bed_time || Time.at(22*60*60 + 30*60 + 0).utc
+      @imageView.image = UIImage.imageNamed("evening", inBundle: NSBundle.bundleWithIdentifier('uk.pixlwave.KingPastaKit'), compatibleWithTraitCollection: nil)
     end
 
   end
