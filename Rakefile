@@ -12,7 +12,7 @@ Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'Forking Pasta'
   app.icons = ['Icon.png', 'Icon@2x.png', 'Icon@3x.png']
-  app.version = '0.5.5'
+  app.version = '0.6'
   app.identifier = 'uk.pixlwave.ForkingPasta'
   app.frameworks << 'AudioToolbox'
   app.entitlements['com.apple.security.application-groups'] = ['group.uk.pixlwave.ForkingPasta']
