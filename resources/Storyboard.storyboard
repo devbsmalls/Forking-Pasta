@@ -121,7 +121,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="BJZ-LR-ffL"/>
                     </toolbarItems>
                     <navigationItem key="navigationItem" title="Schedules" id="QQb-m0-Ih2">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="aef-ii-XZa">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="aef-ii-XZa">
                             <connections>
                                 <action selector="done" destination="7xU-7d-jJB" id="TBZ-UZ-72g"/>
                             </connections>
@@ -551,8 +551,8 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fcu-N6-kP1" id="5fW-hr-3n5">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Picker Accuracy" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V10-WR-p49">
-                                            <rect key="frame" x="15" y="12" width="158" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Time Intervals" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V10-WR-p49">
+                                            <rect key="frame" x="15" y="12" width="102" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
@@ -628,7 +628,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Preferences" id="9QG-0J-kmS">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="EwV-K5-hkW">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="EwV-K5-hkW">
                             <connections>
                                 <action selector="done" destination="1GK-kb-COi" id="eML-zQ-FuJ"/>
                             </connections>

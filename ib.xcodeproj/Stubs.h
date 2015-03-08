@@ -126,6 +126,7 @@
 
 -(IBAction) viewDidLoad;
 -(IBAction) done;
+-(IBAction) refreshTimeInterval;
 
 @end
 

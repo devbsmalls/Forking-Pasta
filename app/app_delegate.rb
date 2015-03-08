@@ -10,6 +10,7 @@ class AppDelegate
     @window = UIWindow.alloc.initWithFrame(UIScreen.mainScreen.bounds)
     @storyboard = UIStoryboard.storyboardWithName("Storyboard", bundle: nil)
     @window.rootViewController = @storyboard.instantiateInitialViewController
+    @window.tintColor = UIColor.colorWithRed(132/255.0, green: 0.0, blue: 1.0, alpha: 1.0)
     @window.makeKeyAndVisible
 
     true
