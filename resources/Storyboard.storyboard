@@ -1027,82 +1027,105 @@
                                     <!--1970-01-01 08:00:00 +0000-->
                                 </date>
                             </datePicker>
-                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVZ-fL-39Q">
-                                <rect key="frame" x="346" y="386" width="58" height="30"/>
-                                <state key="normal" title="Bedtime">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="EeU-a8-yWw"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUw-iw-hYy">
-                                <rect key="frame" x="275" y="386" width="51" height="30"/>
-                                <state key="normal" title="Midday">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="ke2-n7-DO1"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8k-nm-b6Y">
-                                <rect key="frame" x="401" y="446" width="96" height="30"/>
-                                <state key="normal" title="Schedule End">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="A6Y-8m-zo6"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRp-sZ-Ugr">
-                                <rect key="frame" x="99" y="446" width="102" height="30"/>
-                                <state key="normal" title="Schedule Start">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="gEB-Jn-sqa"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvd-0n-9WV">
-                                <rect key="frame" x="193" y="386" width="62" height="30"/>
-                                <state key="normal" title="Wake-up">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="oFT-0k-Wsf"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set the start time for this period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9w-bb-Wab">
                                 <rect key="frame" x="179" y="99" width="243" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCM-cy-d8Q">
+                                <rect key="frame" x="0.0" y="302" width="600" height="254"/>
+                                <subviews>
+                                    <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRp-sZ-Ugr">
+                                        <rect key="frame" x="183" y="152" width="102" height="30"/>
+                                        <state key="normal" title="Schedule Start">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="gEB-Jn-sqa"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUw-iw-hYy">
+                                        <rect key="frame" x="275" y="80" width="51" height="30"/>
+                                        <state key="normal" title="Midday">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="ke2-n7-DO1"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVZ-fL-39Q">
+                                        <rect key="frame" x="351" y="80" width="58" height="30"/>
+                                        <state key="normal" title="Bedtime">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="EeU-a8-yWw"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvd-0n-9WV">
+                                        <rect key="frame" x="188" y="80" width="62" height="30"/>
+                                        <state key="normal" title="Wake-up">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="oFT-0k-Wsf"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jump to time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Gc-L7-Ts9">
+                                        <rect key="frame" x="153" y="10" width="101" height="20"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8k-nm-b6Y">
+                                        <rect key="frame" x="318" y="152" width="96" height="30"/>
+                                        <state key="normal" title="Schedule End">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="A6Y-8m-zo6"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="bvd-0n-9WV" secondAttribute="centerY" multiplier="4/3" constant="1" id="5cy-gY-Wjl"/>
+                                    <constraint firstItem="EUw-iw-hYy" firstAttribute="leading" secondItem="bvd-0n-9WV" secondAttribute="trailing" constant="25" id="6TT-nD-VlS"/>
+                                    <constraint firstItem="bvd-0n-9WV" firstAttribute="leading" secondItem="DRp-sZ-Ugr" secondAttribute="leading" constant="5" id="6dd-sY-MBy"/>
+                                    <constraint firstAttribute="centerY" secondItem="DRp-sZ-Ugr" secondAttribute="centerY" multiplier="3/4" constant="1" id="911-lg-sDl"/>
+                                    <constraint firstItem="bvd-0n-9WV" firstAttribute="leading" secondItem="4Gc-L7-Ts9" secondAttribute="leading" constant="35" id="Bi7-oL-c0m"/>
+                                    <constraint firstAttribute="centerX" secondItem="EUw-iw-hYy" secondAttribute="centerX" id="Bih-4Q-5RC"/>
+                                    <constraint firstItem="4Gc-L7-Ts9" firstAttribute="top" secondItem="tCM-cy-d8Q" secondAttribute="top" constant="10" id="aNi-nb-fk5"/>
+                                    <constraint firstItem="Y8k-nm-b6Y" firstAttribute="baseline" secondItem="DRp-sZ-Ugr" secondAttribute="baseline" id="adk-oZ-1FV"/>
+                                    <constraint firstItem="bvd-0n-9WV" firstAttribute="trailing" secondItem="DRp-sZ-Ugr" secondAttribute="trailing" constant="-5" id="fp6-eW-ffZ"/>
+                                    <constraint firstItem="bvd-0n-9WV" firstAttribute="baseline" secondItem="EUw-iw-hYy" secondAttribute="baseline" id="gUx-em-LdC"/>
+                                    <constraint firstItem="fVZ-fL-39Q" firstAttribute="leading" secondItem="EUw-iw-hYy" secondAttribute="trailing" constant="25" id="iG7-iZ-E9L"/>
+                                    <constraint firstItem="fVZ-fL-39Q" firstAttribute="trailing" secondItem="Y8k-nm-b6Y" secondAttribute="trailing" constant="-5" id="pLn-NZ-SXF"/>
+                                    <constraint firstItem="bvd-0n-9WV" firstAttribute="baseline" secondItem="fVZ-fL-39Q" secondAttribute="baseline" id="zKw-Yc-409"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fp6-eW-ffZ"/>
+                                    </mask>
+                                </variation>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Y8k-nm-b6Y" firstAttribute="baseline" secondItem="DRp-sZ-Ugr" secondAttribute="baseline" id="3qM-F7-6aH"/>
-                            <constraint firstItem="fVZ-fL-39Q" firstAttribute="leading" secondItem="EUw-iw-hYy" secondAttribute="trailing" constant="20" id="5SK-Tt-Dmh"/>
-                            <constraint firstItem="SnC-YF-v3B" firstAttribute="top" secondItem="DRp-sZ-Ugr" secondAttribute="bottom" constant="80" id="8pH-LA-JWJ"/>
+                            <constraint firstItem="rVc-eR-OxB" firstAttribute="leading" secondItem="tCM-cy-d8Q" secondAttribute="trailing" constant="-517" id="2jl-eR-nSA"/>
                             <constraint firstItem="s9w-bb-Wab" firstAttribute="top" secondItem="Wij-6t-5Ip" secondAttribute="bottom" constant="35" id="BEz-UF-Cob"/>
-                            <constraint firstItem="fVZ-fL-39Q" firstAttribute="baseline" secondItem="bvd-0n-9WV" secondAttribute="baseline" id="QvH-CT-IxI"/>
-                            <constraint firstAttribute="centerX" secondItem="DRp-sZ-Ugr" secondAttribute="centerX" multiplier="2" constant="1" id="RSf-bk-dyp"/>
+                            <constraint firstItem="SnC-YF-v3B" firstAttribute="top" secondItem="tCM-cy-d8Q" secondAttribute="bottom" id="Qp0-76-do8"/>
                             <constraint firstItem="rVc-eR-OxB" firstAttribute="leading" secondItem="Dg0-Vc-gql" secondAttribute="leading" id="TmY-5s-3Z0"/>
                             <constraint firstItem="rVc-eR-OxB" firstAttribute="top" secondItem="s9w-bb-Wab" secondAttribute="bottom" constant="20" id="WU0-Gm-5op"/>
-                            <constraint firstAttribute="centerX" secondItem="EUw-iw-hYy" secondAttribute="centerX" id="Zu5-Qc-sHH"/>
+                            <constraint firstItem="tCM-cy-d8Q" firstAttribute="leading" secondItem="Dg0-Vc-gql" secondAttribute="leading" id="aXU-ro-bms"/>
                             <constraint firstAttribute="trailing" secondItem="rVc-eR-OxB" secondAttribute="trailing" id="d2d-Po-1SH"/>
-                            <constraint firstItem="EUw-iw-hYy" firstAttribute="leading" secondItem="bvd-0n-9WV" secondAttribute="trailing" constant="20" id="fXg-01-tCq"/>
-                            <constraint firstItem="EUw-iw-hYy" firstAttribute="baseline" secondItem="bvd-0n-9WV" secondAttribute="baseline" id="hW5-om-15n"/>
                             <constraint firstAttribute="centerX" secondItem="s9w-bb-Wab" secondAttribute="centerX" id="pbq-23-ZUf"/>
-                            <constraint firstItem="DRp-sZ-Ugr" firstAttribute="top" secondItem="bvd-0n-9WV" secondAttribute="bottom" constant="30" id="yzN-CM-7en"/>
-                            <constraint firstAttribute="centerX" secondItem="Y8k-nm-b6Y" secondAttribute="centerX" multiplier="2/3" constant="1" id="zYf-At-W7w"/>
+                            <constraint firstItem="tCM-cy-d8Q" firstAttribute="top" secondItem="rVc-eR-OxB" secondAttribute="bottom" id="pc5-0b-uJ2"/>
+                            <constraint firstAttribute="trailing" secondItem="tCM-cy-d8Q" secondAttribute="trailing" id="vdb-Dv-ZVU"/>
                         </constraints>
-                        <variation key="heightClass=compact">
-                            <mask key="subviews">
-                                <exclude reference="fVZ-fL-39Q"/>
-                                <exclude reference="EUw-iw-hYy"/>
-                                <exclude reference="Y8k-nm-b6Y"/>
-                                <exclude reference="DRp-sZ-Ugr"/>
-                                <exclude reference="bvd-0n-9WV"/>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="2jl-eR-nSA"/>
                             </mask>
                         </variation>
                     </view>
