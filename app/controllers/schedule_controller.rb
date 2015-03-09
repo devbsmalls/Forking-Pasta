@@ -99,7 +99,6 @@ class ScheduleController < UITableViewController
         cell.textLabel.text = "Unnamed Schedule"
       end
       cell.detailTextLabel.text = schedule.days_string
-      cell.detailTextLabel.setNeedsLayout   # needed to properly size the label if it was originally empty 
 
       cell
     end

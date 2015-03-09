@@ -7,7 +7,7 @@ class Schedule < CDQManagedObject
   def days_string
     case days.count
     when 0
-      ""
+      " "       # space stops detailTextLabel collapsing to a size of 0 in the ScheduleController
     when 1
       days.first.name
     when 2
