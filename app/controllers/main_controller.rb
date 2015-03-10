@@ -9,9 +9,9 @@ class MainController < UIViewController
   def viewDidLoad
     super
 
-    watchView.layer.cornerRadius = 10
-    watchView.layer.borderColor = UIColor.blackColor
-    watchView.layer.borderWidth = 1
+    @watchView.layer.cornerRadius = 10
+    @watchView.layer.borderColor = UIColor.blackColor
+    @watchView.layer.borderWidth = 1
   end
 
   def viewWillAppear(animated)
