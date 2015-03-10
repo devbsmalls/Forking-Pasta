@@ -3,8 +3,11 @@ class SetTimeController < UIViewController
 
   attr_accessor :period, :isStart
 
+  LINE_WIDTH = 1 / UIScreen.mainScreen.scale
+
   outlet :infoLabel, UILabel
   outlet :timePicker, UIDatePicker
+  outlet :jumpToTimeView, UIView
   outlet :scheduleStartButton, UIButton
   outlet :scheduleEndButton, UIButton
 
@@ -26,10 +29,18 @@ class SetTimeController < UIViewController
       @timePicker.date = @period.endTime || @period.startTime || FkP.bed_time
     end
 
+    @separatorLine = UIView.alloc.initWithFrame(CGRectZero)
+    @separatorLine.backgroundColor = UIColor.lightGrayColor
+    @jumpToTimeView.addSubview(@separatorLine)
+
     refreshTimeInterval
     @scheduleStartButton.enabled = false if @period.schedule.start_time.nil?
     @scheduleEndButton.enabled = false if @period.schedule.end_time.nil?
 
+  end
+
+  def viewWillLayoutSubviews
+    @separatorLine.frame = [[0, 0], [@jumpToTimeView.frame.size.width, LINE_WIDTH]]
   end
 
   def done

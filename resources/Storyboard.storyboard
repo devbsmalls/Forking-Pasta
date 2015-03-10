@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cdM-By-5JB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cdM-By-5JB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -1026,93 +1026,115 @@
                                 <date key="date" timeIntervalSinceReferenceDate="-978278399.38992405">
                                     <!--1970-01-01 08:00:00 +0000-->
                                 </date>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="0.0" y="110" width="600" height="162"/>
+                                </variation>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Set the start time for this period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9w-bb-Wab">
                                 <rect key="frame" x="179" y="99" width="243" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
+                                <variation key="heightClass=compact" misplaced="YES">
+                                    <rect key="frame" x="179" y="99" width="243" height="0.0"/>
+                                </variation>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tCM-cy-d8Q">
                                 <rect key="frame" x="0.0" y="302" width="600" height="254"/>
                                 <subviews>
                                     <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DRp-sZ-Ugr">
-                                        <rect key="frame" x="183" y="152" width="102" height="30"/>
+                                        <rect key="frame" x="178" y="132" width="102" height="30"/>
                                         <state key="normal" title="Schedule Start">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="178" y="54" width="102" height="18"/>
+                                        </variation>
                                         <connections>
                                             <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="gEB-Jn-sqa"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUw-iw-hYy">
-                                        <rect key="frame" x="275" y="80" width="51" height="30"/>
+                                        <rect key="frame" x="275" y="67" width="51" height="30"/>
                                         <state key="normal" title="Midday">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="275" y="22" width="51" height="30"/>
+                                        </variation>
                                         <connections>
                                             <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="ke2-n7-DO1"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fVZ-fL-39Q">
-                                        <rect key="frame" x="351" y="80" width="58" height="30"/>
+                                        <rect key="frame" x="351" y="67" width="58" height="30"/>
                                         <state key="normal" title="Bedtime">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="351" y="22" width="58" height="30"/>
+                                        </variation>
                                         <connections>
                                             <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="EeU-a8-yWw"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bvd-0n-9WV">
-                                        <rect key="frame" x="188" y="80" width="62" height="30"/>
+                                        <rect key="frame" x="188" y="67" width="62" height="30"/>
                                         <state key="normal" title="Wake-up">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="188" y="28" width="62" height="18"/>
+                                        </variation>
                                         <connections>
                                             <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="oFT-0k-Wsf"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jump to time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Gc-L7-Ts9">
-                                        <rect key="frame" x="153" y="10" width="101" height="20"/>
+                                        <rect key="frame" x="148" y="22" width="101" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
+                                        <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="148" y="20" width="101" height="0.0"/>
+                                        </variation>
                                     </label>
                                     <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y8k-nm-b6Y">
-                                        <rect key="frame" x="318" y="152" width="96" height="30"/>
+                                        <rect key="frame" x="323" y="132" width="96" height="30"/>
                                         <state key="normal" title="Schedule End">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <variation key="heightClass=compact" ambiguous="YES" misplaced="YES">
+                                            <rect key="frame" x="323" y="48" width="96" height="30"/>
+                                        </variation>
                                         <connections>
                                             <action selector="jumpToTime:" destination="6Bh-1W-JWr" eventType="touchUpInside" id="A6Y-8m-zo6"/>
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="bvd-0n-9WV" secondAttribute="centerY" multiplier="4/3" constant="1" id="5cy-gY-Wjl"/>
+                                    <constraint firstItem="bvd-0n-9WV" firstAttribute="top" secondItem="4Gc-L7-Ts9" secondAttribute="bottom" priority="750" constant="25" id="0ji-aZ-VXK"/>
+                                    <constraint firstItem="DRp-sZ-Ugr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="bvd-0n-9WV" secondAttribute="bottom" constant="8" symbolic="YES" id="4I9-I6-L7d"/>
                                     <constraint firstItem="EUw-iw-hYy" firstAttribute="leading" secondItem="bvd-0n-9WV" secondAttribute="trailing" constant="25" id="6TT-nD-VlS"/>
-                                    <constraint firstItem="bvd-0n-9WV" firstAttribute="leading" secondItem="DRp-sZ-Ugr" secondAttribute="leading" constant="5" id="6dd-sY-MBy"/>
-                                    <constraint firstAttribute="centerY" secondItem="DRp-sZ-Ugr" secondAttribute="centerY" multiplier="3/4" constant="1" id="911-lg-sDl"/>
-                                    <constraint firstItem="bvd-0n-9WV" firstAttribute="leading" secondItem="4Gc-L7-Ts9" secondAttribute="leading" constant="35" id="Bi7-oL-c0m"/>
+                                    <constraint firstItem="bvd-0n-9WV" firstAttribute="leading" secondItem="DRp-sZ-Ugr" secondAttribute="leading" constant="10" id="6dd-sY-MBy"/>
+                                    <constraint firstItem="bvd-0n-9WV" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4Gc-L7-Ts9" secondAttribute="bottom" constant="8" symbolic="YES" id="Bah-gv-mw0"/>
+                                    <constraint firstItem="bvd-0n-9WV" firstAttribute="leading" secondItem="4Gc-L7-Ts9" secondAttribute="leading" priority="750" constant="40" id="Bi7-oL-c0m"/>
                                     <constraint firstAttribute="centerX" secondItem="EUw-iw-hYy" secondAttribute="centerX" id="Bih-4Q-5RC"/>
-                                    <constraint firstItem="4Gc-L7-Ts9" firstAttribute="top" secondItem="tCM-cy-d8Q" secondAttribute="top" constant="10" id="aNi-nb-fk5"/>
+                                    <constraint firstItem="4Gc-L7-Ts9" firstAttribute="top" secondItem="tCM-cy-d8Q" secondAttribute="top" priority="750" constant="22" id="NnL-EA-MeP"/>
+                                    <constraint firstItem="4Gc-L7-Ts9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tCM-cy-d8Q" secondAttribute="leading" constant="15" id="Nz2-IJ-GVG"/>
                                     <constraint firstItem="Y8k-nm-b6Y" firstAttribute="baseline" secondItem="DRp-sZ-Ugr" secondAttribute="baseline" id="adk-oZ-1FV"/>
-                                    <constraint firstItem="bvd-0n-9WV" firstAttribute="trailing" secondItem="DRp-sZ-Ugr" secondAttribute="trailing" constant="-5" id="fp6-eW-ffZ"/>
                                     <constraint firstItem="bvd-0n-9WV" firstAttribute="baseline" secondItem="EUw-iw-hYy" secondAttribute="baseline" id="gUx-em-LdC"/>
                                     <constraint firstItem="fVZ-fL-39Q" firstAttribute="leading" secondItem="EUw-iw-hYy" secondAttribute="trailing" constant="25" id="iG7-iZ-E9L"/>
-                                    <constraint firstItem="fVZ-fL-39Q" firstAttribute="trailing" secondItem="Y8k-nm-b6Y" secondAttribute="trailing" constant="-5" id="pLn-NZ-SXF"/>
+                                    <constraint firstItem="fVZ-fL-39Q" firstAttribute="trailing" secondItem="Y8k-nm-b6Y" secondAttribute="trailing" constant="-10" id="pLn-NZ-SXF"/>
+                                    <constraint firstItem="4Gc-L7-Ts9" firstAttribute="top" relation="greaterThanOrEqual" secondItem="tCM-cy-d8Q" secondAttribute="top" constant="20" symbolic="YES" id="pRH-bq-XaW"/>
+                                    <constraint firstItem="DRp-sZ-Ugr" firstAttribute="top" secondItem="bvd-0n-9WV" secondAttribute="bottom" priority="250" constant="35" id="uUS-UC-ICm"/>
+                                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="DRp-sZ-Ugr" secondAttribute="bottom" constant="20" symbolic="YES" id="xcF-nJ-lHv"/>
                                     <constraint firstItem="bvd-0n-9WV" firstAttribute="baseline" secondItem="fVZ-fL-39Q" secondAttribute="baseline" id="zKw-Yc-409"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="fp6-eW-ffZ"/>
-                                    </mask>
-                                </variation>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="rVc-eR-OxB" firstAttribute="leading" secondItem="tCM-cy-d8Q" secondAttribute="trailing" constant="-517" id="2jl-eR-nSA"/>
                             <constraint firstItem="s9w-bb-Wab" firstAttribute="top" secondItem="Wij-6t-5Ip" secondAttribute="bottom" constant="35" id="BEz-UF-Cob"/>
                             <constraint firstItem="SnC-YF-v3B" firstAttribute="top" secondItem="tCM-cy-d8Q" secondAttribute="bottom" id="Qp0-76-do8"/>
                             <constraint firstItem="rVc-eR-OxB" firstAttribute="leading" secondItem="Dg0-Vc-gql" secondAttribute="leading" id="TmY-5s-3Z0"/>
@@ -1123,9 +1145,9 @@
                             <constraint firstItem="tCM-cy-d8Q" firstAttribute="top" secondItem="rVc-eR-OxB" secondAttribute="bottom" id="pc5-0b-uJ2"/>
                             <constraint firstAttribute="trailing" secondItem="tCM-cy-d8Q" secondAttribute="trailing" id="vdb-Dv-ZVU"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="2jl-eR-nSA"/>
+                        <variation key="heightClass=compact">
+                            <mask key="subviews">
+                                <exclude reference="tCM-cy-d8Q"/>
                             </mask>
                         </variation>
                     </view>
@@ -1140,6 +1162,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="infoLabel" destination="s9w-bb-Wab" id="Asa-cc-RLj"/>
+                        <outlet property="jumpToTimeView" destination="tCM-cy-d8Q" id="FWi-Ha-lhj"/>
                         <outlet property="scheduleEndButton" destination="Y8k-nm-b6Y" id="Zt2-o6-Cjs"/>
                         <outlet property="scheduleStartButton" destination="DRp-sZ-Ugr" id="l2C-zm-CGA"/>
                         <outlet property="timePicker" destination="rVc-eR-OxB" id="oOK-2n-4uW"/>
