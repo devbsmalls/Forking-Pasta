@@ -59,8 +59,18 @@ class PeriodDetailController < UITableViewController
     if @period.startTime.nil? || @period.endTime.nil?
       valid = false
     else
-      valid = false if @period.endTime <= @period.startTime
-      valid = false if @period.has_overlap?
+      if @period.endTime == @period.startTime
+        valid = false
+        showTimeWarningOfType(:startsAtEnd)
+      elsif @period.endTime < @period.startTime
+        valid = false
+        showTimeWarningOfType(:startsAfterEnd)
+      elsif @period.has_overlap?
+        valid = false
+        showTimeWarningOfType(:overlap)
+      else
+        hideTimeWarning
+      end
     end
     
     @saveButton.enabled = valid
@@ -82,6 +92,21 @@ class PeriodDetailController < UITableViewController
     # scrollview keyboard: “Dismiss on drag”.
     # gesture recognizer cancelsTouchesInView = false
     self.view.endEditing(true)
+  end
+
+  def showTimeWarningOfType(type)
+    unless @warningCellType == type
+      @warningCellType = type
+      self.tableView.reloadSections(NSIndexSet.indexSetWithIndex(2), withRowAnimation: UITableViewRowAnimationNone)
+      # self.tableView.insertRowsAtIndexPaths([NSIndexPath.indexPathForRow(2, inSection: 2)], withRowAnimation: UITableViewRowAnimationFade)
+    end
+  end
+
+  def hideTimeWarning
+    unless @warningCellType.nil?
+      @warningCellType = nil
+      self.tableView.reloadSections(NSIndexSet.indexSetWithIndex(2), withRowAnimation: UITableViewRowAnimationNone)
+    end
   end
 
   def showDeleteConfirmation
@@ -120,7 +145,7 @@ class PeriodDetailController < UITableViewController
     when 0..1
       1
     when 2
-      2
+      @warningCellType.nil? ? 2 : 3
     when 3
       1
     end
@@ -146,11 +171,33 @@ class PeriodDetailController < UITableViewController
         cell = tableView.dequeueReusableCellWithIdentifier("PeriodStartTimeCell")
         cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodStartTimeCell")
         cell.detailTextLabel.text = @period.startTime.utc.strftime("%H:%M") if @period.startTime
+        
+        @normalTextColor ||= cell.detailTextLabel.textColor
+        cell.detailTextLabel.textColor = @warningCellType.nil? ? @normalTextColor : UIColor.redColor
+        
         cell
       when 1
         cell = tableView.dequeueReusableCellWithIdentifier("PeriodEndTimeCell")
         cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodEndTimeCell")
         cell.detailTextLabel.text = @period.endTime.utc.strftime("%H:%M") if @period.endTime
+        
+        @normalTextColor ||= cell.detailTextLabel.textColor
+        cell.detailTextLabel.textColor = @warningCellType.nil? ? @normalTextColor : UIColor.redColor
+        
+        cell
+      when 2
+        cell = tableView.dequeueReusableCellWithIdentifier("PeriodTimeWarningCell")
+        cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodTimeWarningCell")
+        
+        case @warningCellType
+        when :startsAtEnd
+          cell.warningLabel.text = "The period cannot finish when it starts"
+        when :startsAfterEnd
+          cell.warningLabel.text = "The start time occurs after the end time"
+        when :overlap
+          cell.warningLabel.text = "Period overlaps with another period"
+        end
+        
         cell
       end
     when 3

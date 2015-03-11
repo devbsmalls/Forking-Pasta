@@ -53,6 +53,8 @@
 -(IBAction) cancel;
 -(IBAction) nameDidChange:(id) sender;
 -(IBAction) hideKeyboard;
+-(IBAction) showTimeWarning;
+-(IBAction) hideTimeWarning;
 -(IBAction) showDeleteConfirmation;
 -(IBAction) deletePeriod;
 -(IBAction) textFieldShouldReturn:(id) textField;
@@ -113,6 +115,7 @@
 @property IBOutlet UIButton * scheduleEndButton;
 
 -(IBAction) viewDidLoad;
+-(IBAction) viewWillLayoutSubviews;
 -(IBAction) done;
 -(IBAction) refreshTimeInterval;
 -(IBAction) jumpToTime:(id) sender;
@@ -183,6 +186,12 @@
 @interface PeriodNameCell: UITableViewCell
 
 @property IBOutlet UITextField * nameTextField;
+
+@end
+
+@interface PeriodTimeWarningCell: UITableViewCell
+
+@property IBOutlet UILabel * warningLabel;
 
 @end
 

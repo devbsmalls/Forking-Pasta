@@ -60,6 +60,9 @@
 @implementation PeriodNameCell
 @end
 
+@implementation PeriodTimeWarningCell
+@end
+
 @implementation ScheduleNotificationsCell
 @end
 
