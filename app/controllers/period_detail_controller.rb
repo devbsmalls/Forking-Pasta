@@ -14,6 +14,7 @@ class PeriodDetailController < UITableViewController
     end
 
     @period ||= Period.new
+    @warningTextColor ||= UIColor.alloc.initWithHue(359/360.0, saturation: 0.75, brightness: 1.0, alpha: 1.0)
   end
 
   def viewWillAppear(animated)
@@ -173,7 +174,7 @@ class PeriodDetailController < UITableViewController
         cell.detailTextLabel.text = @period.startTime.utc.strftime("%H:%M") if @period.startTime
         
         @normalTextColor ||= cell.detailTextLabel.textColor
-        cell.detailTextLabel.textColor = @warningCellType.nil? ? @normalTextColor : UIColor.redColor
+        cell.detailTextLabel.textColor = @warningCellType.nil? ? @normalTextColor : @warningTextColor
         
         cell
       when 1
@@ -182,7 +183,7 @@ class PeriodDetailController < UITableViewController
         cell.detailTextLabel.text = @period.endTime.utc.strftime("%H:%M") if @period.endTime
         
         @normalTextColor ||= cell.detailTextLabel.textColor
-        cell.detailTextLabel.textColor = @warningCellType.nil? ? @normalTextColor : UIColor.redColor
+        cell.detailTextLabel.textColor = @warningCellType.nil? ? @normalTextColor : @warningTextColor
         
         cell
       when 2
@@ -197,7 +198,7 @@ class PeriodDetailController < UITableViewController
         when :overlap
           cell.warningLabel.text = "Period overlaps with another period"
         end
-        
+
         cell
       end
     when 3
