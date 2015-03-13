@@ -768,26 +768,40 @@
                                     <segue destination="6Bh-1W-JWr" kind="show" identifier="SetEndTimeSegue" id="ID2-a3-jau"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PeriodTimeWarningCell" rowHeight="30" id="hDb-wH-0d2" customClass="PeriodTimeWarningCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PeriodTimeWarningCell" id="hDb-wH-0d2" customClass="PeriodTimeWarningCell">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hDb-wH-0d2" id="x6D-LB-R3x">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected times are invalid!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2X-Qg-koL">
-                                            <rect key="frame" x="227" y="8" width="147" height="13"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <color key="textColor" red="0.98666101694107056" green="0.14698208868503571" blue="0.20481885969638824" alpha="1" colorSpace="calibratedRGB"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5pG-m2-fcC">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aeR-pB-fTa">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected times are invalid!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v2X-Qg-koL">
+                                                        <rect key="frame" x="216" y="13" width="169" height="17"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <color key="textColor" red="0.98666101694107056" green="0.14698208868503571" blue="0.20481885969638824" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="centerX" secondItem="v2X-Qg-koL" secondAttribute="centerX" constant="-0.5" id="85g-e6-f6X"/>
+                                                    <constraint firstAttribute="centerY" secondItem="v2X-Qg-koL" secondAttribute="centerY" id="bqz-h2-9Rw"/>
+                                                </constraints>
+                                            </view>
+                                            <blurEffect style="extraLight"/>
+                                        </visualEffectView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="centerX" secondItem="v2X-Qg-koL" secondAttribute="centerX" id="Ppa-Xj-bNb"/>
-                                        <constraint firstItem="v2X-Qg-koL" firstAttribute="top" secondItem="x6D-LB-R3x" secondAttribute="topMargin" id="asa-cx-wSy"/>
-                                        <constraint firstItem="v2X-Qg-koL" firstAttribute="bottom" secondItem="x6D-LB-R3x" secondAttribute="bottomMargin" id="ng5-BT-so6"/>
+                                        <constraint firstItem="5pG-m2-fcC" firstAttribute="leading" secondItem="x6D-LB-R3x" secondAttribute="leading" id="Ecj-TT-vU2"/>
+                                        <constraint firstItem="5pG-m2-fcC" firstAttribute="top" secondItem="x6D-LB-R3x" secondAttribute="top" id="HYB-h3-knE"/>
+                                        <constraint firstAttribute="bottom" secondItem="5pG-m2-fcC" secondAttribute="bottom" id="LC7-E5-CJY"/>
+                                        <constraint firstAttribute="trailing" secondItem="5pG-m2-fcC" secondAttribute="trailing" id="bmX-ql-T2D"/>
                                     </constraints>
                                 </tableViewCellContentView>
-                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="warningLabel" destination="v2X-Qg-koL" id="KL8-xb-Tba"/>
                                 </connections>
@@ -842,7 +856,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3258" y="336"/>
+            <point key="canvasLocation" x="3258" y="335"/>
         </scene>
         <!--Category-->
         <scene sceneID="HCs-Uj-T2s">

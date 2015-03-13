@@ -53,7 +53,7 @@
 -(IBAction) cancel;
 -(IBAction) nameDidChange:(id) sender;
 -(IBAction) hideKeyboard;
--(IBAction) showTimeWarning;
+-(IBAction) showTimeWarningOfType:(id) type;
 -(IBAction) hideTimeWarning;
 -(IBAction) showDeleteConfirmation;
 -(IBAction) deletePeriod;
