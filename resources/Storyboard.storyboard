@@ -1214,6 +1214,8 @@
                     <connections>
                         <outlet property="infoLabel" destination="s9w-bb-Wab" id="Asa-cc-RLj"/>
                         <outlet property="jumpToTimeView" destination="EHP-hC-Uzc" id="2Dp-Hy-je1"/>
+                        <outlet property="scheduleEndButton" destination="bGf-9b-tlW" id="SfG-0L-8PK"/>
+                        <outlet property="scheduleStartButton" destination="2vS-oS-QnP" id="7XL-sE-bmq"/>
                         <outlet property="timePicker" destination="rVc-eR-OxB" id="oOK-2n-4uW"/>
                     </connections>
                 </viewController>
