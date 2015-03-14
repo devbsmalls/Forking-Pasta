@@ -169,10 +169,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forking Pasta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcl-pi-Joh">
-                                <rect key="frame" x="218" y="65" width="164" height="39"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="1hm-nY-OJA"/>
-                                </constraints>
+                                <rect key="frame" x="218" y="20" width="164" height="155"/>
                                 <fontDescription key="fontDescription" name="Lora-Regular" family="Lora" pointSize="26"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -248,6 +245,7 @@
                         <constraints>
                             <constraint firstItem="qoM-7a-ZKJ" firstAttribute="baseline" secondItem="TUg-9K-qbd" secondAttribute="baseline" id="0bu-jH-eal"/>
                             <constraint firstAttribute="centerY" secondItem="fzP-aQ-EF4" secondAttribute="centerY" id="4Gs-77-0Iw"/>
+                            <constraint firstItem="bcl-pi-Joh" firstAttribute="top" secondItem="4iK-t7-adV" secondAttribute="top" id="6nT-8e-67O"/>
                             <constraint firstAttribute="centerX" secondItem="bcl-pi-Joh" secondAttribute="centerX" multiplier="2/3" id="CdC-tR-bqA"/>
                             <constraint firstAttribute="centerX" secondItem="qoM-7a-ZKJ" secondAttribute="centerX" multiplier="2/3" constant="-55" id="DPt-mB-UbP">
                                 <variation key="heightClass=compact" constant="-40"/>
@@ -255,12 +253,12 @@
                             <constraint firstAttribute="centerX" secondItem="TUg-9K-qbd" secondAttribute="centerX" multiplier="2/3" constant="54.5" id="EjE-pn-8oi">
                                 <variation key="heightClass=compact" constant="40"/>
                             </constraint>
+                            <constraint firstItem="fzP-aQ-EF4" firstAttribute="top" secondItem="bcl-pi-Joh" secondAttribute="bottom" id="HqE-sg-hZv"/>
                             <constraint firstAttribute="bottom" secondItem="TUg-9K-qbd" secondAttribute="bottom" constant="20" symbolic="YES" id="Hz0-AM-OGb"/>
                             <constraint firstAttribute="centerX" secondItem="TUg-9K-qbd" secondAttribute="centerX" constant="55" id="Kq4-kJ-0Kh"/>
                             <constraint firstItem="fzP-aQ-EF4" firstAttribute="centerX" secondItem="qW5-X5-1VD" secondAttribute="centerX" multiplier="0.6" id="ULR-Yc-aZs"/>
                             <constraint firstAttribute="centerX" secondItem="fzP-aQ-EF4" secondAttribute="centerX" id="kQ8-4G-NSZ"/>
                             <constraint firstAttribute="centerX" secondItem="qoM-7a-ZKJ" secondAttribute="centerX" constant="-55" id="n3Q-Lj-h44"/>
-                            <constraint firstItem="bcl-pi-Joh" firstAttribute="top" secondItem="4iK-t7-adV" secondAttribute="bottom" constant="45" id="nq8-He-WX5"/>
                             <constraint firstItem="bcl-pi-Joh" firstAttribute="centerX" secondItem="qW5-X5-1VD" secondAttribute="centerX" id="sTf-XZ-T7M"/>
                             <constraint firstAttribute="centerY" secondItem="TUg-9K-qbd" secondAttribute="centerY" constant="-101.5" id="xSR-Tc-QnC">
                                 <variation key="heightClass=compact" constant="-60"/>
@@ -281,10 +279,11 @@
                         </variation>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
+                                <exclude reference="6nT-8e-67O"/>
                                 <include reference="CdC-tR-bqA"/>
-                                <exclude reference="nq8-He-WX5"/>
                                 <exclude reference="sTf-XZ-T7M"/>
                                 <include reference="xt7-ih-dpk"/>
+                                <exclude reference="HqE-sg-hZv"/>
                                 <include reference="ULR-Yc-aZs"/>
                                 <exclude reference="kQ8-4G-NSZ"/>
                                 <include reference="EjE-pn-8oi"/>
