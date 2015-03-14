@@ -7,7 +7,7 @@ class SetTimeController < UIViewController
 
   outlet :infoLabel, UILabel
   outlet :timePicker, UIDatePicker
-  outlet :jumpToTimeView, UIView
+  outlet :jumpToTimeView, UIVisualEffectView
   outlet :scheduleStartButton, UIButton
   outlet :scheduleEndButton, UIButton
 

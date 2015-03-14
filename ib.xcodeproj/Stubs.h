@@ -110,7 +110,7 @@
 
 @property IBOutlet UILabel * infoLabel;
 @property IBOutlet UIDatePicker * timePicker;
-@property IBOutlet UIView * jumpToTimeView;
+@property IBOutlet UIVisualEffectView * jumpToTimeView;
 @property IBOutlet UIButton * scheduleStartButton;
 @property IBOutlet UIButton * scheduleEndButton;
 
