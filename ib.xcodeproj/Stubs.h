@@ -126,9 +126,11 @@
 
 @property IBOutlet UILabel * infoLabel;
 @property IBOutlet UIDatePicker * timePicker;
-@property IBOutlet UIImageView * imageView;
+@property IBOutlet UIVisualEffectView * bottomView;
+@property IBOutlet UIImageView * embossImageView;
 
 -(IBAction) viewDidLoad;
+-(IBAction) viewWillLayoutSubviews;
 -(IBAction) done;
 -(IBAction) refreshTimeInterval;
 

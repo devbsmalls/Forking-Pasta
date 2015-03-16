@@ -3,9 +3,12 @@ class WakeBedTimeController < UIViewController
 
   attr_accessor :isWake
 
+  LINE_WIDTH = 1 / UIScreen.mainScreen.scale
+
   outlet :infoLabel, UILabel
   outlet :timePicker, UIDatePicker
-  outlet :imageView, UIImageView
+  outlet :bottomView, UIVisualEffectView
+  outlet :embossImageView, UIImageView
 
   def viewDidLoad
     super
@@ -19,19 +22,31 @@ class WakeBedTimeController < UIViewController
     
     if @isWake
       @timePicker.date = FkP.wake_time || Time.at(9*60*60 + 0*60 + 0).utc
-      @imageView.image = UIImage.imageNamed("morning", inBundle: NSBundle.bundleWithIdentifier('uk.pixlwave.KingPastaKit'), compatibleWithTraitCollection: nil)
     else
       self.navigationItem.title = "Bed Time"
       @infoLabel.text = "What time do you usually go to bed?"
       @timePicker.date = FkP.bed_time || Time.at(22*60*60 + 30*60 + 0).utc
-      @imageView.image = UIImage.imageNamed("evening", inBundle: NSBundle.bundleWithIdentifier('uk.pixlwave.KingPastaKit'), compatibleWithTraitCollection: nil)
+    end
+
+    @separatorLine = UIView.alloc.initWithFrame(CGRectZero)
+    @separatorLine.backgroundColor = UIColor.lightGrayColor
+    @bottomView.addSubview(@separatorLine)
+    
+    case UIScreen.mainScreen.bounds.size.width
+    when 375, 667
+      @embossImageView.image = UIImage.imageNamed("icon_emboss_4.7")
+    when 414, 736
+      @embossImageView.image = UIImage.imageNamed("icon_emboss_5.5")
     end
 
     refreshTimeInterval
   end
 
-  def done
+  def viewWillLayoutSubviews
+    @separatorLine.frame = [[0, 0], [@bottomView.frame.size.width, LINE_WIDTH]]
+  end
 
+  def done
     if @isWake
       FkP.wake_time = @timePicker.date.utc.strip_date
     else

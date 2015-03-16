@@ -1236,7 +1236,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="5" useCurrentDate="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tAh-f2-z9p">
-                                <rect key="frame" x="0.0" y="135" width="600" height="162"/>
+                                <rect key="frame" x="0.0" y="123" width="600" height="162"/>
                                 <date key="date" timeIntervalSinceReferenceDate="-978278399.38992405">
                                     <!--1970-01-01 08:00:00 +0000-->
                                 </date>
@@ -1246,22 +1246,46 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WTv-wU-mDa">
-                                <rect key="frame" x="0.0" y="297" width="600" height="259"/>
-                            </imageView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aCY-Mb-Akd">
+                                <rect key="frame" x="0.0" y="293" width="600" height="263"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fq4-xJ-eoM">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="263"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" image="icon_emboss" translatesAutoresizingMaskIntoConstraints="NO" id="uYE-7B-Qvo">
+                                            <rect key="frame" x="240" y="72" width="120" height="120"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="uYE-7B-Qvo" secondAttribute="height" multiplier="1:1" id="cgE-0R-h8M"/>
+                                            </constraints>
+                                        </imageView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerX" secondItem="uYE-7B-Qvo" secondAttribute="centerX" id="BZv-ec-Asm"/>
+                                        <constraint firstItem="uYE-7B-Qvo" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fq4-xJ-eoM" secondAttribute="top" constant="20" symbolic="YES" id="gXd-Zn-Vx5"/>
+                                        <constraint firstAttribute="centerY" secondItem="uYE-7B-Qvo" secondAttribute="centerY" id="jwc-8n-Sho"/>
+                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="uYE-7B-Qvo" secondAttribute="bottom" constant="20" symbolic="YES" id="qxU-FU-gZ8"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="extraLight"/>
+                            </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="3Gt-7Y-l1e" firstAttribute="top" secondItem="aCY-Mb-Akd" secondAttribute="bottom" id="1hZ-tT-Tl5"/>
                             <constraint firstAttribute="centerX" secondItem="4c5-ix-quf" secondAttribute="centerX" id="8FQ-J0-dOr"/>
-                            <constraint firstItem="WTv-wU-mDa" firstAttribute="trailing" secondItem="n4z-ye-eG6" secondAttribute="trailing" id="Cp9-7w-9xg"/>
+                            <constraint firstItem="aCY-Mb-Akd" firstAttribute="leading" secondItem="n4z-ye-eG6" secondAttribute="leading" id="A5B-OB-xry"/>
+                            <constraint firstAttribute="trailing" secondItem="aCY-Mb-Akd" secondAttribute="trailing" id="AXq-Xo-qgo"/>
                             <constraint firstItem="tAh-f2-z9p" firstAttribute="leading" secondItem="n4z-ye-eG6" secondAttribute="leading" id="FVg-aN-sq7"/>
                             <constraint firstAttribute="trailing" secondItem="tAh-f2-z9p" secondAttribute="trailing" id="OmY-C7-W8H"/>
-                            <constraint firstItem="WTv-wU-mDa" firstAttribute="leading" secondItem="n4z-ye-eG6" secondAttribute="leading" id="Ua1-as-9TJ"/>
                             <constraint firstItem="4c5-ix-quf" firstAttribute="top" secondItem="wKf-9o-jrJ" secondAttribute="bottom" constant="30" id="Ztu-mM-XeP"/>
-                            <constraint firstItem="tAh-f2-z9p" firstAttribute="top" secondItem="4c5-ix-quf" secondAttribute="bottom" constant="20" id="bjs-SO-Yxa"/>
-                            <constraint firstItem="WTv-wU-mDa" firstAttribute="top" secondItem="tAh-f2-z9p" secondAttribute="bottom" id="nUS-l5-Ptb"/>
-                            <constraint firstItem="3Gt-7Y-l1e" firstAttribute="top" secondItem="WTv-wU-mDa" secondAttribute="bottom" id="uy8-yS-yOS"/>
+                            <constraint firstItem="tAh-f2-z9p" firstAttribute="top" secondItem="4c5-ix-quf" secondAttribute="bottom" constant="8" symbolic="YES" id="bjs-SO-Yxa"/>
+                            <constraint firstItem="aCY-Mb-Akd" firstAttribute="top" secondItem="tAh-f2-z9p" secondAttribute="bottom" constant="8" symbolic="YES" id="yFg-qy-Zat"/>
                         </constraints>
+                        <variation key="heightClass=compact">
+                            <mask key="subviews">
+                                <exclude reference="aCY-Mb-Akd"/>
+                            </mask>
+                        </variation>
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Wake-up Time" id="dBg-8F-WKA">
@@ -1271,9 +1295,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="imageView" destination="WTv-wU-mDa" id="Taw-Sy-jSf"/>
+                        <outlet property="bottomView" destination="aCY-Mb-Akd" id="GlC-mx-TUB"/>
+                        <outlet property="embossImageView" destination="uYE-7B-Qvo" id="wIs-aK-ebu"/>
                         <outlet property="infoLabel" destination="4c5-ix-quf" id="fH9-kr-axv"/>
                         <outlet property="timePicker" destination="tAh-f2-z9p" id="eC8-2K-Baf"/>
                     </connections>
@@ -1283,6 +1307,9 @@
             <point key="canvasLocation" x="2561" y="-373"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="icon_emboss" width="120" height="120"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="h5O-By-gr4"/>
         <segue reference="sHC-CN-eXz"/>
