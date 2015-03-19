@@ -21,6 +21,11 @@ Motion::Project::App.setup do |app|
 
   app.target('../KingPastaKit', :framework)
 
-  # development only
-  app.provisioning_profile = '/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_Widget_development.mobileprovision'
+  app.development do
+    app.provisioning_profile = '/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_Widget_development.mobileprovision'
+  end
+
+  app.release do
+    app.provisioning_profile = '/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_Widget.mobileprovision'
+  end
 end
