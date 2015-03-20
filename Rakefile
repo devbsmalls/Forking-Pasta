@@ -11,7 +11,7 @@ end
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'Forking Pasta'
-  app.icons = ['Icon.png', 'Icon@2x.png', 'Icon@3x.png']
+  app.icons = ['Icon.png', 'Icon@2x.png', 'Icon@3x.png', 'Icon-Settings@2x', 'Icon-Settings@3x', 'Icon-Spotlight@2x', 'Icon-Spotlight@3x']
   app.version = '0.9'
   app.identifier = 'uk.pixlwave.ForkingPasta'
   app.frameworks << 'AudioToolbox'
