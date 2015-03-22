@@ -8,6 +8,8 @@ class TodayViewController < UIViewController
   def viewDidLoad
     super
 
+    FkP.setup
+
     @periodNameLabel.text = "Loading..."
     @timeRemainingLabel.text = ""
   end
