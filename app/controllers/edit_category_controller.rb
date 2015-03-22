@@ -27,7 +27,6 @@ class EditCategoryController < UITableViewController
 
   def nameDidChange(sender)
     @category.name = sender.text
-    # validate
   end
 
   def hideKeyboard
@@ -70,7 +69,7 @@ class EditCategoryController < UITableViewController
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "CategoryColorCell")
       
       color = @colors[indexPath.row]
-      if compareColors(@category.color, color[:value])
+      if @category.colorIndex == indexPath.row
         cell.accessoryType = UITableViewCellAccessoryCheckmark
         @selectedIndexPath = indexPath
       end
@@ -85,26 +84,12 @@ class EditCategoryController < UITableViewController
     if indexPath.section == 1
       tableView.cellForRowAtIndexPath(@selectedIndexPath).accessoryType = UITableViewCellAccessoryNone
 
-      @category.color = @colors[indexPath.row][:value]
+      @category.colorIndex = indexPath.row
       tableView.cellForRowAtIndexPath(indexPath).accessoryType = UITableViewCellAccessoryCheckmark
       @selectedIndexPath = indexPath
 
       tableView.deselectRowAtIndexPath(indexPath, animated: true)
-
-      # validate??
     end
-  end
-
-  def compareColors(c1, c2)
-    cc1 = CGColorGetComponents(c1.CGColor)
-    cc2 = CGColorGetComponents(c2.CGColor)
-    
-    value = true
-    value = false if cc1[0].round(3) != cc2[0].round(3)
-    value = false if cc1[1].round(3) != cc2[1].round(3)
-    value = false if cc1[2].round(3) != cc2[2].round(3)
-
-    value
   end
 
 end
