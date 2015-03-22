@@ -4,7 +4,7 @@ class ScheduleDaysController < UITableViewController
   attr_accessor :schedule
 
   def save
-    cdq.save unless @schedule.name.nil?   # don't save if the schedule hasn't been named yet
+    FkP.save unless @schedule.name.nil?   # don't save if the schedule hasn't been named yet
 
     self.navigationController.popViewControllerAnimated(true)
   end
@@ -29,7 +29,7 @@ class ScheduleDaysController < UITableViewController
     day = Day.wday(indexPath.row)
     cell.textLabel.text = day.name
 
-    cell.accessoryType = UITableViewCellAccessoryCheckmark if @schedule.days.include?(day)
+    cell.accessoryType = UITableViewCellAccessoryCheckmark if @schedule.days.all.include?(day)
 
     cell
   end

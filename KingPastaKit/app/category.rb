@@ -1,4 +1,17 @@
-class Category < CDQManagedObject
+class Category
+  include MotionModel::Model
+  include MotionModel::ArrayModelAdapter
+  include MotionModel::Validatable
+
+  columns :name => :string,
+          :index => :integer,
+          :colorIndex => :integer
+
+  # validates :name, :presence => true
+  # validates :index, :presence => true
+  # validates :colorIndex, :presence => true
+
+  has_many :periods
 
   COLORS = [
     {name: "Blue", value: UIColor.colorWithRed(0.557, green:0.910, blue:1.000, alpha:1.0)},
@@ -10,6 +23,10 @@ class Category < CDQManagedObject
 
   FREE_COLOR = UIColor.darkGrayColor
   NIGHT_COLOR = UIColor.colorWithRed(0.0, green:0.1, blue:0.3, alpha:1.0)
+
+  def color
+    COLORS[self.colorIndex][:value]
+  end
 
   def cgColor
     color.CGColor

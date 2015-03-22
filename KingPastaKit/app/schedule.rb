@@ -1,7 +1,19 @@
-class Schedule < CDQManagedObject
+class Schedule
+  include MotionModel::Model
+  include MotionModel::ArrayModelAdapter
+  include MotionModel::Validatable
+
+  columns :name => { :type => :string, :default => "" },
+          :showsNotifications => { :type => :boolean, :default => false }
+
+  # validates :name, :presence => true
+  # validates :showsNotifications, :presence => true
+
+  has_many :days
+  has_many :periods
 
   def all_periods
-    self.periods.sort_by(:startTime)
+    self.periods.order(:startTime)
   end
 
   def days_string
@@ -11,18 +23,18 @@ class Schedule < CDQManagedObject
     when 1
       days.first.name
     when 2
-      days_arr = days.sort_by(:dayOfWeek).array
+      days_arr = days.order(:dayOfWeek).all
       days_arr = days_arr.reverse if days_arr[0].dayOfWeek == 0 && days_arr[1].dayOfWeek == 6   # puts days 0 & 6 in running order
       days_arr.map { |day| day.name }.join(" & ")
     else
-      days_arr = days.sort_by(:dayOfWeek).array
+      days_arr = days.order(:dayOfWeek).all
       days_arr.take(days_arr.count - 1).map { |day| Day.shortSymbols[day.dayOfWeek] }.join(", ") + " & #{Day.shortSymbols[days_arr.last.dayOfWeek]}"
     end
   end
 
   def started?
     return false if all_periods.count < 1
-    Time.now.strip_date > all_periods.array.first.startTime
+    Time.now.strip_date > all_periods.all.first.startTime
   end
 
   def start_time
@@ -32,7 +44,7 @@ class Schedule < CDQManagedObject
     when 1
       self.periods.first.startTime
     else
-      self.all_periods.array.reject { |p| p.startTime == nil }.first.startTime  # rejects unsaved objects which don't have a start time
+      self.all_periods.all.reject { |p| p.startTime == nil }.first.startTime  # rejects unsaved objects which don't have a start time
     end
   end
 
@@ -43,7 +55,7 @@ class Schedule < CDQManagedObject
     when 1
       self.periods.first.endTime
     else
-      self.all_periods.array.reject { |p| p.startTime == nil }.last.endTime  # array helps reliable objects while editing and allows for .last
+      self.all_periods.all.reject { |p| p.startTime == nil }.last.endTime  # array helps reliable objects while editing and allows for .last
     end
   end
 
@@ -52,7 +64,7 @@ class Schedule < CDQManagedObject
   end
 
   def shows_notifications?
-    self.showsNotifications.boolValue unless self.showsNotifications.nil?
+    self.showsNotifications unless self.showsNotifications.nil?
   end
 
   def shows_notifications=(bool)

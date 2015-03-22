@@ -22,7 +22,7 @@ class PreferencesController < UITableViewController
 
   def timeIntervalDidChange(sender)
     FkP.fiveMinuteIntervals = sender.selectedSegmentIndex
-    cdq.save
+    FkP.save
   end
 
 

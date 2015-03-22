@@ -1,4 +1,15 @@
-class Day < CDQManagedObject
+class Day
+  include MotionModel::Model
+  include MotionModel::ArrayModelAdapter
+  include MotionModel::Validatable
+
+  columns :name => :string,
+          :dayOfWeek => :integer
+
+  # validates :name, :presence => true
+  # validates :dayOfWeek, :presence => true
+  
+  belongs_to :schedule
 
   def self.symbols
     @@daySymbols ||= NSDateFormatter.new.weekdaySymbols.rotate(NSCalendar.currentCalendar.firstWeekday - 1)

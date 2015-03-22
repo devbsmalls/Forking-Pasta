@@ -7,8 +7,8 @@ class ScheduleDetailController < UITableViewController
     super
 
     @editing = true unless @schedule.nil?
-    @schedule = Schedule.new if @schedule.nil?
-    @periods = @schedule.all_periods
+    @schedule = Schedule.create if @schedule.nil?
+    @periods = @schedule.all_periods.all
   end
 
   def viewWillAppear(animated)
@@ -18,13 +18,15 @@ class ScheduleDetailController < UITableViewController
     updateHintImageView
 
     if @needsReload
+      @periods = @schedule.all_periods.all
       self.tableView.reloadData
       @needsReload = false
     end
 
-    if @showIndexPath
-      self.tableView.scrollToRowAtIndexPath(@showIndexPath, atScrollPosition: UITableViewScrollPositionMiddle, animated: false)
-      @showIndexPath = nil
+    if @showPeriod
+      indexPath = NSIndexPath.indexPathForRow(@periods.index(@showPeriod), inSection: 3)
+      self.tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: UITableViewScrollPositionMiddle, animated: false)
+      @showPeriod = nil
     end
   end
 
@@ -69,12 +71,12 @@ class ScheduleDetailController < UITableViewController
 
   ib_action :showPeriodFromSegue, UIStoryboardSegue
   def showPeriodFromSegue(segue)
-    @showIndexPath = NSIndexPath.indexPathForRow(@periods.array.index(segue.sourceViewController.period), inSection: 3) if segue.sourceViewController.new_period
+    @showPeriod = segue.sourceViewController.period if segue.sourceViewController.new_period
   end
 
   def nameDidChange(sender)
     @schedule.name = sender.text
-    cdq.save    # could this save unwanted things?
+    FkP.save    # could this save unwanted things?
   end
 
   def notificationsSwitchDidChange(sender)
@@ -99,7 +101,7 @@ class ScheduleDetailController < UITableViewController
 
   def deleteSchedule
     @schedule.destroy
-    cdq.save
+    FkP.save
 
     self.navigationController.popViewControllerAnimated(true)
   end
@@ -188,7 +190,7 @@ class ScheduleDetailController < UITableViewController
   def tableView(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
     if indexPath.section == 3
       @periods[indexPath.row].destroy
-      cdq.save
+      FkP.save
       
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimationFade) if editingStyle == UITableViewCellEditingStyleDelete
       updateHintImageView

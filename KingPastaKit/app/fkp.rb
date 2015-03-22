@@ -1,4 +1,52 @@
-class FkP < CDQManagedObject
+class FkP
+  include MotionModel::Model
+  include MotionModel::ArrayModelAdapter
+  include MotionModel::Validatable
+
+  columns :initialSetupComplete => { type: :boolean, default: false },
+          :registeredNotifications => { type: :boolean, default: false },
+          :fiveMinuteIntervals => { type: :boolean, default: true },
+          :wakeTime => { type: :date, default: Time.at(8*60*60 + 0*60 + 0).utc },
+          :bedTime => { type: :date, default: Time.at(22*60*60 + 30*60 + 0).utc}
+
+  # validates :initialSetupComplete, :presence => true
+  # validates :registeredNotifications, :presence => true
+  # validates :fiveMinuteIntervals, :presence => true
+  # validates :wakeTime, :presence => true
+  # validates :bedTime, :presence => true
+
+  def self.setup
+    dir = app_group_container   # lazy load in method
+    Schedule.deserialize_from_file('schedule.dat', dir)
+    Day.deserialize_from_file('day.dat', dir)
+    Period.deserialize_from_file('period.dat', dir)
+    Category.deserialize_from_file('category.dat', dir)
+    FkP.deserialize_from_file('fkp.dat', dir)
+  end
+
+  def self.save
+    dir = app_group_container   # lazy load in method
+    Schedule.serialize_to_file('schedule.dat', dir)
+    Day.serialize_to_file('day.dat', dir)
+    Period.serialize_to_file('period.dat', dir)
+    Category.serialize_to_file('category.dat', dir)
+    FkP.serialize_to_file('fkp.dat', dir)
+  end
+
+  def self.app_group_container
+    if (UIDevice.currentDevice.model =~ /simulator/i).nil?  # device
+      dir = NSFileManager.defaultManager.containerURLForSecurityApplicationGroupIdentifier(app_group_id).path
+    elsif ! app_group_container_uuid.nil?   # simulator with app group uuid workaround
+      dev_container = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true).last.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent
+      dir = dev_container.stringByAppendingPathComponent("Shared").stringByAppendingPathComponent("AppGroup").stringByAppendingPathComponent(app_group_container_uuid)
+    else   # simulator no workaround, fallback to default dir
+      dir = NSSearchPathForDirectoriesInDomains(database_dir, NSUserDomainMask, true).last
+    end
+  end
+
+  def self.app_group_container_uuid
+    uuid ||= "697E2EAA-A35A-4BFA-939B-B1CF6C84C5D2"
+  end
 
   def self.status(clockRect)
     # check for method safety if Period.current doesn't exist, MUSTN'T CRASH!
@@ -10,7 +58,7 @@ class FkP < CDQManagedObject
 
     if schedule && schedule.periods.count > 0
       if currentPeriod
-        result[:clock] = Clock.day(clockRect, schedule.all_periods.array, currentPeriod)
+        result[:clock] = Clock.day(clockRect, schedule.all_periods.all, currentPeriod)
         result[:periodName] = currentPeriod.name
         result[:timeRemaining] = currentPeriod.time_remaining.length
       elsif !schedule.started? && !FkP.awake?
@@ -18,15 +66,15 @@ class FkP < CDQManagedObject
         result[:periodName] = "Night time"
         result[:timeRemaining] = FkP.time_until_wake.length
       elsif !schedule.started? && nextPeriod
-        result[:clock] = Clock.morning(clockRect, schedule.all_periods.array)
+        result[:clock] = Clock.morning(clockRect, schedule.all_periods.all)
         result[:periodName] = "Good morning!"
         result[:timeRemaining] = nextPeriod.time_until_start.length
       elsif nextPeriod
-        result[:clock] = Clock.day(clockRect, schedule.all_periods.array, currentPeriod)
+        result[:clock] = Clock.day(clockRect, schedule.all_periods.all, currentPeriod)
         result[:periodName] = "Free time"
         result[:timeRemaining] = nextPeriod.time_until_start.length
       elsif FkP.awake?
-        result[:clock] = Clock.evening(clockRect, schedule.all_periods.array)
+        result[:clock] = Clock.evening(clockRect, schedule.all_periods.all)
         result[:periodName] = "Schedule finished"
         result[:timeRemaining] = FkP.time_until_bed.length
       else
@@ -48,15 +96,15 @@ class FkP < CDQManagedObject
   end
 
   def self.initialSetupComplete?
-    defaults.initialSetupComplete.boolValue unless defaults.nil?
+    defaults.initialSetupComplete unless defaults.nil?
   end
 
   def self.registered_notifications?
-    defaults.registeredNotifications.boolValue unless defaults.nil?
+    defaults.registeredNotifications unless defaults.nil?
   end
 
   def self.fiveMinuteIntervals?
-    defaults.fiveMinuteIntervals.boolValue unless defaults.nil?
+    defaults.fiveMinuteIntervals unless defaults.nil?
   end
 
   def self.fiveMinuteIntervals=(value)
@@ -105,7 +153,7 @@ class FkP < CDQManagedObject
   end
 
   def self.schedule_notifications
-    cdq_background do
+    Dispatch::Queue.concurrent.async do
       UIApplication.sharedApplication.cancelAllLocalNotifications
 
       today = Time.today
@@ -148,22 +196,6 @@ class FkP < CDQManagedObject
     end
 
     true  # stops repl noise
-  end
-
-  def self.cdq_background(&block)
-    # From CDQ Wiki documentation:
-    # Create a new private queue context with the main context
-    # as its parent, then pop it back off the stack.
-    cdq.contexts.new(NSPrivateQueueConcurrencyType) do
-      context = cdq.contexts.current
-
-      # any work on a private context must be passed to performBlock
-      context.performBlock(-> {
-        cdq.contexts.push(context) do
-          block.call
-        end
-      })
-    end 
   end
 
 end

@@ -4,7 +4,7 @@ class ScheduleController < UITableViewController
   def viewDidLoad
     super
 
-    @schedules = Schedule.all.sort_by(:name)
+    @schedules = Schedule.order(:name).all
   end
 
   def viewWillAppear(animated)
@@ -14,6 +14,7 @@ class ScheduleController < UITableViewController
     updateHintImageView
 
     if @needsReload
+      @schedules = Schedule.order(:name).all
       self.tableView.reloadData
       @needsReload = false
     end
@@ -91,14 +92,15 @@ class ScheduleController < UITableViewController
     when 1
       cell = tableView.dequeueReusableCellWithIdentifier("ScheduleCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleCell")
-      schedule = @schedules[indexPath.row]
-
-      unless schedule.name.nil? || schedule.name.empty?
-        cell.textLabel.text = schedule.name
-      else
-        cell.textLabel.text = "Unnamed Schedule"
+      
+      if schedule = @schedules[indexPath.row]
+        if schedule.name.nil? || schedule.name.empty?
+          cell.textLabel.text = "Unnamed Schedule"
+        else
+          cell.textLabel.text = schedule.name
+        end
+        cell.detailTextLabel.text = schedule.days_string
       end
-      cell.detailTextLabel.text = schedule.days_string
 
       cell
     end
@@ -111,7 +113,7 @@ class ScheduleController < UITableViewController
   def tableView(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
     if indexPath.section == 1
       @schedules[indexPath.row].destroy
-      cdq.save
+      FkP.save
       
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimationFade) if editingStyle == UITableViewCellEditingStyleDelete
       updateHintImageView

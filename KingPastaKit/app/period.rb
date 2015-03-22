@@ -1,9 +1,23 @@
-class Period < CDQManagedObject
+class Period
+  include MotionModel::Model
+  include MotionModel::ArrayModelAdapter
+  include MotionModel::Validatable
+
+  columns :name => :string,
+          :startTime => :date,
+          :endTime => :date
+
+  # validates :name, :presence => true
+  # validates :startTime, :presence => true
+  # validates :endTime, :presence => true
+
+  belongs_to :schedule
+  belongs_to :category
 
   def self.current
     time = Time.now.strip_date
 
-    if periods_today = Period.all_today then periods_today.where(:startTime).le(time).where(:endTime).gt(time).first end
+    if periods_today = Period.all_today then periods_today.where(:startTime).lte(time).where(:endTime).gt(time).first end
   end
 
   def self.next
@@ -29,9 +43,9 @@ class Period < CDQManagedObject
   end
 
   def has_overlap?
-    start_during = self.schedule.periods.where(:startTime).ge(startTime).where(:startTime).lt(endTime).reject { |p| p == self}
-    end_during = self.schedule.periods.where(:endTime).gt(startTime).where(:endTime).le(endTime).reject { |p| p == self}
-    before_to_after = self.schedule.periods.where(:startTime).le(self.startTime).where(:endTime).ge(self.endTime).reject { |p| p == self}
+    start_during = self.schedule.periods.where(:startTime).gte(startTime).where(:startTime).lt(endTime).all.reject { |p| p == self}
+    end_during = self.schedule.periods.where(:endTime).gt(startTime).where(:endTime).lte(endTime).all.reject { |p| p == self}
+    before_to_after = self.schedule.periods.where(:startTime).lte(self.startTime).where(:endTime).gte(self.endTime).all.reject { |p| p == self}
     
     (start_during.count + end_during.count + before_to_after.count) > 0
   end

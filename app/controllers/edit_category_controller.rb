@@ -13,7 +13,7 @@ class EditCategoryController < UITableViewController
 
   def save
     self.view.endEditing(true)
-    cdq.save
+    FkP.save
 
     self.navigationController.popViewControllerAnimated(true)
   end

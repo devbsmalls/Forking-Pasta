@@ -47,7 +47,8 @@ class PeriodDetailController < UITableViewController
       segue.destinationViewController.isStart = false
     when "SaveUnwind"
       self.view.endEditing(true)
-      cdq.save
+      @period.save if @new_period
+      FkP.save
     end
 
     @needsReload = true
@@ -79,7 +80,7 @@ class PeriodDetailController < UITableViewController
 
   def cancel
     self.view.endEditing(true)
-    cdq.contexts.current.rollback
+    @period.destroy if @new_period
 
     self.navigationController.popViewControllerAnimated(true)
   end
@@ -123,7 +124,7 @@ class PeriodDetailController < UITableViewController
 
   def deletePeriod
     @period.destroy
-    cdq.save
+    FkP.save
 
     self.navigationController.popViewControllerAnimated(true)
   end

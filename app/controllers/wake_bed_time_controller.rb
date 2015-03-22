@@ -52,7 +52,7 @@ class WakeBedTimeController < UIViewController
     else
       FkP.bed_time = @timePicker.date.utc.strip_date
     end
-    cdq.save
+    FkP.save
 
     self.navigationController.popViewControllerAnimated(true)
   end

@@ -1,9 +1,8 @@
 class AppDelegate
-  include CDQ
   
   def application(application, didFinishLaunchingWithOptions:launchOptions)
 
-    cdq.setup
+    FkP.setup
 
     initialSetup unless FkP.initialSetupComplete?
 
@@ -19,18 +18,18 @@ class AppDelegate
 
   def initialSetup
     Day.symbols.each_with_index do |day, index|
-      Day.new(name: day, dayOfWeek: index)
+      Day.create(name: day, dayOfWeek: index)
     end
 
-    Category.new(name: "Home", index: 0, color: Category::COLORS[0][:value])
-    Category.new(name: "Work", index: 1, color: Category::COLORS[1][:value])
-    Category.new(name: "Break", index: 2, color: Category::COLORS[2][:value])
-    Category.new(name: "Hobby", index: 3, color: Category::COLORS[3][:value])
-    Category.new(name: "Misc", index: 4, color: Category::COLORS[4][:value])
+    Category.create(name: "Home", index: 0, colorIndex: 0)
+    Category.create(name: "Work", index: 1, colorIndex: 1)
+    Category.create(name: "Break", index: 2, colorIndex: 2)
+    Category.create(name: "Hobby", index: 3, colorIndex: 3)
+    Category.create(name: "Misc", index: 4, colorIndex: 4)
 
-    FkP.new(initialSetupComplete: true)
+    FkP.create(initialSetupComplete: true)
 
-    cdq.save
+    FkP.save
   end
 
   def application(application, didReceiveLocalNotification: notification)
