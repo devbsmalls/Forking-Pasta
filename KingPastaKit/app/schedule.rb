@@ -34,7 +34,7 @@ class Schedule
 
   def started?
     return false if all_periods.count < 1
-    Time.now.strip_date > all_periods.all.first.startTime
+    Time.now.strip_date > all_periods.array.first.startTime
   end
 
   def start_time
@@ -44,7 +44,7 @@ class Schedule
     when 1
       self.periods.first.startTime
     else
-      self.all_periods.all.reject { |p| p.startTime == nil }.first.startTime  # rejects unsaved objects which don't have a start time
+      self.all_periods.array.reject { |p| p.startTime == nil }.first.startTime  # rejects unsaved objects which don't have a start time
     end
   end
 
@@ -55,7 +55,7 @@ class Schedule
     when 1
       self.periods.first.endTime
     else
-      self.all_periods.all.reject { |p| p.startTime == nil }.last.endTime  # array helps reliable objects while editing and allows for .last
+      self.all_periods.array.reject { |p| p.startTime == nil }.last.endTime  # array helps reliable objects while editing and allows for .last
     end
   end
 

@@ -29,7 +29,7 @@ class ScheduleDaysController < UITableViewController
     day = Day.wday(indexPath.row)
     cell.textLabel.text = day.name
 
-    cell.accessoryType = UITableViewCellAccessoryCheckmark if @schedule.days.all.include?(day)
+    cell.accessoryType = UITableViewCellAccessoryCheckmark if @schedule.days.array.include?(day)
 
     cell
   end

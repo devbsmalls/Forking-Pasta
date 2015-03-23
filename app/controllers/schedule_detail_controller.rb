@@ -8,7 +8,7 @@ class ScheduleDetailController < UITableViewController
 
     @editing = true unless @schedule.nil?
     @schedule = Schedule.create if @schedule.nil?
-    @periods = @schedule.all_periods.all
+    @periods = @schedule.all_periods.array
   end
 
   def viewWillAppear(animated)
@@ -18,7 +18,7 @@ class ScheduleDetailController < UITableViewController
     updateHintImageView
 
     if @needsReload
-      @periods = @schedule.all_periods.all
+      @periods = @schedule.all_periods.array
       self.tableView.reloadData
       @needsReload = false
     end
