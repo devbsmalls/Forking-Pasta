@@ -34,20 +34,20 @@ class Period
     if schedule_wday = Schedule.on_wday(wday) then schedule_wday.all_periods end
   end
 
+  def self.overlap_with_start(startTime, end: endTime, schedule: schedule, ignoring: old_period)
+    start_during = schedule.periods.where(:startTime).gte(startTime).where(:startTime).lt(endTime).array.reject { |p| p == old_period }
+    end_during = schedule.periods.where(:endTime).gt(startTime).where(:endTime).lte(endTime).array.reject { |p| p == old_period }
+    before_to_after = schedule.periods.where(:startTime).lte(startTime).where(:endTime).gte(endTime).array.reject { |p| p == old_period }
+    
+    (start_during.count + end_during.count + before_to_after.count) > 0
+  end
+
   def time_remaining
     Time.at(self.endTime - Time.now.strip_seconds).utc
   end
 
   def time_until_start
     Time.at(self.startTime - Time.now.strip_seconds).utc
-  end
-
-  def has_overlap?
-    start_during = self.schedule.periods.where(:startTime).gte(startTime).where(:startTime).lt(endTime).all.reject { |p| p == self}
-    end_during = self.schedule.periods.where(:endTime).gt(startTime).where(:endTime).lte(endTime).all.reject { |p| p == self}
-    before_to_after = self.schedule.periods.where(:startTime).lte(self.startTime).where(:endTime).gte(self.endTime).all.reject { |p| p == self}
-    
-    (start_during.count + end_during.count + before_to_after.count) > 0
   end
 
 end

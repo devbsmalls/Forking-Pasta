@@ -1,6 +1,6 @@
 class SelectCategoryController < UITableViewController
 
-  attr_accessor :period
+  attr_accessor :scratch_period
 
   #### table view delegate methods ####
 
@@ -14,14 +14,14 @@ class SelectCategoryController < UITableViewController
     category = Category.where(:index).eq(indexPath.row).first
     cell.nameLabel.text = category.name
     cell.colorMark.color = category.color
-    if @period.category
-      cell.accessoryType = UITableViewCellAccessoryCheckmark if category == @period.category
+    if @scratch_period[:category]
+      cell.accessoryType = UITableViewCellAccessoryCheckmark if category == @scratch_period[:category]
     end
     cell
   end
 
   def tableView(tableView, didSelectRowAtIndexPath: indexPath)
-    @period.category = Category.where(:index).eq(indexPath.row).first
+    @scratch_period[:category] = Category.where(:index).eq(indexPath.row).first
     
     self.navigationController.popViewControllerAnimated(true)
   end

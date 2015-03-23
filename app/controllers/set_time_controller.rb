@@ -1,7 +1,7 @@
 class SetTimeController < UIViewController
   extend IB
 
-  attr_accessor :period, :isStart
+  attr_accessor :scratch_period, :isStart
 
   LINE_WIDTH = 1 / UIScreen.mainScreen.scale
 
@@ -22,11 +22,11 @@ class SetTimeController < UIViewController
     @timePicker.minimumDate = Time.at(23*3600 + 59*60 + 59).utc
     
     if @isStart
-      @timePicker.date = @period.startTime || @period.schedule.end_time || FkP.wake_time
+      @timePicker.date = @scratch_period[:startTime] || @scratch_period[:schedule].end_time || FkP.wake_time
     else
       self.navigationItem.title = "End Time"
       @infoLabel.text = "Set the end time for this period"
-      @timePicker.date = @period.endTime || @period.startTime || FkP.bed_time
+      @timePicker.date = @scratch_period[:endTime] || @scratch_period[:startTime] || FkP.bed_time
     end
 
     @separatorLine = UIView.alloc.initWithFrame(CGRectZero)
@@ -34,8 +34,8 @@ class SetTimeController < UIViewController
     @jumpToTimeView.addSubview(@separatorLine)
 
     refreshTimeInterval
-    @scheduleStartButton.enabled = false if @period.schedule.start_time.nil?
-    @scheduleEndButton.enabled = false if @period.schedule.end_time.nil?
+    @scheduleStartButton.enabled = false if @scratch_period[:schedule].start_time.nil?
+    @scheduleEndButton.enabled = false if @scratch_period[:schedule].end_time.nil?
 
   end
 
@@ -45,9 +45,9 @@ class SetTimeController < UIViewController
 
   def done
     if @isStart
-      @period.startTime = @timePicker.date.utc.strip_date
+      @scratch_period[:startTime] = @timePicker.date.utc.strip_date
     else
-      @period.endTime = @timePicker.date.utc.strip_date
+      @scratch_period[:endTime] = @timePicker.date.utc.strip_date
     end
 
     self.navigationController.popViewControllerAnimated(true)
@@ -66,11 +66,11 @@ class SetTimeController < UIViewController
     when 0
       @timePicker.date = FkP.wake_time
     when 1
-      @timePicker.date = @period.schedule.start_time
+      @timePicker.date = @scratch_period[:schedule].start_time
     when 2
       @timePicker.date = Time.at(12*3600).utc
     when 3
-      @timePicker.date = @period.schedule.end_time
+      @timePicker.date = @scratch_period[:schedule].end_time
     when 4
       @timePicker.date = FkP.bed_time
     end

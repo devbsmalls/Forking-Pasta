@@ -48,7 +48,6 @@ class ScheduleDetailController < UITableViewController
       segue.destinationViewController.period = @periods[indexPath.row]
     when "AddPeriodSegue"
       segue.destinationViewController.schedule = @schedule
-      segue.destinationViewController.new_period = true
     end
     
     @needsReload = true

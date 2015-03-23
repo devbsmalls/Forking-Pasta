@@ -1,19 +1,30 @@
 class PeriodDetailController < UITableViewController
   extend IB
 
-  attr_accessor :schedule, :period, :new_period
+  attr_accessor :schedule, :period
+  attr_reader :new_period
 
   outlet :saveButton, UIBarButtonItem
   
   def viewDidLoad
     super
 
-    unless @period.nil?
+    @scratch_period = {}
+
+    if @period.nil?
+      @new_period = true
+      @scratch_period[:schedule] = @schedule
+    else
       @editing = true
       self.navigationItem.title = "Edit Period"
+
+      @scratch_period[:name] = @period.name
+      @scratch_period[:category] = @period.category
+      @scratch_period[:startTime] = @period.startTime
+      @scratch_period[:endTime] = @period.endTime
+      @scratch_period[:schedule] = @period.schedule
     end
 
-    @period ||= Period.new
     @warningTextColor ||= UIColor.alloc.initWithHue(359/360.0, saturation: 0.75, brightness: 1.0, alpha: 1.0)
   end
 
@@ -28,25 +39,25 @@ class PeriodDetailController < UITableViewController
     validate
   end
 
-  def viewDidAppear(animated)
-    if @schedule
-      @period.schedule = @schedule
-      @schedule = nil
-    end
-  end
-
   def prepareForSegue(segue, sender: sender)
     case segue.identifier
     when "SelectCategorySegue"
-      segue.destinationViewController.period = period
+      segue.destinationViewController.scratch_period = @scratch_period
     when "SetStartTimeSegue"
-      segue.destinationViewController.period = period
+      segue.destinationViewController.scratch_period = @scratch_period
       segue.destinationViewController.isStart = true
     when "SetEndTimeSegue"
-      segue.destinationViewController.period = period
+      segue.destinationViewController.scratch_period = @scratch_period
       segue.destinationViewController.isStart = false
     when "SaveUnwind"
       self.view.endEditing(true)
+
+      @period ||= Period.new
+      @period.name = @scratch_period[:name]
+      @period.category = @scratch_period[:category]
+      @period.startTime = @scratch_period[:startTime]
+      @period.endTime = @scratch_period[:endTime]
+      @period.schedule = @scratch_period[:schedule]
       @period.save if @new_period
       FkP.save
     end
@@ -56,18 +67,18 @@ class PeriodDetailController < UITableViewController
 
   def validate
     valid = true
-    valid = false if @period.name.nil? || @period.name.empty?
-    valid = false if @period.category.nil?  # or not == existing category
-    if @period.startTime.nil? || @period.endTime.nil?
+    valid = false if @scratch_period[:name].nil? || @scratch_period[:name].empty?
+    valid = false if @scratch_period[:category].nil?  # or not == existing category
+    if @scratch_period[:startTime].nil? || @scratch_period[:endTime].nil?
       valid = false
     else
-      if @period.endTime == @period.startTime
+      if @scratch_period[:endTime] == @scratch_period[:startTime]
         valid = false
         showTimeWarningOfType(:startsAtEnd)
-      elsif @period.endTime < @period.startTime
+      elsif @scratch_period[:endTime] < @scratch_period[:startTime]
         valid = false
         showTimeWarningOfType(:startsAfterEnd)
-      elsif @period.has_overlap?
+      elsif Period.overlap_with_start(@scratch_period[:startTime], end: @scratch_period[:endTime], schedule: @scratch_period[:schedule], ignoring: @period)
         valid = false
         showTimeWarningOfType(:overlap)
       else
@@ -79,14 +90,13 @@ class PeriodDetailController < UITableViewController
   end
 
   def cancel
-    self.view.endEditing(true)
-    @period.destroy if @new_period
+    # 
 
     self.navigationController.popViewControllerAnimated(true)
   end
 
   def nameDidChange(sender)
-    @period.name = sender.text
+    @scratch_period[:name] = sender.text
     validate
   end
 
@@ -114,7 +124,7 @@ class PeriodDetailController < UITableViewController
   def showDeleteConfirmation
     self.view.endEditing(true)  # ensure any changes are merged into period before deleting
 
-    confirmSheet = UIAlertController.alertControllerWithTitle("Delete #{@period.name}?", message: "Do you really want to delete this period?", preferredStyle: UIAlertControllerStyleActionSheet)
+    confirmSheet = UIAlertController.alertControllerWithTitle("Delete #{@scratch_period[:name]}?", message: "Do you really want to delete this period?", preferredStyle: UIAlertControllerStyleActionSheet)
     confirmSheet.addAction(UIAlertAction.actionWithTitle("Delete", style: UIAlertActionStyleDestructive, handler: lambda { |action|
       deletePeriod
     }))
@@ -159,20 +169,20 @@ class PeriodDetailController < UITableViewController
       cell = tableView.dequeueReusableCellWithIdentifier("PeriodNameCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodNameCell")
       cell.nameTextField.delegate = self
-      cell.nameTextField.text = @period.name
+      cell.nameTextField.text = @scratch_period[:name]
       cell
     when 1
       cell = tableView.dequeueReusableCellWithIdentifier("PeriodCategoryCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodCategoryCell")
-      cell.nameLabel.text = @period.category.name unless @period.category.nil?
-      cell.colorMark.color = @period.category.color unless @period.category.nil?
+      cell.nameLabel.text = @scratch_period[:category].name unless @scratch_period[:category].nil?
+      cell.colorMark.color = @scratch_period[:category].color unless @scratch_period[:category].nil?
       cell
     when 2
       case indexPath.row
       when 0
         cell = tableView.dequeueReusableCellWithIdentifier("PeriodStartTimeCell")
         cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodStartTimeCell")
-        cell.detailTextLabel.text = @period.startTime.utc.strftime("%H:%M") if @period.startTime
+        cell.detailTextLabel.text = @scratch_period[:startTime].utc.strftime("%H:%M") if @scratch_period[:startTime]
         
         @normalTextColor ||= cell.detailTextLabel.textColor
         cell.detailTextLabel.textColor = @warningCellType.nil? ? @normalTextColor : @warningTextColor
@@ -181,7 +191,7 @@ class PeriodDetailController < UITableViewController
       when 1
         cell = tableView.dequeueReusableCellWithIdentifier("PeriodEndTimeCell")
         cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "PeriodEndTimeCell")
-        cell.detailTextLabel.text = @period.endTime.utc.strftime("%H:%M") if @period.endTime
+        cell.detailTextLabel.text = @scratch_period[:endTime].utc.strftime("%H:%M") if @scratch_period[:endTime]
         
         @normalTextColor ||= cell.detailTextLabel.textColor
         cell.detailTextLabel.textColor = @warningCellType.nil? ? @normalTextColor : @warningTextColor
