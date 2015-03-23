@@ -3,14 +3,22 @@ class ScheduleDaysController < UITableViewController
 
   attr_accessor :schedule
 
+  def viewDidLoad
+    super
+
+    @schedule_days = @schedule.days.array
+  end
+
   def save
+    @schedule.days.each { |d| d.schedule = nil }      # remove this schedule from all day objects
+    @schedule_days.each { |d| @schedule.days << d }   # add the new days back to this schedule
     FkP.save unless @schedule.name.nil?   # don't save if the schedule hasn't been named yet
 
     self.navigationController.popViewControllerAnimated(true)
   end
 
   def cancel
-    cdq.contexts.current.rollback
+    # do nothing, edited variables will simply be deleted
 
     self.navigationController.popViewControllerAnimated(true)
   end
@@ -29,7 +37,7 @@ class ScheduleDaysController < UITableViewController
     day = Day.wday(indexPath.row)
     cell.textLabel.text = day.name
 
-    cell.accessoryType = UITableViewCellAccessoryCheckmark if @schedule.days.array.include?(day)
+    cell.accessoryType = UITableViewCellAccessoryCheckmark if @schedule_days.include?(day)
 
     cell
   end
@@ -38,10 +46,10 @@ class ScheduleDaysController < UITableViewController
     cell = tableView.cellForRowAtIndexPath(indexPath)
 
     if cell.accessoryType == UITableViewCellAccessoryCheckmark
-      @schedule.days = NSSet.setWithArray(@schedule.days.reject { |d| d == Day.wday(indexPath.row) })
+      @schedule_days.reject! { |d| d == Day.wday(indexPath.row) }
       cell.accessoryType = UITableViewCellAccessoryNone
     else
-      @schedule.days << Day.wday(indexPath.row)
+      @schedule_days << Day.wday(indexPath.row)
       cell.accessoryType = UITableViewCellAccessoryCheckmark
     end
 

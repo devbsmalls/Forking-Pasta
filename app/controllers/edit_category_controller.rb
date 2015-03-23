@@ -9,24 +9,28 @@ class EditCategoryController < UITableViewController
     super
 
     @colors = Category::COLORS
+    @category_name = @category.name
+    @category_color_index = @category.colorIndex
   end
 
   def save
     self.view.endEditing(true)
+
+    @category.name = @category_name
+    @category.colorIndex = @category_color_index
     FkP.save
 
     self.navigationController.popViewControllerAnimated(true)
   end
 
   def cancel
-    self.view.endEditing(true)
-    cdq.contexts.current.rollback   # would be great to just cdq.rollback
+    # do nothing, edited variables will simply be deleted
 
     self.navigationController.popViewControllerAnimated(true)
   end
 
   def nameDidChange(sender)
-    @category.name = sender.text
+    @category_name = sender.text
   end
 
   def hideKeyboard
@@ -62,14 +66,14 @@ class EditCategoryController < UITableViewController
       cell = tableView.dequeueReusableCellWithIdentifier("CategoryNameCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "CategoryNameCell")
       cell.nameTextField.delegate = self
-      cell.nameTextField.text = @category.name
+      cell.nameTextField.text = @category_name
       cell
     when 1
       cell = tableView.dequeueReusableCellWithIdentifier("CategoryColorCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "CategoryColorCell")
       
       color = @colors[indexPath.row]
-      if @category.colorIndex == indexPath.row
+      if @category_color_index == indexPath.row
         cell.accessoryType = UITableViewCellAccessoryCheckmark
         @selectedIndexPath = indexPath
       end
@@ -84,7 +88,7 @@ class EditCategoryController < UITableViewController
     if indexPath.section == 1
       tableView.cellForRowAtIndexPath(@selectedIndexPath).accessoryType = UITableViewCellAccessoryNone
 
-      @category.colorIndex = indexPath.row
+      @category_color_index = indexPath.row
       tableView.cellForRowAtIndexPath(indexPath).accessoryType = UITableViewCellAccessoryCheckmark
       @selectedIndexPath = indexPath
 
