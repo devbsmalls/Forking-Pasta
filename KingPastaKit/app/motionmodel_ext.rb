@@ -8,6 +8,16 @@ module MotionModel
   class ArrayFinderQuery
     alias_method :array, :all
   end
+
+  module Model
+    def try(*a, &b)
+      if a.empty? && block_given?
+        yield self
+      else
+        public_send(*a, &b) if respond_to?(a.first)
+      end
+    end
+  end
 end
 
 # def count
