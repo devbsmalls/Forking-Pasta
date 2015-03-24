@@ -27,11 +27,11 @@ class Period
   end
 
   def self.all_today
-    if schedule_today = Schedule.today then schedule_today.all_periods end
+    if schedule_today = Schedule.today then schedule_today.ordered_periods end
   end
 
   def self.all_on_wday(wday)
-    if schedule_wday = Schedule.on_wday(wday) then schedule_wday.all_periods end
+    if schedule_wday = Schedule.on_wday(wday) then schedule_wday.ordered_periods end
   end
 
   def self.overlap_with_start(startTime, end: endTime, schedule: schedule, ignoring: old_period)

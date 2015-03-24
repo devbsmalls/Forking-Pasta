@@ -12,7 +12,7 @@ class Schedule
   has_many :days
   has_many :periods
 
-  def all_periods
+  def ordered_periods
     self.periods.order(:startTime)
   end
 
@@ -23,18 +23,18 @@ class Schedule
     when 1
       days.first.name
     when 2
-      days_arr = days.order(:dayOfWeek).all
-      days_arr = days_arr.reverse if days_arr[0].dayOfWeek == 0 && days_arr[1].dayOfWeek == 6   # puts days 0 & 6 in running order
-      days_arr.map { |day| day.name }.join(" & ")
+      days_array = days.order(:dayOfWeek).array
+      days_array = days_array.reverse if days_array[0].dayOfWeek == 0 && days_array[1].dayOfWeek == 6   # puts days 0 & 6 in running order
+      days_array.map { |day| day.name }.join(" & ")
     else
-      days_arr = days.order(:dayOfWeek).all
-      days_arr.take(days_arr.count - 1).map { |day| Day.shortSymbols[day.dayOfWeek] }.join(", ") + " & #{Day.shortSymbols[days_arr.last.dayOfWeek]}"
+      days_array = days.order(:dayOfWeek).array
+      days_array.take(days_array.count - 1).map { |day| Day.shortSymbols[day.dayOfWeek] }.join(", ") + " & #{Day.shortSymbols[days_array.last.dayOfWeek]}"
     end
   end
 
   def started?
-    return false if all_periods.count < 1
-    Time.now.strip_date > all_periods.array.first.startTime
+    return false if ordered_periods.count < 1
+    Time.now.strip_date > ordered_periods.array.first.startTime
   end
 
   def start_time
@@ -44,7 +44,7 @@ class Schedule
     when 1
       self.periods.first.startTime
     else
-      self.all_periods.array.reject { |p| p.startTime == nil }.first.startTime  # rejects unsaved objects which don't have a start time
+      self.ordered_periods.array.reject { |p| p.startTime == nil }.first.startTime  # rejects unsaved objects which don't have a start time
     end
   end
 
@@ -55,7 +55,7 @@ class Schedule
     when 1
       self.periods.first.endTime
     else
-      self.all_periods.array.reject { |p| p.startTime == nil }.last.endTime  # array helps reliable objects while editing and allows for .last
+      self.ordered_periods.array.reject { |p| p.startTime == nil }.last.endTime  # array helps reliable objects while editing and allows for .last
     end
   end
 

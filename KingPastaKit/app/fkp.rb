@@ -58,7 +58,7 @@ class FkP
 
     if schedule && schedule.periods.count > 0
       if currentPeriod
-        result[:clock] = Clock.day(clockRect, schedule.all_periods.array, currentPeriod)
+        result[:clock] = Clock.day(clockRect, schedule.ordered_periods.array, currentPeriod)
         result[:periodName] = currentPeriod.name
         result[:timeRemaining] = currentPeriod.time_remaining.length
       elsif !schedule.started? && !FkP.awake?
@@ -66,15 +66,15 @@ class FkP
         result[:periodName] = "Night time"
         result[:timeRemaining] = FkP.time_until_wake.length
       elsif !schedule.started? && nextPeriod
-        result[:clock] = Clock.morning(clockRect, schedule.all_periods.array)
+        result[:clock] = Clock.morning(clockRect, schedule.ordered_periods.array)
         result[:periodName] = "Good morning!"
         result[:timeRemaining] = nextPeriod.time_until_start.length
       elsif nextPeriod
-        result[:clock] = Clock.day(clockRect, schedule.all_periods.array, currentPeriod)
+        result[:clock] = Clock.day(clockRect, schedule.ordered_periods.array, currentPeriod)
         result[:periodName] = "Free time"
         result[:timeRemaining] = nextPeriod.time_until_start.length
       elsif FkP.awake?
-        result[:clock] = Clock.evening(clockRect, schedule.all_periods.array)
+        result[:clock] = Clock.evening(clockRect, schedule.ordered_periods.array)
         result[:periodName] = "Schedule finished"
         result[:timeRemaining] = FkP.time_until_bed.length
       else

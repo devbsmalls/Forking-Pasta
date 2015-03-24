@@ -4,7 +4,7 @@ class ScheduleController < UITableViewController
   def viewDidLoad
     super
 
-    @schedules = Schedule.order(:name).all
+    @schedules = Schedule.order(:name).array
   end
 
   def viewWillAppear(animated)
@@ -14,7 +14,7 @@ class ScheduleController < UITableViewController
     updateHintImageView
 
     if @needsReload
-      @schedules = Schedule.order(:name).all
+      @schedules = Schedule.order(:name).array
       self.tableView.reloadData
       @needsReload = false
     end
