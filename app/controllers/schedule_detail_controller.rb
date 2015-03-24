@@ -188,7 +188,8 @@ class ScheduleDetailController < UITableViewController
 
   def tableView(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
     if indexPath.section == 3
-      @periods[indexPath.row].destroy
+      deleted_period = @periods.delete_at(indexPath.row)
+      deleted_period.destroy
       FkP.save
       
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimationFade) if editingStyle == UITableViewCellEditingStyleDelete

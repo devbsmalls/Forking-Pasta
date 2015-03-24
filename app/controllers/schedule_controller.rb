@@ -66,7 +66,7 @@ class ScheduleController < UITableViewController
     when 0
       2
     when 1
-      Schedule.count
+      @schedules.count
     end
   end
 
@@ -92,15 +92,14 @@ class ScheduleController < UITableViewController
     when 1
       cell = tableView.dequeueReusableCellWithIdentifier("ScheduleCell")
       cell ||= UITableViewCell.alloc.initWithStyle(UITableViewCellStyleDefault, reuseIdentifier: "ScheduleCell")
+      schedule = @schedules[indexPath.row]
       
-      if schedule = @schedules[indexPath.row]
-        if schedule.name.nil? || schedule.name.empty?
-          cell.textLabel.text = "Unnamed Schedule"
-        else
-          cell.textLabel.text = schedule.name
-        end
-        cell.detailTextLabel.text = schedule.days_string
+      if schedule.name.nil? || schedule.name.empty?
+        cell.textLabel.text = "Unnamed Schedule"
+      else
+        cell.textLabel.text = schedule.name
       end
+      cell.detailTextLabel.text = schedule.days_string
 
       cell
     end
@@ -112,7 +111,8 @@ class ScheduleController < UITableViewController
 
   def tableView(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
     if indexPath.section == 1
-      @schedules[indexPath.row].destroy
+      deleted_schedule = @schedules.delete_at(indexPath.row)
+      deleted_schedule.destroy
       FkP.save
       
       tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimationFade) if editingStyle == UITableViewCellEditingStyleDelete
