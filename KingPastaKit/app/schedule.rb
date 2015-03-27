@@ -10,7 +10,7 @@ class Schedule
   # validates :showsNotifications, :presence => true
 
   has_many :days
-  has_many :periods
+  has_many :periods, :dependent => :destroy
 
   def ordered_periods
     self.periods.order(:startTime)
