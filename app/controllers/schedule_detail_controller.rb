@@ -15,13 +15,14 @@ class ScheduleDetailController < UITableViewController
     super
     
     self.navigationController.setToolbarHidden(false, animated)
-    updateHintImageView
 
     if @needsReload
       @periods = @schedule.ordered_periods.array
       self.tableView.reloadData
       @needsReload = false
     end
+
+    updateHintImageView   # after reload check to ensure correct number of periods
 
     if @showPeriod
       indexPath = NSIndexPath.indexPathForRow(@periods.index(@showPeriod), inSection: 3)

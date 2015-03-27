@@ -11,13 +11,14 @@ class ScheduleController < UITableViewController
     super
 
     self.navigationController.setToolbarHidden(false, animated)
-    updateHintImageView
 
     if @needsReload
       @schedules = Schedule.order(:name).array
       self.tableView.reloadData
       @needsReload = false
     end
+
+    updateHintImageView   # after reload check to ensure correct number of periods
   end
 
   def viewWillDisappear(animated)
