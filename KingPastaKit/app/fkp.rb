@@ -35,17 +35,14 @@ class FkP
 
   def self.app_group_container
     if (UIDevice.currentDevice.model =~ /simulator/i).nil?  # device
-      dir = NSFileManager.defaultManager.containerURLForSecurityApplicationGroupIdentifier(app_group_id).path
-    elsif ! app_group_container_uuid.nil?   # simulator with app group uuid workaround
+      dir = NSFileManager.defaultManager.containerURLForSecurityApplicationGroupIdentifier("group.uk.pixlwave.ForkingPasta").path
+    else   # simulator workaround with hard coded path
       dev_container = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, true).last.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent.stringByDeletingLastPathComponent
-      dir = dev_container.stringByAppendingPathComponent("Shared").stringByAppendingPathComponent("AppGroup").stringByAppendingPathComponent(app_group_container_uuid)
-    else   # simulator no workaround, fallback to default dir
-      dir = NSSearchPathForDirectoriesInDomains(database_dir, NSUserDomainMask, true).last
+      dir = dev_container.stringByAppendingPathComponent("Shared").stringByAppendingPathComponent("AppGroup").stringByAppendingPathComponent("697E2EAA-A35A-4BFA-939B-B1CF6C84C5D2")
+      Dir.mkdir(dir) unless Dir.exist?(dir)
+      
+      dir
     end
-  end
-
-  def self.app_group_container_uuid
-    uuid ||= "697E2EAA-A35A-4BFA-939B-B1CF6C84C5D2"
   end
 
   def self.status(clockRect)
