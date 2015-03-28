@@ -113,6 +113,7 @@ class ScheduleController < UITableViewController
   def tableView(tableView, commitEditingStyle: editingStyle, forRowAtIndexPath: indexPath)
     if indexPath.section == 1
       deleted_schedule = @schedules.delete_at(indexPath.row)
+      deleted_schedule.days.each { |d| d.schedule = nil }
       deleted_schedule.destroy
       FkP.save
       

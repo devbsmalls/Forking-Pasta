@@ -100,6 +100,7 @@ class ScheduleDetailController < UITableViewController
   end
 
   def deleteSchedule
+    @schedule.days.each { |d| d.schedule = nil }
     @schedule.destroy
     FkP.save
 
