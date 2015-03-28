@@ -32,14 +32,3 @@ Motion::Project::App.setup do |app|
 
   app.manifest_assets << { :kind => 'software-package', :url => 'https://dl.dropboxusercontent.com/u/6437015/forking_pasta/Forking%20Pasta.ipa' }
 end
-
-task :"build:simulator" => :"schema:build"
-
-namespace :schema do
-  desc "Copy xcdatamodeld file to Widget"
-  task :build do
-    App.info "Copying", "resources/Forking Pasta.xcdatamodeld"
-    FileUtils.copy_entry "resources/Forking Pasta.xcdatamodeld", "Widget/resources/Forking Pasta.xcdatamodeld"
-    FileUtils.copy_entry "resources/Forking Pasta.xcdatamodeld", "Watch/resources/Forking Pasta.xcdatamodeld"
-  end
-end
