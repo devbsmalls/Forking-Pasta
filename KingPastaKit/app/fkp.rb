@@ -15,13 +15,19 @@ class FkP
   # validates :wakeTime, :presence => true
   # validates :bedTime, :presence => true
 
+  @@is_setup = false
+
   def self.setup
+    destroy if @@is_setup
+
     dir = app_group_container   # lazy load in method
     Schedule.deserialize_from_file('schedule.dat', dir)
     Day.deserialize_from_file('day.dat', dir)
     Period.deserialize_from_file('period.dat', dir)
     Category.deserialize_from_file('category.dat', dir)
     FkP.deserialize_from_file('fkp.dat', dir)
+
+    @@is_setup = true
   end
 
   def self.save
@@ -31,6 +37,14 @@ class FkP
     Period.serialize_to_file('period.dat', dir)
     Category.serialize_to_file('category.dat', dir)
     FkP.serialize_to_file('fkp.dat', dir)
+  end
+
+  def self.destroy
+    Schedule.destroy_all
+    Day.destroy_all
+    Period.destroy_all
+    Category.destroy_all
+    FkP.destroy_all
   end
 
   def self.app_group_container

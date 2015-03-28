@@ -42,6 +42,7 @@ class TodayViewController < UIViewController
   end
 
   def widgetPerformUpdateWithCompletionHandler(completionHandler)
+    FkP.setup
     refresh
 
     completionHandler.call(NCUpdateResultNewData)
