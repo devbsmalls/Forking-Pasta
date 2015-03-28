@@ -25,7 +25,7 @@ class AppDelegate
     Category.create(name: "Work", index: 1, colorIndex: 1)
     Category.create(name: "Break", index: 2, colorIndex: 2)
     Category.create(name: "Hobby", index: 3, colorIndex: 3)
-    Category.create(name: "Misc", index: 4, colorIndex: 4)
+    Category.create(name: "Misc", index: 4, colorIndex: 5)
 
     FkP.create(initialSetupComplete: true)
 
