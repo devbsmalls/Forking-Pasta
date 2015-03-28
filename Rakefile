@@ -32,3 +32,15 @@ Motion::Project::App.setup do |app|
 
   app.manifest_assets << { :kind => 'software-package', :url => 'https://dl.dropboxusercontent.com/u/6437015/forking_pasta/Forking%20Pasta.ipa' }
 end
+
+namespace :clean do
+  desc 'Clean build directories, leaving .storyboardc files'
+  task :build do
+    dirs = ['build', 'KingPastaKit/build', 'Widget/build', 'Watch/build']
+    dirs.each do |dir|
+      path = File.join(App.config.project_dir, dir)
+      App.info 'Delete', path
+      rm_rf path
+    end
+  end
+end
