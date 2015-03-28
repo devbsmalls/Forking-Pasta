@@ -3,8 +3,8 @@ class Schedule
   include MotionModel::ArrayModelAdapter
   include MotionModel::Validatable
 
-  columns :name => { :type => :string, :default => "" },
-          :showsNotifications => { :type => :boolean, :default => false }
+  columns :name => { type: :string, default: "" },
+          :showsNotifications => { type: :boolean, default: false }
 
   # validates :name, :presence => true
   # validates :showsNotifications, :presence => true
