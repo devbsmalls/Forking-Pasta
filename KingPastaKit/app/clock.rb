@@ -285,7 +285,7 @@ class Clock
     CGPathAddArc(path, nil, arcCenterX, arcCenterY, arcRadius, startAngle, endAngle, false)
     CGPathCloseSubpath(path)
 
-    CGContextSetRGBFillColor(context, 0, 0, 0, 0.3)
+    CGContextSetRGBFillColor(context, 0, 0, 0, 0.2)
     CGContextAddPath(context, path)
     CGContextFillPath(context)
   end
