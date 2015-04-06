@@ -9,6 +9,3 @@
 @implementation InterfaceController
 @end
 
-@implementation NotificationController
-@end
-

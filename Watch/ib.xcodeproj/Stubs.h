@@ -31,10 +31,3 @@
 
 @end
 
-@interface NotificationController: WKUserNotificationInterfaceController
--(IBAction) init;
--(IBAction) willActivate;
--(IBAction) didDeactivate;
-
-@end
-
