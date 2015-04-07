@@ -10,8 +10,8 @@ class TodayViewController < UIViewController
 
     FkP.setup
 
-    @periodNameLabel.text = "Loading..."
-    @timeRemainingLabel.text = ""
+    @periodNameLabel.text = " "
+    @timeRemainingLabel.text = " "
   end
 
   def viewDidAppear(animated)
