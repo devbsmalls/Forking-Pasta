@@ -15,11 +15,13 @@ Motion::Project::App.setup do |app|
   app.target('../KingPastaKit', :framework)
 
   app.development do
-    app.provisioning_profile = '/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_Watch_development.mobileprovision'
+    app.provisioning_profile = '/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_Watch_Extension_development.mobileprovision'
+    app.watch_app_config.provisioning_profile = "/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_Watch_App_development.mobileprovision"
   end
 
   app.release do
-    app.provisioning_profile = '/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_Watch.mobileprovision'
+    app.provisioning_profile = '/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_Watch_Extension.mobileprovision'
+    app.watch_app_config.provisioning_profile = "/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_Watch_App.mobileprovision"
   end
 end
 
