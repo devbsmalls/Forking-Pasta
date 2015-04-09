@@ -12,15 +12,16 @@ Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'Forking Pasta'
   app.icons = ['Icon.png', 'Icon@2x.png', 'Icon@3x.png', 'Icon-Settings@2x', 'Icon-Settings@3x', 'Icon-Spotlight@2x', 'Icon-Spotlight@3x']
-  app.version = '0.9.1'
+  app.version = '1.0'
   app.identifier = 'uk.pixlwave.ForkingPasta'
   app.frameworks << 'AudioToolbox'
   app.entitlements['com.apple.security.application-groups'] = ['group.uk.pixlwave.ForkingPasta']
   # /private/var/mobile/Containers/Shared/AppGroup/697E2EAA-A35A-4BFA-939B-B1CF6C84C5D2/Forking Pasta.sqlite
+  app.deployment_target = '8.2'
 
   app.target('KingPastaKit', :framework)
   app.target('Widget', :extension)
-  # app.target('Watch', :extension)
+  app.target('Watch', :extension)
 
   app.development do
     app.provisioning_profile = '/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_development.mobileprovision'
