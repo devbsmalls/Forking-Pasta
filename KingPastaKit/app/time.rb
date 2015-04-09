@@ -1,11 +1,20 @@
 class Time
 
+  @@formatter = NSDateFormatter.new
+  @@formatter.timeStyle = NSDateFormatterShortStyle
+  @@formatter.dateStyle = NSDateFormatterNoStyle
+  @@formatter.timeZone = NSTimeZone.timeZoneWithAbbreviation("UTC")
+
   def strip_date
     Time.at(self.hour*60*60 + self.min*60 + self.sec).utc
   end
 
   def strip_seconds
     Time.at(self.hour*60*60 + self.min*60).utc
+  end
+
+  def shortString
+    @@formatter.stringFromDate(self)
   end
 
   def length
