@@ -13,6 +13,7 @@ Motion::Project::App.setup do |app|
   app.name = 'Widget'
   app.info_plist['CFBundleDisplayName'] = 'Forking Pasta'
   app.frameworks << "NotificationCenter"
+  app.deployment_target = '8.2'
   app.info_plist['NSExtension'] = {
     'NSExtensionMainStoryboard' => 'MainInterface',
     'NSExtensionPointIdentifier' => 'com.apple.widget-extension'

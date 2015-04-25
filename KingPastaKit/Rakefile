@@ -12,4 +12,5 @@ Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.name = 'KingPastaKit'
   app.identifier = 'uk.pixlwave.KingPastaKit'
+  app.deployment_target = '8.2'
 end

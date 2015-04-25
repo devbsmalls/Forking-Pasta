@@ -11,6 +11,8 @@ end
 Motion::Project::App.setup do |app|
   # Use `rake config' to see complete project settings.
   app.entitlements['com.apple.security.application-groups'] = ['group.uk.pixlwave.ForkingPasta']
+  app.deployment_target = '8.2'
+  app.watch_app_config.deployment_target = '8.2'
 
   app.target('../KingPastaKit', :framework)
 
