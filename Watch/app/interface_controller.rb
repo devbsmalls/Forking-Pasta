@@ -8,8 +8,6 @@ class InterfaceController < WKInterfaceController
   def initWithContext(context)
     super
 
-    FkP.setup
-
     if WKInterfaceDevice.currentDevice.screenBounds.size.width < 156 
       @clockRect = CGRectMake(0, 0, 100, 100)
     else
@@ -20,6 +18,7 @@ class InterfaceController < WKInterfaceController
   end
 
   def willActivate
+    FkP.setup
     @tick = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "refresh", userInfo: nil, repeats: true) if @tick.nil?
     refresh
   end
