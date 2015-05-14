@@ -120,6 +120,10 @@ class FkP
     defaults.registeredNotifications unless defaults.nil?
   end
 
+  def self.registered_notifications=(value)
+    defaults.registeredNotifications = value unless defaults.nil?
+  end
+
   def self.fiveMinuteIntervals?
     defaults.fiveMinuteIntervals unless defaults.nil?
   end
@@ -166,6 +170,8 @@ class FkP
     unless registered_notifications?
       notificationSettings = UIUserNotificationSettings.settingsForTypes(UIUserNotificationTypeAlert | UIUserNotificationTypeSound, categories: nil)
       UIApplication.sharedApplication.registerUserNotificationSettings(notificationSettings)
+      self.registered_notifications = true
+      save
     end
   end
 
@@ -183,7 +189,7 @@ class FkP
             schedule.periods.each do |period|
               notification = UILocalNotification.new
               notification.fireDate = today + (dayOffset * 86400) + period.startTime.to_i
-              # notification.timeZone = ensure correct
+              # notification.timeZone = TODO: ensure correct
               notification.repeatInterval = NSWeekCalendarUnit
               notification.alertBody = "#{period.name} has now started"
               notification.soundName = "chime.caf"
@@ -194,7 +200,7 @@ class FkP
             unless schedule.end_time.nil?
               notification = UILocalNotification.new
               notification.fireDate = today + (dayOffset * 86400) + schedule.end_time.to_i
-              # notification.timeZone = ensure correct
+              # notification.timeZone = TODO: ensure correct
               notification.repeatInterval = NSWeekCalendarUnit
               notification.alertBody = "#{schedule.name} has now finished"
               notification.soundName = "chime.caf"
