@@ -9,6 +9,9 @@
 @implementation EditCategoryController
 @end
 
+@implementation GettingStartedController
+@end
+
 @implementation MainController
 @end
 

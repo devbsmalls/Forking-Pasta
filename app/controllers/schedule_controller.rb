@@ -21,6 +21,12 @@ class ScheduleController < UITableViewController
     updateHintImageView   # after reload check to ensure correct number of periods
   end
 
+  def viewDidAppear(animated)
+    super
+
+    show_getting_started unless FkP.getting_started_seen?
+  end
+
   def viewWillDisappear(animated)
     super
     
@@ -39,6 +45,14 @@ class ScheduleController < UITableViewController
     end
     
     @needsReload = true
+  end
+
+  def show_getting_started
+    getting_started = storyboard.instantiateViewControllerWithIdentifier("GettingStartedController")
+    self.presentModalViewController(getting_started, animated: true)
+
+    FkP.getting_started_seen = true
+    FkP.save
   end
 
   def done

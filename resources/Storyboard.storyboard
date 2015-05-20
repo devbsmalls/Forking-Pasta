@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cdM-By-5JB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cdM-By-5JB">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -31,6 +31,85 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5NI-jv-4Iw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1157" y="336"/>
+        </scene>
+        <!--Getting Started Controller-->
+        <scene sceneID="Zve-1d-ekz">
+            <objects>
+                <viewController storyboardIdentifier="GettingStartedController" modalTransitionStyle="crossDissolve" id="GtE-aV-LaQ" customClass="GettingStartedController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Zfq-eC-gcu"/>
+                        <viewControllerLayoutGuide type="bottom" id="xiV-Vx-Trb"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="MiK-LO-xbL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Okp-cN-w8w">
+                                <rect key="frame" x="269" y="562" width="62" height="30"/>
+                                <state key="normal" title="Continue">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="mDT-bn-Rn8" kind="showDetail" id="OUF-Zy-9v5"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="spB-hV-xgn">
+                                <rect key="frame" x="-4" y="181" width="608" height="239"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting Started" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Jg-Ep-XVs">
+                                        <rect key="frame" x="230" y="0.0" width="148" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nE8-iy-R5q">
+                                        <rect key="frame" x="20" y="46" width="568" height="119"/>
+                                        <string key="text">Forking Pasta is based around Schedules. A schedule represents a plan of your time for an entire day, from start to finish. 
+
+A simple set up could contain just one schedule called Work that occurs Monday to Friday and contains time periods for team meetings, desk work and any breaks throughout the day.</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="getting_started_work.png" translatesAutoresizingMaskIntoConstraints="NO" id="4vH-hI-UXd">
+                                        <rect key="frame" x="144" y="185" width="320" height="54"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="nE8-iy-R5q" secondAttribute="trailing" constant="20" id="4T0-dr-IVf"/>
+                                    <constraint firstItem="9Jg-Ep-XVs" firstAttribute="top" secondItem="spB-hV-xgn" secondAttribute="top" id="6hw-c3-Atg"/>
+                                    <constraint firstItem="4vH-hI-UXd" firstAttribute="top" secondItem="nE8-iy-R5q" secondAttribute="bottom" constant="20" id="VP6-Lj-csp"/>
+                                    <constraint firstItem="nE8-iy-R5q" firstAttribute="top" secondItem="9Jg-Ep-XVs" secondAttribute="bottom" constant="20" id="dd6-1H-S9S"/>
+                                    <constraint firstAttribute="bottom" secondItem="4vH-hI-UXd" secondAttribute="bottom" id="dyW-3x-IW5"/>
+                                    <constraint firstItem="nE8-iy-R5q" firstAttribute="leading" secondItem="spB-hV-xgn" secondAttribute="leading" constant="20" id="fDa-kG-i8x"/>
+                                    <constraint firstAttribute="centerX" secondItem="4vH-hI-UXd" secondAttribute="centerX" id="miF-C6-NTR"/>
+                                    <constraint firstAttribute="centerX" secondItem="9Jg-Ep-XVs" secondAttribute="centerX" id="vMW-XL-YPX"/>
+                                </constraints>
+                            </view>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" translatesAutoresizingMaskIntoConstraints="NO" id="EpF-bV-UQT">
+                                <rect key="frame" x="289" y="440" width="23" height="37"/>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="spB-hV-xgn" firstAttribute="leading" secondItem="MiK-LO-xbL" secondAttribute="leadingMargin" constant="-20" id="BqP-s9-J20"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="spB-hV-xgn" secondAttribute="trailing" constant="-20" id="F1y-fe-lHh"/>
+                            <constraint firstAttribute="centerY" secondItem="spB-hV-xgn" secondAttribute="centerY" priority="750" id="FuI-pJ-xyv"/>
+                            <constraint firstAttribute="centerX" secondItem="EpF-bV-UQT" secondAttribute="centerX" id="M0o-JL-gDY"/>
+                            <constraint firstItem="xiV-Vx-Trb" firstAttribute="top" secondItem="Okp-cN-w8w" secondAttribute="bottom" constant="8" id="dFJ-z5-p3g"/>
+                            <constraint firstItem="Okp-cN-w8w" firstAttribute="top" relation="greaterThanOrEqual" secondItem="EpF-bV-UQT" secondAttribute="bottom" constant="8" symbolic="YES" id="ixb-Na-bWk"/>
+                            <constraint firstAttribute="centerX" secondItem="Okp-cN-w8w" secondAttribute="centerX" id="wz8-7l-2cN"/>
+                            <constraint firstItem="EpF-bV-UQT" firstAttribute="top" secondItem="spB-hV-xgn" secondAttribute="bottom" constant="20" id="ycf-3G-r7G"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="OCO-qK-9fZ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Tt-CG-JbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1157" y="-373"/>
         </scene>
         <!--Schedules-->
         <scene sceneID="YzI-DL-vGe">
@@ -1306,8 +1385,88 @@
             </objects>
             <point key="canvasLocation" x="2561" y="-373"/>
         </scene>
+        <!--Getting Started Controller-->
+        <scene sceneID="VfD-AK-dWZ">
+            <objects>
+                <viewController extendedLayoutIncludesOpaqueBars="YES" modalTransitionStyle="crossDissolve" id="mDT-bn-Rn8" customClass="GettingStartedController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="2pe-M7-W05"/>
+                        <viewControllerLayoutGuide type="bottom" id="WIy-db-D18"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="XA6-od-Rje">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4fK-o6-qoN">
+                                <rect key="frame" x="281" y="562" width="38" height="30"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss" destination="mDT-bn-Rn8" eventType="touchUpInside" id="SCH-jk-uGt"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKJ-hx-H4p">
+                                <rect key="frame" x="-4" y="187" width="608" height="226"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting Started" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oyx-jR-PtK">
+                                        <rect key="frame" x="230" y="0.0" width="148" height="26"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kr-le-bGv">
+                                        <rect key="frame" x="20" y="46" width="568" height="60"/>
+                                        <string key="text">A more complex set up may involve 3 schedules such as Work &amp; Gym on Monday, Wednesday and Friday, Work on Tuesday and Thursday and Kids' Sports Clubs on Saturday.</string>
+                                        <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
+                                        <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="deviceRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="top" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="getting_started_work_gym.png" translatesAutoresizingMaskIntoConstraints="NO" id="eJ4-18-5xQ">
+                                        <rect key="frame" x="144" y="126" width="320" height="100"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="eJ4-18-5xQ" secondAttribute="bottom" id="0kg-80-nhI"/>
+                                    <constraint firstAttribute="centerX" secondItem="eJ4-18-5xQ" secondAttribute="centerX" id="H1u-7v-ANW"/>
+                                    <constraint firstItem="8kr-le-bGv" firstAttribute="top" secondItem="oyx-jR-PtK" secondAttribute="bottom" constant="20" id="PIN-kj-Z8k"/>
+                                    <constraint firstItem="eJ4-18-5xQ" firstAttribute="top" secondItem="8kr-le-bGv" secondAttribute="bottom" constant="20" id="Zpw-EH-Npa"/>
+                                    <constraint firstAttribute="centerX" secondItem="oyx-jR-PtK" secondAttribute="centerX" id="gVv-UL-7lk"/>
+                                    <constraint firstItem="oyx-jR-PtK" firstAttribute="top" secondItem="EKJ-hx-H4p" secondAttribute="top" id="q8N-gb-afI"/>
+                                    <constraint firstItem="8kr-le-bGv" firstAttribute="leading" secondItem="EKJ-hx-H4p" secondAttribute="leading" constant="20" id="rBe-mv-hD3"/>
+                                    <constraint firstAttribute="trailing" secondItem="8kr-le-bGv" secondAttribute="trailing" constant="20" id="uf4-eU-l10"/>
+                                </constraints>
+                            </view>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="2" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="wZn-Qu-owt">
+                                <rect key="frame" x="289" y="433" width="23" height="37"/>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="currentPageIndicatorTintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </pageControl>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="EKJ-hx-H4p" secondAttribute="centerY" priority="750" id="2Bm-kZ-IGe"/>
+                            <constraint firstAttribute="centerX" secondItem="wZn-Qu-owt" secondAttribute="centerX" id="BCI-jx-eaX"/>
+                            <constraint firstItem="EKJ-hx-H4p" firstAttribute="leading" secondItem="XA6-od-Rje" secondAttribute="leadingMargin" constant="-20" id="Kus-QB-F6g"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EKJ-hx-H4p" secondAttribute="trailing" constant="-20" id="VdU-kW-qfd"/>
+                            <constraint firstItem="WIy-db-D18" firstAttribute="top" secondItem="4fK-o6-qoN" secondAttribute="bottom" constant="8" id="Yuv-pX-JLo"/>
+                            <constraint firstItem="wZn-Qu-owt" firstAttribute="top" secondItem="EKJ-hx-H4p" secondAttribute="bottom" constant="20" id="e1t-9R-Dse"/>
+                            <constraint firstItem="4fK-o6-qoN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wZn-Qu-owt" secondAttribute="bottom" constant="8" symbolic="YES" id="ozB-mf-NKo"/>
+                            <constraint firstAttribute="centerX" secondItem="4fK-o6-qoN" secondAttribute="centerX" id="vGH-eb-24c"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="dJv-lv-8SN"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7el-0P-USI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1864" y="-373"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="getting_started_work.png" width="320" height="54"/>
+        <image name="getting_started_work_gym.png" width="320" height="100"/>
         <image name="icon_emboss" width="120" height="120"/>
     </resources>
     <inferredMetricsTieBreakers>

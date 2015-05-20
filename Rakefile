@@ -20,8 +20,8 @@ Motion::Project::App.setup do |app|
   app.deployment_target = '8.2'
 
   app.target('KingPastaKit', :framework)
-  app.target('Widget', :extension)
-  app.target('Watch', :extension)
+  # app.target('Widget', :extension)
+  # app.target('Watch', :extension)
 
   app.embed_dsym = false
 

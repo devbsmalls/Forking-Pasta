@@ -27,6 +27,11 @@
 
 @end
 
+@interface GettingStartedController: UIViewController
+-(IBAction) dismiss;
+
+@end
+
 @interface MainController: UIViewController
 
 @property IBOutlet UIView * watchView;
@@ -48,7 +53,6 @@
 
 -(IBAction) viewDidLoad;
 -(IBAction) viewWillAppear:(id) animated;
--(IBAction) viewDidAppear:(id) animated;
 -(IBAction) validate;
 -(IBAction) cancel;
 -(IBAction) nameDidChange:(id) sender;
@@ -74,6 +78,7 @@
 -(IBAction) viewDidLoad;
 -(IBAction) viewWillAppear:(id) animated;
 -(IBAction) viewWillDisappear:(id) animated;
+-(IBAction) show_getting_started;
 -(IBAction) done;
 -(IBAction) updateHintImageView;
 -(IBAction) numberOfSectionsInTableView:(id) tableView;
@@ -81,6 +86,7 @@
 @end
 
 @interface ScheduleDaysController: UITableViewController
+-(IBAction) viewDidLoad;
 -(IBAction) save;
 -(IBAction) cancel;
 

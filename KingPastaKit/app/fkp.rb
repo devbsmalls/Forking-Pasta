@@ -4,6 +4,7 @@ class FkP
   include MotionModel::Validatable
 
   columns :initialSetupComplete => { type: :boolean, default: false },
+          :hasSeenGettingStarted => { type: :boolean, default: false },
           :registeredNotifications => { type: :boolean, default: false },
           :fiveMinuteIntervals => { type: :boolean, default: true },
           :wakeTime => { type: :date, default: Time.at(8*60*60 + 0*60 + 0).utc },
@@ -114,6 +115,14 @@ class FkP
 
   def self.initialSetupComplete?
     defaults.initialSetupComplete unless defaults.nil?
+  end
+
+  def self.getting_started_seen?
+    defaults.hasSeenGettingStarted unless defaults.nil?
+  end
+
+  def self.getting_started_seen=(value)
+    defaults.hasSeenGettingStarted = value unless defaults.nil?
   end
 
   def self.registered_notifications?
