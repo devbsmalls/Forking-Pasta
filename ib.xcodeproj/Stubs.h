@@ -27,12 +27,6 @@
 
 @end
 
-@interface GettingStartedController: UIViewController
--(IBAction) supportedInterfaceOrientations;
--(IBAction) dismiss;
-
-@end
-
 @interface MainController: UIViewController
 
 @property IBOutlet UIView * watchView;
@@ -141,6 +135,35 @@
 -(IBAction) viewWillLayoutSubviews;
 -(IBAction) done;
 -(IBAction) refreshTimeInterval;
+
+@end
+
+@interface WalkthroughContentController: UIViewController
+
+@property IBOutlet UILabel * titleLabel;
+@property IBOutlet UILabel * textLabel;
+@property IBOutlet UIImageView * imageView;
+
+-(IBAction) viewDidLoad;
+-(IBAction) supportedInterfaceOrientations;
+
+@end
+
+@interface WalkthroughController: UIViewController
+
+@property IBOutlet UIButton * dismissButton;
+
+-(IBAction) dismiss;
+
+@end
+
+@interface WalkthroughPageController: UIPageViewController
+-(IBAction) viewDidLoad;
+-(IBAction) supportedInterfaceOrientations;
+-(IBAction) dismiss;
+-(IBAction) pageForIndex:(id) index;
+-(IBAction) presentationCountForPageViewController:(id) pageViewController;
+-(IBAction) presentationIndexForPageViewController:(id) pageViewController;
 
 @end
 

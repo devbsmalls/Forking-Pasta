@@ -9,9 +9,6 @@
 @implementation EditCategoryController
 @end
 
-@implementation GettingStartedController
-@end
-
 @implementation MainController
 @end
 
@@ -37,6 +34,15 @@
 @end
 
 @implementation WakeBedTimeController
+@end
+
+@implementation WalkthroughContentController
+@end
+
+@implementation WalkthroughController
+@end
+
+@implementation WalkthroughPageController
 @end
 
 @implementation CategoryColorMark

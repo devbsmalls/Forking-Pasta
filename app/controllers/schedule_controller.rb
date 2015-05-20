@@ -48,7 +48,7 @@ class ScheduleController < UITableViewController
   end
 
   def show_getting_started
-    getting_started = storyboard.instantiateViewControllerWithIdentifier("GettingStartedController")
+    getting_started = storyboard.instantiateViewControllerWithIdentifier("WalkthroughController")
     self.presentModalViewController(getting_started, animated: true)
 
     FkP.getting_started_seen = true
