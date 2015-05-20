@@ -28,6 +28,7 @@
 @end
 
 @interface GettingStartedController: UIViewController
+-(IBAction) supportedInterfaceOrientations;
 -(IBAction) dismiss;
 
 @end
@@ -77,6 +78,7 @@
 @interface ScheduleController: UITableViewController
 -(IBAction) viewDidLoad;
 -(IBAction) viewWillAppear:(id) animated;
+-(IBAction) viewDidAppear:(id) animated;
 -(IBAction) viewWillDisappear:(id) animated;
 -(IBAction) show_getting_started;
 -(IBAction) done;
