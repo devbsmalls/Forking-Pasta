@@ -27,10 +27,6 @@ class WalkthroughPageController < UIPageViewController
     self.setViewControllers([page1], direction: UIPageViewControllerNavigationDirectionForward, animated: true, completion: nil)
   end
 
-  def supportedInterfaceOrientations
-    UIInterfaceOrientationMaskPortrait
-  end
-
   def dismiss
     self.presentingViewController.presentingViewController.dismissModalViewControllerAnimated(false)
   end

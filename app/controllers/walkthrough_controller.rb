@@ -3,6 +3,10 @@ class WalkthroughController < UIViewController
 
   outlet :dismissButton, UIButton
 
+  def supportedInterfaceOrientations
+    UIInterfaceOrientationMaskPortrait
+  end
+
   def skipButton
     @dismissButton.setTitle("Skip", forState: UIControlStateNormal)
   end
