@@ -153,13 +153,15 @@
 
 @property IBOutlet UIButton * dismissButton;
 
+-(IBAction) supportedInterfaceOrientations;
+-(IBAction) skipButton;
+-(IBAction) doneButton;
 -(IBAction) dismiss;
 
 @end
 
 @interface WalkthroughPageController: UIPageViewController
 -(IBAction) viewDidLoad;
--(IBAction) supportedInterfaceOrientations;
 -(IBAction) dismiss;
 -(IBAction) pageForIndex:(id) index;
 -(IBAction) presentationCountForPageViewController:(id) pageViewController;

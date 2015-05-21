@@ -21,7 +21,7 @@ Motion::Project::App.setup do |app|
 
   app.target('KingPastaKit', :framework)
   app.target('Widget', :extension)
-  app.target('Watch', :extension)
+  # app.target('Watch', :extension)
 
   app.embed_dsym = false
 

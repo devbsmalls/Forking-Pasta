@@ -8,21 +8,26 @@ class WalkthroughPageController < UIPageViewController
 
     UIPageControl.appearance.pageIndicatorTintColor = UIColor.lightGrayColor
     UIPageControl.appearance.currentPageIndicatorTintColor = UIColor.blackColor
-    # UIPageControl.appearance.backgroundColor = UIColor.whiteColor
 
     page1 = storyboard.instantiateViewControllerWithIdentifier("WalkthroughContentController")
     page1.title = "Getting Started"
-    page1.text = "Forking Pasta is based around Schedules. A schedule represents a plan of your time for an entire day, from start to finish.\n\nA simple set up could contain just one schedule called Work that occurs Monday to Friday and contains time periods for team meetings, desk work and any breaks throughout the day."
-    page1.image = UIImage.imageNamed("getting_started_work")
+    page1.text = "Forking Pasta is based around Schedules. A schedule represents a plan of your time for an entire day, from start to finish."
+    page1.image = UIImage.imageNamed("getting_started_schedule")
     page1.pageIndex = 0
 
     page2 = storyboard.instantiateViewControllerWithIdentifier("WalkthroughContentController")
-    page2.title = "Getting Started"
-    page2.text = "A more complex set up may involve 3 schedules such as Work & Gym on Monday, Wednesday and Friday, Work on Tuesday and Thursday and Kids' Sports Clubs on Saturday."
-    page2.image = UIImage.imageNamed("getting_started_work_gym")
+    page2.title = ""
+    page2.text = "A simple set up could contain just one schedule called Work that occurs Monday to Friday and contains time periods for team meetings, desk work and any breaks throughout the day."
+    page2.image = UIImage.imageNamed("getting_started_work")
     page2.pageIndex = 1
 
-    @pages = [page1, page2]
+    page3 = storyboard.instantiateViewControllerWithIdentifier("WalkthroughContentController")
+    page3.title = ""
+    page3.text = "A more complex set up may involve 3 schedules such as Work & Gym on Monday, Wednesday and Friday, Work on Tuesday and Thursday and Kids' Sports Clubs on Saturday."
+    page3.image = UIImage.imageNamed("getting_started_work_gym")
+    page3.pageIndex = 2
+
+    @pages = [page1, page2, page3]
 
     self.setViewControllers([page1], direction: UIPageViewControllerNavigationDirectionForward, animated: true, completion: nil)
   end

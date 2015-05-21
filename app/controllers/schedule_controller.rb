@@ -24,7 +24,7 @@ class ScheduleController < UITableViewController
   def viewDidAppear(animated)
     super
 
-    show_getting_started unless FkP.getting_started_seen?
+    show_getting_started #unless FkP.getting_started_seen?
   end
 
   def viewWillDisappear(animated)
