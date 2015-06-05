@@ -151,6 +151,7 @@
 
 @interface WalkthroughController: UIViewController
 
+@property IBOutlet UIImageView * backgroundImageView;
 @property IBOutlet UIButton * dismissButton;
 
 -(IBAction) supportedInterfaceOrientations;

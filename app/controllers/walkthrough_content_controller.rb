@@ -11,7 +11,9 @@ class WalkthroughContentController < UIViewController
     super
 
     @titleLabel.text = @title
+    @titleLabel.textColor = UIColor.whiteColor
     @textLabel.text = @text
+    @textLabel.textColor = UIColor.whiteColor
     @imageView.image = @image
   end
 

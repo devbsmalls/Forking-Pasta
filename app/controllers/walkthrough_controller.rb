@@ -1,7 +1,20 @@
 class WalkthroughController < UIViewController
   extend IB
 
+  attr_accessor :backgroundImage
+
+  outlet :backgroundImageView, UIImageView
   outlet :dismissButton, UIButton
+
+  def viewDidLoad
+    super
+
+    @backgroundImageView.image = @backgroundImage
+  end
+
+  def preferredStatusBarStyle
+    UIStatusBarStyleLightContent
+  end
 
   def supportedInterfaceOrientations
     UIInterfaceOrientationMaskPortrait

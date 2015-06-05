@@ -16,3 +16,6 @@ PLATFORMS
 DEPENDENCIES
   motion_model
   rake
+
+BUNDLED WITH
+   1.10.2

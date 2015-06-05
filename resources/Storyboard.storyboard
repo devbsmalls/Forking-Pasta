@@ -44,6 +44,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="CqB-z4-727">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                            </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ECP-DD-vni">
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <connections>
@@ -62,15 +65,20 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="CqB-z4-727" firstAttribute="top" secondItem="WA4-6n-aNR" secondAttribute="top" id="2b7-Q1-89Y"/>
                             <constraint firstAttribute="trailing" secondItem="ECP-DD-vni" secondAttribute="trailing" id="KEm-hu-lgn"/>
+                            <constraint firstItem="CqB-z4-727" firstAttribute="leading" secondItem="2wQ-Qu-QTa" secondAttribute="leading" id="XpY-Es-nAc"/>
                             <constraint firstItem="gAx-JL-LyJ" firstAttribute="bottom" secondItem="ECP-DD-vni" secondAttribute="bottom" id="ZLb-kI-p5Z"/>
                             <constraint firstItem="ECP-DD-vni" firstAttribute="top" secondItem="WA4-6n-aNR" secondAttribute="top" id="dYW-Lt-gOB"/>
                             <constraint firstItem="gAx-JL-LyJ" firstAttribute="top" secondItem="OTN-xD-DNY" secondAttribute="bottom" constant="8" symbolic="YES" id="fwX-Ll-yGC"/>
+                            <constraint firstItem="gAx-JL-LyJ" firstAttribute="bottom" secondItem="CqB-z4-727" secondAttribute="bottom" id="hfB-ed-NET"/>
                             <constraint firstItem="OTN-xD-DNY" firstAttribute="trailing" secondItem="2wQ-Qu-QTa" secondAttribute="trailingMargin" id="imV-e9-gPt"/>
                             <constraint firstItem="ECP-DD-vni" firstAttribute="leading" secondItem="2wQ-Qu-QTa" secondAttribute="leading" id="jx3-jO-5b4"/>
+                            <constraint firstAttribute="trailing" secondItem="CqB-z4-727" secondAttribute="trailing" id="z1w-YL-EjO"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backgroundImageView" destination="CqB-z4-727" id="jlZ-BQ-scZ"/>
                         <outlet property="dismissButton" destination="OTN-xD-DNY" id="fgg-ib-19I"/>
                     </connections>
                 </viewController>
