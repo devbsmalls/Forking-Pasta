@@ -17,13 +17,13 @@ class WalkthroughPageController < UIPageViewController
 
     page2 = storyboard.instantiateViewControllerWithIdentifier("WalkthroughContentController")
     page2.title = ""
-    page2.text = "A simple set up could contain just one schedule called Work that occurs Monday to Friday and contains time periods for team meetings, desk work and any breaks throughout the day."
+    page2.text = "A simple set up could contain just one schedule called Work that occurs from Monday to Friday.\n\nThis schedule would contain time periods for all work activies throughout the day such as solo desk work, team meetings and breaks."
     page2.image = UIImage.imageNamed("getting_started_work")
     page2.pageIndex = 1
 
     page3 = storyboard.instantiateViewControllerWithIdentifier("WalkthroughContentController")
     page3.title = ""
-    page3.text = "A more complex set up may involve 3 schedules such as Work & Gym on Monday, Wednesday and Friday, Work on Tuesday and Thursday and Kids' Sports Clubs on Saturday."
+    page3.text = "A more complex set up may involve 3 schedules such as Work & Gym on Monday, Wednesday and Friday, Work on Tuesday and Thursday and Sports Clubs on Saturday."
     page3.image = UIImage.imageNamed("getting_started_work_gym")
     page3.pageIndex = 2
 
