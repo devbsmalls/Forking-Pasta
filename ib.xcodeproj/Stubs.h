@@ -152,8 +152,11 @@
 @interface WalkthroughController: UIViewController
 
 @property IBOutlet UIImageView * backgroundImageView;
-@property IBOutlet UIButton * dismissButton;
+@property IBOutlet UIButton * skipButton;
+@property IBOutlet UIButton * doneButton;
 
+-(IBAction) viewDidLoad;
+-(IBAction) preferredStatusBarStyle;
 -(IBAction) supportedInterfaceOrientations;
 -(IBAction) skipButton;
 -(IBAction) doneButton;

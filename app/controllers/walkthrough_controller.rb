@@ -4,7 +4,8 @@ class WalkthroughController < UIViewController
   attr_accessor :backgroundImage
 
   outlet :backgroundImageView, UIImageView
-  outlet :dismissButton, UIButton
+  outlet :skipButton, UIButton
+  outlet :doneButton, UIButton
 
   def viewDidLoad
     super
@@ -21,11 +22,13 @@ class WalkthroughController < UIViewController
   end
 
   def skipButton
-    @dismissButton.setTitle("Skip", forState: UIControlStateNormal)
+    @doneButton.hidden = true
+    @skipButton.hidden = false
   end
 
   def doneButton
-    @dismissButton.setTitle("Done", forState: UIControlStateNormal)
+    @skipButton.hidden = true
+    @doneButton.hidden = false
   end
 
   def dismiss

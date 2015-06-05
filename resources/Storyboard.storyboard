@@ -62,6 +62,15 @@
                                     <action selector="dismiss" destination="14O-b4-Qmf" eventType="touchUpInside" id="VDm-wm-aPx"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaf-1N-zap">
+                                <rect key="frame" x="547" y="562" width="37" height="30"/>
+                                <state key="normal" title="Done">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="dismiss" destination="14O-b4-Qmf" eventType="touchUpInside" id="Cjj-Ra-69C"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
@@ -69,17 +78,20 @@
                             <constraint firstAttribute="trailing" secondItem="ECP-DD-vni" secondAttribute="trailing" id="KEm-hu-lgn"/>
                             <constraint firstItem="CqB-z4-727" firstAttribute="leading" secondItem="2wQ-Qu-QTa" secondAttribute="leading" id="XpY-Es-nAc"/>
                             <constraint firstItem="gAx-JL-LyJ" firstAttribute="bottom" secondItem="ECP-DD-vni" secondAttribute="bottom" id="ZLb-kI-p5Z"/>
+                            <constraint firstItem="gAx-JL-LyJ" firstAttribute="top" secondItem="xaf-1N-zap" secondAttribute="bottom" constant="8" symbolic="YES" id="bV6-l8-KjD"/>
                             <constraint firstItem="ECP-DD-vni" firstAttribute="top" secondItem="WA4-6n-aNR" secondAttribute="top" id="dYW-Lt-gOB"/>
                             <constraint firstItem="gAx-JL-LyJ" firstAttribute="top" secondItem="OTN-xD-DNY" secondAttribute="bottom" constant="8" symbolic="YES" id="fwX-Ll-yGC"/>
                             <constraint firstItem="gAx-JL-LyJ" firstAttribute="bottom" secondItem="CqB-z4-727" secondAttribute="bottom" id="hfB-ed-NET"/>
                             <constraint firstItem="OTN-xD-DNY" firstAttribute="trailing" secondItem="2wQ-Qu-QTa" secondAttribute="trailingMargin" id="imV-e9-gPt"/>
                             <constraint firstItem="ECP-DD-vni" firstAttribute="leading" secondItem="2wQ-Qu-QTa" secondAttribute="leading" id="jx3-jO-5b4"/>
+                            <constraint firstItem="xaf-1N-zap" firstAttribute="trailing" secondItem="2wQ-Qu-QTa" secondAttribute="trailingMargin" id="ohe-Gr-Vhd"/>
                             <constraint firstAttribute="trailing" secondItem="CqB-z4-727" secondAttribute="trailing" id="z1w-YL-EjO"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backgroundImageView" destination="CqB-z4-727" id="jlZ-BQ-scZ"/>
-                        <outlet property="dismissButton" destination="OTN-xD-DNY" id="fgg-ib-19I"/>
+                        <outlet property="doneButton" destination="xaf-1N-zap" id="ndI-wJ-bwf"/>
+                        <outlet property="skipButton" destination="OTN-xD-DNY" id="EnF-d4-QS0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EvY-Rf-jnn" userLabel="First Responder" sceneMemberID="firstResponder"/>
