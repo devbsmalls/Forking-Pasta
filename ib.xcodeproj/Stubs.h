@@ -141,6 +141,7 @@
 @interface WalkthroughContentController: UIViewController
 
 @property IBOutlet UILabel * titleLabel;
+@property IBOutlet UILabel * subtitleLabel;
 @property IBOutlet UILabel * textLabel;
 @property IBOutlet UIImageView * imageView;
 
