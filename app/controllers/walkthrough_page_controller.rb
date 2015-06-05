@@ -6,8 +6,8 @@ class WalkthroughPageController < UIPageViewController
     self.delegate = self
     self.dataSource = self
 
-    UIPageControl.appearance.pageIndicatorTintColor = UIColor.lightGrayColor
-    UIPageControl.appearance.currentPageIndicatorTintColor = UIColor.blackColor
+    # UIPageControl.appearance.pageIndicatorTintColor = UIColor.lightGrayColor
+    # UIPageControl.appearance.currentPageIndicatorTintColor = UIColor.blackColor
 
     page1 = storyboard.instantiateViewControllerWithIdentifier("WalkthroughContentController")
     page1.title = "Getting Started"
