@@ -110,7 +110,6 @@
         <!--Walkthrough Content Controller-->
         <scene sceneID="Zve-1d-ekz">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0Tt-CG-JbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="WalkthroughContentController" id="GtE-aV-LaQ" customClass="WalkthroughContentController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zfq-eC-gcu"/>
@@ -178,6 +177,7 @@
                         <outlet property="titleLabel" destination="qTT-ZF-b0w" id="chO-Hx-vKO"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0Tt-CG-JbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1859" y="-337"/>
         </scene>
@@ -317,13 +317,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forking Pasta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcl-pi-Joh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Forking Pasta" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bcl-pi-Joh">
                                 <rect key="frame" x="215" y="20" width="170" height="155"/>
                                 <fontDescription key="fontDescription" name="Lora-Regular" family="Lora" pointSize="27"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoM-7a-ZKJ">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qoM-7a-ZKJ">
                                 <rect key="frame" x="311" y="548" width="89" height="32"/>
                                 <fontDescription key="fontDescription" name="Lora-Regular" family="Lora" pointSize="16"/>
                                 <state key="normal" title="Preferences">
@@ -334,7 +334,7 @@
                                     <segue destination="Jq0-CC-2sd" kind="presentation" id="u4a-tU-I6z"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUg-9K-qbd">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TUg-9K-qbd">
                                 <rect key="frame" x="207" y="548" width="76" height="32"/>
                                 <fontDescription key="fontDescription" name="Lora-Regular" family="Lora" pointSize="16"/>
                                 <state key="normal" title="Schedules">
