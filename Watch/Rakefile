@@ -25,6 +25,7 @@ Motion::Project::App.setup do |app|
   app.release do
     app.provisioning_profile = '/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_Watch_Extension.mobileprovision'
     app.watch_app_config.provisioning_profile = "/Users/Douglas/Documents/RubyMotion/Certificates/Forking_Pasta_Watch_App.mobileprovision"
+    app.watch_app_config.info_plist['UIDeviceFamily'] = []      # clear device array so rm will append apple watch on it's own
   end
 end
 
