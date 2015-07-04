@@ -5,16 +5,12 @@ class InterfaceController < WKInterfaceController
   outlet :clockImage, WKInterfaceImage
   outlet :timeRemainingLabel, WKInterfaceLabel
 
-  def initWithContext(context)
-    super
-
+  def awakeWithContext(context)
     if WKInterfaceDevice.currentDevice.screenBounds.size.width < 156 
       @clockRect = CGRectMake(0, 0, 100, 100)
     else
       @clockRect = CGRectMake(0, 0, 120, 120)
     end
-
-    return self
   end
 
   def willActivate
