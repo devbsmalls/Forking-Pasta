@@ -19,8 +19,15 @@ class InterfaceController < WKInterfaceController
 
   def willActivate
     FkP.setup
-    @tick = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "refresh", userInfo: nil, repeats: true) if @tick.nil?
-    refresh
+
+    if FkP.initialSetupComplete?
+      @tick = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "refresh", userInfo: nil, repeats: true) if @tick.nil?
+      refresh
+    else
+      @clockImage.image = Clock.blank(@clockRect)
+      @periodNameLabel.text = "Free time"
+      @timeRemainingLabel.text = "Nothing scheduled"
+    end
   end
 
   def didDeactivate
