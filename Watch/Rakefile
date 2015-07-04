@@ -13,6 +13,7 @@ Motion::Project::App.setup do |app|
   app.entitlements['com.apple.security.application-groups'] = ['group.uk.pixlwave.ForkingPasta']
   app.deployment_target = '8.2'
   app.watch_app_config.deployment_target = '8.2'
+  app.watch_app_config.interface_orientations = [:portrait, :portrait_upside_down]
 
   app.target('../KingPastaKit', :framework)
 
