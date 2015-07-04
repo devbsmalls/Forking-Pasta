@@ -39,11 +39,15 @@ end
 namespace :clean do
   desc 'Clean build directories, leaving .storyboardc files'
   task :build do
-    dirs = ['build', 'KingPastaKit/build', 'Widget/build', 'Watch/build']
-    dirs.each do |dir|
-      path = File.join(App.config.project_dir, dir)
-      App.info 'Delete', path
-      rm_rf path
+    # project build dir
+    App.info 'Delete', App.config.build_dir
+    rm_rf App.config.build_dir
+
+    # target build dirs
+    App.config.targets.each do |t|
+      target_build_dir = File.join(App.config.project_dir, File.join(t.path, 'build'))
+      App.info 'Delete', target_build_dir
+      rm_rf target_build_dir
     end
   end
 end
