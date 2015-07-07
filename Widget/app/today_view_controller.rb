@@ -17,7 +17,11 @@ class TodayViewController < UIViewController
   def viewDidAppear(animated)
     super
 
-    @tick = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "refresh", userInfo: nil, repeats: true) if @tick.nil?
+    if FkP.initialSetupComplete?
+      @tick = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "refresh", userInfo: nil, repeats: true) if @tick.nil?
+    else
+      nothing_scheduled
+    end
   end
 
   def viewWillDisappear(animated)
@@ -41,9 +45,20 @@ class TodayViewController < UIViewController
     @timeRemainingLabel.text = status[:timeRemaining]
   end
 
+  def nothing_scheduled
+    @clockImageView.image = Clock.blank(@clockRect)
+    @periodNameLabel.text = "Free time"
+    @timeRemainingLabel.text = "Nothing scheduled"
+  end
+
   def widgetPerformUpdateWithCompletionHandler(completionHandler)
     FkP.setup
-    refresh
+
+    if FkP.initialSetupComplete?
+      refresh
+    else
+      nothing_scheduled
+    end
 
     completionHandler.call(NCUpdateResultNewData)
   end
