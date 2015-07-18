@@ -82,6 +82,7 @@ class ScheduleDetailController < UITableViewController
   def notificationsSwitchDidChange(sender)
     @schedule.shows_notifications = sender.isOn
     FkP.register_notifications if sender.isOn
+    FkP.save    # could this save unwanted things?
   end
 
   def hideKeyboard
