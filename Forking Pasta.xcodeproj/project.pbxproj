@@ -1,0 +1,409 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		A513E98F1BF23E15004AC1A4 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E98E1BF23E15004AC1A4 /* Period.swift */; };
+		A513E9911BF23FCD004AC1A4 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E9901BF23FCD004AC1A4 /* Schedule.swift */; };
+		A513E9931BF25947004AC1A4 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E9921BF25947004AC1A4 /* Clock.swift */; };
+		A513E9951BF36AE5004AC1A4 /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E9941BF36AE5004AC1A4 /* SwiftyUserDefaults.swift */; };
+		A555EE661BF392D700EF4368 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = A555EE651BF392D700EF4368 /* Debug.swift */; };
+		A58B82A21BEE18FA00C6AB47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B82A11BEE18FA00C6AB47 /* AppDelegate.swift */; };
+		A58B82A41BEE18FA00C6AB47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B82A31BEE18FA00C6AB47 /* ViewController.swift */; };
+		A58B82AC1BEE18FA00C6AB47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58B82AA1BEE18FA00C6AB47 /* LaunchScreen.storyboard */; };
+		A58B82DD1BEE197900C6AB47 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58B82DC1BEE197900C6AB47 /* Main.storyboard */; };
+		A58B82DF1BEE1A4E00C6AB47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A58B82DE1BEE1A4E00C6AB47 /* Assets.xcassets */; };
+		A58B82E11BEE1AF800C6AB47 /* chime.caf in Resources */ = {isa = PBXBuildFile; fileRef = A58B82E01BEE1AF800C6AB47 /* chime.caf */; };
+		A58B82E31BEE1B1E00C6AB47 /* Lora-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A58B82E21BEE1B1E00C6AB47 /* Lora-Regular.ttf */; };
+		A58B83101BEE20C500C6AB47 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B830F1BEE20C500C6AB47 /* Category.swift */; };
+		A58B83131BEE227B00C6AB47 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58B83111BEE227B00C6AB47 /* Realm.framework */; };
+		A58B83141BEE227B00C6AB47 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A58B83111BEE227B00C6AB47 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A58B83151BEE227B00C6AB47 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58B83121BEE227B00C6AB47 /* RealmSwift.framework */; };
+		A58B83161BEE227B00C6AB47 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A58B83121BEE227B00C6AB47 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A58B83181BEF935800C6AB47 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B83171BEF935800C6AB47 /* Day.swift */; };
+		A58B831A1BEF961400C6AB47 /* Extends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B83191BEF961400C6AB47 /* Extends.swift */; };
+		A58B831E1BEF9EA400C6AB47 /* NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B831D1BEF9EA400C6AB47 /* NSDate.swift */; };
+		A58B83201BEFA05900C6AB47 /* FkP.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B831F1BEFA05900C6AB47 /* FkP.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		A58B82D81BEE18FB00C6AB47 /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A58B82F51BEE1B7500C6AB47 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				A58B83161BEE227B00C6AB47 /* RealmSwift.framework in Embed Frameworks */,
+				A58B83141BEE227B00C6AB47 /* Realm.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		A513E98E1BF23E15004AC1A4 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Period.swift; path = KingPastaKit/Period.swift; sourceTree = SOURCE_ROOT; };
+		A513E9901BF23FCD004AC1A4 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Schedule.swift; path = KingPastaKit/Schedule.swift; sourceTree = SOURCE_ROOT; };
+		A513E9921BF25947004AC1A4 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clock.swift; path = KingPastaKit/Clock.swift; sourceTree = SOURCE_ROOT; };
+		A513E9941BF36AE5004AC1A4 /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyUserDefaults.swift; path = ../KingPastaKit/SwiftyUserDefaults.swift; sourceTree = "<group>"; };
+		A555EE651BF392D700EF4368 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Debug.swift; path = KingPastaKit/Debug.swift; sourceTree = SOURCE_ROOT; };
+		A58B829E1BEE18FA00C6AB47 /* Forking Pasta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Forking Pasta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A58B82A11BEE18FA00C6AB47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A58B82A31BEE18FA00C6AB47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		A58B82AB1BEE18FA00C6AB47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A58B82AD1BEE18FA00C6AB47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A58B82DC1BEE197900C6AB47 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		A58B82DE1BEE1A4E00C6AB47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A58B82E01BEE1AF800C6AB47 /* chime.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chime.caf; sourceTree = "<group>"; };
+		A58B82E21BEE1B1E00C6AB47 /* Lora-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Regular.ttf"; sourceTree = "<group>"; };
+		A58B830F1BEE20C500C6AB47 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Category.swift; path = KingPastaKit/Category.swift; sourceTree = SOURCE_ROOT; };
+		A58B83111BEE227B00C6AB47 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
+		A58B83121BEE227B00C6AB47 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
+		A58B83171BEF935800C6AB47 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Day.swift; path = KingPastaKit/Day.swift; sourceTree = SOURCE_ROOT; };
+		A58B83191BEF961400C6AB47 /* Extends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extends.swift; path = KingPastaKit/Extends.swift; sourceTree = SOURCE_ROOT; };
+		A58B831C1BEF984700C6AB47 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
+		A58B831D1BEF9EA400C6AB47 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDate.swift; path = KingPastaKit/NSDate.swift; sourceTree = SOURCE_ROOT; };
+		A58B831F1BEFA05900C6AB47 /* FkP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FkP.swift; path = KingPastaKit/FkP.swift; sourceTree = SOURCE_ROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		A58B829B1BEE18FA00C6AB47 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A58B83151BEE227B00C6AB47 /* RealmSwift.framework in Frameworks */,
+				A58B83131BEE227B00C6AB47 /* Realm.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		A58B82951BEE18FA00C6AB47 = {
+			isa = PBXGroup;
+			children = (
+				A58B831C1BEF984700C6AB47 /* Playground.playground */,
+				A58B82A01BEE18FA00C6AB47 /* Forking Pasta */,
+				A58B829F1BEE18FA00C6AB47 /* Products */,
+				A58B83111BEE227B00C6AB47 /* Realm.framework */,
+				A58B83121BEE227B00C6AB47 /* RealmSwift.framework */,
+			);
+			sourceTree = "<group>";
+		};
+		A58B829F1BEE18FA00C6AB47 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				A58B829E1BEE18FA00C6AB47 /* Forking Pasta.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		A58B82A01BEE18FA00C6AB47 /* Forking Pasta */ = {
+			isa = PBXGroup;
+			children = (
+				A58B830C1BEE209A00C6AB47 /* KingPastaKit */,
+				A58B82A11BEE18FA00C6AB47 /* AppDelegate.swift */,
+				A58B82A31BEE18FA00C6AB47 /* ViewController.swift */,
+				A58B82DC1BEE197900C6AB47 /* Main.storyboard */,
+				A58B82DE1BEE1A4E00C6AB47 /* Assets.xcassets */,
+				A58B82AA1BEE18FA00C6AB47 /* LaunchScreen.storyboard */,
+				A58B82E01BEE1AF800C6AB47 /* chime.caf */,
+				A58B82E21BEE1B1E00C6AB47 /* Lora-Regular.ttf */,
+				A58B82AD1BEE18FA00C6AB47 /* Info.plist */,
+			);
+			path = "Forking Pasta";
+			sourceTree = "<group>";
+		};
+		A58B830C1BEE209A00C6AB47 /* KingPastaKit */ = {
+			isa = PBXGroup;
+			children = (
+				A58B830D1BEE20A300C6AB47 /* Source */,
+				A513E9941BF36AE5004AC1A4 /* SwiftyUserDefaults.swift */,
+				A58B830E1BEE20AF00C6AB47 /* Resources */,
+			);
+			name = KingPastaKit;
+			sourceTree = "<group>";
+		};
+		A58B830D1BEE20A300C6AB47 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				A58B830F1BEE20C500C6AB47 /* Category.swift */,
+				A58B83171BEF935800C6AB47 /* Day.swift */,
+				A513E98E1BF23E15004AC1A4 /* Period.swift */,
+				A513E9901BF23FCD004AC1A4 /* Schedule.swift */,
+				A58B83191BEF961400C6AB47 /* Extends.swift */,
+				A58B831D1BEF9EA400C6AB47 /* NSDate.swift */,
+				A513E9921BF25947004AC1A4 /* Clock.swift */,
+				A58B831F1BEFA05900C6AB47 /* FkP.swift */,
+				A555EE651BF392D700EF4368 /* Debug.swift */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		A58B830E1BEE20AF00C6AB47 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		A58B829D1BEE18FA00C6AB47 /* Forking Pasta */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A58B82D91BEE18FB00C6AB47 /* Build configuration list for PBXNativeTarget "Forking Pasta" */;
+			buildPhases = (
+				A58B829A1BEE18FA00C6AB47 /* Sources */,
+				A58B829B1BEE18FA00C6AB47 /* Frameworks */,
+				A58B829C1BEE18FA00C6AB47 /* Resources */,
+				A58B82D81BEE18FB00C6AB47 /* Embed Watch Content */,
+				A58B82F51BEE1B7500C6AB47 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Forking Pasta";
+			productName = "Forking Pasta";
+			productReference = A58B829E1BEE18FA00C6AB47 /* Forking Pasta.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		A58B82961BEE18FA00C6AB47 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0710;
+				LastUpgradeCheck = 0710;
+				ORGANIZATIONNAME = pixlwave;
+				TargetAttributes = {
+					A58B829D1BEE18FA00C6AB47 = {
+						CreatedOnToolsVersion = 7.1;
+					};
+				};
+			};
+			buildConfigurationList = A58B82991BEE18FA00C6AB47 /* Build configuration list for PBXProject "Forking Pasta" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = A58B82951BEE18FA00C6AB47;
+			productRefGroup = A58B829F1BEE18FA00C6AB47 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				A58B829D1BEE18FA00C6AB47 /* Forking Pasta */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		A58B829C1BEE18FA00C6AB47 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A58B82AC1BEE18FA00C6AB47 /* LaunchScreen.storyboard in Resources */,
+				A58B82E31BEE1B1E00C6AB47 /* Lora-Regular.ttf in Resources */,
+				A58B82DF1BEE1A4E00C6AB47 /* Assets.xcassets in Resources */,
+				A58B82DD1BEE197900C6AB47 /* Main.storyboard in Resources */,
+				A58B82E11BEE1AF800C6AB47 /* chime.caf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		A58B829A1BEE18FA00C6AB47 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A58B831E1BEF9EA400C6AB47 /* NSDate.swift in Sources */,
+				A555EE661BF392D700EF4368 /* Debug.swift in Sources */,
+				A58B82A41BEE18FA00C6AB47 /* ViewController.swift in Sources */,
+				A513E98F1BF23E15004AC1A4 /* Period.swift in Sources */,
+				A513E9911BF23FCD004AC1A4 /* Schedule.swift in Sources */,
+				A513E9931BF25947004AC1A4 /* Clock.swift in Sources */,
+				A58B82A21BEE18FA00C6AB47 /* AppDelegate.swift in Sources */,
+				A58B831A1BEF961400C6AB47 /* Extends.swift in Sources */,
+				A58B83201BEFA05900C6AB47 /* FkP.swift in Sources */,
+				A513E9951BF36AE5004AC1A4 /* SwiftyUserDefaults.swift in Sources */,
+				A58B83181BEF935800C6AB47 /* Day.swift in Sources */,
+				A58B83101BEE20C500C6AB47 /* Category.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		A58B82AA1BEE18FA00C6AB47 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A58B82AB1BEE18FA00C6AB47 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		A58B82CF1BEE18FB00C6AB47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		A58B82D01BEE18FB00C6AB47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		A58B82DA1BEE18FB00C6AB47 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "Forking Pasta/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.pixlwave.Forking-Pasta";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		A58B82DB1BEE18FB00C6AB47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "Forking Pasta/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "uk.pixlwave.Forking-Pasta";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		A58B82991BEE18FA00C6AB47 /* Build configuration list for PBXProject "Forking Pasta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A58B82CF1BEE18FB00C6AB47 /* Debug */,
+				A58B82D01BEE18FB00C6AB47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A58B82D91BEE18FB00C6AB47 /* Build configuration list for PBXNativeTarget "Forking Pasta" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A58B82DA1BEE18FB00C6AB47 /* Debug */,
+				A58B82DB1BEE18FB00C6AB47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = A58B82961BEE18FA00C6AB47 /* Project object */;
+}
