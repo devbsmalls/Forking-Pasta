@@ -11,7 +11,10 @@
 		A513E9911BF23FCD004AC1A4 /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E9901BF23FCD004AC1A4 /* Schedule.swift */; };
 		A513E9931BF25947004AC1A4 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E9921BF25947004AC1A4 /* Clock.swift */; };
 		A513E9951BF36AE5004AC1A4 /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E9941BF36AE5004AC1A4 /* SwiftyUserDefaults.swift */; };
+		A55239D81BF8D22D00D24FC3 /* ScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55239D71BF8D22D00D24FC3 /* ScheduleController.swift */; };
+		A55239DB1BF8D5F500D24FC3 /* WalkthroughController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55239DA1BF8D5F500D24FC3 /* WalkthroughController.swift */; };
 		A555EE661BF392D700EF4368 /* Debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = A555EE651BF392D700EF4368 /* Debug.swift */; };
+		A578087C1BF7A7E8009A88BE /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A578087B1BF7A7E8009A88BE /* MainController.swift */; };
 		A58B82A21BEE18FA00C6AB47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B82A11BEE18FA00C6AB47 /* AppDelegate.swift */; };
 		A58B82A41BEE18FA00C6AB47 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B82A31BEE18FA00C6AB47 /* ViewController.swift */; };
 		A58B82AC1BEE18FA00C6AB47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A58B82AA1BEE18FA00C6AB47 /* LaunchScreen.storyboard */; };
@@ -60,7 +63,10 @@
 		A513E9901BF23FCD004AC1A4 /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Schedule.swift; path = KingPastaKit/Schedule.swift; sourceTree = SOURCE_ROOT; };
 		A513E9921BF25947004AC1A4 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clock.swift; path = KingPastaKit/Clock.swift; sourceTree = SOURCE_ROOT; };
 		A513E9941BF36AE5004AC1A4 /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyUserDefaults.swift; path = ../KingPastaKit/SwiftyUserDefaults.swift; sourceTree = "<group>"; };
+		A55239D71BF8D22D00D24FC3 /* ScheduleController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScheduleController.swift; sourceTree = "<group>"; };
+		A55239DA1BF8D5F500D24FC3 /* WalkthroughController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughController.swift; sourceTree = "<group>"; };
 		A555EE651BF392D700EF4368 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Debug.swift; path = KingPastaKit/Debug.swift; sourceTree = SOURCE_ROOT; };
+		A578087B1BF7A7E8009A88BE /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		A58B829E1BEE18FA00C6AB47 /* Forking Pasta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Forking Pasta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58B82A11BEE18FA00C6AB47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A58B82A31BEE18FA00C6AB47 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +99,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A55239D91BF8D5E200D24FC3 /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				A55239DA1BF8D5F500D24FC3 /* WalkthroughController.swift */,
+			);
+			name = Walkthrough;
+			sourceTree = "<group>";
+		};
+		A578087A1BF7A7D8009A88BE /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A578087B1BF7A7E8009A88BE /* MainController.swift */,
+				A55239D71BF8D22D00D24FC3 /* ScheduleController.swift */,
+			);
+			name = App;
+			sourceTree = "<group>";
+		};
 		A58B82951BEE18FA00C6AB47 = {
 			isa = PBXGroup;
 			children = (
@@ -115,6 +138,8 @@
 		A58B82A01BEE18FA00C6AB47 /* Forking Pasta */ = {
 			isa = PBXGroup;
 			children = (
+				A578087A1BF7A7D8009A88BE /* App */,
+				A55239D91BF8D5E200D24FC3 /* Walkthrough */,
 				A58B830C1BEE209A00C6AB47 /* KingPastaKit */,
 				A58B82A11BEE18FA00C6AB47 /* AppDelegate.swift */,
 				A58B82A31BEE18FA00C6AB47 /* ViewController.swift */,
@@ -240,6 +265,7 @@
 				A555EE661BF392D700EF4368 /* Debug.swift in Sources */,
 				A58B82A41BEE18FA00C6AB47 /* ViewController.swift in Sources */,
 				A513E98F1BF23E15004AC1A4 /* Period.swift in Sources */,
+				A55239D81BF8D22D00D24FC3 /* ScheduleController.swift in Sources */,
 				A513E9911BF23FCD004AC1A4 /* Schedule.swift in Sources */,
 				A513E9931BF25947004AC1A4 /* Clock.swift in Sources */,
 				A58B82A21BEE18FA00C6AB47 /* AppDelegate.swift in Sources */,
@@ -247,6 +273,8 @@
 				A58B83201BEFA05900C6AB47 /* FkP.swift in Sources */,
 				A513E9951BF36AE5004AC1A4 /* SwiftyUserDefaults.swift in Sources */,
 				A58B83181BEF935800C6AB47 /* Day.swift in Sources */,
+				A55239DB1BF8D5F500D24FC3 /* WalkthroughController.swift in Sources */,
+				A578087C1BF7A7E8009A88BE /* MainController.swift in Sources */,
 				A58B83101BEE20C500C6AB47 /* Category.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

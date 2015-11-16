@@ -16,7 +16,7 @@ class Schedule: Object {
         return periods.sorted("startTime")
     }
     
-    func daysString() -> String {
+    var daysString: String {
         switch days.count {
         case 0:
             return " "       // space stops detailTextLabel collapsing to a size of 0 in the ScheduleController
@@ -34,6 +34,7 @@ class Schedule: Object {
             return daysArray.prefix(daysArray.count - 1).map { Day.shortSymbols[$0.dayOfWeek] }.joinWithSeparator(", ") + " & \(Day.shortSymbols[daysArray.last!.dayOfWeek])"
         }
     }
+    
     var hasStarted: Bool {
         if orderedPeriods().count < 1 {
             return false

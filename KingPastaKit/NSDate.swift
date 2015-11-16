@@ -45,7 +45,7 @@ extension NSDate {
         return timeRemaining
     }
     
-    func dayOfWeek() -> Int {
+    var dayOfWeek: Int {
         // returns day of the week from 0 to 6 respecting user's first weekday
         // TODO: firstWeekday as a class const
         let firstWeekday = NSCalendar.currentCalendar().firstWeekday - 1

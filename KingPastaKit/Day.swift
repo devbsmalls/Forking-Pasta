@@ -23,11 +23,11 @@ class Day: Object {
     static let shortSymbols = NSDateFormatter().shortWeekdaySymbols.rotate(NSCalendar.currentCalendar().firstWeekday - 1)
     
     class func today() -> Day? {
-        return FkP.realm.objects(Day).filter("dayOfWeek == %@", NSDate().dayOfWeek()).first
+        return FkP.realm.objects(Day).filter("dayOfWeek == %@", NSDate().dayOfWeek).first
     }
     
     class func tomorrow() -> Day? {
-        return FkP.realm.objects(Day).filter("dayOfWeek == %@", NSDate().dateByAddingTimeInterval(86400).dayOfWeek()).first
+        return FkP.realm.objects(Day).filter("dayOfWeek == %@", NSDate().dateByAddingTimeInterval(86400).dayOfWeek).first
     }
     
     class func wday(wday: Int) -> Day? {

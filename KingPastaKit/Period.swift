@@ -53,11 +53,11 @@ class Period: Object {
         return (startDuring.count + endDuring.count + beforeToAfter.count) > 0
     }
 
-    func timeRemaining() -> NSDate {
+    var timeRemaining: NSDate {
         return NSDate(timeIntervalSince1970: endTime.timeIntervalSinceDate(NSDate().stripSeconds())) // TODO: .utc
     }
     
-    func timeUntilStart() -> NSDate {
+    var timeUntilStart: NSDate {
         return NSDate(timeIntervalSince1970: startTime.timeIntervalSinceDate(NSDate().stripSeconds())) // TODO: .utc
     }
 }

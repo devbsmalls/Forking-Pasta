@@ -25,3 +25,13 @@ let weekDay = myComponents.weekday
 let components = NSCalendarUnit.Hour.union(NSCalendarUnit.Minute).union(NSCalendarUnit.Second)
 let time = NSCalendar.currentCalendar().components(components, fromDate: NSDate())
 let date = NSCalendar.currentCalendar().dateFromComponents(time)
+
+func info() -> [String: AnyObject] {
+    var dict = [String: AnyObject]()
+    dict["Hello"] = 1
+    dict["World"] = "Hey there!"
+    return dict
+}
+
+let update = info()
+update["Hello"]
