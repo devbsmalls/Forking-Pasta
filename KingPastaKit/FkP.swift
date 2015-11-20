@@ -17,34 +17,34 @@ class FkP {
         
         let currentPeriod = Period.current()
         let nextPeriod = Period.next()
-        let schedule = Schedule.today()
+        let day = Day.today()
         
-        if let schedule = schedule where schedule.periods.count > 0 {
+        if let day = day where day.periods.count > 0 {
             if let currentPeriod = currentPeriod {
-                result.clock = Clock.day(clockRect, periods: Array(schedule.orderedPeriods()), currentPeriod: currentPeriod)
+                result.clock = Clock.day(clockRect, periods: Array(day.orderedPeriods()), currentPeriod: currentPeriod)
                 result.periodName = currentPeriod.name
-                result.timeRemaining = currentPeriod.timeRemaining.length()
-            } else if !schedule.hasStarted && !FkP.isAwake {
+                result.timeRemaining = currentPeriod.timeRemaining.lengthString
+            } else if !day.hasStarted && !FkP.isAwake {
                 result.clock = Clock.night(clockRect)
                 result.periodName = "Night time"
-                result.timeRemaining = FkP.timeUntilWake.length()
-            } else if let nextPeriod = nextPeriod where !schedule.hasStarted {
-                result.clock = Clock.morning(clockRect, periods: Array(schedule.orderedPeriods()))
+                result.timeRemaining = FkP.timeUntilWake.lengthString
+            } else if let nextPeriod = nextPeriod where !day.hasStarted {
+                result.clock = Clock.morning(clockRect, periods: Array(day.orderedPeriods()))
                 result.periodName = "\(nextPeriod.name) in"
-                result.timeRemaining = nextPeriod.timeUntilStart.length()
+                result.timeRemaining = nextPeriod.timeUntilStart.lengthString
             } else if let nextPeriod = nextPeriod {
                 // TODO: Don't pass a Period? for current??
-                result.clock = Clock.day(clockRect, periods: Array(schedule.orderedPeriods()), currentPeriod: currentPeriod)
+                result.clock = Clock.day(clockRect, periods: Array(day.orderedPeriods()), currentPeriod: currentPeriod)
                 result.periodName = "Free time"
-                result.timeRemaining = nextPeriod.timeUntilStart.length()
+                result.timeRemaining = nextPeriod.timeUntilStart.lengthString
             } else if FkP.isAwake {
-                result.clock = Clock.evening(clockRect, periods: Array(schedule.orderedPeriods()))
+                result.clock = Clock.evening(clockRect, periods: Array(day.orderedPeriods()))
                 result.periodName = "Bedtime in"
-                result.timeRemaining = FkP.timeUntilBed.length()
+                result.timeRemaining = FkP.timeUntilBed.lengthString
             } else {
                 result.clock = Clock.night(clockRect)
                 result.periodName = "Night time"
-                result.timeRemaining = FkP.timeUntilWake.length()
+                result.timeRemaining = FkP.timeUntilWake.lengthString
             }
         } else {
             if FkP.isAwake {
@@ -54,7 +54,7 @@ class FkP {
             } else {
                 result.clock = Clock.night(clockRect)
                 result.periodName = "Night time"
-                result.timeRemaining = FkP.timeUntilWake.length()
+                result.timeRemaining = FkP.timeUntilWake.lengthString
             }
         }
         
@@ -63,7 +63,12 @@ class FkP {
     
     // TODO: update to modern Defaults
     class var isInitialSetupComplete: Bool {
-        return Defaults["initialSetupComplete"].boolValue
+        get {
+            return Defaults["isInitialSetupComplete"].boolValue
+        }
+        set {
+            Defaults["isInitialSetupComplete"] = newValue
+        }
     }
     
     class var hasSeenGettingStarted: Bool {
@@ -77,56 +82,56 @@ class FkP {
     
     class var hasRegisteredNotifications: Bool {
         get {
-            return Defaults["registeredNotifications"].boolValue
+            return Defaults["hasRegisteredNotifications"].boolValue
         }
         set {
-            Defaults["registeredNotifications"] = newValue
+            Defaults["hasRegisteredNotifications"] = newValue
         }
     }
     
     class var useFiveMinuteIntervals: Bool {
         get {
-            return Defaults["fiveMinuteIntervals"].bool ?? true
+            return Defaults["useFiveMinuteIntervals"].bool ?? true
         }
         set {
-            Defaults["fiveMinuteIntervals"] = newValue
+            Defaults["useFiveMinuteIntervals"] = newValue
         }
     }
     
-    class var wakeTime: NSDate {
+    class var wakeTime: NSTimeInterval {
         get {
-            return Defaults["wakeTime"].date ?? NSDate.make(hours: 8, minutes: 0, seconds: 0) // TODO: .utc
+            return Defaults["wakeTime"].double ?? Time.make(hours: 8, minutes: 0, seconds: 0)
         }
         set {
             Defaults["wakeTime"] = newValue
         }
     }
     
-    class var timeUntilWake: NSDate {
-        let time = NSDate().stripDate()
+    class var timeUntilWake: NSTimeInterval {
+        let time = Time.now()
         
-        if time.compare(wakeTime) == .OrderedAscending { // <
-            return NSDate(timeIntervalSince1970: wakeTime.timeIntervalSinceDate(time)) // TODO: .utc
+        if time < wakeTime {
+            return wakeTime - time
         } else {
-            return NSDate(timeIntervalSince1970: wakeTime.timeIntervalSinceDate(time) + 86400) // TODO: .utc
+            return wakeTime - time + 86400
         }
     }
     
-    class var bedTime: NSDate {
+    class var bedTime: NSTimeInterval {
         get {
-            return Defaults["bedTime"].date ?? NSDate.make(hours: 22, minutes: 30, seconds: 0)
+            return Defaults["bedTime"].double ?? Time.make(hours: 22, minutes: 30, seconds: 0)
         }
         set {
             Defaults["bedTime"] = newValue
         }
     }
     
-    class var timeUntilBed: NSDate {
-        return NSDate(timeIntervalSince1970: bedTime.timeIntervalSinceDate(NSDate().stripSeconds())) // TODO: .utc
+    class var timeUntilBed: NSTimeInterval {
+        return bedTime - Time.now().approx
     }
     
     class var isAwake: Bool {
-        return (NSDate().stripDate().compare(wakeTime) == .OrderedDescending) && (NSDate().stripDate().compare(bedTime) == .OrderedAscending)
+        return Time.now() > wakeTime && Time.now() < bedTime
     }
     
     class func registerNotifications() {
@@ -145,20 +150,18 @@ class FkP {
             let today = NSDate.today()
             
             for day in realm.objects(Day) {
-                if let schedule = day.schedule {
-                    if schedule.showsNotifications {
-                        let dayOffset = NSTimeInterval((7 + (day.dayOfWeek - today.dayOfWeek)) % 7)
+                if day.showsNotifications {
+                    let dayOffset = NSTimeInterval((7 + (day.dayOfWeek - today.dayOfWeek)) % 7)
+                    
+                    for period in day.periods {
+                        let notification = UILocalNotification()
+                        notification.fireDate = today.dateByAddingTimeInterval(dayOffset * 86400).dateByAddingTimeInterval(period.startTime)
+                        // notification.timeZone = TODO: ensure correct
+                        notification.repeatInterval = .WeekOfYear   // TODO: ensure this replaces NSWeekCalendarUnit
+                        notification.alertBody = "\(period.name) has now started"
+                        notification.soundName = "chime.caf"
                         
-                        for period in schedule.periods {
-                            let notification = UILocalNotification()
-                            notification.fireDate = today.dateByAddingTimeInterval(dayOffset * 86400).dateByAddingTimeInterval(period.startTime.timeIntervalSince1970)
-                            // notification.timeZone = TODO: ensure correct
-                            notification.repeatInterval = .WeekOfYear   // TODO: ensure this replaces NSWeekCalendarUnit
-                            notification.alertBody = "\(period.name) has now started"
-                            notification.soundName = "chime.caf"
-                            
-                            UIApplication.sharedApplication().scheduleLocalNotification(notification)
-                        }
+                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
                     }
                 }
             }

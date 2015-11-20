@@ -35,3 +35,36 @@ func info() -> [String: AnyObject] {
 
 let update = info()
 update["Hello"]
+
+extension NSTimeInterval {
+    var approx: NSTimeInterval {
+        return self - (self % 3600 % 60)
+    }
+}
+
+let time2 = NSTimeInterval(3600 * 12 + 60 * 36 + 20)
+
+Int(time2 / 3600)
+Int((time2 % 3600) / 60)
+Int(time2 % 3600 % 60)
+
+let approx = time2.approx
+Int(approx % 3600 % 60)
+
+4 % 5
+
+// TODO: These aren't needed anymore
+func make(hours hours: Int, minutes: Int, seconds: Int) -> NSDate {
+    let timeComponents = NSDateComponents()
+    timeComponents.hour = hours
+    timeComponents.minute = minutes
+    timeComponents.second = seconds
+    return NSCalendar.currentCalendar().dateFromComponents(timeComponents)! // TODO: .utc
+}
+
+func make(time: NSTimeInterval) -> NSDate {
+    return NSDate(timeIntervalSince1970: time)
+}
+
+let testd = make(hours: 16, minutes: 50, seconds: 00)
+testd.

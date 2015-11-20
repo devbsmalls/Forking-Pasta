@@ -2,47 +2,33 @@ import Foundation
 
 extension NSDate {
     
-    func stripDate() -> NSDate {
-        let components = NSCalendarUnit.Hour.union(NSCalendarUnit.Minute).union(NSCalendarUnit.Second)
-        let timeComponents = NSCalendar.currentCalendar().components(components, fromDate: self)
-        return NSCalendar.currentCalendar().dateFromComponents(timeComponents)! // TODO: .utc
+    var minute: Int {
+        let timeComponents = NSCalendar.currentCalendar().components(.Minute, fromDate: self)
+        return timeComponents.minute
     }
     
-    // TODO: Is this needed now with NSDateFormatter?
-    func stripSeconds() -> NSDate {
-        let components = NSCalendarUnit.Hour.union(NSCalendarUnit.Minute)
+    func time() -> NSTimeInterval {
+        let components = NSCalendarUnit.Hour.union(.Minute).union(.Second)
+        // let calendar = NSCalendar.currentCalendar()
+        // calendar.timeZone = NSTimeZone(abbreviation: "UTC")!
         let timeComponents = NSCalendar.currentCalendar().components(components, fromDate: self)
-        return NSCalendar.currentCalendar().dateFromComponents(timeComponents)! // TODO: .utc
+        return Time.make(hours: timeComponents.hour, minutes: timeComponents.minute, seconds: timeComponents.second)
     }
     
-    func shortString() -> String {
+    // TODO: Is this needed now with NSDateFormatter? Replaces stripSeconds
+    func approxTime() -> NSTimeInterval {
+        let components = NSCalendarUnit.Hour.union(.Minute)
+        let timeComponents = NSCalendar.currentCalendar().components(components, fromDate: self)
+        return Time.make(hours: timeComponents.hour, minutes: timeComponents.minute, seconds: 0)
+    }
+    
+    var shortString: String {
         // TODO: Store formatter as a static constant
         let formatter = NSDateFormatter()
         formatter.timeStyle = .ShortStyle
         formatter.dateStyle = .NoStyle
-        formatter.timeZone = NSTimeZone(abbreviation: "UTC")
+        formatter.timeZone = NSTimeZone.localTimeZone()
         return formatter.stringFromDate(self)
-    }
-    
-    func length() -> String {
-        // TODO: Check against TimeZones
-        let hours = NSCalendar.currentCalendar().components(.Hour, fromDate: self).hour
-        let mins = NSCalendar.currentCalendar().components(.Minute, fromDate: self).minute
-        var timeRemaining = String()
-        
-        if mins == 1 {
-            timeRemaining = "\(mins) minute"
-        } else {
-            timeRemaining = "\(mins) minutes"
-        }
-        
-        if hours == 1 {
-            timeRemaining = "\(hours) hour \(timeRemaining)"
-        } else if hours > 1 {
-            timeRemaining = "\(hours) hours \(timeRemaining)"
-        }
-        
-        return timeRemaining
     }
     
     var dayOfWeek: Int {
@@ -64,11 +50,21 @@ extension NSDate {
         return NSCalendar.currentCalendar().startOfDayForDate(NSDate())
     }
     
+    
+    // TODO: Check for use of these - NSTimeInterval.date()
     class func make(hours hours: Int, minutes: Int, seconds: Int) -> NSDate {
         let timeComponents = NSDateComponents()
         timeComponents.hour = hours
         timeComponents.minute = minutes
         timeComponents.second = seconds
         return NSCalendar.currentCalendar().dateFromComponents(timeComponents)! // TODO: .utc
+    }
+    
+    class func make(time: NSTimeInterval) -> NSDate {
+        // return NSDate(timeIntervalSince1970: time)
+        let hour = Int(time.hour)
+        let minute = Int(time.minute)
+        let second = Int(time.second)
+        return make(hours: hour, minutes: minute, seconds: second)
     }
 }

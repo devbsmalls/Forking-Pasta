@@ -1,4 +1,5 @@
 import Foundation
+import RealmSwift
 
 extension Array {
     func rotate(index: Int) -> Array {

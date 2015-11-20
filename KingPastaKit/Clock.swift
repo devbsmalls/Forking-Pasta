@@ -8,13 +8,13 @@ class Clock {
     // LINE_WIDTH = 2
     
     static let screenScale: CGFloat = {
-        if #available(watchOS 2, *) {
+        #if os(watchOS)
             print("watchOS Scale")
             return WKInterfaceDevice.currentDevice().screenScale
-        } else {
+        #else
             print("iOS Scale")
             return UIScreen.mainScreen().scale
-        }
+        #endif
     }()
     
     // TODO: Remove the tuple
@@ -48,13 +48,13 @@ class Clock {
         if periods.count > 0 {
             let dayStart = periods.first!.startTime
             let dayEnd = periods.last!.endTime
-            let dayLength = dayEnd.timeIntervalSinceDate(dayStart)
+            let dayLength = dayEnd - dayStart
             
             // draw each period
             for period in periods {
-                let startAngle = CGFloat(2 * M_PI / dayLength * period.startTime.timeIntervalSinceDate(dayStart))
-                let endAngle = CGFloat(2 * M_PI / dayLength * period.endTime.timeIntervalSinceDate(dayStart))
-                let color = period.category.cgColor
+                let startAngle = CGFloat(2 * M_PI / dayLength * (period.startTime - dayStart))
+                let endAngle = CGFloat(2 * M_PI / dayLength * (period.endTime - dayStart))
+                let color = period.category?.cgColor ?? Category.freeColor.CGColor
                 drawSegment(context, rect: outerRect, startAngle: startAngle, endAngle: endAngle, color: color)
             }
         }
@@ -95,18 +95,18 @@ class Clock {
         if periods.count > 0 {
             let dayStart = periods.first!.startTime
             let dayEnd = periods.last!.endTime
-            let dayLength = dayEnd.timeIntervalSinceDate(dayStart)
+            let dayLength = dayEnd - dayStart
             
             // draw each period
             for period in periods {
-                let startAngle = CGFloat(2 * M_PI / dayLength * period.startTime.timeIntervalSinceDate(dayStart))
-                let endAngle = CGFloat(2 * M_PI / dayLength * period.endTime.timeIntervalSinceDate(dayStart))
-                let color = period.category.cgColor
+                let startAngle = CGFloat(2 * M_PI / dayLength * (period.startTime - dayStart))
+                let endAngle = CGFloat(2 * M_PI / dayLength * (period.endTime - dayStart))
+                let color = period.category?.cgColor ?? Category.freeColor.CGColor
                 drawSegment(context, rect: outerRect, startAngle: startAngle, endAngle: endAngle, color: color)
             }
             
             // shade progress through the day
-            let dayTimePassed = NSDate().stripDate().timeIntervalSinceDate(dayStart)    // TODO: .utc was after stripDate()
+            let dayTimePassed = Time.now() - dayStart
             let dayProgress = dayTimePassed / dayLength
             if dayProgress > 0 {
                 if dayProgress < 1 {
@@ -120,12 +120,12 @@ class Clock {
         // draw blank if currentPeriod = nil (this will occur during free time)
         // draw current period in center
         if let currentPeriod = currentPeriod {
-            CGContextSetFillColorWithColor(context, currentPeriod.category.cgColor)
+            CGContextSetFillColorWithColor(context, currentPeriod.category?.cgColor ?? Category.freeColor.CGColor)
             CGContextFillEllipseInRect(context, innerRect)
             
             // shade progress through current period
-            let currentPeriodLength = currentPeriod.endTime.timeIntervalSinceDate(currentPeriod.startTime)
-            let currentPeriodTimePassed = NSDate().stripDate().timeIntervalSinceDate(currentPeriod.startTime) // TODO: .utc on strip date
+            let currentPeriodLength = currentPeriod.endTime - currentPeriod.startTime
+            let currentPeriodTimePassed = Time.now() - currentPeriod.startTime
             let currentPeriodProgress = currentPeriodTimePassed / currentPeriodLength
             shadeInner(context, rect: innerRect, angle: CGFloat(2 * M_PI * currentPeriodProgress))
         } else {
@@ -161,13 +161,13 @@ class Clock {
         if periods.count > 0 {
             let dayStart = periods.first!.startTime
             let dayEnd = periods.last!.endTime
-            let dayLength = dayEnd.timeIntervalSinceDate(dayStart)
+            let dayLength = dayEnd - dayStart
             
             // draw each period
             for period in periods {
-                let startAngle = CGFloat(2 * M_PI / dayLength * period.startTime.timeIntervalSinceDate(dayStart))
-                let endAngle = CGFloat(2 * M_PI / dayLength * period.endTime.timeIntervalSinceDate(dayStart))
-                let color = period.category.cgColor
+                let startAngle = CGFloat(2 * M_PI / dayLength * (period.startTime - dayStart))
+                let endAngle = CGFloat(2 * M_PI / dayLength * (period.endTime - dayStart))
+                let color = period.category?.cgColor ?? Category.freeColor.CGColor
                 drawSegment(context, rect: outerRect, startAngle: startAngle, endAngle: endAngle, color: color)
             }
             

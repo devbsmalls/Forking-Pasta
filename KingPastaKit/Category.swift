@@ -11,6 +11,14 @@ class Category: Object {
         return FkP.realm.objects(Period).filter("category == %@", self)
     }
     
+    class func forIndex(index: Int) -> Category {
+        return FkP.realm.objects(Category).sorted("index")[index]
+    }
+    
+    class var count: Int {
+        return FkP.realm.objects(Category).count
+    }
+    
     // TODO: Use an enum of UIColor if possible?
     static let colors: [rawColor] = [.Blue, .Green, .Orange, .Red, .Pink, .Purple]
     
