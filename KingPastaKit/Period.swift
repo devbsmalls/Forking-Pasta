@@ -1,16 +1,16 @@
 import Foundation
 import RealmSwift
 
-class Period: Object {
-    dynamic var name: String = ""
-    dynamic var startTime: NSTimeInterval = 0
-    dynamic var endTime: NSTimeInterval = 0
+public class Period: Object {
+    public dynamic var name: String = ""
+    public dynamic var startTime: NSTimeInterval = 0
+    public dynamic var endTime: NSTimeInterval = 0
     
-    dynamic var day: Day?
-    dynamic var category: Category?
+    public dynamic var day: Day?
+    public dynamic var category: KPCategory?
     
     // TODO: This can be achieved better
-    convenience init(name: String, startTime: NSTimeInterval, endTime: NSTimeInterval, day: Day, category: Category) {
+    convenience init(name: String, startTime: NSTimeInterval, endTime: NSTimeInterval, day: Day, category: KPCategory) {
         self.init()
         
         self.name = name
@@ -42,7 +42,7 @@ class Period: Object {
         return day.orderedPeriods()
     }
     
-    class func overlapWithStartTime(startTime: NSTimeInterval, endTime: NSTimeInterval, day: Day?, ignoringPeriod: Period?) -> Bool {
+    public class func overlapWithStartTime(startTime: NSTimeInterval, endTime: NSTimeInterval, day: Day?, ignoringPeriod: Period?) -> Bool {
         guard let day = day else { return true }
         
         // TODO: is the last filter with block acceptable for Results<T>???
@@ -53,7 +53,7 @@ class Period: Object {
         return (startDuring.count + endDuring.count + beforeToAfter.count) > 0
     }
     
-    enum OverlapType {
+    public enum OverlapType {
         case StartsAtEnd
         case StartsAfterEnd
         case Overlap

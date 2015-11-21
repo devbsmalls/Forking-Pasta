@@ -1,4 +1,5 @@
 import UIKit
+import KingPastaKit
 
 class WeekController: UITableViewController {
     var days = Array(FkP.realm.objects(Day).sorted("dayOfWeek"))
@@ -48,7 +49,7 @@ class WeekController: UITableViewController {
     }
     
     @IBAction func done() {
-        FkP.scheduleNotifications()
+        AppDelegate.scheduleNotifications()
         navigationController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     

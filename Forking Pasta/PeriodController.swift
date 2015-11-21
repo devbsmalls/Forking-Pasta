@@ -1,4 +1,5 @@
 import UIKit
+import KingPastaKit
 
 class PeriodController: UITableViewController {
     
@@ -7,7 +8,7 @@ class PeriodController: UITableViewController {
     var isNewPeriod = false
     
     var periodName: String?
-    var periodCategory: Category?
+    var periodCategory: KPCategory?
     var periodStartTime: NSTimeInterval?
     var periodEndTime: NSTimeInterval?
     var periodDay: Day?

@@ -1,4 +1,5 @@
 import UIKit
+import KingPastaKit
 
 class PreferencesController: UITableViewController {
     
@@ -17,7 +18,7 @@ class PreferencesController: UITableViewController {
         if let identifier = segue.identifier, let selectedIndexPath = tableView.indexPathForSelectedRow {
             if identifier == "EditCategorySegue" {
                 needsReload = true
-                (segue.destinationViewController as? EditCategoryController)?.category = Category.forIndex(selectedIndexPath.row)
+                (segue.destinationViewController as? EditCategoryController)?.category = KPCategory.forIndex(selectedIndexPath.row)
             }
         }
     }
@@ -39,7 +40,7 @@ class PreferencesController: UITableViewController {
         if section == 0 {
             return 1
         } else {
-            return Category.count
+            return KPCategory.count
         }
     }
     
@@ -58,7 +59,7 @@ class PreferencesController: UITableViewController {
             return cell
         } else {
             let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell") as? SelectCategoryCell ?? SelectCategoryCell(style: .Default, reuseIdentifier: "CategoryCell")
-            let category = Category.forIndex(indexPath.row)
+            let category = KPCategory.forIndex(indexPath.row)
             cell.nameLabel.text = category.name
             cell.colorMark.color = category.color
             

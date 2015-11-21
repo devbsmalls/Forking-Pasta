@@ -1,18 +1,19 @@
 import UIKit
 import RealmSwift
 
-struct Status {
-    var clock: UIImage?
-    var periodName: String?
-    var timeRemaining: String?
+public struct Status {
+    public var clock: UIImage?
+    public var periodName: String?
+    public var timeRemaining: String?
 }
 
-class FkP {
-    static let realm = try! Realm()
+public class FkP {
+    public static let realm = try! Realm(configuration: realmConfig)
     
-    static let appGroupContainer = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.uk.pixlwave.ForkingPasta")!.path
+    static let appGroupContainer = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.uk.pixlwave.ForkingPasta")!
+    static let realmConfig = Realm.Configuration(path: appGroupContainer.URLByAppendingPathComponent("ForkingPasta.realm").path)
     
-    class func status(clockRect: CGRect) -> Status {
+    public class func status(clockRect: CGRect) -> Status {
         var result = Status()
         
         let currentPeriod = Period.current()
@@ -62,52 +63,52 @@ class FkP {
     }
     
     // TODO: update to modern Defaults
-    class var isInitialSetupComplete: Bool {
+    public class var isInitialSetupComplete: Bool {
         get {
-            return Defaults["isInitialSetupComplete"].boolValue
+            return SharedDefaults["isInitialSetupComplete"].boolValue
         }
         set {
-            Defaults["isInitialSetupComplete"] = newValue
+            SharedDefaults["isInitialSetupComplete"] = newValue
         }
     }
     
-    class var hasSeenGettingStarted: Bool {
+    public class var hasSeenGettingStarted: Bool {
         get {
-            return Defaults["hasSeenGettingStarted"].boolValue
+            return SharedDefaults["hasSeenGettingStarted"].boolValue
         }
         set {
-            Defaults["hasSeenGettingStarted"] = newValue
+            SharedDefaults["hasSeenGettingStarted"] = newValue
         }
     }
     
-    class var hasRegisteredNotifications: Bool {
+    public class var hasRegisteredNotifications: Bool {
         get {
-            return Defaults["hasRegisteredNotifications"].boolValue
+            return SharedDefaults["hasRegisteredNotifications"].boolValue
         }
         set {
-            Defaults["hasRegisteredNotifications"] = newValue
+            SharedDefaults["hasRegisteredNotifications"] = newValue
         }
     }
     
-    class var useFiveMinuteIntervals: Bool {
+    public class var useFiveMinuteIntervals: Bool {
         get {
-            return Defaults["useFiveMinuteIntervals"].bool ?? true
+            return SharedDefaults["useFiveMinuteIntervals"].bool ?? true
         }
         set {
-            Defaults["useFiveMinuteIntervals"] = newValue
+            SharedDefaults["useFiveMinuteIntervals"] = newValue
         }
     }
     
-    class var wakeTime: NSTimeInterval {
+    public class var wakeTime: NSTimeInterval {
         get {
-            return Defaults["wakeTime"].double ?? Time.make(hours: 8, minutes: 0, seconds: 0)
+            return SharedDefaults["wakeTime"].double ?? Time.make(hours: 8, minutes: 0, seconds: 0)
         }
         set {
-            Defaults["wakeTime"] = newValue
+            SharedDefaults["wakeTime"] = newValue
         }
     }
     
-    class var timeUntilWake: NSTimeInterval {
+    public class var timeUntilWake: NSTimeInterval {
         let time = Time.now()
         
         if time < wakeTime {
@@ -117,65 +118,21 @@ class FkP {
         }
     }
     
-    class var bedTime: NSTimeInterval {
+    public class var bedTime: NSTimeInterval {
         get {
-            return Defaults["bedTime"].double ?? Time.make(hours: 22, minutes: 30, seconds: 0)
+            return SharedDefaults["bedTime"].double ?? Time.make(hours: 22, minutes: 30, seconds: 0)
         }
         set {
-            Defaults["bedTime"] = newValue
+            SharedDefaults["bedTime"] = newValue
         }
     }
     
-    class var timeUntilBed: NSTimeInterval {
+    public class var timeUntilBed: NSTimeInterval {
         return bedTime - Time.now().approx
     }
     
-    class var isAwake: Bool {
+    public class var isAwake: Bool {
         return Time.now() > wakeTime && Time.now() < bedTime
     }
-    
-    class func registerNotifications() {
-        if !hasRegisteredNotifications {
-            // TODO: Check settings conversion has worked
-            let notificationSettings = UIUserNotificationSettings(forTypes: UIUserNotificationType.Alert.union(.Sound), categories: nil)
-            UIApplication.sharedApplication().registerUserNotificationSettings(notificationSettings)
-            hasRegisteredNotifications = true
-        }
-    }
-    
-    class func scheduleNotifications() {
-        // TODO: Dispatch::Queue.concurrent.async do
-            UIApplication.sharedApplication().cancelAllLocalNotifications()
-            
-            let today = NSDate.today()
-            
-            for day in realm.objects(Day) {
-                if day.showsNotifications {
-                    let dayOffset = NSTimeInterval((7 + (day.dayOfWeek - today.dayOfWeek)) % 7)
-                    
-                    for period in day.periods {
-                        let notification = UILocalNotification()
-                        notification.fireDate = today.dateByAddingTimeInterval(dayOffset * 86400).dateByAddingTimeInterval(period.startTime)
-                        // notification.timeZone = TODO: ensure correct
-                        notification.repeatInterval = .WeekOfYear   // TODO: ensure this replaces NSWeekCalendarUnit
-                        notification.alertBody = "\(period.name) has now started"
-                        notification.soundName = "chime.caf"
-                        
-                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
-                    }
-                }
-            }
-        // end
-    }
-    
-    class func logNotifications() {
-        if let notifications = UIApplication.sharedApplication().scheduledLocalNotifications {
-            for notification in notifications {
-                // notification.fireDate.strftime('%e/%-m %a %k:%M')    // TODO: Convert this or remove?
-                let name = notification.alertBody?.stringByReplacingOccurrencesOfString(" has now started", withString: "")
-                NSLog("\(notification.fireDate)  \(name)")
-            }
-        }
-    }
-    
+        
 }

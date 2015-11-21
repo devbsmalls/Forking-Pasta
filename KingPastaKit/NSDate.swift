@@ -1,6 +1,6 @@
 import Foundation
 
-extension NSDate {
+public extension NSDate {
     
     var minute: Int {
         let timeComponents = NSCalendar.currentCalendar().components(.Minute, fromDate: self)

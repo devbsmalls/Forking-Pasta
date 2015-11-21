@@ -1,4 +1,5 @@
 import UIKit
+import KingPastaKit
 
 class DayController: UITableViewController {
     
@@ -78,8 +79,9 @@ class DayController: UITableViewController {
     }
     
     @IBAction func showPeriodFromSegue(segue: UIStoryboardSegue) {
-//        if let segue.sourceViewController.new_period
-//        showPeriod = segue.sourceViewController.period
+        // TODO: Implement this!
+        // if let segue.sourceViewController.new_period
+        // showPeriod = segue.sourceViewController.period
     }
     
     @IBAction func notificationsSwitchDidChange(sender: UISwitch) {
@@ -87,7 +89,7 @@ class DayController: UITableViewController {
             self.day.showsNotifications = sender.on
         }
         
-        if sender.on { FkP.registerNotifications() }
+        if sender.on { AppDelegate.registerNotifications() }
     }
     
     func showClearConfirmation() {

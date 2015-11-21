@@ -1,10 +1,11 @@
 import UIKit
+import KingPastaKit
 
 class EditCategoryController: UITableViewController {
     
-    var category: Category!
+    var category: KPCategory!
     
-    private var colors = Category.colors
+    private var colors = KPCategory.colors
     private var categoryName: String?
     private var categoryColorIndex: Int?
     private var selectedIndexPath: NSIndexPath?

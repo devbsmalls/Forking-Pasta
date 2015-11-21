@@ -1,13 +1,13 @@
 import Foundation
 import RealmSwift
 
-class Day: Object {
-    dynamic var name: String = ""
-    dynamic var dayOfWeek: Int = 0
-    dynamic var showsNotifications = false
+public class Day: Object {
+    public dynamic var name: String = ""
+    public dynamic var dayOfWeek: Int = 0
+    public dynamic var showsNotifications = false
     
     // TODO: Reverse relationships?
-    var periods: Results<Period> {
+    public var periods: Results<Period> {
         return FkP.realm.objects(Period).filter("day == %@", self)
     }
     
@@ -18,7 +18,7 @@ class Day: Object {
         self.dayOfWeek = dayOfWeek
     }
     
-    func orderedPeriods() -> Results<Period> {
+    public func orderedPeriods() -> Results<Period> {
         return periods.sorted("startTime")
     }
     
@@ -32,7 +32,7 @@ class Day: Object {
         return false
     }
     
-    var startTime: NSTimeInterval? {
+    public var startTime: NSTimeInterval? {
         switch periods.count {
         case 0:
             return nil
@@ -44,7 +44,7 @@ class Day: Object {
         }
     }
     
-    var endTime: NSTimeInterval? {
+    public var endTime: NSTimeInterval? {
         switch periods.count {
         case 0:
             return nil
@@ -61,7 +61,7 @@ class Day: Object {
         return endTime - startTime
     }
     
-    static let symbols = NSDateFormatter().weekdaySymbols.rotate(NSCalendar.currentCalendar().firstWeekday - 1)
+    public static let symbols = NSDateFormatter().weekdaySymbols.rotate(NSCalendar.currentCalendar().firstWeekday - 1)
     static let shortSymbols = NSDateFormatter().shortWeekdaySymbols.rotate(NSCalendar.currentCalendar().firstWeekday - 1)
     
     class func today() -> Day? {

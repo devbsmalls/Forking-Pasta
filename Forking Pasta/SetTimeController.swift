@@ -1,4 +1,5 @@
 import UIKit
+import KingPastaKit
 
 class SetTimeController: UIViewController {
     

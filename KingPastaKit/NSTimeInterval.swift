@@ -5,7 +5,7 @@ import Foundation
 // minutes: Int((self % 3600) / 60)
 // seconds: Int((self % 3600) % 60)
 
-extension NSTimeInterval {
+public extension NSTimeInterval {
     var hour: NSTimeInterval {
         return floor(self / 3600)
     }

@@ -24,3 +24,7 @@ extension String {
         return false
     }
 }
+
+/// Global shortcut for NSUserDefaults.standardUserDefaults()
+
+public let SharedDefaults = NSUserDefaults(suiteName: "group.uk.pixlwave.ForkingPasta") ?? NSUserDefaults.standardUserDefaults()

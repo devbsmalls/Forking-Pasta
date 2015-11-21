@@ -1,28 +1,27 @@
-import Foundation
 import UIKit
 import RealmSwift
 
-class Category: Object {
-    dynamic var name = ""
-    dynamic var index = 0
-    dynamic var colorIndex = 0
+public class KPCategory: Object {
+    public dynamic var name = ""
+    public dynamic var index = 0
+    public dynamic var colorIndex = 0
     
     var periods: Results<Period> {
         return FkP.realm.objects(Period).filter("category == %@", self)
     }
     
-    class func forIndex(index: Int) -> Category {
-        return FkP.realm.objects(Category).sorted("index")[index]
+    public class func forIndex(index: Int) -> KPCategory {
+        return FkP.realm.objects(KPCategory).sorted("index")[index]
     }
     
-    class var count: Int {
-        return FkP.realm.objects(Category).count
+    public class var count: Int {
+        return FkP.realm.objects(KPCategory).count
     }
     
     // TODO: Use an enum of UIColor if possible?
-    static let colors: [rawColor] = [.Blue, .Green, .Orange, .Red, .Pink, .Purple]
+    public static let colors: [rawColor] = [.Blue, .Green, .Orange, .Red, .Pink, .Purple]
     
-    enum rawColor {
+    public enum rawColor {
         case Blue
         case Green
         case Orange
@@ -30,7 +29,7 @@ class Category: Object {
         case Pink
         case Purple
         
-        var value: UIColor {
+        public var value: UIColor {
             switch self {
             case Blue:
                 return UIColor(red: 0.557, green: 0.910, blue: 1.000, alpha: 1.0)
@@ -51,8 +50,8 @@ class Category: Object {
     static let freeColor = UIColor.darkGrayColor()
     static let nightColor = UIColor(red: 0.0, green: 0.1, blue: 0.3, alpha: 1.0)
     
-    var color: UIColor {
-        return Category.colors[colorIndex].value
+    public var color: UIColor {
+        return KPCategory.colors[colorIndex].value
     }
     
     var cgColor: CGColor {
