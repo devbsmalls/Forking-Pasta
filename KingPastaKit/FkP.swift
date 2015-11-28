@@ -9,6 +9,7 @@ public struct Status {
 
 public class FkP {
     public static let realm = try! Realm(configuration: realmConfig)
+    public static let realmURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.uk.pixlwave.ForkingPasta")?.URLByAppendingPathComponent("ForkingPasta.realm")
     
     static let appGroupContainer = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.uk.pixlwave.ForkingPasta")!
     static let realmConfig = Realm.Configuration(path: appGroupContainer.URLByAppendingPathComponent("ForkingPasta.realm").path)

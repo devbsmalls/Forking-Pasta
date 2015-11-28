@@ -1,17 +1,14 @@
-//
-//  ExtensionDelegate.swift
-//  Watch App Extension
-//
-//  Created by Douglas Earnshaw on 21/11/2015.
-//  Copyright © 2015 pixlwave. All rights reserved.
-//
-
 import WatchKit
+import KingPastaKitWatch
+import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
 
     func applicationDidFinishLaunching() {
-        // Perform any final initialization of your application.
+        // TODO: if WCSession.isSupported() {
+        let session = WCSession.defaultSession()
+        session.delegate = self
+        session.activateSession()
     }
 
     func applicationDidBecomeActive() {
@@ -23,4 +20,20 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
         // Use this method to pause ongoing tasks, disable timers, etc.
     }
 
+}
+extension ExtensionDelegate: WCSessionDelegate {
+    
+    func session(session: WCSession, didReceiveUserInfo userInfo: [String : AnyObject]) {
+        for key in userInfo.keys {
+            SharedDefaults.setObject(userInfo[key], forKey: key)
+        }
+    }
+    
+    func session(session: WCSession, didReceiveFile file: WCSessionFile) {
+        if file.metadata?["name"] as? String == "realm" {
+            if let realmURL = FkP.realmURL {
+                try? NSFileManager.defaultManager().moveItemAtURL(file.fileURL, toURL: realmURL)
+            }
+        }
+    }
 }

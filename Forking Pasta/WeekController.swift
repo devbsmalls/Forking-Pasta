@@ -50,6 +50,7 @@ class WeekController: UITableViewController {
     
     @IBAction func done() {
         AppDelegate.scheduleNotifications()
+        (UIApplication.sharedApplication().delegate as? AppDelegate)?.syncToWatch()
         navigationController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     

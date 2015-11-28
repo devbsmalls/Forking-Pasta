@@ -1,6 +1,6 @@
 import WatchKit
 import Foundation
-import KingPastaKit
+import KingPastaKitWatch
 
 class InterfaceController: WKInterfaceController {
     
@@ -26,15 +26,26 @@ class InterfaceController: WKInterfaceController {
                 refresh()
             }
         } else {
-            clockImage.image = Clock.blank(clockRect)
-            periodNameLabel.text = "Free time"
-            timeRemainingLabel.text = "Nothing scheduled"
+            clockImage.setImage(Clock.blank(clockRect))
+            periodNameLabel.setText("Free time")
+            timeRemainingLabel.setText("Nothing scheduled")
         }
     }
 
     override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+        
+        if let tick = tick {
+            tick.invalidate()
+            self.tick = nil
+        }
+    }
+    
+    func refresh() {
+        let status = FkP.status(clockRect)
+        clockImage.setImage(status.clock)
+        periodNameLabel.setText(status.periodName)
+        timeRemainingLabel.setText(status.timeRemaining)
     }
 
 }

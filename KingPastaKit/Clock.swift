@@ -1,6 +1,6 @@
-import Foundation
 import UIKit
 import WatchKit
+import Foundation
 
 public class Clock {
     static let outerPadding = CGFloat(5)
@@ -60,7 +60,7 @@ public class Clock {
         }
         
         // save state, clip to ellipse, draw texture, restore state
-        if let texture = UIImage(named: "morning", inBundle: NSBundle(identifier: "uk.pixlwave.KingPastaKit"), compatibleWithTraitCollection: nil) {
+        if let texture = UIImage.named("morning", inBundle: NSBundle(identifier: "uk.pixlwave.KingPastaKit")) {
             CGContextSaveGState(context)
             CGContextAddEllipseInRect(context, innerRect)
             CGContextClip(context)
@@ -176,7 +176,7 @@ public class Clock {
         }
         
         // save state, clip to ellipse, draw texture, restore state
-        if let texture = UIImage(named: "evening", inBundle: NSBundle(identifier: "uk.pixlwave.KingPastaKit"), compatibleWithTraitCollection: nil) {
+        if let texture = UIImage.named("evening", inBundle: NSBundle(identifier: "uk.pixlwave.KingPastaKit")) {
             CGContextSaveGState(context)
             CGContextAddEllipseInRect(context, innerRect)
             CGContextClip(context)
@@ -207,7 +207,7 @@ public class Clock {
         CGContextFillEllipseInRect(context, outerRect)
         
         // save state, clip to ellipse, draw texture, restore state
-        if let texture = UIImage(named: "night", inBundle: NSBundle(identifier: "uk.pixlwave.KingPastaKit"), compatibleWithTraitCollection: nil) {
+        if let texture = UIImage.named("night", inBundle: NSBundle(identifier: "uk.pixlwave.KingPastaKit")) {
             CGContextSaveGState(context)
             CGContextAddEllipseInRect(context, innerRect)
             CGContextClip(context)

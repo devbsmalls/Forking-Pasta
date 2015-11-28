@@ -1,31 +1,51 @@
-//
-//  GlanceController.swift
-//  Watch App Extension
-//
-//  Created by Douglas Earnshaw on 21/11/2015.
-//  Copyright © 2015 pixlwave. All rights reserved.
-//
-
 import WatchKit
 import Foundation
-
+import KingPastaKitWatch
 
 class GlanceController: WKInterfaceController {
-
+    
+    var clockRect = WKInterfaceDevice.currentDevice().screenBounds.width < 156 ? CGRect(x: 0, y: 0, width: 100, height: 100) : CGRect(x: 0, y: 0, width: 120, height: 120)
+    
+    private var tick: NSTimer?
+    
+    @IBOutlet weak var periodNameLabel: WKInterfaceLabel!
+    @IBOutlet weak var clockImage: WKInterfaceImage!
+    @IBOutlet weak var timeRemainingLabel: WKInterfaceLabel!
+    
     override func awakeWithContext(context: AnyObject?) {
         super.awakeWithContext(context)
-        
-        // Configure interface objects here.
+        //
     }
-
+    
     override func willActivate() {
-        // This method is called when watch view controller is about to be visible to user
         super.willActivate()
+        
+        if FkP.isInitialSetupComplete {
+            if tick == nil {
+                tick = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "refresh", userInfo: nil, repeats: true)
+                refresh()
+            }
+        } else {
+            clockImage.setImage(Clock.blank(clockRect))
+            periodNameLabel.setText("Free time")
+            timeRemainingLabel.setText("Nothing scheduled")
+        }
     }
-
+    
     override func didDeactivate() {
-        // This method is called when watch view controller is no longer visible
         super.didDeactivate()
+        
+        if let tick = tick {
+            tick.invalidate()
+            self.tick = nil
+        }
     }
-
+    
+    func refresh() {
+        let status = FkP.status(clockRect)
+        clockImage.setImage(status.clock)
+        periodNameLabel.setText(status.periodName)
+        timeRemainingLabel.setText(status.timeRemaining)
+    }
+    
 }

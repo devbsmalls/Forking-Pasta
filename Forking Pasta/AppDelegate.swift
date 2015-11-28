@@ -1,6 +1,7 @@
 import UIKit
 import AudioToolbox
 import KingPastaKit
+import WatchConnectivity
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -88,5 +89,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
+    
+    // FIXME: Check for new watch somewhere and sync
+    
+    func syncToWatch() {
+        syncDefaultsToWatch()
+        syncRealmToWatch()
+    }
+    
+    func syncDefaultsToWatch() {
+        if WCSession.isSupported() {
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+            
+            // FIXME: check for paired watch?
+            
+            if session.outstandingUserInfoTransfers.count > 0 {
+                for transfer in session.outstandingUserInfoTransfers { transfer.cancel() }
+            }
+            
+            session.transferUserInfo(SharedDefaults.dictionaryRepresentation())
+        }
+    }
+
+    func syncRealmToWatch() {
+        // setup session
+        if WCSession.isSupported() {
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+            
+            // FIXME: check for paired watch?
+            
+            if session.outstandingFileTransfers.count > 0 {
+                for transfer in session.outstandingFileTransfers { transfer.cancel() }
+            }
+            
+            if let url = FkP.realmURL {
+                session.transferFile(url, metadata: ["name": "realm"])
+            }
+        }
+    }
+    
+}
+
+extension AppDelegate: WCSessionDelegate {
     
 }
