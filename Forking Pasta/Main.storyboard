@@ -36,7 +36,7 @@
         <!--Walkthrough Controller-->
         <scene sceneID="ycY-UH-gdU">
             <objects>
-                <viewController storyboardIdentifier="WalkthroughController" id="14O-b4-Qmf" customClass="WalkthroughController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughController" id="14O-b4-Qmf" customClass="WalkthroughController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="WA4-6n-aNR"/>
                         <viewControllerLayoutGuide type="bottom" id="gAx-JL-LyJ"/>
@@ -108,7 +108,7 @@
         <!--Walkthrough Page Controller-->
         <scene sceneID="nDq-Ci-8AS">
             <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="jMM-pG-kzz" customClass="WalkthroughPageController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController"/>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="jMM-pG-kzz" customClass="WalkthroughPageController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rts-iH-SEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1157" y="-373"/>
@@ -116,7 +116,7 @@
         <!--Walkthrough Content Controller-->
         <scene sceneID="Zve-1d-ekz">
             <objects>
-                <viewController storyboardIdentifier="WalkthroughContentController" id="GtE-aV-LaQ" customClass="WalkthroughContentController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WalkthroughContentController" id="GtE-aV-LaQ" customClass="WalkthroughContentController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zfq-eC-gcu"/>
                         <viewControllerLayoutGuide type="bottom" id="xiV-Vx-Trb"/>
@@ -196,7 +196,7 @@
         <!--Your Week-->
         <scene sceneID="YzI-DL-vGe">
             <objects>
-                <tableViewController id="7xU-7d-jJB" customClass="WeekController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="7xU-7d-jJB" customClass="WeekController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="8rX-K0-DEV">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -328,7 +328,7 @@
         <!--Main Controller-->
         <scene sceneID="GIW-Nb-Bmg">
             <objects>
-                <viewController id="cdM-By-5JB" customClass="MainController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="cdM-By-5JB" customClass="MainController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4iK-t7-adV"/>
                         <viewControllerLayoutGuide type="bottom" id="DxA-kf-b7R"/>
@@ -486,7 +486,7 @@
         <!--Day-->
         <scene sceneID="XnM-W1-Yny">
             <objects>
-                <tableViewController id="T4k-5j-BeM" customClass="DayController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="T4k-5j-BeM" customClass="DayController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="48" sectionHeaderHeight="10" sectionFooterHeight="10" id="yO4-jc-LpW">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -494,7 +494,7 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotificationsCell" id="8pU-pO-mhx" customClass="NotificationsCell" customModule="ForkingPasta" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NotificationsCell" id="8pU-pO-mhx" customClass="NotificationsCell" customModule="Forking_Pasta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="114" width="600" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8pU-pO-mhx" id="eLY-jF-XC2">
@@ -529,14 +529,14 @@
                                     <outlet property="notificationsSwitch" destination="109-1L-Jnj" id="xyI-me-i0I"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PeriodCell" rowHeight="48" id="Pse-hx-c8M" customClass="PeriodCell" customModule="ForkingPasta" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PeriodCell" rowHeight="48" id="Pse-hx-c8M" customClass="PeriodCell" customModule="Forking_Pasta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="162" width="600" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Pse-hx-c8M" id="dXE-WM-urv">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="47"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fk4-Qm-ggo" customClass="PeriodColorMark" customModule="ForkingPasta" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fk4-Qm-ggo" customClass="PeriodColorMark" customModule="Forking_Pasta" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="8" width="5" height="31"/>
                                             <animations/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -664,14 +664,14 @@
         <!--Preferences-->
         <scene sceneID="ddV-7x-K9j">
             <objects>
-                <tableViewController id="1GK-kb-COi" customClass="PreferencesController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="1GK-kb-COi" customClass="PreferencesController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="nGc-sA-KF9">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TimePickerIntervalCell" rowHeight="46" id="fcu-N6-kP1" customClass="TimePickerIntervalCell" customModule="ForkingPasta" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TimePickerIntervalCell" rowHeight="46" id="fcu-N6-kP1" customClass="TimePickerIntervalCell" customModule="Forking_Pasta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="114" width="600" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fcu-N6-kP1" id="5fW-hr-3n5">
@@ -710,14 +710,14 @@
                                     <outlet property="timeIntervalControl" destination="HWe-bm-B1x" id="Es9-lt-XFv"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="46" id="Gjm-MT-s4n" customClass="SelectCategoryCell" customModule="ForkingPasta" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CategoryCell" rowHeight="46" id="Gjm-MT-s4n" customClass="SelectCategoryCell" customModule="Forking_Pasta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="160" width="600" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gjm-MT-s4n" id="aIz-U0-boO">
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQR-0X-C4U" customClass="CategoryColorMark" customModule="ForkingPasta" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IQR-0X-C4U" customClass="CategoryColorMark" customModule="Forking_Pasta" customModuleProvider="target">
                                             <rect key="frame" x="15" y="17" width="12" height="12"/>
                                             <animations/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -778,7 +778,7 @@
         <!--Add Period-->
         <scene sceneID="JKg-uq-t8b">
             <objects>
-                <tableViewController id="J7d-fX-yok" customClass="PeriodController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="J7d-fX-yok" customClass="PeriodController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RWq-JM-pqQ">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -786,7 +786,7 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PeriodNameCell" id="qc0-vN-tkn" customClass="PeriodNameCell" customModule="ForkingPasta" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PeriodNameCell" id="qc0-vN-tkn" customClass="PeriodNameCell" customModule="Forking_Pasta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qc0-vN-tkn" id="AZC-dp-fNs">
@@ -815,7 +815,7 @@
                                     <outlet property="nameTextField" destination="Jjd-2p-nUr" id="gQa-0k-xRc"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PeriodCategoryCell" id="tku-E3-DpR" customClass="PeriodCategoryCell" customModule="ForkingPasta" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="PeriodCategoryCell" id="tku-E3-DpR" customClass="PeriodCategoryCell" customModule="Forking_Pasta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="158" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="tku-E3-DpR" id="fPr-P8-y2Z">
@@ -836,7 +836,7 @@
                                             <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6Y-zv-jqw" customClass="CategoryColorMark" customModule="ForkingPasta" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6Y-zv-jqw" customClass="CategoryColorMark" customModule="Forking_Pasta" customModuleProvider="target">
                                             <rect key="frame" x="434" y="16" width="12" height="12"/>
                                             <animations/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -931,7 +931,7 @@
                                     <segue destination="6Bh-1W-JWr" kind="show" identifier="SetEndTimeSegue" id="ID2-a3-jau"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PeriodTimeWarningCell" id="hDb-wH-0d2" customClass="PeriodTimeWarningCell" customModule="ForkingPasta" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="PeriodTimeWarningCell" id="hDb-wH-0d2" customClass="PeriodTimeWarningCell" customModule="Forking_Pasta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="290" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hDb-wH-0d2" id="x6D-LB-R3x">
@@ -982,8 +982,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Delete Period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aF-G5-v78">
-                                            <rect key="frame" x="252" y="13" width="98" height="19"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Period" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7aF-G5-v78">
+                                            <rect key="frame" x="252" y="12" width="98" height="20"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -1034,21 +1034,21 @@
         <!--Category-->
         <scene sceneID="HCs-Uj-T2s">
             <objects>
-                <tableViewController id="sOp-gC-hJZ" customClass="SelectCategoryController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="sOp-gC-hJZ" customClass="SelectCategoryController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Soc-gy-Fuo">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectCategoryCell" rowHeight="46" id="UbH-wr-vQ6" customClass="SelectCategoryCell" customModule="ForkingPasta" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectCategoryCell" rowHeight="46" id="UbH-wr-vQ6" customClass="SelectCategoryCell" customModule="Forking_Pasta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="114" width="600" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="UbH-wr-vQ6" id="6EQ-cV-khz">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="45"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTN-g8-7Qf" customClass="CategoryColorMark" customModule="ForkingPasta" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bTN-g8-7Qf" customClass="CategoryColorMark" customModule="Forking_Pasta" customModuleProvider="target">
                                             <rect key="frame" x="15" y="17" width="12" height="12"/>
                                             <animations/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1102,7 +1102,7 @@
         <!--Edit Category-->
         <scene sceneID="xBK-3R-7nN">
             <objects>
-                <tableViewController id="zb4-aO-30f" customClass="EditCategoryController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="zb4-aO-30f" customClass="EditCategoryController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="onDrag" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="RUd-ee-ybi">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1110,7 +1110,7 @@
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryNameCell" id="Lij-CZ-wpu" customClass="CategoryNameCell" customModule="ForkingPasta" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryNameCell" id="Lij-CZ-wpu" customClass="CategoryNameCell" customModule="Forking_Pasta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="114" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lij-CZ-wpu" id="lqz-Pd-bGp">
@@ -1147,15 +1147,15 @@
                                     <outlet property="nameTextField" destination="JR1-Lx-aly" id="XN7-wE-uY5"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryColorCell" id="r7e-d5-YRK" customClass="CategoryColorCell" customModule="ForkingPasta" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="CategoryColorCell" id="r7e-d5-YRK" customClass="CategoryColorCell" customModule="Forking_Pasta" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="158" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="r7e-d5-YRK" id="SQs-Rw-Bv4">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gZ-1s-vvl">
-                                            <rect key="frame" x="35" y="13" width="39" height="19"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Color" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7gZ-1s-vvl">
+                                            <rect key="frame" x="35" y="12" width="39" height="20"/>
                                             <animations/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="42" id="nxO-Nh-aK3"/>
@@ -1169,7 +1169,7 @@
                                                 </mask>
                                             </variation>
                                         </label>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZa-9c-09j" customClass="CategoryColorMark" customModule="ForkingPasta" customModuleProvider="target">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZa-9c-09j" customClass="CategoryColorMark" customModule="Forking_Pasta" customModuleProvider="target">
                                             <rect key="frame" x="15" y="16" width="12" height="12"/>
                                             <animations/>
                                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -1241,7 +1241,7 @@
         <!--Start Time-->
         <scene sceneID="BiI-za-ai5">
             <objects>
-                <viewController id="6Bh-1W-JWr" customClass="SetTimeController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="6Bh-1W-JWr" customClass="SetTimeController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wij-6t-5Ip"/>
                         <viewControllerLayoutGuide type="bottom" id="SnC-YF-v3B"/>
@@ -1422,7 +1422,7 @@
         <!--Wake-up Time-->
         <scene sceneID="rRD-Cg-cND">
             <objects>
-                <viewController id="czd-NY-nSx" customClass="WakeBedTimeController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="czd-NY-nSx" customClass="WakeBedTimeController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wKf-9o-jrJ"/>
                         <viewControllerLayoutGuide type="bottom" id="3Gt-7Y-l1e"/>
@@ -1511,7 +1511,7 @@
         <!--Copy Day-->
         <scene sceneID="pBd-R2-Zzp">
             <objects>
-                <tableViewController id="C8s-69-7wr" userLabel="Copy Day" customClass="CopyDayController" customModule="ForkingPasta" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="C8s-69-7wr" userLabel="Copy Day" customClass="CopyDayController" customModule="Forking_Pasta" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="8ID-c2-1mN">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

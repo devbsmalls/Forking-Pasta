@@ -243,7 +243,7 @@
 		A58A2C691BFB4DD2006F292F /* SelectCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryController.swift; sourceTree = "<group>"; };
 		A58A2C6B1BFB4E20006F292F /* SelectCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryCell.swift; sourceTree = "<group>"; };
 		A58A2C6D1BFB5076006F292F /* SetTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTimeController.swift; sourceTree = "<group>"; };
-		A58B829E1BEE18FA00C6AB47 /* ForkingPasta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForkingPasta.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A58B829E1BEE18FA00C6AB47 /* Forking Pasta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Forking Pasta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A58B82A11BEE18FA00C6AB47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A58B82AB1BEE18FA00C6AB47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A58B82AD1BEE18FA00C6AB47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -465,7 +465,7 @@
 		A58B829F1BEE18FA00C6AB47 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				A58B829E1BEE18FA00C6AB47 /* ForkingPasta.app */,
+				A58B829E1BEE18FA00C6AB47 /* Forking Pasta.app */,
 				A57ABEC61BFFD3AB009099D8 /* KingPastaKit.framework */,
 				A57ABEFA1C006D65009099D8 /* Widget.appex */,
 				A5845E231C009250004BD068 /* Watch App.app */,
@@ -647,9 +647,9 @@
 			productReference = A5845E6F1C009741004BD068 /* KingPastaKitWatch.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		A58B829D1BEE18FA00C6AB47 /* ForkingPasta */ = {
+		A58B829D1BEE18FA00C6AB47 /* Forking Pasta */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = A58B82D91BEE18FB00C6AB47 /* Build configuration list for PBXNativeTarget "ForkingPasta" */;
+			buildConfigurationList = A58B82D91BEE18FB00C6AB47 /* Build configuration list for PBXNativeTarget "Forking Pasta" */;
 			buildPhases = (
 				A58B829A1BEE18FA00C6AB47 /* Sources */,
 				A58B829B1BEE18FA00C6AB47 /* Frameworks */,
@@ -665,9 +665,9 @@
 				A57ABF061C006D65009099D8 /* PBXTargetDependency */,
 				A5845E3E1C009250004BD068 /* PBXTargetDependency */,
 			);
-			name = ForkingPasta;
+			name = "Forking Pasta";
 			productName = "Forking Pasta";
-			productReference = A58B829E1BEE18FA00C6AB47 /* ForkingPasta.app */;
+			productReference = A58B829E1BEE18FA00C6AB47 /* Forking Pasta.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -721,7 +721,7 @@
 					};
 				};
 			};
-			buildConfigurationList = A58B82991BEE18FA00C6AB47 /* Build configuration list for PBXProject "ForkingPasta" */;
+			buildConfigurationList = A58B82991BEE18FA00C6AB47 /* Build configuration list for PBXProject "Forking Pasta" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -734,7 +734,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				A58B829D1BEE18FA00C6AB47 /* ForkingPasta */,
+				A58B829D1BEE18FA00C6AB47 /* Forking Pasta */,
 				A57ABEF91C006D65009099D8 /* Widget */,
 				A5845E221C009250004BD068 /* Watch App */,
 				A5845E2E1C009250004BD068 /* Watch Extension */,
@@ -962,7 +962,6 @@
 				);
 				INFOPLIST_FILE = KingPastaKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.pixlwave.KingPastaKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -989,7 +988,6 @@
 				);
 				INFOPLIST_FILE = KingPastaKit/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.pixlwave.KingPastaKit;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1009,7 +1007,6 @@
 					"$(PROJECT_DIR)/Realm/ios",
 				);
 				INFOPLIST_FILE = Widget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.pixlwave.ForkingPasta.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1026,7 +1023,6 @@
 					"$(PROJECT_DIR)/Realm/ios",
 				);
 				INFOPLIST_FILE = Widget/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.pixlwave.ForkingPasta.Widget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1198,7 +1194,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1236,7 +1232,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -1254,10 +1250,9 @@
 					"$(PROJECT_DIR)/Realm/ios",
 				);
 				INFOPLIST_FILE = "Forking Pasta/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.pixlwave.ForkingPasta;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Forking Pasta";
 			};
 			name = Debug;
 		};
@@ -1272,10 +1267,9 @@
 					"$(PROJECT_DIR)/Realm/ios",
 				);
 				INFOPLIST_FILE = "Forking Pasta/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.pixlwave.ForkingPasta;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Forking Pasta";
 			};
 			name = Release;
 		};
@@ -1327,7 +1321,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A58B82991BEE18FA00C6AB47 /* Build configuration list for PBXProject "ForkingPasta" */ = {
+		A58B82991BEE18FA00C6AB47 /* Build configuration list for PBXProject "Forking Pasta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A58B82CF1BEE18FB00C6AB47 /* Debug */,
@@ -1336,7 +1330,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		A58B82D91BEE18FB00C6AB47 /* Build configuration list for PBXNativeTarget "ForkingPasta" */ = {
+		A58B82D91BEE18FB00C6AB47 /* Build configuration list for PBXNativeTarget "Forking Pasta" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				A58B82DA1BEE18FB00C6AB47 /* Debug */,
