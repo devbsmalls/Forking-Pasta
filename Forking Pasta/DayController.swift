@@ -55,6 +55,8 @@ class DayController: UITableViewController {
                 }
             case "AddPeriodSegue":
                 (segue.destinationViewController as? PeriodController)?.day = day
+            case "CopyDaySegue":
+                (segue.destinationViewController as? CopyDayController)?.day = day
             default:
                 break
             }
@@ -85,9 +87,7 @@ class DayController: UITableViewController {
     }
     
     @IBAction func notificationsSwitchDidChange(sender: UISwitch) {
-        try! FkP.realm.write() {
-            self.day.showsNotifications = sender.on
-        }
+        try! FkP.realm.write { self.day.showsNotifications = sender.on }
         
         if sender.on { AppDelegate.registerNotifications() }
     }
@@ -102,9 +102,7 @@ class DayController: UITableViewController {
     }
     
     func clearPeriods() {
-        try! FkP.realm.write {
-            for period in self.day.periods { FkP.realm.delete(period) }
-        }
+        day.clear()
         
         periods = Array(day.orderedPeriods())
         tableView.reloadData()
@@ -126,7 +124,7 @@ extension DayController {
         case 1:
             return periods.count
         case 2:
-            return 1
+            return 2
         default:
             break
         }
@@ -152,8 +150,13 @@ extension DayController {
             
             return cell
         case 2:
-            let cell = tableView.dequeueReusableCellWithIdentifier("ClearDayCell") ?? UITableViewCell(style: .Default , reuseIdentifier: "ClearDayCell")
-            return cell
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCellWithIdentifier("CopyDayCell") ?? UITableViewCell(style: .Default , reuseIdentifier: "CopyDayCell")
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCellWithIdentifier("ClearDayCell") ?? UITableViewCell(style: .Default , reuseIdentifier: "ClearDayCell")
+                return cell
+            }
         default:
             break
         }
@@ -168,10 +171,10 @@ extension DayController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 1 {
             if editingStyle == .Delete {
+                let realm = FkP.realm
+                
                 let deletedPeriod = periods.removeAtIndex(indexPath.row)
-                try! FkP.realm.write {
-                    FkP.realm.delete(deletedPeriod)
-                }
+                try! realm.write { realm.delete(deletedPeriod) }
                 
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
             }
@@ -187,8 +190,10 @@ extension DayController {
     // TODO: Implement in storyboard? How about deselecting?
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if indexPath.section == 2 {
-            showClearConfirmation()
-            tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            if indexPath.row == 1 {
+                showClearConfirmation()
+                tableView.deselectRowAtIndexPath(indexPath, animated: true)
+            }
         }
     }
     

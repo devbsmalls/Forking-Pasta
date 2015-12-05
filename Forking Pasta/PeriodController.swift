@@ -76,6 +76,7 @@ class PeriodController: UITableViewController {
                     timeVC.isStart = false
                 }
             case "SaveUnwind":
+                let realm = FkP.realm
                 view.endEditing(true)
                 
                 if isNewPeriod {
@@ -87,9 +88,9 @@ class PeriodController: UITableViewController {
                         "day": periodDay!
                     ]
                     let newPeriod = Period(value: periodDictionary)
-                    try! FkP.realm.write { FkP.realm.add(newPeriod) }
+                    try! realm.write { realm.add(newPeriod) }
                 } else if let period = period {
-                    try! FkP.realm.write {
+                    try! realm.write {
                         period.name = self.periodName!
                         period.category = self.periodCategory
                         period.startTime = self.periodStartTime!
@@ -171,9 +172,8 @@ class PeriodController: UITableViewController {
     }
     
     func deletePeriod() {
-        try! FkP.realm.write {
-            FkP.realm.delete(self.period!)
-        }
+        let realm = FkP.realm
+        try! realm.write { realm.delete(self.period!) }
         
         navigationController?.popViewControllerAnimated(true)
     }

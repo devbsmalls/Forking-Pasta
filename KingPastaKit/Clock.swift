@@ -9,10 +9,8 @@ public class Clock {
     
     static let screenScale: CGFloat = {
         #if os(watchOS)
-            print("watchOS Scale")
             return WKInterfaceDevice.currentDevice().screenScale
         #else
-            print("iOS Scale")
             return UIScreen.mainScreen().scale
         #endif
     }()

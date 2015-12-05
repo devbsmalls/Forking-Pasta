@@ -30,9 +30,17 @@ extension ExtensionDelegate: WCSessionDelegate {
     }
     
     func session(session: WCSession, didReceiveFile file: WCSessionFile) {
+        print("file received")
         if file.metadata?["name"] as? String == "realm" {
             if let realmURL = FkP.realmURL {
-                try? NSFileManager.defaultManager().moveItemAtURL(file.fileURL, toURL: realmURL)
+                print("trying move")
+                do {
+                    try NSFileManager.defaultManager().removeItemAtURL(realmURL)
+                    try NSFileManager.defaultManager().moveItemAtURL(file.fileURL, toURL: realmURL)
+                }
+                catch let error as NSError {
+                    print(error.localizedDescription)
+                }
             }
         }
     }

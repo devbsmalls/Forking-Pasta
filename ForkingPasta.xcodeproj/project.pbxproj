@@ -7,12 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A50410811C0E1F4400FCC0E1 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C711C09CF1100016614 /* Realm.framework */; };
+		A50410821C0E1F4400FCC0E1 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C711C09CF1100016614 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		A50410831C0E1F4400FCC0E1 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C721C09CF1100016614 /* RealmSwift.framework */; };
+		A50410841C0E1F4400FCC0E1 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C721C09CF1100016614 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A55239D81BF8D22D00D24FC3 /* WeekController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55239D71BF8D22D00D24FC3 /* WeekController.swift */; };
 		A55239DB1BF8D5F500D24FC3 /* WalkthroughController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55239DA1BF8D5F500D24FC3 /* WalkthroughController.swift */; };
 		A55748EC1BFB655600A8E579 /* WakeBedTimeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55748EB1BFB655600A8E579 /* WakeBedTimeController.swift */; };
 		A55748EE1BFB686F00A8E579 /* PreferencesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55748ED1BFB686F00A8E579 /* PreferencesController.swift */; };
 		A55748F01BFB6C3000A8E579 /* TimePickerIntervalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55748EF1BFB6C3000A8E579 /* TimePickerIntervalCell.swift */; };
 		A55748F21BFB6D4B00A8E579 /* EditCategoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A55748F11BFB6D4B00A8E579 /* EditCategoryController.swift */; };
+		A5664E261C0CD14A007EFAE8 /* CopyDayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5664E251C0CD14A007EFAE8 /* CopyDayController.swift */; };
 		A578087C1BF7A7E8009A88BE /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A578087B1BF7A7E8009A88BE /* MainController.swift */; };
 		A57ABEC91BFFD3AB009099D8 /* KingPastaKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A57ABEC81BFFD3AB009099D8 /* KingPastaKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A57ABED41BFFD48E009099D8 /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E9941BF36AE5004AC1A4 /* SwiftyUserDefaults.swift */; };
@@ -36,12 +41,11 @@
 		A57ABF071C006D65009099D8 /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A57ABEFA1C006D65009099D8 /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A57ABF0C1C007057009099D8 /* KingPastaKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57ABEC61BFFD3AB009099D8 /* KingPastaKit.framework */; };
 		A5845E271C009250004BD068 /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A5845E251C009250004BD068 /* Interface.storyboard */; };
-		A5845E291C009250004BD068 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5845E281C009250004BD068 /* Assets.xcassets */; };
+		A5845E291C009250004BD068 /* WatchAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5845E281C009250004BD068 /* WatchAssets.xcassets */; };
 		A5845E301C009250004BD068 /* Watch Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = A5845E2F1C009250004BD068 /* Watch Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		A5845E351C009250004BD068 /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5845E341C009250004BD068 /* InterfaceController.swift */; };
 		A5845E371C009250004BD068 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5845E361C009250004BD068 /* ExtensionDelegate.swift */; };
 		A5845E391C009250004BD068 /* GlanceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5845E381C009250004BD068 /* GlanceController.swift */; };
-		A5845E3B1C009250004BD068 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A5845E3A1C009250004BD068 /* Assets.xcassets */; };
 		A5845E3F1C009250004BD068 /* Watch App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = A5845E231C009250004BD068 /* Watch App.app */; };
 		A5845E721C009741004BD068 /* KingPastaKitWatch.h in Headers */ = {isa = PBXBuildFile; fileRef = A5845E711C009741004BD068 /* KingPastaKitWatch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A5845E761C009741004BD068 /* KingPastaKitWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5845E6F1C009741004BD068 /* KingPastaKitWatch.framework */; };
@@ -81,10 +85,6 @@
 		A5C3C3791C09D38A00A70971 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C6E1C09CF1100016614 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5C3C37A1C09D38A00A70971 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C6F1C09CF1100016614 /* RealmSwift.framework */; };
 		A5C3C37B1C09D38A00A70971 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C6F1C09CF1100016614 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A5C3C37C1C09D3A100A70971 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C6E1C09CF1100016614 /* Realm.framework */; };
-		A5C3C37D1C09D3A100A70971 /* Realm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C6E1C09CF1100016614 /* Realm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		A5C3C37E1C09D3A100A70971 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C6F1C09CF1100016614 /* RealmSwift.framework */; };
-		A5C3C37F1C09D3A100A70971 /* RealmSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C6F1C09CF1100016614 /* RealmSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5C3C3801C09D3AB00A70971 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C6E1C09CF1100016614 /* Realm.framework */; };
 		A5C3C3811C09D3AB00A70971 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5349C6F1C09CF1100016614 /* RealmSwift.framework */; };
 		A5EC5D8A1BFCAD48002FFE4B /* CategoryNameCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EC5D891BFCAD48002FFE4B /* CategoryNameCell.swift */; };
@@ -160,9 +160,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A5C3C37D1C09D3A100A70971 /* Realm.framework in Embed Frameworks */,
+				A50410821C0E1F4400FCC0E1 /* Realm.framework in Embed Frameworks */,
 				A5845E771C009741004BD068 /* KingPastaKitWatch.framework in Embed Frameworks */,
-				A5C3C37F1C09D3A100A70971 /* RealmSwift.framework in Embed Frameworks */,
+				A50410841C0E1F4400FCC0E1 /* RealmSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -208,6 +208,7 @@
 		A55748ED1BFB686F00A8E579 /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
 		A55748EF1BFB6C3000A8E579 /* TimePickerIntervalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerIntervalCell.swift; sourceTree = "<group>"; };
 		A55748F11BFB6D4B00A8E579 /* EditCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryController.swift; sourceTree = "<group>"; };
+		A5664E251C0CD14A007EFAE8 /* CopyDayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyDayController.swift; sourceTree = "<group>"; };
 		A578087B1BF7A7E8009A88BE /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		A57ABEC61BFFD3AB009099D8 /* KingPastaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KingPastaKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57ABEC81BFFD3AB009099D8 /* KingPastaKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KingPastaKit.h; sourceTree = "<group>"; };
@@ -224,13 +225,12 @@
 		A57ABF0E1C007326009099D8 /* Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Widget.entitlements; sourceTree = "<group>"; };
 		A5845E231C009250004BD068 /* Watch App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watch App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5845E261C009250004BD068 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
-		A5845E281C009250004BD068 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		A5845E281C009250004BD068 /* WatchAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = WatchAssets.xcassets; sourceTree = "<group>"; };
 		A5845E2A1C009250004BD068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5845E2F1C009250004BD068 /* Watch Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Watch Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5845E341C009250004BD068 /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
 		A5845E361C009250004BD068 /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
 		A5845E381C009250004BD068 /* GlanceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlanceController.swift; sourceTree = "<group>"; };
-		A5845E3A1C009250004BD068 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A5845E3C1C009250004BD068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A5845E6F1C009741004BD068 /* KingPastaKitWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KingPastaKitWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5845E711C009741004BD068 /* KingPastaKitWatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KingPastaKitWatch.h; sourceTree = "<group>"; };
@@ -292,9 +292,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5C3C37C1C09D3A100A70971 /* Realm.framework in Frameworks */,
+				A50410811C0E1F4400FCC0E1 /* Realm.framework in Frameworks */,
 				A5845E761C009741004BD068 /* KingPastaKitWatch.framework in Frameworks */,
-				A5C3C37E1C09D3A100A70971 /* RealmSwift.framework in Frameworks */,
+				A50410831C0E1F4400FCC0E1 /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +373,7 @@
 				A578087B1BF7A7E8009A88BE /* MainController.swift */,
 				A55239D71BF8D22D00D24FC3 /* WeekController.swift */,
 				A59824811BFA636E0076F556 /* DayController.swift */,
+				A5664E251C0CD14A007EFAE8 /* CopyDayController.swift */,
 				A58A2C5F1BFB3430006F292F /* PeriodController.swift */,
 				A58A2C691BFB4DD2006F292F /* SelectCategoryController.swift */,
 				A58A2C6D1BFB5076006F292F /* SetTimeController.swift */,
@@ -418,7 +419,7 @@
 			isa = PBXGroup;
 			children = (
 				A5845E251C009250004BD068 /* Interface.storyboard */,
-				A5845E281C009250004BD068 /* Assets.xcassets */,
+				A5845E281C009250004BD068 /* WatchAssets.xcassets */,
 				A5845E2A1C009250004BD068 /* Info.plist */,
 			);
 			path = "Watch App";
@@ -431,7 +432,6 @@
 				A5845E361C009250004BD068 /* ExtensionDelegate.swift */,
 				A5845E341C009250004BD068 /* InterfaceController.swift */,
 				A5845E381C009250004BD068 /* GlanceController.swift */,
-				A5845E3A1C009250004BD068 /* Assets.xcassets */,
 				A5845E3C1C009250004BD068 /* Info.plist */,
 			);
 			name = "Watch Extension";
@@ -767,7 +767,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5845E291C009250004BD068 /* Assets.xcassets in Resources */,
+				A5845E291C009250004BD068 /* WatchAssets.xcassets in Resources */,
 				A5845E271C009250004BD068 /* Interface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -776,7 +776,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5845E3B1C009250004BD068 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -875,6 +874,7 @@
 				A58A2C6C1BFB4E20006F292F /* SelectCategoryCell.swift in Sources */,
 				A5F03FBC1BFB62E600BDDE71 /* PeriodColorMark.swift in Sources */,
 				A5EC5D8C1BFCADD1002FFE4B /* CategoryColorCell.swift in Sources */,
+				A5664E261C0CD14A007EFAE8 /* CopyDayController.swift in Sources */,
 				A59824801BFA5B440076F556 /* WalkthroughPageController.swift in Sources */,
 				A59824851BFA8FA50076F556 /* NotificationsCell.swift in Sources */,
 				A58A2C601BFB3430006F292F /* PeriodController.swift in Sources */,
@@ -1037,7 +1037,7 @@
 		A5845E401C009250004BD068 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = Watch_App_Extension;
 				INFOPLIST_FILE = "Watch App/Info.plist";
@@ -1053,7 +1053,7 @@
 		A5845E411C009250004BD068 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = WatchAppIcon;
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				IBSC_MODULE = Watch_App_Extension;
 				INFOPLIST_FILE = "Watch App/Info.plist";

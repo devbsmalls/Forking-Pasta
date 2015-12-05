@@ -61,6 +61,13 @@ public class Day: Object {
         return endTime - startTime
     }
     
+    public func clear() {
+        let realm = FkP.realm
+        try! realm.write {
+            for period in self.periods { realm.delete(period) }
+        }
+    }
+    
     public static let symbols = NSDateFormatter().weekdaySymbols.rotate(NSCalendar.currentCalendar().firstWeekday - 1)
     static let shortSymbols = NSDateFormatter().shortWeekdaySymbols.rotate(NSCalendar.currentCalendar().firstWeekday - 1)
     

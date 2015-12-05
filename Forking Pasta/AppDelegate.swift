@@ -19,16 +19,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func initialSetup() {
-        try! FkP.realm.write {
+        let realm = FkP.realm
+        try! realm.write {
             for (index, day) in Day.symbols.enumerate() {
-                FkP.realm.add(Day(value: ["name": day, "dayOfWeek": index]))
+                realm.add(Day(value: ["name": day, "dayOfWeek": index]))
             }
             
-            FkP.realm.add(KPCategory(value: ["name": "Home", "index": 0, "colorIndex": 0]))
-            FkP.realm.add(KPCategory(value: ["name": "Work", "index": 1, "colorIndex": 1]))
-            FkP.realm.add(KPCategory(value: ["name": "Break", "index": 2, "colorIndex": 2]))
-            FkP.realm.add(KPCategory(value: ["name": "Hobby", "index": 3, "colorIndex": 3]))
-            FkP.realm.add(KPCategory(value: ["name": "Misc", "index": 4, "colorIndex": 5]))
+            realm.add(KPCategory(value: ["name": "Home", "index": 0, "colorIndex": 0]))
+            realm.add(KPCategory(value: ["name": "Work", "index": 1, "colorIndex": 1]))
+            realm.add(KPCategory(value: ["name": "Break", "index": 2, "colorIndex": 2]))
+            realm.add(KPCategory(value: ["name": "Hobby", "index": 3, "colorIndex": 3]))
+            realm.add(KPCategory(value: ["name": "Misc", "index": 4, "colorIndex": 5]))
         }
         
         FkP.isInitialSetupComplete = true
@@ -134,6 +135,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
 }
 
+// TODO: Required?
 extension AppDelegate: WCSessionDelegate {
     
 }
