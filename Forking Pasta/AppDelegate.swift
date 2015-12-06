@@ -25,11 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 realm.add(Day(value: ["name": day, "dayOfWeek": index]))
             }
             
-            realm.add(KPCategory(value: ["name": "Home", "index": 0, "colorIndex": 0]))
-            realm.add(KPCategory(value: ["name": "Work", "index": 1, "colorIndex": 1]))
-            realm.add(KPCategory(value: ["name": "Break", "index": 2, "colorIndex": 2]))
-            realm.add(KPCategory(value: ["name": "Hobby", "index": 3, "colorIndex": 3]))
-            realm.add(KPCategory(value: ["name": "Misc", "index": 4, "colorIndex": 5]))
+            realm.add(TimeZone(value: ["name": "Home", "index": 0, "colorIndex": 0]))
+            realm.add(TimeZone(value: ["name": "Work", "index": 1, "colorIndex": 1]))
+            realm.add(TimeZone(value: ["name": "Break", "index": 2, "colorIndex": 2]))
+            realm.add(TimeZone(value: ["name": "Hobby", "index": 3, "colorIndex": 3]))
+            realm.add(TimeZone(value: ["name": "Misc", "index": 4, "colorIndex": 5]))
         }
         
         FkP.isInitialSetupComplete = true

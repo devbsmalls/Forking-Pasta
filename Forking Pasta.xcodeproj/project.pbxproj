@@ -21,7 +21,7 @@
 		A578087C1BF7A7E8009A88BE /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A578087B1BF7A7E8009A88BE /* MainController.swift */; };
 		A57ABEC91BFFD3AB009099D8 /* KingPastaKit.h in Headers */ = {isa = PBXBuildFile; fileRef = A57ABEC81BFFD3AB009099D8 /* KingPastaKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A57ABED41BFFD48E009099D8 /* SwiftyUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E9941BF36AE5004AC1A4 /* SwiftyUserDefaults.swift */; };
-		A57ABED51BFFD498009099D8 /* KPCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B830F1BEE20C500C6AB47 /* KPCategory.swift */; };
+		A57ABED51BFFD498009099D8 /* TimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B830F1BEE20C500C6AB47 /* TimeZone.swift */; };
 		A57ABED61BFFD498009099D8 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B83171BEF935800C6AB47 /* Day.swift */; };
 		A57ABED71BFFD498009099D8 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E98E1BF23E15004AC1A4 /* Period.swift */; };
 		A57ABED81BFFD498009099D8 /* Extends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B83191BEF961400C6AB47 /* Extends.swift */; };
@@ -51,7 +51,7 @@
 		A5845E761C009741004BD068 /* KingPastaKitWatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5845E6F1C009741004BD068 /* KingPastaKitWatch.framework */; };
 		A5845E771C009741004BD068 /* KingPastaKitWatch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A5845E6F1C009741004BD068 /* KingPastaKitWatch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A5845E7B1C009784004BD068 /* FkP.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B831F1BEFA05900C6AB47 /* FkP.swift */; };
-		A5845E7C1C009784004BD068 /* KPCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B830F1BEE20C500C6AB47 /* KPCategory.swift */; };
+		A5845E7C1C009784004BD068 /* TimeZone.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B830F1BEE20C500C6AB47 /* TimeZone.swift */; };
 		A5845E7D1C009784004BD068 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58B83171BEF935800C6AB47 /* Day.swift */; };
 		A5845E7E1C009784004BD068 /* Period.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E98E1BF23E15004AC1A4 /* Period.swift */; };
 		A5845E7F1C009784004BD068 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = A513E9921BF25947004AC1A4 /* Clock.swift */; };
@@ -195,8 +195,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		A513E98E1BF23E15004AC1A4 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Period.swift; path = ../KingPastaKit/Period.swift; sourceTree = "<group>"; };
-		A513E9921BF25947004AC1A4 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Clock.swift; path = ../KingPastaKit/Clock.swift; sourceTree = "<group>"; };
+		A513E98E1BF23E15004AC1A4 /* Period.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Period.swift; path = ../KingPastaKit/Period.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		A513E9921BF25947004AC1A4 /* Clock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = Clock.swift; path = ../KingPastaKit/Clock.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A513E9941BF36AE5004AC1A4 /* SwiftyUserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyUserDefaults.swift; path = ../KingPastaKit/SwiftyUserDefaults.swift; sourceTree = "<group>"; };
 		A5349C6E1C09CF1100016614 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Realm.framework; sourceTree = "<group>"; };
 		A5349C6F1C09CF1100016614 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = "<group>"; };
@@ -206,10 +206,10 @@
 		A55239DA1BF8D5F500D24FC3 /* WalkthroughController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughController.swift; sourceTree = "<group>"; };
 		A555EE651BF392D700EF4368 /* Debug.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Debug.swift; path = ../KingPastaKit/Debug.swift; sourceTree = "<group>"; };
 		A55748EB1BFB655600A8E579 /* WakeBedTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WakeBedTimeController.swift; sourceTree = "<group>"; };
-		A55748ED1BFB686F00A8E579 /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferencesController.swift; sourceTree = "<group>"; };
+		A55748ED1BFB686F00A8E579 /* PreferencesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PreferencesController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A55748EF1BFB6C3000A8E579 /* TimePickerIntervalCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimePickerIntervalCell.swift; sourceTree = "<group>"; };
-		A55748F11BFB6D4B00A8E579 /* EditCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditCategoryController.swift; sourceTree = "<group>"; };
-		A5664E251C0CD14A007EFAE8 /* CopyDayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CopyDayController.swift; sourceTree = "<group>"; };
+		A55748F11BFB6D4B00A8E579 /* EditCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = EditCategoryController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		A5664E251C0CD14A007EFAE8 /* CopyDayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CopyDayController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A578087B1BF7A7E8009A88BE /* MainController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		A57ABEC61BFFD3AB009099D8 /* KingPastaKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KingPastaKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57ABEC81BFFD3AB009099D8 /* KingPastaKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KingPastaKit.h; sourceTree = "<group>"; };
@@ -236,23 +236,23 @@
 		A5845E6F1C009741004BD068 /* KingPastaKitWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KingPastaKitWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5845E711C009741004BD068 /* KingPastaKitWatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KingPastaKitWatch.h; sourceTree = "<group>"; };
 		A5845E731C009741004BD068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A58A2C5F1BFB3430006F292F /* PeriodController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodController.swift; sourceTree = "<group>"; };
+		A58A2C5F1BFB3430006F292F /* PeriodController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PeriodController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A58A2C611BFB4125006F292F /* PeriodNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodNameCell.swift; sourceTree = "<group>"; };
 		A58A2C631BFB41BE006F292F /* PeriodCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodCategoryCell.swift; sourceTree = "<group>"; };
-		A58A2C651BFB4209006F292F /* CategoryColorMark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryColorMark.swift; sourceTree = "<group>"; };
+		A58A2C651BFB4209006F292F /* CategoryColorMark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategoryColorMark.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A58A2C671BFB4BC2006F292F /* PeriodTimeWarningCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodTimeWarningCell.swift; sourceTree = "<group>"; };
-		A58A2C691BFB4DD2006F292F /* SelectCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryController.swift; sourceTree = "<group>"; };
+		A58A2C691BFB4DD2006F292F /* SelectCategoryController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = SelectCategoryController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A58A2C6B1BFB4E20006F292F /* SelectCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectCategoryCell.swift; sourceTree = "<group>"; };
 		A58A2C6D1BFB5076006F292F /* SetTimeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetTimeController.swift; sourceTree = "<group>"; };
 		A58B829E1BEE18FA00C6AB47 /* Forking Pasta.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Forking Pasta.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A58B82A11BEE18FA00C6AB47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A58B82A11BEE18FA00C6AB47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A58B82AB1BEE18FA00C6AB47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A58B82AD1BEE18FA00C6AB47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A58B82DC1BEE197900C6AB47 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		A58B82DE1BEE1A4E00C6AB47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A58B82E01BEE1AF800C6AB47 /* chime.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = chime.caf; sourceTree = "<group>"; };
 		A58B82E21BEE1B1E00C6AB47 /* Lora-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lora-Regular.ttf"; sourceTree = "<group>"; };
-		A58B830F1BEE20C500C6AB47 /* KPCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KPCategory.swift; path = ../KingPastaKit/KPCategory.swift; sourceTree = "<group>"; };
+		A58B830F1BEE20C500C6AB47 /* TimeZone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; name = TimeZone.swift; path = ../KingPastaKit/TimeZone.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A58B83171BEF935800C6AB47 /* Day.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Day.swift; path = ../KingPastaKit/Day.swift; sourceTree = "<group>"; };
 		A58B83191BEF961400C6AB47 /* Extends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Extends.swift; path = ../KingPastaKit/Extends.swift; sourceTree = "<group>"; };
 		A58B831C1BEF984700C6AB47 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
@@ -262,11 +262,11 @@
 		A59824791BFA211B0076F556 /* NSTimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSTimeInterval.swift; path = ../KingPastaKit/NSTimeInterval.swift; sourceTree = "<group>"; };
 		A598247B1BFA59AB0076F556 /* WalkthroughContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughContentController.swift; sourceTree = "<group>"; };
 		A598247F1BFA5B440076F556 /* WalkthroughPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughPageController.swift; sourceTree = "<group>"; };
-		A59824811BFA636E0076F556 /* DayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayController.swift; sourceTree = "<group>"; };
+		A59824811BFA636E0076F556 /* DayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DayController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A59824841BFA8FA50076F556 /* NotificationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
 		A5C3C3841C09EB8C00A70971 /* Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Watch Extension.entitlements"; sourceTree = SOURCE_ROOT; };
-		A5EC5D891BFCAD48002FFE4B /* CategoryNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryNameCell.swift; sourceTree = "<group>"; };
-		A5EC5D8B1BFCADD1002FFE4B /* CategoryColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryColorCell.swift; sourceTree = "<group>"; };
+		A5EC5D891BFCAD48002FFE4B /* CategoryNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategoryNameCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		A5EC5D8B1BFCADD1002FFE4B /* CategoryColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategoryColorCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A5ECF8181BFB6289007BD764 /* PeriodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodCell.swift; sourceTree = "<group>"; };
 		A5F03FBB1BFB62E600BDDE71 /* PeriodColorMark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodColorMark.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -496,7 +496,7 @@
 			isa = PBXGroup;
 			children = (
 				A58B831F1BEFA05900C6AB47 /* FkP.swift */,
-				A58B830F1BEE20C500C6AB47 /* KPCategory.swift */,
+				A58B830F1BEE20C500C6AB47 /* TimeZone.swift */,
 				A58B83171BEF935800C6AB47 /* Day.swift */,
 				A513E98E1BF23E15004AC1A4 /* Period.swift */,
 				A513E9921BF25947004AC1A4 /* Clock.swift */,
@@ -814,7 +814,7 @@
 				A57ABED41BFFD48E009099D8 /* SwiftyUserDefaults.swift in Sources */,
 				A57ABEDD1BFFD498009099D8 /* Debug.swift in Sources */,
 				A57ABEDC1BFFD498009099D8 /* FkP.swift in Sources */,
-				A57ABED51BFFD498009099D8 /* KPCategory.swift in Sources */,
+				A57ABED51BFFD498009099D8 /* TimeZone.swift in Sources */,
 				A57ABEDB1BFFD498009099D8 /* Clock.swift in Sources */,
 				A57ABED81BFFD498009099D8 /* Extends.swift in Sources */,
 				A57ABED71BFFD498009099D8 /* Period.swift in Sources */,
@@ -846,7 +846,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A5845E7C1C009784004BD068 /* KPCategory.swift in Sources */,
+				A5845E7C1C009784004BD068 /* TimeZone.swift in Sources */,
 				A5845E841C009784004BD068 /* Debug.swift in Sources */,
 				A5845E801C009784004BD068 /* Extends.swift in Sources */,
 				A5845E7B1C009784004BD068 /* FkP.swift in Sources */,

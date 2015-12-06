@@ -7,17 +7,17 @@ public class Period: Object {
     public dynamic var endTime: NSTimeInterval = 0
     
     public dynamic var day: Day?
-    public dynamic var category: KPCategory?
+    public dynamic var timeZone: TimeZone?
     
     // TODO: This can be achieved better
-    convenience init(name: String, startTime: NSTimeInterval, endTime: NSTimeInterval, day: Day, category: KPCategory) {
+    convenience init(name: String, startTime: NSTimeInterval, endTime: NSTimeInterval, day: Day, timeZone: TimeZone) {
         self.init()
         
         self.name = name
         self.startTime = startTime
         self.endTime = endTime
         self.day = day
-        self.category = category
+        self.timeZone = timeZone
     }
     
     class func current() -> Period? {

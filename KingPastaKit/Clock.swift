@@ -39,7 +39,7 @@ public class Clock {
         CGContextSetLineWidth(context, lineWidth)
         
         // blank canvas
-        CGContextSetFillColorWithColor(context, KPCategory.freeColor.CGColor)
+        CGContextSetFillColorWithColor(context, TimeZone.freeColor.CGColor)
         CGContextFillEllipseInRect(context, outerRect)
         
         // TODO: There was a check for periods != nil
@@ -52,7 +52,7 @@ public class Clock {
             for period in periods {
                 let startAngle = CGFloat(2 * M_PI / dayLength * (period.startTime - dayStart))
                 let endAngle = CGFloat(2 * M_PI / dayLength * (period.endTime - dayStart))
-                let color = period.category?.cgColor ?? KPCategory.freeColor.CGColor
+                let color = period.timeZone?.cgColor ?? TimeZone.freeColor.CGColor
                 drawSegment(context, rect: outerRect, startAngle: startAngle, endAngle: endAngle, color: color)
             }
         }
@@ -86,7 +86,7 @@ public class Clock {
         CGContextSetLineWidth(context, lineWidth)
         
         // blank canvas
-        CGContextSetFillColorWithColor(context, KPCategory.freeColor.CGColor)
+        CGContextSetFillColorWithColor(context, TimeZone.freeColor.CGColor)
         CGContextFillEllipseInRect(context, outerRect)
         
         // TODO: There was a check for periods != nil
@@ -99,7 +99,7 @@ public class Clock {
             for period in periods {
                 let startAngle = CGFloat(2 * M_PI / dayLength * (period.startTime - dayStart))
                 let endAngle = CGFloat(2 * M_PI / dayLength * (period.endTime - dayStart))
-                let color = period.category?.cgColor ?? KPCategory.freeColor.CGColor
+                let color = period.timeZone?.cgColor ?? TimeZone.freeColor.CGColor
                 drawSegment(context, rect: outerRect, startAngle: startAngle, endAngle: endAngle, color: color)
             }
             
@@ -118,7 +118,7 @@ public class Clock {
         // draw blank if currentPeriod = nil (this will occur during free time)
         // draw current period in center
         if let currentPeriod = currentPeriod {
-            CGContextSetFillColorWithColor(context, currentPeriod.category?.cgColor ?? KPCategory.freeColor.CGColor)
+            CGContextSetFillColorWithColor(context, currentPeriod.timeZone?.cgColor ?? TimeZone.freeColor.CGColor)
             CGContextFillEllipseInRect(context, innerRect)
             
             // shade progress through current period
@@ -127,7 +127,7 @@ public class Clock {
             let currentPeriodProgress = currentPeriodTimePassed / currentPeriodLength
             shadeInner(context, rect: innerRect, angle: CGFloat(2 * M_PI * currentPeriodProgress))
         } else {
-            CGContextSetFillColorWithColor(context, KPCategory.freeColor.CGColor)
+            CGContextSetFillColorWithColor(context, TimeZone.freeColor.CGColor)
             CGContextFillEllipseInRect(context, innerRect)
         }
         
@@ -152,7 +152,7 @@ public class Clock {
         CGContextSetLineWidth(context, lineWidth)
         
         // blank canvas
-        CGContextSetFillColorWithColor(context, KPCategory.freeColor.CGColor)
+        CGContextSetFillColorWithColor(context, TimeZone.freeColor.CGColor)
         CGContextFillEllipseInRect(context, outerRect)
         
         // TODO: There was a check for periods != nil
@@ -165,7 +165,7 @@ public class Clock {
             for period in periods {
                 let startAngle = CGFloat(2 * M_PI / dayLength * (period.startTime - dayStart))
                 let endAngle = CGFloat(2 * M_PI / dayLength * (period.endTime - dayStart))
-                let color = period.category?.cgColor ?? KPCategory.freeColor.CGColor
+                let color = period.timeZone?.cgColor ?? TimeZone.freeColor.CGColor
                 drawSegment(context, rect: outerRect, startAngle: startAngle, endAngle: endAngle, color: color)
             }
             
@@ -201,7 +201,7 @@ public class Clock {
         CGContextSetGrayStrokeColor(context, 0, 1)
         CGContextSetLineWidth(context, lineWidth)
         
-        CGContextSetFillColorWithColor(context, KPCategory.nightColor.CGColor)
+        CGContextSetFillColorWithColor(context, TimeZone.nightColor.CGColor)
         CGContextFillEllipseInRect(context, outerRect)
         
         // save state, clip to ellipse, draw texture, restore state
@@ -235,7 +235,7 @@ public class Clock {
         CGContextSetLineWidth(context, lineWidth)
         
         // blank canvas
-        CGContextSetFillColorWithColor(context, KPCategory.freeColor.CGColor)
+        CGContextSetFillColorWithColor(context, TimeZone.freeColor.CGColor)
         CGContextFillEllipseInRect(context, outerRect)
         
         // outline both circles

@@ -16,9 +16,9 @@ class PreferencesController: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier, let selectedIndexPath = tableView.indexPathForSelectedRow {
-            if identifier == "EditCategorySegue" {
+            if identifier == "EditTimeZoneSegue" {
                 needsReload = true
-                (segue.destinationViewController as? EditCategoryController)?.category = KPCategory.forIndex(selectedIndexPath.row)
+                (segue.destinationViewController as? EditTimeZoneController)?.timeZone = TimeZone.forIndex(selectedIndexPath.row)
             }
         }
     }
@@ -41,7 +41,7 @@ class PreferencesController: UITableViewController {
         if section == 0 {
             return 1
         } else {
-            return KPCategory.count
+            return TimeZone.count
         }
     }
     
@@ -59,10 +59,10 @@ class PreferencesController: UITableViewController {
             if FkP.useFiveMinuteIntervals == false { cell.timeIntervalControl.selectedSegmentIndex = 0 }
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("CategoryCell") as? SelectCategoryCell ?? SelectCategoryCell(style: .Default, reuseIdentifier: "CategoryCell")
-            let category = KPCategory.forIndex(indexPath.row)
-            cell.nameLabel.text = category.name
-            cell.colorMark.color = category.color
+            let cell = tableView.dequeueReusableCellWithIdentifier("TimeZoneCell") as? SelectTimeZoneCell ?? SelectTimeZoneCell(style: .Default, reuseIdentifier: "TimeZoneCell")
+            let timeZone = TimeZone.forIndex(indexPath.row)
+            cell.nameLabel.text = timeZone.name
+            cell.colorMark.color = timeZone.color
             
             return cell
         }

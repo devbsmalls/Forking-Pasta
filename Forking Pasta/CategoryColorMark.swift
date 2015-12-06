@@ -1,6 +1,6 @@
 import UIKit
 
-class CategoryColorMark: UIView {
+class TimeZoneColorMark: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)

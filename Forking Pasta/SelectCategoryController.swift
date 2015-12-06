@@ -1,23 +1,23 @@
 import UIKit
 import KingPastaKit
 
-class SelectCategoryController: UITableViewController {
+class SelectTimeZoneController: UITableViewController {
     
     var delegate: PeriodController!
-    var periodCategory: KPCategory?
+    var periodTimeZone: TimeZone?
     
     // MARK: UITableViewDataSource
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return KPCategory.count
+        return TimeZone.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("SelectCategoryCell") as? SelectCategoryCell ??
-            SelectCategoryCell(style: .Default, reuseIdentifier: "SelectCategoryCell")
-        let category = KPCategory.forIndex(indexPath.row)
-        cell.nameLabel.text = category.name
-        cell.colorMark.color = category.color
-        if let periodCategory = periodCategory where category == periodCategory {
+        let cell = tableView.dequeueReusableCellWithIdentifier("SelectTimeZoneCell") as? SelectTimeZoneCell ??
+            SelectTimeZoneCell(style: .Default, reuseIdentifier: "SelectTimeZoneCell")
+        let timeZone = TimeZone.forIndex(indexPath.row)
+        cell.nameLabel.text = timeZone.name
+        cell.colorMark.color = timeZone.color
+        if let periodTimeZone = periodTimeZone where timeZone == periodTimeZone {
             cell.accessoryType = .Checkmark
         }
         
@@ -26,7 +26,7 @@ class SelectCategoryController: UITableViewController {
     
     // MARK: UITableViewDelegate
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        delegate.periodCategory = KPCategory.forIndex(indexPath.row)
+        delegate.periodTimeZone = TimeZone.forIndex(indexPath.row)
         navigationController?.popViewControllerAnimated(true)
     }
 }

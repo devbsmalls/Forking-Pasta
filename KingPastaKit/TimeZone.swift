@@ -1,21 +1,21 @@
 import UIKit
 import RealmSwift
 
-public class KPCategory: Object {
+public class TimeZone: Object {
     public dynamic var name = ""
     public dynamic var index = 0
     public dynamic var colorIndex = 0
     
     var periods: Results<Period> {
-        return FkP.realm.objects(Period).filter("category == %@", self)
+        return FkP.realm.objects(Period).filter("timeZone == %@", self)
     }
     
-    public class func forIndex(index: Int) -> KPCategory {
-        return FkP.realm.objects(KPCategory).sorted("index")[index]
+    public class func forIndex(index: Int) -> TimeZone {
+        return FkP.realm.objects(TimeZone).sorted("index")[index]
     }
     
     public class var count: Int {
-        return FkP.realm.objects(KPCategory).count
+        return FkP.realm.objects(TimeZone).count
     }
     
     // TODO: Use an enum of UIColor if possible?
@@ -51,7 +51,7 @@ public class KPCategory: Object {
     static let nightColor = UIColor(red: 0.0, green: 0.1, blue: 0.3, alpha: 1.0)
     
     public var color: UIColor {
-        return KPCategory.colors[colorIndex].value
+        return TimeZone.colors[colorIndex].value
     }
     
     var cgColor: CGColor {

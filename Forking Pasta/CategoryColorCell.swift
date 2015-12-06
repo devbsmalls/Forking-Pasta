@@ -1,6 +1,6 @@
 import UIKit
 
-class CategoryColorCell: UITableViewCell {
+class TimeZoneColorCell: UITableViewCell {
     @IBOutlet weak var colorNameLabel: UILabel!
-    @IBOutlet weak var colorMark: CategoryColorMark!
+    @IBOutlet weak var colorMark: TimeZoneColorMark!
 }

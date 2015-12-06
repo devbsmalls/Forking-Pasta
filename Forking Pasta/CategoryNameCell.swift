@@ -1,6 +1,6 @@
 import UIKit
 
 // TODO: Simplify to NameCell
-class CategoryNameCell: UITableViewCell {
+class TimeZoneNameCell: UITableViewCell {
     @IBOutlet weak var nameTextField: UITextField!
 }

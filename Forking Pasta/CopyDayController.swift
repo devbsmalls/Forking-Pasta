@@ -39,7 +39,7 @@ class CopyDayController: UITableViewController {
                     copy.startTime = period.startTime
                     copy.endTime = period.endTime
                     copy.day = destinationDay
-                    copy.category = period.category
+                    copy.timeZone = period.timeZone
                     
                     try! realm.write { realm.add(copy) }
                 }

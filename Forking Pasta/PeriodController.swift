@@ -8,7 +8,7 @@ class PeriodController: UITableViewController {
     var isNewPeriod = false
     
     var periodName: String?
-    var periodCategory: KPCategory?
+    var periodTimeZone: TimeZone?
     var periodStartTime: NSTimeInterval?
     var periodEndTime: NSTimeInterval?
     var periodDay: Day?
@@ -30,7 +30,7 @@ class PeriodController: UITableViewController {
             navigationItem.title = "Edit Period"
             
             periodName = period.name
-            periodCategory = period.category
+            periodTimeZone = period.timeZone
             periodStartTime = period.startTime
             periodEndTime = period.endTime
             periodDay = period.day
@@ -54,10 +54,10 @@ class PeriodController: UITableViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier {
             switch identifier {
-            case "SelectCategorySegue":
-                if let categoryVC = segue.destinationViewController as? SelectCategoryController {
-                    categoryVC.delegate = self
-                    categoryVC.periodCategory = periodCategory
+            case "SelectTimeZoneSegue":
+                if let timeZoneVC = segue.destinationViewController as? SelectTimeZoneController {
+                    timeZoneVC.delegate = self
+                    timeZoneVC.periodTimeZone = periodTimeZone
                 }
             case "SetStartTimeSegue":
                 if let timeVC = segue.destinationViewController as? SetTimeController {
@@ -82,7 +82,7 @@ class PeriodController: UITableViewController {
                 if isNewPeriod {
                     let periodDictionary: [String: AnyObject] = [
                         "name": periodName!,
-                        "category": periodCategory!,
+                        "timeZone": periodTimeZone!,
                         "startTime": periodStartTime!,
                         "endTime": periodEndTime!,
                         "day": periodDay!
@@ -92,7 +92,7 @@ class PeriodController: UITableViewController {
                 } else if let period = period {
                     try! realm.write {
                         period.name = self.periodName!
-                        period.category = self.periodCategory
+                        period.timeZone = self.periodTimeZone
                         period.startTime = self.periodStartTime!
                         period.endTime = self.periodEndTime!
                         period.day = self.periodDay
@@ -109,7 +109,7 @@ class PeriodController: UITableViewController {
     func validate() {
         var valid = true
         if periodName == nil || periodName == "" { valid = false }
-        if periodCategory == nil { valid = false }      // TODO: or not == existing category
+        if periodTimeZone == nil { valid = false }      // TODO: or not == existing timeZone
         if let periodStartTime = periodStartTime, let periodEndTime = periodEndTime {
             if periodEndTime == periodStartTime {
                 valid = false
@@ -217,9 +217,9 @@ extension PeriodController {
             cell.nameTextField.text = periodName
             return cell
         case 1:
-            let cell = tableView.dequeueReusableCellWithIdentifier("PeriodCategoryCell") as? PeriodCategoryCell ?? PeriodCategoryCell(style: .Default, reuseIdentifier: "PeriodCategoryCell")
-            cell.nameLabel.text = periodCategory?.name
-            cell.colorMark.color = periodCategory?.color
+            let cell = tableView.dequeueReusableCellWithIdentifier("PeriodTimeZoneCell") as? PeriodTimeZoneCell ?? PeriodTimeZoneCell(style: .Default, reuseIdentifier: "PeriodTimeZoneCell")
+            cell.nameLabel.text = periodTimeZone?.name
+            cell.colorMark.color = periodTimeZone?.color
             return cell
         case 2:
             switch indexPath.row {

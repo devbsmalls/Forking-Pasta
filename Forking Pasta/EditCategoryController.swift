@@ -1,13 +1,13 @@
 import UIKit
 import KingPastaKit
 
-class EditCategoryController: UITableViewController {
+class EditTimeZoneController: UITableViewController {
     
-    var category: KPCategory!
+    var timeZone: TimeZone!
     
-    private var colors = KPCategory.colors
-    private var categoryName: String?
-    private var categoryColorIndex: Int?
+    private var colors = TimeZone.colors
+    private var timeZoneName: String?
+    private var timeZoneColorIndex: Int?
     private var selectedIndexPath: NSIndexPath?
     
     @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -15,16 +15,16 @@ class EditCategoryController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        categoryName = category.name
-        categoryColorIndex = category.colorIndex
+        timeZoneName = timeZone.name
+        timeZoneColorIndex = timeZone.colorIndex
     }
     
     func save() {
         view.endEditing(true)
         
         try! FkP.realm.write {
-            self.category.name = self.categoryName ?? ""
-            self.category.colorIndex = self.categoryColorIndex ?? 0
+            self.timeZone.name = self.timeZoneName ?? ""
+            self.timeZone.colorIndex = self.timeZoneColorIndex ?? 0
         }
         
         navigationController?.popViewControllerAnimated(true)
@@ -37,7 +37,7 @@ class EditCategoryController: UITableViewController {
     }
     
     func nameDidChange(sender: UITextField) {
-        categoryName = sender.text
+        timeZoneName = sender.text
     }
     
     func hideKeyboard() {
@@ -59,15 +59,15 @@ class EditCategoryController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier("CategoryNameCell") as? CategoryNameCell ?? CategoryNameCell(style: .Default, reuseIdentifier: "CategoryNameCell")
+            let cell = tableView.dequeueReusableCellWithIdentifier("TimeZoneNameCell") as? TimeZoneNameCell ?? TimeZoneNameCell(style: .Default, reuseIdentifier: "TimeZoneNameCell")
             cell.nameTextField.delegate = self
-            cell.nameTextField.text = categoryName
+            cell.nameTextField.text = timeZoneName
             return cell
         } else {
-            let cell = tableView.dequeueReusableCellWithIdentifier("CategoryColorCell") as? CategoryColorCell ?? CategoryColorCell(style: .Default, reuseIdentifier: "CategoryColorCell")
+            let cell = tableView.dequeueReusableCellWithIdentifier("TimeZoneColorCell") as? TimeZoneColorCell ?? TimeZoneColorCell(style: .Default, reuseIdentifier: "TimeZoneColorCell")
             
             let color = colors[indexPath.row]
-            if categoryColorIndex == indexPath.row {
+            if timeZoneColorIndex == indexPath.row {
                 cell.accessoryType = .Checkmark
                 selectedIndexPath = indexPath
             }
@@ -85,7 +85,7 @@ class EditCategoryController: UITableViewController {
                 tableView.cellForRowAtIndexPath(selectedIndexPath)?.accessoryType = .None
             }
             
-            categoryColorIndex = indexPath.row
+            timeZoneColorIndex = indexPath.row
             tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .Checkmark
             selectedIndexPath = indexPath
             
@@ -95,7 +95,7 @@ class EditCategoryController: UITableViewController {
 }
 
 // MARK: UITextFieldDelegate
-extension EditCategoryController: UITextFieldDelegate {
+extension EditTimeZoneController: UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         return textField.resignFirstResponder()
     }
