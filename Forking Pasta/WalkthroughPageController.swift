@@ -11,6 +11,8 @@ class WalkthroughPageController: UIPageViewController {
         delegate = self
         dataSource = self
         
+        // FIXME: IMPORTANT update for 1.1
+        
         if let page1 = storyboard?.instantiateViewControllerWithIdentifier("WalkthroughContentController") as? WalkthroughContentController {
             page1.heading = "Getting Started"
             page1.subtitle = ""
