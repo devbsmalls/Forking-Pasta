@@ -24,6 +24,7 @@ class PreferencesController: UITableViewController {
     }
     
     func done() {
+        (UIApplication.sharedApplication().delegate as? AppDelegate)?.syncToWatch()
         navigationController?.presentingViewController?.dismissViewControllerAnimated(true, completion: nil)
     }
     
