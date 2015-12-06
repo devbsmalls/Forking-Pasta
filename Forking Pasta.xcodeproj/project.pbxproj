@@ -77,6 +77,7 @@
 		A58B82DF1BEE1A4E00C6AB47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A58B82DE1BEE1A4E00C6AB47 /* Assets.xcassets */; };
 		A58B82E11BEE1AF800C6AB47 /* chime.caf in Resources */ = {isa = PBXBuildFile; fileRef = A58B82E01BEE1AF800C6AB47 /* chime.caf */; };
 		A58B82E31BEE1B1E00C6AB47 /* Lora-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = A58B82E21BEE1B1E00C6AB47 /* Lora-Regular.ttf */; };
+		A58E49C31C145FDA00C50B71 /* Extends.swift in Sources */ = {isa = PBXBuildFile; fileRef = A58E49C21C145FDA00C50B71 /* Extends.swift */; };
 		A598247C1BFA59AB0076F556 /* WalkthroughContentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A598247B1BFA59AB0076F556 /* WalkthroughContentController.swift */; };
 		A59824801BFA5B440076F556 /* WalkthroughPageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A598247F1BFA5B440076F556 /* WalkthroughPageController.swift */; };
 		A59824821BFA636E0076F556 /* DayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A59824811BFA636E0076F556 /* DayController.swift */; };
@@ -257,6 +258,7 @@
 		A58B831C1BEF984700C6AB47 /* Playground.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = Playground.playground; sourceTree = "<group>"; };
 		A58B831D1BEF9EA400C6AB47 /* NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSDate.swift; path = ../KingPastaKit/NSDate.swift; sourceTree = "<group>"; };
 		A58B831F1BEFA05900C6AB47 /* FkP.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FkP.swift; path = ../KingPastaKit/FkP.swift; sourceTree = "<group>"; };
+		A58E49C21C145FDA00C50B71 /* Extends.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extends.swift; sourceTree = "<group>"; };
 		A59824791BFA211B0076F556 /* NSTimeInterval.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NSTimeInterval.swift; path = ../KingPastaKit/NSTimeInterval.swift; sourceTree = "<group>"; };
 		A598247B1BFA59AB0076F556 /* WalkthroughContentController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughContentController.swift; sourceTree = "<group>"; };
 		A598247F1BFA5B440076F556 /* WalkthroughPageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WalkthroughPageController.swift; sourceTree = "<group>"; };
@@ -479,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				A58B82A11BEE18FA00C6AB47 /* AppDelegate.swift */,
+				A58E49C21C145FDA00C50B71 /* Extends.swift */,
 				A578087A1BF7A7D8009A88BE /* Controllers */,
 				A59824831BFA8F810076F556 /* Views */,
 				A55239D91BF8D5E200D24FC3 /* Walkthrough */,
@@ -869,6 +872,7 @@
 				A58A2C681BFB4BC2006F292F /* PeriodTimeWarningCell.swift in Sources */,
 				A55239D81BF8D22D00D24FC3 /* WeekController.swift in Sources */,
 				A58B82A21BEE18FA00C6AB47 /* AppDelegate.swift in Sources */,
+				A58E49C31C145FDA00C50B71 /* Extends.swift in Sources */,
 				A58A2C6E1BFB5076006F292F /* SetTimeController.swift in Sources */,
 				A598247C1BFA59AB0076F556 /* WalkthroughContentController.swift in Sources */,
 				A58A2C6C1BFB4E20006F292F /* SelectCategoryCell.swift in Sources */,

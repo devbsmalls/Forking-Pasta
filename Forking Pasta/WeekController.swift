@@ -76,21 +76,30 @@ extension WeekController {
         case 0:
             switch indexPath.row {
             case 0:
-                let cell = tableView.dequeueReusableCellWithIdentifier("WakeTimeCell") ?? UITableViewCell(style: .Default, reuseIdentifier: "WakeTimeCell")
+                let cell = tableView.dequeueReusableCellWithIdentifier("WakeTimeCell") ?? UITableViewCell(style: .Value1, reuseIdentifier: "WakeTimeCell")
+                cell.detailTextLabel?.monospaceDigits()
                 cell.detailTextLabel?.text = FkP.wakeTime.shortString
                 
                 return cell
             default:
-                let cell = tableView.dequeueReusableCellWithIdentifier("BedTimeCell") ?? UITableViewCell(style: .Default, reuseIdentifier: "BedTimeCell")
+                let cell = tableView.dequeueReusableCellWithIdentifier("BedTimeCell") ?? UITableViewCell(style: .Value1, reuseIdentifier: "BedTimeCell")
+                cell.detailTextLabel?.monospaceDigits()
                 cell.detailTextLabel?.text = FkP.bedTime.shortString
                 
                 return cell
             }
         default:
-            let cell = tableView.dequeueReusableCellWithIdentifier("DayCell") ?? UITableViewCell(style: .Default, reuseIdentifier: "Day Cell")
+            let cell = tableView.dequeueReusableCellWithIdentifier("DayCell") ?? UITableViewCell(style: .Value1, reuseIdentifier: "Day Cell")
             
             let day = days[indexPath.row]
             cell.textLabel?.text = day.name
+            cell.detailTextLabel?.monospaceDigits()
+            
+            if let start = day.startTime, let end = day.endTime {
+                cell.detailTextLabel?.text = "\(start.shortString) - \(end.shortString)"
+            } else {
+                cell.detailTextLabel?.text = "Nothing Scheduled"
+            }
             
             return cell
         }

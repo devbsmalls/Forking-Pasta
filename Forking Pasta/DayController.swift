@@ -146,6 +146,7 @@ extension DayController {
             
             cell.categoryColorMark.color = period.category?.color
             cell.periodNameLabel.text = period.name
+            cell.timeRangeLabel?.monospaceDigits()
             cell.timeRangeLabel.text = "\(period.startTime.shortString) - \(period.endTime.shortString)"
             
             return cell

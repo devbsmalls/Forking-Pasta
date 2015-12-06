@@ -1,7 +1,6 @@
 //: Playground - noun: a place where people can play
 
-import Cocoa
-
+import UIKit
 
 extension Array {
     func rotate(index: Int) -> Array {
@@ -67,3 +66,4 @@ func make(time: NSTimeInterval) -> NSDate {
 }
 
 let testd = make(hours: 16, minutes: 50, seconds: 00)
+
