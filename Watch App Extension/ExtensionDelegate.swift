@@ -3,12 +3,19 @@ import KingPastaKitWatch
 import WatchConnectivity
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
+    
+    var session: WCSession?
 
     func applicationDidFinishLaunching() {
-        // TODO: if WCSession.isSupported() {
         let session = WCSession.defaultSession()
         session.delegate = self
         session.activateSession()
+        
+        self.session = session
+        
+        // TODO: there is one more step in setting up properly on a new watch
+        // ensure a realm is set up
+        FkP.realm
     }
 
     func applicationDidBecomeActive() {
@@ -18,6 +25,10 @@ class ExtensionDelegate: NSObject, WKExtensionDelegate {
     func applicationWillResignActive() {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, etc.
+    }
+    
+    func requestSync() {
+        session?.sendMessage(["Request Sync": true], replyHandler: nil, errorHandler: nil)
     }
 
 }
@@ -30,12 +41,12 @@ extension ExtensionDelegate: WCSessionDelegate {
     }
     
     func session(session: WCSession, didReceiveFile file: WCSessionFile) {
-        print("file received")
         if file.metadata?["name"] as? String == "realm" {
             if let realmURL = FkP.realmURL {
-                print("trying move")
                 do {
-                    try NSFileManager.defaultManager().removeItemAtURL(realmURL)
+                    if NSFileManager.defaultManager().fileExistsAtPath(FkP.realmURL!.path!) {
+                        try NSFileManager.defaultManager().removeItemAtURL(realmURL)
+                    }
                     try NSFileManager.defaultManager().moveItemAtURL(file.fileURL, toURL: realmURL)
                 }
                 catch let error as NSError {

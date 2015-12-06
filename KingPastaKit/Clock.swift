@@ -42,7 +42,6 @@ public class Clock {
         CGContextSetFillColorWithColor(context, TimeZone.freeColor.CGColor)
         CGContextFillEllipseInRect(context, outerRect)
         
-        // TODO: There was a check for periods != nil
         if periods.count > 0 {
             let dayStart = periods.first!.startTime
             let dayEnd = periods.last!.endTime
@@ -89,7 +88,6 @@ public class Clock {
         CGContextSetFillColorWithColor(context, TimeZone.freeColor.CGColor)
         CGContextFillEllipseInRect(context, outerRect)
         
-        // TODO: There was a check for periods != nil
         if periods.count > 0 {
             let dayStart = periods.first!.startTime
             let dayEnd = periods.last!.endTime
@@ -155,7 +153,6 @@ public class Clock {
         CGContextSetFillColorWithColor(context, TimeZone.freeColor.CGColor)
         CGContextFillEllipseInRect(context, outerRect)
         
-        // TODO: There was a check for periods != nil
         if periods.count > 0 {
             let dayStart = periods.first!.startTime
             let dayEnd = periods.last!.endTime

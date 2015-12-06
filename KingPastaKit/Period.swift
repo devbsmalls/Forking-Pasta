@@ -42,9 +42,7 @@ public class Period: Object {
         return day.orderedPeriods()
     }
     
-    public class func overlapWithStartTime(startTime: NSTimeInterval, endTime: NSTimeInterval, day: Day?, ignoringPeriod: Period?) -> Bool {
-        guard let day = day else { return true }
-        
+    public class func overlapWithStartTime(startTime: NSTimeInterval, endTime: NSTimeInterval, day: Day, ignoringPeriod: Period?) -> Bool {
         // TODO: is the last filter with block acceptable for Results<T>???
         let startDuring = day.periods.filter("startTime >= %@", startTime).filter("startTime < %@", endTime).filter { $0 != ignoringPeriod }
         let endDuring = day.periods.filter("endTime > %@", startTime).filter("endTime <= %@", endTime).filter { $0 != ignoringPeriod }

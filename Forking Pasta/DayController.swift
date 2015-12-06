@@ -30,7 +30,7 @@ class DayController: UITableViewController {
         updateHintImageView()
         
         if let period = showPeriod, let row = periods.indexOf({ $0 == period }) {
-            let indexPath = NSIndexPath(forRow: row, inSection: 3)
+            let indexPath = NSIndexPath(forRow: row, inSection: 1)
             tableView.scrollToRowAtIndexPath(indexPath, atScrollPosition: .Middle, animated: false)
             showPeriod = nil
         }
@@ -81,9 +81,9 @@ class DayController: UITableViewController {
     }
     
     @IBAction func showPeriodFromSegue(segue: UIStoryboardSegue) {
-        // TODO: Implement this!
-        // if let segue.sourceViewController.new_period
-        // showPeriod = segue.sourceViewController.period
+        if let periodVC = segue.sourceViewController as? PeriodController where periodVC.isNewPeriod {
+            showPeriod = periodVC.period
+        }
     }
     
     @IBAction func notificationsSwitchDidChange(sender: UISwitch) {

@@ -6,7 +6,6 @@ public class Day: Object {
     public dynamic var dayOfWeek: Int = 0
     public dynamic var showsNotifications = false
     
-    // TODO: Reverse relationships?
     public var periods: Results<Period> {
         return FkP.realm.objects(Period).filter("day == %@", self)
     }
@@ -23,12 +22,10 @@ public class Day: Object {
     }
     
     var hasStarted: Bool {
-        if orderedPeriods().count < 1 {
-            return false
-        } else if let firstPeriod = orderedPeriods().first {
+        if let firstPeriod = orderedPeriods().first {
             return Time.now() > firstPeriod.startTime
         }
-        // TODO: Better swift flow?
+        
         return false
     }
     

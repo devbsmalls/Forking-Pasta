@@ -7,14 +7,23 @@ import WatchConnectivity
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var session: WCSession?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        if WCSession.isSupported() {
+            let session = WCSession.defaultSession()
+            session.delegate = self
+            session.activateSession()
+            
+            self.session = session
+        }
         
         if !FkP.isInitialSetupComplete {
             initialSetup()
         }
         
         window?.tintColor = UIColor(red: 132/255.0, green: 0.0, blue: 1.0, alpha: 1.0)
+        
         return true
     }
     
@@ -47,6 +56,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         AudioServicesDisposeSystemSoundID(notificationSoundID)
     }
     
+    
+    // MARK: Apple Watch Sync
+    func syncToWatch() {
+        syncDefaultsToWatch()
+        syncRealmToWatch()
+    }
+    
+    func syncDefaultsToWatch() {
+        if let session = session where session.paired && session.watchAppInstalled {
+            if session.outstandingUserInfoTransfers.count > 0 {
+                for transfer in session.outstandingUserInfoTransfers { transfer.cancel() }
+            }
+            
+            session.transferUserInfo(SharedDefaults.dictionaryRepresentation())
+        }
+    }
+    
+    func syncRealmToWatch() {
+        if let session = session where session.paired && session.watchAppInstalled {
+            if session.outstandingFileTransfers.count > 0 {
+                for transfer in session.outstandingFileTransfers { transfer.cancel() }
+            }
+            
+            if let url = FkP.realmURL {
+                session.transferFile(url, metadata: ["name": "realm"])
+            }
+        }
+    }
+    
+    
+    // MARK: UILocalNotifications
     class func registerNotifications() {
         if !FkP.hasRegisteredNotifications {
             // TODO: Check settings conversion has worked
@@ -91,51 +131,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
     
-    // FIXME: Check for new watch somewhere and sync
-    
-    func syncToWatch() {
-        syncDefaultsToWatch()
-        syncRealmToWatch()
-    }
-    
-    func syncDefaultsToWatch() {
-        if WCSession.isSupported() {
-            let session = WCSession.defaultSession()
-            session.delegate = self
-            session.activateSession()
-            
-            // FIXME: check for paired watch?
-            
-            if session.outstandingUserInfoTransfers.count > 0 {
-                for transfer in session.outstandingUserInfoTransfers { transfer.cancel() }
-            }
-            
-            session.transferUserInfo(SharedDefaults.dictionaryRepresentation())
-        }
-    }
-
-    func syncRealmToWatch() {
-        // setup session
-        if WCSession.isSupported() {
-            let session = WCSession.defaultSession()
-            session.delegate = self
-            session.activateSession()
-            
-            // FIXME: check for paired watch?
-            
-            if session.outstandingFileTransfers.count > 0 {
-                for transfer in session.outstandingFileTransfers { transfer.cancel() }
-            }
-            
-            if let url = FkP.realmURL {
-                session.transferFile(url, metadata: ["name": "realm"])
-            }
-        }
-    }
-    
 }
 
-// TODO: Required?
+
+// MARK: WCSession Delegate
 extension AppDelegate: WCSessionDelegate {
+    
+    func session(session: WCSession, didReceiveMessage message: [String : AnyObject]) {
+        if (message["Request Sync"] as? Bool) != nil {
+            syncToWatch()
+        }
+    }
     
 }

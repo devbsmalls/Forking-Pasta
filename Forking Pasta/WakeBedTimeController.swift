@@ -16,12 +16,9 @@ class WakeBedTimeController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // ensures picker shows the time it is handed
-        // timePicker.timeZone = NSTimeZone(name: "UTC")
-        
         // setting in IB doesn't allow 23:00 because of timezone shit
-        timePicker.maximumDate = NSDate.make(hours: 0, minutes: 0, seconds: 0)  // TODO: .utc
-        timePicker.minimumDate = NSDate.make(hours: 23, minutes: 59, seconds: 59)   // TODO: .utc
+        timePicker.maximumDate = NSDate.make(hours: 0, minutes: 0, seconds: 0)
+        timePicker.minimumDate = NSDate.make(hours: 23, minutes: 59, seconds: 59)
         
         if isWake {
             timePicker.date = FkP.wakeTime.date()

@@ -29,6 +29,7 @@ class GlanceController: WKInterfaceController {
             clockImage.setImage(Clock.blank(clockRect))
             periodNameLabel.setText("Free time")
             timeRemainingLabel.setText("Nothing scheduled")
+            requestSync()
         }
     }
     
@@ -46,6 +47,12 @@ class GlanceController: WKInterfaceController {
         clockImage.setImage(status.clock)
         periodNameLabel.setText(status.periodName)
         timeRemainingLabel.setText(status.timeRemaining)
+    }
+    
+    func requestSync() {
+        if let delegate = WKExtension.sharedExtension().delegate as? ExtensionDelegate {
+            delegate.requestSync()
+        }
     }
     
 }

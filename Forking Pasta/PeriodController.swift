@@ -87,8 +87,11 @@ class PeriodController: UITableViewController {
                         "endTime": periodEndTime!,
                         "day": periodDay!
                     ]
+                    
                     let newPeriod = Period(value: periodDictionary)
                     try! realm.write { realm.add(newPeriod) }
+                    
+                    period = newPeriod      // set so DayController can show on unwind
                 } else if let period = period {
                     try! realm.write {
                         period.name = self.periodName!
@@ -117,7 +120,7 @@ class PeriodController: UITableViewController {
             } else if periodEndTime < periodStartTime {
                 valid = false
                 showTimeWarningOfType(.StartsAfterEnd)
-            } else if Period.overlapWithStartTime(periodStartTime, endTime: periodEndTime, day: periodDay, ignoringPeriod: period) {    // FIXME: Sort out optionals
+            } else if Period.overlapWithStartTime(periodStartTime, endTime: periodEndTime, day: periodDay!, ignoringPeriod: period) {
                 valid = false
                 showTimeWarningOfType(.Overlap)
             } else {

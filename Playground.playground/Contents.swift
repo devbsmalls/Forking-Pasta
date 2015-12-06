@@ -58,7 +58,7 @@ func make(hours hours: Int, minutes: Int, seconds: Int) -> NSDate {
     timeComponents.hour = hours
     timeComponents.minute = minutes
     timeComponents.second = seconds
-    return NSCalendar.currentCalendar().dateFromComponents(timeComponents)! // TODO: .utc
+    return NSCalendar.currentCalendar().dateFromComponents(timeComponents)!
 }
 
 func make(time: NSTimeInterval) -> NSDate {
