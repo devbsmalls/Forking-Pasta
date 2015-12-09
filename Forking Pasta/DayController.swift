@@ -92,9 +92,9 @@ class DayController: UITableViewController {
         if sender.on { AppDelegate.registerNotifications() }
     }
     
-    func showClearConfirmation() {
-        let confirmSheet = UIAlertController(title: "Delete \(day.name)?", message: "Do you really want to delete this schedule?", preferredStyle: .ActionSheet)
-        confirmSheet.addAction(UIAlertAction(title: "Delete", style: .Destructive) { action in
+    @IBAction func showClearConfirmation(sender: UIBarButtonItem) {
+        let confirmSheet = UIAlertController(title: "Clear \(day.name)?", message: "This will delete all periods in this schedule. Are you sure?", preferredStyle: .ActionSheet)
+        confirmSheet.addAction(UIAlertAction(title: "Clear", style: .Destructive) { action in
             self.clearPeriods()
         })
         confirmSheet.addAction(UIAlertAction(title: "Cancel", style: .Cancel, handler: nil))
@@ -114,22 +114,16 @@ class DayController: UITableViewController {
 extension DayController {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return periods.count > 0 ? 3 : 2
+        return 2
     }
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
+        if section == 0 {
             return 1
-        case 1:
+        } else {
             return periods.count
-        case 2:
-            return 2
-        default:
-            break
         }
-        
-        return 0
+
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -150,14 +144,6 @@ extension DayController {
             cell.timeRangeLabel.text = "\(period.startTime.shortString) - \(period.endTime.shortString)"
             
             return cell
-        case 2:
-            if indexPath.row == 0 {
-                let cell = tableView.dequeueReusableCellWithIdentifier("CopyDayCell") ?? UITableViewCell(style: .Default , reuseIdentifier: "CopyDayCell")
-                return cell
-            } else {
-                let cell = tableView.dequeueReusableCellWithIdentifier("ClearDayCell") ?? UITableViewCell(style: .Default , reuseIdentifier: "ClearDayCell")
-                return cell
-            }
         default:
             break
         }
@@ -183,19 +169,4 @@ extension DayController {
             updateHintImageView()
         }
     }
-}
-
-// MARK UITableViewDelegate
-extension DayController {
-    
-    // TODO: Implement in storyboard? How about deselecting?
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 2 {
-            if indexPath.row == 1 {
-                showClearConfirmation()
-                tableView.deselectRowAtIndexPath(indexPath, animated: true)
-            }
-        }
-    }
-    
 }
