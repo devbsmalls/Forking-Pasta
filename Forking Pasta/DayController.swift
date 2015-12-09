@@ -4,10 +4,19 @@ import KingPastaKit
 class DayController: UITableViewController {
     
     var day: Day!
-    var periods = [Period]()
+    var periods = [Period]() {
+        didSet {
+            let enabled = periods.count > 0 ? true : false
+            clearButton.enabled = enabled
+            copyButton.enabled = enabled
+        }
+    }
     
     var needsReload = false
     var showPeriod: Period?
+    
+    @IBOutlet weak var clearButton: UIBarButtonItem!
+    @IBOutlet weak var copyButton: UIBarButtonItem!
     
     override func viewDidLoad() {
         super.viewDidLoad()

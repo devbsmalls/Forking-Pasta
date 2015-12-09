@@ -581,6 +581,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="clearButton" destination="FDd-rd-QtA" id="1Q1-jV-Le4"/>
+                        <outlet property="copyButton" destination="wX5-k5-3XG" id="kcb-ev-jmy"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sy5-a8-du5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
