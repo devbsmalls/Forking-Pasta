@@ -221,7 +221,7 @@ extension PeriodController {
             return cell
         case 1:
             let cell = tableView.dequeueReusableCellWithIdentifier("PeriodTimeZoneCell") as? PeriodTimeZoneCell ?? PeriodTimeZoneCell(style: .Default, reuseIdentifier: "PeriodTimeZoneCell")
-            cell.nameLabel.text = periodTimeZone?.name
+            cell.nameLabel.text = periodTimeZone?.name ?? "select category"
             cell.colorMark.color = periodTimeZone?.color
             return cell
         case 2:
@@ -229,14 +229,14 @@ extension PeriodController {
             case 0:
                 let cell = tableView.dequeueReusableCellWithIdentifier("PeriodStartTimeCell") ?? UITableViewCell(style: .Default, reuseIdentifier: "PeriodStartTimeCell")
                 cell.detailTextLabel?.monospaceDigits()
-                cell.detailTextLabel?.text = periodStartTime?.shortString
+                cell.detailTextLabel?.text = periodStartTime?.shortString ?? "set start time"
                 cell.detailTextLabel?.textColor = warningCellType == nil ? normalTextColor : warningTextColor
                 
                 return cell
             case 1:
                 let cell = tableView.dequeueReusableCellWithIdentifier("PeriodEndTimeCell") ?? UITableViewCell(style: .Default, reuseIdentifier: "PeriodEndTimeCell")
                 cell.detailTextLabel?.monospaceDigits()
-                cell.detailTextLabel?.text = periodEndTime?.shortString
+                cell.detailTextLabel?.text = periodEndTime?.shortString ?? "set end time"
                 cell.detailTextLabel?.textColor = warningCellType == nil ? normalTextColor : warningTextColor
                 
                 return cell
