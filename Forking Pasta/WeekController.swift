@@ -98,7 +98,7 @@ extension WeekController {
             if let start = day.startTime, let end = day.endTime {
                 cell.detailTextLabel?.text = "\(start.shortString) - \(end.shortString)"
             } else {
-                cell.detailTextLabel?.text = "Nothing Scheduled"
+                cell.detailTextLabel?.text = "empty schedule"
             }
             
             return cell
