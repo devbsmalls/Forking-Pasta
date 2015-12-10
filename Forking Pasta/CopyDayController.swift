@@ -48,7 +48,7 @@ class CopyDayController: UITableViewController {
             }
         }
         
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     
     
