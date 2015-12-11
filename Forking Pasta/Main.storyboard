@@ -555,7 +555,7 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem systemItem="trash" id="FDd-rd-QtA">
+                        <barButtonItem image="clear" id="FDd-rd-QtA">
                             <connections>
                                 <action selector="showClearConfirmation:" destination="T4k-5j-BeM" id="j8O-Ay-66i"/>
                             </connections>
@@ -567,7 +567,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="rjv-bA-73H"/>
-                        <barButtonItem systemItem="action" id="wX5-k5-3XG">
+                        <barButtonItem image="copy" id="wX5-k5-3XG">
                             <connections>
                                 <segue destination="C8s-69-7wr" kind="show" identifier="CopyDaySegue" id="U5I-dm-T73"/>
                             </connections>
@@ -1425,6 +1425,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="clear" width="30" height="30"/>
+        <image name="copy" width="30" height="30"/>
         <image name="getting_started_work" width="320" height="55"/>
         <image name="icon_emboss" width="120" height="120"/>
     </resources>

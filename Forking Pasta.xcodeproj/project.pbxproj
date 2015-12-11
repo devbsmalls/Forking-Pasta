@@ -621,6 +621,7 @@
 				A5845E2C1C009250004BD068 /* Frameworks */,
 				A5845E2D1C009250004BD068 /* Resources */,
 				A5845E4F1C00955F004BD068 /* Embed Frameworks */,
+				A5C58F091C1B366900E4B130 /* Strip Realm */,
 			);
 			buildRules = (
 			);
@@ -660,6 +661,7 @@
 				A58B82D81BEE18FB00C6AB47 /* Embed Watch Content */,
 				A58B82F51BEE1B7500C6AB47 /* Embed Frameworks */,
 				A57ABF0B1C006D65009099D8 /* Embed App Extensions */,
+				A5C58F081C1B365B00E4B130 /* Strip Realm */,
 			);
 			buildRules = (
 			);
@@ -805,6 +807,37 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		A5C58F081C1B365B00E4B130 /* Strip Realm */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Strip Realm";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+		A5C58F091C1B366900E4B130 /* Strip Realm */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Strip Realm";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "bash \"${BUILT_PRODUCTS_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework/strip-frameworks.sh\"";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A57ABEC11BFFD3AB009099D8 /* Sources */ = {
