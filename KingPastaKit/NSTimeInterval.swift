@@ -51,6 +51,11 @@ public extension NSTimeInterval {
         return NSDate.make(self)
     }
     
+    // needed for complication timelines
+    func dateToday() -> NSDate {
+        return NSDate.makeToday(self)
+    }
+    
 }
 
 class Time {

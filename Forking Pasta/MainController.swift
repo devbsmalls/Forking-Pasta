@@ -22,7 +22,7 @@ class MainController: UIViewController {
         super.viewWillAppear(animated)
         
         if tick == nil {
-            tick = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "redraw", userInfo: nil, repeats: true)
+            tick = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(redraw), userInfo: nil, repeats: true)
         }
         // tick?.fireDate = Time.now.round + 1     // ensures the timer fires on the second     // TODO: use NSDate()
     }

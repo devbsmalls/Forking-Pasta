@@ -236,6 +236,7 @@
 		A5845E6F1C009741004BD068 /* KingPastaKitWatch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = KingPastaKitWatch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A5845E711C009741004BD068 /* KingPastaKitWatch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KingPastaKitWatch.h; sourceTree = "<group>"; };
 		A5845E731C009741004BD068 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A588134A1C32E9D400E25763 /* ComplicationTemplate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComplicationTemplate.swift; path = KingPastaKit/ComplicationTemplate.swift; sourceTree = SOURCE_ROOT; };
 		A58A2C5F1BFB3430006F292F /* PeriodController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = PeriodController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A58A2C611BFB4125006F292F /* PeriodNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodNameCell.swift; sourceTree = "<group>"; };
 		A58A2C631BFB41BE006F292F /* PeriodCategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodCategoryCell.swift; sourceTree = "<group>"; };
@@ -265,6 +266,8 @@
 		A59824811BFA636E0076F556 /* DayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DayController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A59824841BFA8FA50076F556 /* NotificationsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsCell.swift; sourceTree = "<group>"; };
 		A5C3C3841C09EB8C00A70971 /* Watch Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = "Watch Extension.entitlements"; sourceTree = SOURCE_ROOT; };
+		A5DFAA251C1C5FD3000BADC9 /* ComplicationTimeline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ComplicationTimeline.swift; path = KingPastaKit/ComplicationTimeline.swift; sourceTree = SOURCE_ROOT; wrapsLines = 0; };
+		A5DFAA271C1C6040000BADC9 /* ComplicationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		A5EC5D891BFCAD48002FFE4B /* CategoryNameCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategoryNameCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A5EC5D8B1BFCADD1002FFE4B /* CategoryColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = CategoryColorCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		A5ECF8181BFB6289007BD764 /* PeriodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeriodCell.swift; sourceTree = "<group>"; };
@@ -434,6 +437,7 @@
 				A5845E361C009250004BD068 /* ExtensionDelegate.swift */,
 				A5845E341C009250004BD068 /* InterfaceController.swift */,
 				A5845E381C009250004BD068 /* GlanceController.swift */,
+				A5DFAA271C1C6040000BADC9 /* ComplicationController.swift */,
 				A5845E3C1C009250004BD068 /* Info.plist */,
 			);
 			name = "Watch Extension";
@@ -504,6 +508,8 @@
 				A58B831D1BEF9EA400C6AB47 /* NSDate.swift */,
 				A59824791BFA211B0076F556 /* NSTimeInterval.swift */,
 				A513E9941BF36AE5004AC1A4 /* SwiftyUserDefaults.swift */,
+				A5DFAA251C1C5FD3000BADC9 /* ComplicationTimeline.swift */,
+				A588134A1C32E9D400E25763 /* ComplicationTemplate.swift */,
 				A555EE651BF392D700EF4368 /* Debug.swift */,
 			);
 			name = Source;

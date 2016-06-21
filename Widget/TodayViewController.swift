@@ -24,7 +24,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         print("did appear")
         if FkP.isInitialSetupComplete {
             if tick == nil {
-                tick = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: "refresh", userInfo: nil, repeats: true)
+                tick = NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: #selector(refresh), userInfo: nil, repeats: true)
             }
         } else {
             nothingScheduled()

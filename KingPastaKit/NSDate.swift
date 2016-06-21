@@ -50,6 +50,10 @@ public extension NSDate {
         return NSCalendar.currentCalendar().startOfDayForDate(NSDate())
     }
     
+    class func tomorrow() -> NSDate {
+        return NSCalendar.currentCalendar().startOfDayForDate(NSDate().dateByAddingTimeInterval(86400))
+    }
+    
     
     // TODO: Check for use of these - NSTimeInterval.date()
     class func make(hours hours: Int, minutes: Int, seconds: Int) -> NSDate {
@@ -66,5 +70,10 @@ public extension NSDate {
         let minute = Int(time.minute)
         let second = Int(time.second)
         return make(hours: hour, minutes: minute, seconds: second)
+    }
+    
+    // needed for complication timelines
+    class func makeToday(time: NSTimeInterval) -> NSDate {
+        return today().dateByAddingTimeInterval(time)
     }
 }

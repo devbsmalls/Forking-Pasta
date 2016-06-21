@@ -1,6 +1,7 @@
 import WatchKit
 import KingPastaKitWatch
 import WatchConnectivity
+import ClockKit
 
 class ExtensionDelegate: NSObject, WKExtensionDelegate {
     
@@ -48,6 +49,13 @@ extension ExtensionDelegate: WCSessionDelegate {
                         try NSFileManager.defaultManager().removeItemAtURL(realmURL)
                     }
                     try NSFileManager.defaultManager().moveItemAtURL(file.fileURL, toURL: realmURL)
+                    
+                    // // TODO: Only if successful
+                    // let server = CLKComplicationServer.sharedInstance()
+                    // for complication in server.activeComplications {
+                    //     NSLog("Reloading \(complication.description)")
+                    //     server.reloadTimelineForComplication(complication)
+                    // }
                 }
                 catch let error as NSError {
                     print(error.localizedDescription)

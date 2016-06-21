@@ -16,7 +16,7 @@ public class FkP {
     public static let realmURL = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.uk.pixlwave.ForkingPasta")?.URLByAppendingPathComponent("ForkingPasta.realm")
     
     public static let appGroupContainer = NSFileManager.defaultManager().containerURLForSecurityApplicationGroupIdentifier("group.uk.pixlwave.ForkingPasta")!
-    static let realmConfig = Realm.Configuration(path: appGroupContainer.URLByAppendingPathComponent("ForkingPasta.realm").path)
+    static let realmConfig = Realm.Configuration(fileURL: appGroupContainer.URLByAppendingPathComponent("ForkingPasta.realm"))
     
     public class func status(clockRect: CGRect) -> Status {
         var result = Status()
